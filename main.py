@@ -1,4 +1,5 @@
 from urllib import request
+from urllib.parse import urlencode
 import json
 import sys
 
@@ -8,17 +9,39 @@ class Article(object):
 
     def __init__(self, arg):
         super(Article, self).__init__()
-        self.title = arg['title']
+        self.id = arg['id']
+        self.title = arg['title'][0]
+        self.author = arg['author'][0]
+        self.content = arg['content']
+        self.comments = arg['comments']
+
+    def __repr__(self):
+        return json.dumps(self.__dict__)
 
 
-def object_decoder(obj):
-    if '__type__' in obj and obj['__type__'] == 'Article':
-        return Article(obj["responsee"]["docs"])
-    return obj
+def fetchArticle(title):
+    serverUrl = 'http://140.124.183.7:8983/solr/HotTopicData/select?'
+    url = serverUrl + 'sort=timestamp+desc&wt=json&indent=true&' + \
+        urlencode({'q': 'title:*' + title + '*', 'rows': 20})
+    print((url))
 
-url = 'http://140.124.183.7:8983/solr/HotTopicData/select?indent=on&q=*:*&wt=json'
-req = request.urlopen(url)
-encoding = req.headers.get_content_charset()
-sys_encdoing = sys.stdin.encoding
-json_data = req.read().decode(encoding).encode(sys_encdoing, 'replace').decode(sys_encdoing)
-print(json_data)
+    req = request.urlopen(url)
+    encoding = req.headers.get_content_charset()
+    sys_encdoing = sys.stdin.encoding
+    json_data = req.read().decode(encoding).encode(sys_encdoing, 'replace').decode(sys_encdoing)
+    return json_data
+
+
+def parseToArticle(json_data):
+    articles = []
+    for data in json.loads(json_data)['response']['docs']:
+        articles.append((Article(data)))
+    return articles
+
+
+def main():
+    articles = parseToArticle(fetchArticle('隨機*人'))
+    for article in articles:
+        print(article.title)
+
+main()

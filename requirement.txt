@@ -1,1 +1,2 @@
-jieba >= 0.38
+jieba
+gensim

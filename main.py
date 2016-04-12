@@ -5,6 +5,7 @@ import sys
 import jieba
 import re
 import time
+import os
 from gensim import corpora, models
 
 
@@ -55,7 +56,11 @@ def log(file, object):
 def buildLdaBykeyword(keyowords, num_article_for_search):
     num_topics = len(keyowords)
 
-    filename = 'data/' + str("_".join(keyowords) + "_" + str(num_article_for_search))
+    dir_name = 'data'
+    if not os.path.exists(dir_name):
+        os.mkdir(dir_name)
+    filename = dir_name + '/' + str("_".join(keyowords) + "_" + str(num_article_for_search))
+
     print(filename)
     file = open(filename, 'w', encoding="utf-8")
     articles = []

@@ -31,7 +31,8 @@ class Article(object):
 def fetchArticle(title, number=20):
     serverUrl = 'http://140.124.183.7:8983/solr/HotTopicData/select?'
     url = serverUrl + 'sort=timestamp+desc&wt=json&indent=true&' + \
-        urlencode({'q': 'title:*' + title + '*', 'rows': number})
+        urlencode({'q': 'title:*' + title + '*', 'rows': number,
+                   'fq': 'timestamp:[NOW/DAY-1DAYS TO NOW/DAY]'})
 
     req = request.urlopen(url)
     encoding = req.headers.get_content_charset()
@@ -52,9 +53,9 @@ def log(file, object):
     print(object, end="\n", file=file)
 
 
-def buildLdaBykeyword(keyowords, num_article_for_search):
-    num_topics = len(keyowords)
-
+def buildLdaBykeyword(keyowords, num_article_for_search, num_topics=0):
+    if num_topics == 0:
+        num_topics = len(keyowords)
     filename = 'data/' + str("_".join(keyowords) + "_" + str(num_article_for_search))
     print(filename)
     file = open(filename, 'w', encoding="utf-8")
@@ -117,4 +118,4 @@ def test3(keyoword, number):
 # test2()
 #test3("林鳳營", 200)
 
-buildLdaBykeyword(["慈濟", "王建民"], 100)
+buildLdaBykeyword(["黃國昌"], 10000, 1)

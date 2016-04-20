@@ -112,4 +112,7 @@ def test2():
     keywords = ['王建民', '柯文哲', '和田光司', '義美', '統神']
     build_lda_by_keyword(keywords, 9)
 
+args = sys.argv
 
+if len(args) > 2:
+    build_lda_by_keyword(args[2:], args[1])

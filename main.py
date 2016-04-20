@@ -32,7 +32,8 @@ class Article(object):
 def fetch_article(title, number=20):
     server_url = 'http://140.124.183.7:8983/solr/HotTopicData/select?'
     url = server_url + 'sort=timestamp+desc&wt=json&indent=true&' + \
-          urlencode({'q': 'title:*' + title + '*', 'rows': number})
+          urlencode({'q': 'title:*' + title + '*', 'rows': number,
+                     'fq': 'timestamp:[NOW/DAY-1DAYS TO NOW/DAY]'})
 
     req = request.urlopen(url)
     encoding = req.headers.get_content_charset()
@@ -53,8 +54,9 @@ def log(file, object):
     print(object, end="\n", file=file)
 
 
-def build_lda_by_keyword(keywords, num_article_for_search):
-    num_topics = len(keywords)
+def build_lda_by_keyword(keywords, num_article_for_search, num_topics=0):
+    if num_topics == 0:
+        num_topics = len(keywords)
 
     dir_name = 'data'
     if not os.path.exists(dir_name):
@@ -112,7 +114,10 @@ def test2():
     keywords = ['王建民', '柯文哲', '和田光司', '義美', '統神']
     build_lda_by_keyword(keywords, 9)
 
+
 args = sys.argv
 
 if len(args) > 2:
     build_lda_by_keyword(args[2:], args[1])
+
+build_lda_by_keyword(["黃國昌"], 10000, 1)

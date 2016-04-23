@@ -25,18 +25,19 @@ class Article(object):
         return json.dumps(self.__dict__)
 
 
-def fetch_articles(title, number=20, days=-1):
+def fetch_articles(title, number=20, days=-1, page=1):
     server_url = 'http://140.124.183.7:8983/solr/HotTopicData/select?'
-    post_args = {'q': 'title:*' + title + '*', 'rows': number}
+    post_args = {'q': 'title:*' + title + '*', 'rows': number, 'start': (page - 1) * number + 1}
     if days >= 0:
         post_args['fq'] = 'timestamp:[NOW/DAY-' + str(days) + 'DAYS TO NOW/DAY]'
-        print(post_args)
+    print(post_args)
     url = server_url + 'sort=timestamp+desc&wt=json&indent=true&' + urlencode(post_args)
 
     req = request.urlopen(url)
     encoding = req.headers.get_content_charset()
     sys_encoding = sys.stdin.encoding
-    json_data = req.read().decode(encoding).encode(sys_encoding, 'replace').decode(sys_encoding)
+    json_data = req.read().decode(encoding).encode(
+        sys_encoding, 'replace').decode(sys_encoding)
     return parse_to_articles(json_data)
 
 

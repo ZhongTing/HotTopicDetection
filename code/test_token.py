@@ -1,8 +1,8 @@
 import ptt_article_fetcher
 import tokenizer
 
-articles = ptt_article_fetcher.fetch_articles('', 50)
-using_stopword = True
+articles = ptt_article_fetcher.fetch_articles('', number=10, page=6)
+using_stopword = False
 
 equals_tokens = []
 for article in articles:

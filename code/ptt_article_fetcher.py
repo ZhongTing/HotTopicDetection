@@ -3,6 +3,7 @@ from urllib.parse import urlencode
 import json
 import re
 import sys
+import time
 
 
 class Article(object):
@@ -31,6 +32,7 @@ class Article(object):
 
 
 def fetch_articles(title, number=20, days=-1, page=1, only_title=False):
+    start_time = time.time()
     server_url = 'http://140.124.183.7:8983/solr/HotTopicData/select?'
     post_args = {'q': 'title:*' + title + '*', 'rows': number, 'start': (page - 1) * number + 1}
     if days >= 0:
@@ -45,6 +47,7 @@ def fetch_articles(title, number=20, days=-1, page=1, only_title=False):
     sys_encoding = sys.stdin.encoding
     json_data = req.read().decode(encoding).encode(
         sys_encoding, 'replace').decode(sys_encoding)
+    print('fetch ' + str(number) + ' articles spend ' + str(time.time() - start_time))
     return parse_to_articles(json_data)
 
 

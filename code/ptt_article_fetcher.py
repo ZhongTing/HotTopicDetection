@@ -44,7 +44,7 @@ class Article(object):
         return json.dumps(self.__dict__)
 
 
-def fetch_articles(title, number=20, days=-1, page=1, only_title=False):
+def fetch_articles(title, number=20, days=-1, page=1, only_title=False, fl=None):
     start_time = time.time()
     server_url = 'http://140.124.183.7:8983/solr/HotTopicData/select?'
     post_args = {'q': 'title:*' + title + '*', 'rows': number, 'start': (page - 1) * number + 1}
@@ -52,6 +52,8 @@ def fetch_articles(title, number=20, days=-1, page=1, only_title=False):
         post_args['fq'] = 'timestamp:[NOW/DAY-' + str(days) + 'DAYS TO NOW/DAY]'
     if only_title:
         post_args["fl"] = 'title'
+    if fl:
+        post_args["fl"] = fl
     print(post_args)
     url = server_url + 'sort=timestamp+desc&wt=json&indent=true&' + urlencode(post_args)
 

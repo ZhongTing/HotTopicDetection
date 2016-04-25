@@ -6,17 +6,16 @@ from gensim.models import Word2Vec
 
 
 def get_sentence(keyword, number, page=1):
-    articles = ptt_article_fetcher.fetch_articles(keyword, number, page=page, only_title=True)
+    articles = ptt_article_fetcher.fetch_articles(keyword, number, page=page, fl='title, content')
 
     sentences = []
     for article in articles:
-        tokens = tokenizer.cut(article.title, using_stopword=False, simplified_convert=True)
-        # print(tokens)
-        sentences.append(tokens)
-
+        sentences.append(tokenizer.cut(article.title, using_stopword=False, simplified_convert=True))
+        for sen in article.content_sentence:
+            sentences.append(tokenizer.cut(sen, using_stopword=False, simplified_convert=True))
     return sentences
 
-title_number = 1000
+title_number = 78
 model_dir = 'bin'
 model_path = model_dir + '/word2vecmodel_' + str(title_number) + '.bin'
 if not os.path.exists(model_dir):
@@ -33,4 +32,5 @@ except FileNotFoundError:
 
 end_time = time.time()
 model.save(model_path)
+print(model)
 print('model_spend_time ' + str(end_time - start_time))

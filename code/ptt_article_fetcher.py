@@ -72,4 +72,4 @@ def parse_to_articles(json_data):
         articles.append((Article(data)))
     return articles
 
-article = fetch_articles('', 1, page=19)[0]
+#article = fetch_articles('', 1, page=19)[0]

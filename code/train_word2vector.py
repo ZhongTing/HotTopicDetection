@@ -1,4 +1,4 @@
-import ptt_article_fetcher
+from ptt_article_fetcher import fetch_articles
 import tokenizer
 import os
 import time
@@ -7,7 +7,7 @@ import random
 
 
 def get_sentence(keyword, number, page=1):
-    articles = ptt_article_fetcher.fetch_articles(keyword, number, page=page, fl='title')
+    articles = fetch_articles(keyword, number, page=page, fl='title, content', desc=False)
 
     sentences = []
     for article in articles:
@@ -21,7 +21,7 @@ def get_sentence(keyword, number, page=1):
 
 title_number = 800000
 model_dir = 'bin'
-model_path = model_dir + '/random_title_' + str(title_number) + '.bin'
+model_path = model_dir + '/normal_5_' + str(title_number) + '.bin'
 if not os.path.exists(model_dir):
     os.mkdir(model_dir)
 

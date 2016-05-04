@@ -22,16 +22,16 @@ class Article(object):
             temp_content = re.sub("※ 引述.*\n", '', temp_content)
             temp_content = re.sub("(:.*\n)*", '', temp_content)
             temp_content = re.sub("https?:[\w\.=#/\?\&]*", "", temp_content)
-            #濾空行
+            # 濾空行
             temp_content = re.sub(r'^ *\n', '', temp_content)
-            #幫不以標點符號而用enter換行加上句號
+            # 幫不以標點符號而用enter換行加上句號
             temp_content = re.sub("(^[^，。？：！!?,\.\n:]+ *\n)", r'\1。', temp_content)
-            #把因字數太長的斷句的句子接在同一句
+            # 把因字數太長的斷句的句子接在同一句
             temp_content = re.sub("([^，。、？：！!?,\. \n:]) *\n([^ \n])", r"\1\2", temp_content)
-            #把同一句標點符號再斷句
+            # 把同一句標點符號再斷句
             temp_content = re.sub('([，。？：！!?,]+) *', r'\1\n', temp_content)
-            #self.content_sentence = [i for i in re.findall(r'(.*?)  +', temp_content) if i not in ['']]
-            self.content_sentence = [i for i in re.findall(r'([^ \n].+) *', temp_content) if i not in ['']]
+            self.content_sentence = [
+                i for i in re.findall(r'([^ \n].+) *', temp_content) if i not in ['']]
 
             self.content = '\n'.join(self.content_sentence)
         if 'comments' in arg:
@@ -44,7 +44,7 @@ class Article(object):
         return json.dumps(self.__dict__)
 
 
-def fetch_articles(title, number=20, days=-1, page=1, only_title=False, fl=None):
+def fetch_articles(title, number=20, days=-1, page=1, only_title=False, fl=None, desc=True):
     start_time = time.time()
     server_url = 'http://140.124.183.7:8983/solr/HotTopicData/select?'
     post_args = {'q': 'title:*' + title + '*', 'rows': number, 'start': (page - 1) * number + 1}
@@ -55,7 +55,9 @@ def fetch_articles(title, number=20, days=-1, page=1, only_title=False, fl=None)
     if fl:
         post_args["fl"] = fl
     print(post_args)
-    url = server_url + 'sort=timestamp+desc&wt=json&indent=true&' + urlencode(post_args)
+
+    desc_arg = 'sort=timestamp+desc&' if desc else ''
+    url = server_url + desc_arg + 'wt=json&indent=true' + urlencode(post_args)
 
     req = request.urlopen(url)
     encoding = req.headers.get_content_charset()
@@ -72,4 +74,4 @@ def parse_to_articles(json_data):
         articles.append((Article(data)))
     return articles
 
-#article = fetch_articles('', 1, page=19)[0]
+# article = fetch_articles('', 1, page=19, desc=True)[0]

@@ -1,13 +1,15 @@
 import gensim.models
 from tokenizer import cut
 
-model_path = 'bin/title_800000.bin'
-# model_path = 'bin/word2vecmodel_788051.bin'
-
-models = [
-    gensim.models.Word2Vec.load(model_path),
-    gensim.models.Word2Vec.load('bin/random_title_800000.bin')
+model_names = [
+    'model_78w.bin',
+    'model_300_78w.bin'
 ]
+
+models = []
+for model_name in model_names:
+    models.append(gensim.models.Word2Vec.load('bin/' + model_name))
+    print('load model : ' + model_name)
 
 
 def similarity_test(arg1='台灣', arg2='中國'):
@@ -50,7 +52,7 @@ def most_similar_test(data_set=None):
 def n_similarity_test():
     sentence_list = ['馬總統走光照 蔡正元:經專家鑑定為光影',
                      '馬走光照瘋傳總統府譴責',
-                     '萬安演習著恐龍裝逛大街 男遭裁罰',
+                     '2016 全球 軍事力量排名',
                      '舉債也最低... 「六都還款王」第2名令人',
                      '【北捷殺人案】鄭捷判死定讞5大理由曝光',
                      '地震',
@@ -69,8 +71,8 @@ def n_similarity_test():
             print(model.n_similarity(tokens_list[i], tokens_list[i - 1]))
 
 
-most_similar_test()
-n_similarity_test()
 similarity_test('日文', '日語')
 similarity_test('伊斯蘭教', '佛教')
+most_similar_test()
 doesnt_match_test()
+n_similarity_test()

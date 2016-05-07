@@ -30,7 +30,7 @@ def build_lda_by_keyword(keywords, num_article_for_search, num_topics=0):
 
     texts = []
     for article in articles:
-        tokens = cut(article.title + article.content)
+        tokens = cut(article.title + article.content, True)
         texts.append(tokens)
 
     dictionary = corpora.Dictionary(texts)
@@ -73,4 +73,4 @@ args = sys.argv
 if len(args) > 2:
     build_lda_by_keyword(args[2:], args[1])
 else:
-    build_lda_by_keyword(["日本"], 500, 1)
+    build_lda_by_keyword(["柯"], 50000, 1)

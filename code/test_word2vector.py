@@ -1,15 +1,17 @@
 import gensim.models
 from tokenizer import cut
+import time
 
 model_names = [
     'model_78w.bin',
-    'model_300_78w.bin'
+    'whole_content_1_100_80w.bin'
 ]
 
 models = []
 for model_name in model_names:
+    t = time.time()
     models.append(gensim.models.Word2Vec.load('bin/' + model_name))
-    print('load model : ' + model_name)
+    print('load model : ' + model_name + ' spend ' + str(time.time() - t) + ' seconds')
 
 
 def similarity_test(arg1='台灣', arg2='中國'):
@@ -39,6 +41,8 @@ def most_similar_test(data_set=None):
             {'positive': ['爸爸', '男'], 'negative':['女']},
             {'positive': ['弟弟', '男'], 'negative':['女']},
             {'positive': ['爺爺', '男'], 'negative':['奶奶']},
+            {'positive': ['柯', '市長']},
+            {'positive': ['柯']},
         ]
 
     for data in data_set:

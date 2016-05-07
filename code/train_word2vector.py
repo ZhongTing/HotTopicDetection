@@ -3,7 +3,6 @@ import tokenizer
 import os
 import time
 from gensim.models import Word2Vec
-import random
 
 
 def get_sentence(keyword, number, page=1):
@@ -12,16 +11,18 @@ def get_sentence(keyword, number, page=1):
     sentences = []
     for article in articles:
         tokens = tokenizer.cut(article.title, using_stopword=False, simplified_convert=True)
-        random.shuffle(tokens)
         sentences.append(tokens)
-        if hasattr(article, 'content_sentence'):
-            for sen in article.content_sentence:
-                sentences.append(tokenizer.cut(sen, using_stopword=False, simplified_convert=True))
+        # if hasattr(article, 'content_sentence'):
+            # for sen in article.content_sentence:
+                # sentences.append(tokenizer.cut(sen, using_stopword=False, simplified_convert=True))
+        if hasattr(article, 'content'):
+            sentences.append(
+                tokenizer.cut(article.content, using_stopword=False, simplified_convert=True))
     return sentences
 
 title_number = 800000
 model_dir = 'bin'
-model_path = model_dir + '/normal_5_' + str(title_number) + '.bin'
+model_path = model_dir + '/whole_content_1_100_' + str(title_number) + '.bin'
 if not os.path.exists(model_dir):
     os.mkdir(model_dir)
 

@@ -1,0 +1,36 @@
+Building prefix dict from the default dictionary ...
+Loading model from cache C:\Users\ZHONGT~1\AppData\Local\Temp\jieba.cache
+Loading model cost 0.844 seconds.
+Prefix dict has been built succesfully.
+load word2vec model from bin/model_78w.bin
+{'rows': 10, 'start': 1, 'q': 'title:*人生勝利組*'}
+fetch 10 articles spend 0.015628814697265625
+ 有沒有成為人生勝利組最簡易的SOP?
+ 有沒有成為人生勝利組最簡易的SOP?
+previos similarity = 1.0
+mean similarity = 1.0
+ 有沒有成為人生勝利組最簡易的SOP?
+previos similarity = 1.0
+mean similarity = 1.0
+ 娶到周曉菁算不算人生勝利組?
+previos similarity = 0.724256299321
+mean similarity = 0.724256299321
+ 娶到周曉菁算不算人生勝利組?
+previos similarity = 1.0
+mean similarity = 0.793192224491
+ 40多歲才考上公務員算人生勝利組嗎?
+previos similarity = 0.783519465209
+mean similarity = 0.721158495778
+ 怎麼樣就算是人生勝利組？
+previos similarity = 0.787996237601
+mean similarity = 0.799061679049
+ 柯震東是人生勝利組嗎?
+previos similarity = 0.906395332072
+mean similarity = 0.836497992673
+ 四叉貓算不算肥宅中的人生勝利組
+previos similarity = 0.817863565766
+mean similarity = 0.758770843291
+ 小馬新婚妻大有來頭　人生勝利組超富有
+previos similarity = 0.63338070324
+mean similarity = 0.63540925489
+[Finished in 9.1s]

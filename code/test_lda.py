@@ -28,7 +28,8 @@ def build_lda_by_keywords(keywords, num_article_for_search, num_topics=0):
 
         texts = []
         for article in articles:
-            tokens = cut(article.title + article.content, True)
+            tokens = cut(
+                article.title + article.content, using_stopword=True, simplified_convert=True)
             texts.append(tokens)
 
         start = time.time()
@@ -60,4 +61,8 @@ def test2():
     build_lda_by_keywords(keywords, 9)
 
 
-test2()
+def one_article_test(article_title):
+    build_lda_by_keywords([article_title], 1)
+
+
+one_article_test('蘋果將推iPad Air 3？陸媒曝光規格')

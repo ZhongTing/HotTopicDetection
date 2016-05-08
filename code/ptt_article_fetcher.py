@@ -41,7 +41,7 @@ class Article(object):
                 self.comments_content.append(comment[2])
 
     def __repr__(self):
-        return json.dumps(self.__dict__)
+        return self.title
 
 
 def fetch_articles(title, number=20, days=-1, page=1, only_title=False, fl=None, desc=True):
@@ -64,7 +64,10 @@ def fetch_articles(title, number=20, days=-1, page=1, only_title=False, fl=None,
     sys_encoding = sys.stdin.encoding
     json_data = req.read().decode(encoding).encode(
         sys_encoding, 'replace').decode(sys_encoding)
-    print('fetch ' + str(number) + ' articles spend ' + str(time.time() - start_time))
+    waitting_time = time.time() - start_time
+    print('fetch ' + str(number) + ' articles spend ' + str(waitting_time))
+    if (waitting_time == 0):
+        print(json_data)
     return parse_to_articles(json_data)
 
 

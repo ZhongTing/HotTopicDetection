@@ -1,0 +1,3196 @@
+Building prefix dict from the default dictionary ...
+Loading model from cache C:\Users\ZHONGT~1\AppData\Local\Temp\jieba.cache
+Loading model cost 0.842 seconds.
+Prefix dict has been built succesfully.
+load word2vec model from bin/model_5_78w.bin
+{'start': 1, 'rows': 2000, 'q': 'title:***'}
+fetch 2000 articles spend 1.4464917182922363
+token not in model :次約
+token not in model :陸令 禁減
+token not in model :爛兵會
+token not in model :菲版川普
+token not in model :貓語
+token not in model :台日艦
+token not in model :靠網
+token not in model :服控
+token not in model :哭養 哭養
+token not in model :萊切 萊切斯特 城隊
+token not in model :扁家前
+token not in model :誘鼠
+token not in model :辣腿妹
+token not in model :飛該
+token not in model :PomPon
+token not in model :BBW
+token not in model :讀資管
+token not in model :遊不進
+token not in model :百餘件
+token not in model :生玩過
+token not in model :聽題
+token not in model :文禁
+token not in model :天陪
+token not in model :台日艦
+invalid article:
+
+token not in model :superlive
+token not in model :聽題
+token not in model :軟筆
+token not in model :財要
+token not in model :黑齋
+token not in model :104km
+token not in model :陸黨 媒籲
+token not in model :售解禁
+token not in model :字暖心
+token not in model :陸黨媒
+token not in model :場安
+token not in model :軍土
+token not in model :萬童
+token not in model :誘鼠
+token not in model :反勝
+token not in model :文禁
+token not in model :怎記
+token not in model :採鋰
+token not in model :絞入
+token not in model :貓語
+token not in model :MomoClovaZto
+token not in model :禁尻是
+token not in model :陸令 禁減
+token not in model :琉玩
+token not in model :文組爽
+token not in model :蔡勿
+token not in model :裝文組
+token not in model :售解禁
+token not in model :畢旅該
+token not in model :美研社
+token not in model :方放話
+token not in model :金遠雄
+token not in model :蜷川實 花展
+token not in model :蔡勿
+token not in model :反公宅
+token not in model :非正廠
+token not in model :GUINNESS
+token not in model :很會解
+token not in model :數萬噸
+token not in model :是川寶
+token not in model :優青素
+token not in model :東協靠
+token not in model :韓妞向
+token not in model :周柏臣
+token not in model :16.18
+token not in model :iHome
+invalid article:
+
+token not in model :服控
+token not in model :撞柱
+token not in model :現歲
+token not in model :滿普
+token not in model :Giri Giri
+token not in model :店分
+token not in model :掛命
+token not in model :周柏臣 涉毆
+token not in model :字暱
+token not in model :mapleroyals
+token not in model :魯蛇交
+token not in model :百餘件
+token not in model :詹皇飛
+token not in model :再衰
+token not in model :朝隆路
+token not in model :殘判
+token not in model :泰寧
+token not in model :武田鐵矢
+token not in model :何田光斯
+token not in model :公奴 幹旋
+token not in model :Fuckyou
+token not in model :江蕙惜
+token not in model :更士來
+token not in model :特愛買
+token not in model :慈孝
+token not in model :飛該
+token not in model :散沫花
+token not in model :鄰省
+token not in model :酷卡幫
+token not in model :萬童
+token not in model :CAL
+token not in model :美土
+token not in model :小英台
+token not in model :新顯
+token not in model :夏槓 林洲民有
+token not in model :遊不進
+token not in model :Nyiragongo
+token not in model :人十
+token not in model :Foury
+token not in model :Nvdia
+token not in model :神盾化
+token not in model :大澎風
+token not in model :文禁
+token not in model :硬書 軟書
+token not in model :過算
+token not in model :Interstella
+token not in model :蔡勿
+token not in model :台日艦
+token not in model :嫌長 錯屋
+token not in model :配大正妹
+token not in model :叫妮妮
+token not in model :非正廠
+token not in model :周柏臣
+token not in model :方放話
+token not in model :小鳳仙
+token not in model :西打套
+token not in model :行少 趴台
+token not in model :萬童
+token not in model :韓妞向
+token not in model :俄富少
+token not in model :俄獨
+token not in model :蘇銘
+token not in model :行少 趴台
+token not in model :鬧輕
+token not in model :反公宅
+token not in model :跟衫山
+token not in model :戀大 歲陸
+token not in model :周柏臣
+token not in model :軍土
+token not in model :柯汗
+token not in model :哲頻
+token not in model :鄰棟 排向
+token not in model :蔡勿
+token not in model :美和野 比玉子
+token not in model :靠網
+token not in model :邱永開
+token not in model :林寶春
+token not in model :科太遠
+token not in model :遇蛇
+token not in model :沒人密
+token not in model :周柏臣
+token not in model :ronnywang skybear
+token not in model :邱永開
+token not in model :牙高
+token not in model :台日艦
+token not in model :vanoss
+token not in model :科太遠
+token not in model :陸實境 爆對
+token not in model :小鳳仙
+token not in model :太逆天 辣成
+token not in model :浩克要
+token not in model :客採 摘活
+token not in model :配大正妹
+token not in model :用寶 可夢來
+token not in model :周柏臣
+token not in model :萬童
+token not in model :諷金溥
+token not in model :向秀
+token not in model :服控
+token not in model :某版發
+token not in model :正正經經
+token not in model :張鳳強
+token not in model :竟無套
+token not in model :假波
+token not in model :蔡勿
+token not in model :不忘提
+token not in model :金遠雄
+token not in model :Ekeng
+token not in model :由林奏延
+token not in model :台日艦
+token not in model :方放話
+token not in model :哭養 哭養
+token not in model :nikeforever
+token not in model :護身法
+token not in model :絞入
+token not in model :鄰棟
+token not in model :喬琪
+token not in model :這摸貴
+token not in model :Rourke
+token not in model :由林奏延
+token not in model :讀非
+invalid article:
+
+token not in model :迫嫩
+token not in model :冰界
+token not in model :準經長
+token not in model :遭休
+token not in model :行抗
+token not in model :太美太高
+token not in model :大科小科
+token not in model :某職
+token not in model :奇送
+token not in model :邀函
+new clusting  台灣獨立，真的準備好要戰爭了嗎？
+new clusting  林淑芬
+new clusting  每15秒就有一件工殤 勞工職災誰來顧
+compare with clusting  台灣獨立，真的準備好要戰爭了嗎？
+with max similarity 0.443940305306
+
+new clusting  14歲女網聊 1次約4男偷嘗禁果
+compare with clusting  每15秒就有一件工殤 勞工職災誰來顧
+with max similarity 0.144957138688
+
+new clusting  教長:9日公開展示新教科書 不願配合考試
+compare with clusting  每15秒就有一件工殤 勞工職災誰來顧
+with max similarity 0.0889971530799
+
+new clusting  習近平內部講話曝光 政變集團呼之欲出
+compare with clusting  教長:9日公開展示新教科書 不願配合考試
+with max similarity 0.334011455273
+
+new clusting  盼兼顧鄉民與選民 洪慈庸壓力大
+compare with clusting  教長:9日公開展示新教科書 不願配合考試
+with max similarity 0.29605635808
+
+new clusting  教廷讚揚中梵關係進展 520後台梵外交不妙
+compare with clusting  習近平內部講話曝光 政變集團呼之欲出
+with max similarity 0.422062227976
+
+new clusting  為何台獨份子總愛幻想美國會來幫？
+compare with clusting  台灣獨立，真的準備好要戰爭了嗎？
+with max similarity 0.446064484827
+
+new clusting  少女時代90度鞠躬：台灣是傳奇
+compare with clusting  台灣獨立，真的準備好要戰爭了嗎？
+with max similarity 0.282719200232
+
+new clusting  疑偷走洪仲丘筆記本 士官長一審無罪
+compare with clusting  14歲女網聊 1次約4男偷嘗禁果
+with max similarity 0.322427785415
+
+new clusting  石斑危機！台灣青斑魚 被大陸龍虎斑打趴
+compare with clusting  少女時代90度鞠躬：台灣是傳奇
+with max similarity 0.436822131192
+
+new clusting  想找國小同學交往 開頭起手式?
+compare with clusting  台灣獨立，真的準備好要戰爭了嗎？
+with max similarity 0.406483517948
+
+new clusting  半夜睡不著覺怎麼辦?
+compare with clusting  台灣獨立，真的準備好要戰爭了嗎？
+with max similarity 0.331274138902
+
+new clusting  大姊，別鬧了（台南拖吊事件）
+compare with clusting  石斑危機！台灣青斑魚 被大陸龍虎斑打趴
+with max similarity 0.39953761992
+
+new clusting  台海兩岸和南北韓哪個能撐久一點？
+compare with clusting  教廷讚揚中梵關係進展 520後台梵外交不妙
+with max similarity 0.447193291009
+
+new clusting  還我運動權 陸令禁減體育課
+compare with clusting  台灣獨立，真的準備好要戰爭了嗎？
+with max similarity 0.440255272103
+
+new clusting  文化大學算不算是學店
+compare with clusting  台灣獨立，真的準備好要戰爭了嗎？
+with max similarity 0.375982722255
+
+new clusting  南韓回應金正恩:提議對話無誠意 予以拒絕
+compare with clusting  教長:9日公開展示新教科書 不願配合考試
+with max similarity 0.425361710578
+
+new clusting  「菲版川普」總統大選支持率領先 杜特蒂
+compare with clusting  教廷讚揚中梵關係進展 520後台梵外交不妙
+with max similarity 0.392965498878
+
+new clusting  MIT電動門打開奇蹟  讓香奈兒「開門」
+compare with clusting  每15秒就有一件工殤 勞工職災誰來顧
+with max similarity 0.34254845633
+
+new clusting  台日艦沖之鳥互尬 國軍不畏戰
+compare with clusting  石斑危機！台灣青斑魚 被大陸龍虎斑打趴
+with max similarity 0.382069548141
+
+new clusting  無奈！改桃園報到,華航空服控工時遭壓縮
+compare with clusting  大姊，別鬧了（台南拖吊事件）
+with max similarity 0.273045324691
+
+new clusting  大台北公車里程計費 朱立倫：絕不接受
+compare with clusting  無奈！改桃園報到,華航空服控工時遭壓縮
+with max similarity 0.371065968449
+
+new clusting  雌猴6天仍抱著死去小孩是智力親情展現？
+compare with clusting  每15秒就有一件工殤 勞工職災誰來顧
+with max similarity 0.422835506525
+
+new clusting  肥宅如果賽季初加入萊切斯特城隊？
+compare with clusting  還我運動權 陸令禁減體育課
+with max similarity 0.372657684701
+
+new clusting  每次都是老面孔！審計部證實　93萬後備軍
+compare with clusting  14歲女網聊 1次約4男偷嘗禁果
+with max similarity 0.313072512711
+
+new clusting  疑心血管疾病發作 男子按摩店猝死
+compare with clusting  14歲女網聊 1次約4男偷嘗禁果
+with max similarity 0.337558725529
+
+new clusting  國立科大約在普大哪個等級 ?
+compare with clusting  文化大學算不算是學店
+with max similarity 0.442403428463
+
+new clusting  北市擴大國小暑期課輔 「顧到晚上7點」
+compare with clusting  無奈！改桃園報到,華航空服控工時遭壓縮
+with max similarity 0.439787343769
+
+new clusting  柏林愛樂正在戶外演出
+compare with clusting  北市擴大國小暑期課輔 「顧到晚上7點」
+with max similarity 0.288905253007
+
+new clusting  打造「台灣矽谷」 移民法擬鬆綁
+compare with clusting  教長:9日公開展示新教科書 不願配合考試
+with max similarity 0.383790476449
+
+new clusting  扁家前車禍 轎車高速失控撞遊覽車
+compare with clusting  疑心血管疾病發作 男子按摩店猝死
+with max similarity 0.362174132449
+
+new clusting  世界衛生組織已寄發邀請
+compare with clusting  教長:9日公開展示新教科書 不願配合考試
+with max similarity 0.427178713487
+
+new clusting  士林夜市為何不叫劍潭夜市？
+compare with clusting  大姊，別鬧了（台南拖吊事件）
+with max similarity 0.408985264517
+
+new clusting  黏鼠板放魚乾 誘鼠不成捉到貓
+compare with clusting  半夜睡不著覺怎麼辦?
+with max similarity 0.350672598383
+
+new clusting  “羅興亞人”為何在緬甸成為敏感詞？
+compare with clusting  文化大學算不算是學店
+with max similarity 0.418142141225
+
+new clusting  小英啤酒超商狂賣 台酒：72萬瓶已快
+compare with clusting  石斑危機！台灣青斑魚 被大陸龍虎斑打趴
+with max similarity 0.260798582301
+
+new clusting  八年級知道超魔神英雄傳嗎
+compare with clusting  台灣獨立，真的準備好要戰爭了嗎？
+with max similarity 0.444058801323
+
+new clusting  黑色產業鏈鏽蝕 陸引爆失業潮
+compare with clusting  石斑危機！台灣青斑魚 被大陸龍虎斑打趴
+with max similarity 0.407290538983
+
+new clusting  鋰電池
+compare with clusting  黑色產業鏈鏽蝕 陸引爆失業潮
+with max similarity 0.311281796815
+
+new clusting  龜梨和也化身帥警察 閃婚高中生嚇壞粉絲
+compare with clusting  想找國小同學交往 開頭起手式?
+with max similarity 0.44081979167
+
+new clusting  退寬頻上網要帶身份證和「貓」
+compare with clusting  想找國小同學交往 開頭起手式?
+with max similarity 0.390206889473
+
+new clusting  【慎入】女吸毒暴斃　死前影像曝光
+compare with clusting  疑偷走洪仲丘筆記本 士官長一審無罪
+with max similarity 0.385576663468
+
+new clusting  FB可以表示覺得溫馨！
+compare with clusting  想找國小同學交往 開頭起手式?
+with max similarity 0.358969058575
+
+new clusting  台彩業績少150億 黃金右手怎麼辦？
+compare with clusting  每15秒就有一件工殤 勞工職災誰來顧
+with max similarity 0.407094148908
+
+new clusting  花蓮議會金曲歌后祝母親節快樂
+compare with clusting  柏林愛樂正在戶外演出
+with max similarity 0.260261976381
+
+new clusting  李富城  國防部被洪家陷害 & 台灣沒有是非
+compare with clusting  石斑危機！台灣青斑魚 被大陸龍虎斑打趴
+with max similarity 0.426953271754
+
+new clusting  慈濟全球浴佛 南投逾三千民眾祈福
+compare with clusting  世界衛生組織已寄發邀請
+with max similarity 0.379522591378
+
+new clusting  勞基法納入高中(職)必修？
+compare with clusting  國立科大約在普大哪個等級 ?
+with max similarity 0.443023458728
+
+new clusting  新北驚傳菜刀砍人案 男子中10多刀
+compare with clusting  【慎入】女吸毒暴斃　死前影像曝光
+with max similarity 0.438349465038
+
+new clusting  工程師制服癖 家中查獲百餘件女裝
+compare with clusting  新北驚傳菜刀砍人案 男子中10多刀
+with max similarity 0.449604945541
+
+new clusting  赤兔馬有幾匹馬力？
+compare with clusting  台灣獨立，真的準備好要戰爭了嗎？
+with max similarity 0.368103905233
+
+new clusting  南科生活品質屌打竹科和中科
+compare with clusting  國立科大約在普大哪個等級 ?
+with max similarity 0.443980422979
+
+new clusting  陸戰隊又出包 66旅連長想退伍 鬧自殺
+compare with clusting  疑偷走洪仲丘筆記本 士官長一審無罪
+with max similarity 0.35988425039
+
+new clusting  緬甸軍火庫驚爆 嚇壞雲南
+compare with clusting  石斑危機！台灣青斑魚 被大陸龍虎斑打趴
+with max similarity 0.418370962555
+
+new clusting  響應「裸體園藝日」 男女脫光與花草共舞
+compare with clusting  柏林愛樂正在戶外演出
+with max similarity 0.420515644005
+
+new clusting  綠委提修法　未婚媽媽可指定1人請5天陪?1
+compare with clusting  退寬頻上網要帶身份證和「貓」
+with max similarity 0.370609062098
+
+===============fuck
+new clusting  癡情玫瑰花被誤為玖壹壹唱的八卦？
+compare with clusting  少女時代90度鞠躬：台灣是傳奇
+with max similarity 0.402828839261
+
+new clusting  柯文哲：房價砍半 很多人資產會縮水
+compare with clusting  台彩業績少150億 黃金右手怎麼辦？
+with max similarity 0.434729028807
+
+new clusting  超勵志 賈永婕18.5小時哭著完賽鐵人226
+compare with clusting  MIT電動門打開奇蹟  讓香奈兒「開門」
+with max similarity 0.406342876175
+
+new clusting  說好的景觀公園!?舊兒童樂園成廢墟
+compare with clusting  北市擴大國小暑期課輔 「顧到晚上7點」
+with max similarity 0.338059043716
+
+new clusting  意外之財要怎麼花
+compare with clusting  每15秒就有一件工殤 勞工職災誰來顧
+with max similarity 0.388080356682
+
+new clusting  本週代表字？
+compare with clusting  肥宅如果賽季初加入萊切斯特城隊？
+with max similarity 0.25603269082
+
+new clusting  臉書新的按讚符號？
+compare with clusting  FB可以表示覺得溫馨！
+with max similarity 0.391189733992
+
+new clusting  為何吳 周後來會變成陌生人
+compare with clusting  想找國小同學交往 開頭起手式?
+with max similarity 0.444550301175
+
+new clusting  咖啡廳成了K書中心？ 意外引發網友論戰
+compare with clusting  說好的景觀公園!?舊兒童樂園成廢墟
+with max similarity 0.371399903534
+
+new clusting  台鐵網路訂票也可訂便當
+compare with clusting  臉書新的按讚符號？
+with max similarity 0.39040332681
+
+new clusting  人生online維修時間
+compare with clusting  雌猴6天仍抱著死去小孩是智力親情展現？
+with max similarity 0.346868654352
+
+new clusting  WHA邀請函加註「一中」 陸媒：陸釋放給蔡
+compare with clusting  南韓回應金正恩:提議對話無誠意 予以拒絕
+with max similarity 0.389195302186
+
+new clusting  金庸男主角中 誰最專情?
+compare with clusting  文化大學算不算是學店
+with max similarity 0.438616871746
+
+new clusting  第二個吳宗憲和第二個周杰倫哪個難
+compare with clusting  金庸男主角中 誰最專情?
+with max similarity 0.416466461238
+
+new clusting  綠豆嘉義人?
+compare with clusting  士林夜市為何不叫劍潭夜市？
+with max similarity 0.274619024758
+
+new clusting  大型國有地標售解禁 後患無窮
+compare with clusting  打造「台灣矽谷」 移民法擬鬆綁
+with max similarity 0.407820400393
+
+new clusting  歐陽娜娜曬童年萌照 32字暖心告白傅娟
+compare with clusting  花蓮議會金曲歌后祝母親節快樂
+with max similarity 0.443788320361
+
+new clusting  人類能進行品種改良嗎？
+compare with clusting  文化大學算不算是學店
+with max similarity 0.414026323948
+
+new clusting  奶茶控哭哭！茶+牛奶最糟 最佳組合是
+compare with clusting  士林夜市為何不叫劍潭夜市？
+with max similarity 0.439973966647
+
+new clusting  地震多大才要逃跑
+compare with clusting  柯文哲：房價砍半 很多人資產會縮水
+with max similarity 0.425331939952
+
+new clusting  通話紀錄停在兩週前的卦
+compare with clusting  想找國小同學交往 開頭起手式?
+with max similarity 0.417130408461
+
+new clusting  諾貝爾級的學者?
+compare with clusting  文化大學算不算是學店
+with max similarity 0.326682775887
+
+new clusting  夜店
+compare with clusting  疑心血管疾病發作 男子按摩店猝死
+with max similarity 0.349466852282
+
+new clusting  陸客不來業者含淚賣車？　他破解背後真相
+compare with clusting  為何吳 周後來會變成陌生人
+with max similarity 0.407173276167
+
+new clusting  台灣豪神連3場轟 開季連25場安 甩開日職
+compare with clusting  石斑危機！台灣青斑魚 被大陸龍虎斑打趴
+with max similarity 0.374616747865
+
+new clusting  海巡將數十隻軍土犬安樂死埋在..
+compare with clusting  通話紀錄停在兩週前的卦
+with max similarity 0.378578030147
+
+new clusting  泰國熱浪 44.6度破56年紀錄
+compare with clusting  慈濟全球浴佛 南投逾三千民眾祈福
+with max similarity 0.334895632091
+
+new clusting  軍警公教 哪個門檻最低?
+compare with clusting  勞基法納入高中(職)必修？
+with max similarity 0.369626492821
+
+new clusting  英超新冠軍Leicester怎麼念
+compare with clusting  還我運動權 陸令禁減體育課
+with max similarity 0.440175365965
+
+new clusting  男子戴 HTC Vive 體驗25小時  創金氏紀錄
+compare with clusting  泰國熱浪 44.6度破56年紀錄
+with max similarity 0.432293859336
+
+new clusting  驅逐艦在外海大破怎摸辦o'_'o
+compare with clusting  海巡將數十隻軍土犬安樂死埋在..
+with max similarity 0.331037216121
+
+new clusting  打雷囉~~~~~
+compare with clusting  半夜睡不著覺怎麼辦?
+with max similarity 0.334481386672
+
+new clusting  久未放晴的天空
+compare with clusting  通話紀錄停在兩週前的卦
+with max similarity 0.429643961226
+
+new clusting  國語實小校慶曬乾學生挨批　林昶佐：我沒有致詞
+compare with clusting  還我運動權 陸令禁減體育課
+with max similarity 0.405092618629
+
+new clusting  黎明1周內絕地反勝 危機處理救回人氣
+compare with clusting  教廷讚揚中梵關係進展 520後台梵外交不妙
+with max similarity 0.303388401889
+
+new clusting  求學受教育的期間為何這麼長?
+compare with clusting  文化大學算不算是學店
+with max similarity 0.446323635361
+
+new clusting  柯文哲「捷運維持8折」 自認越來越少罵人
+compare with clusting  柯文哲：房價砍半 很多人資產會縮水
+with max similarity 0.420920310509
+
+new clusting  台大物理實驗室傳冒煙 疑有毒氣體外洩[影
+compare with clusting  疑心血管疾病發作 男子按摩店猝死
+with max similarity 0.321279233936
+
+new clusting  郭董占用市區公有地　辯稱認養遭打臉
+compare with clusting  綠委提修法　未婚媽媽可指定1人請5天陪?1
+with max similarity 0.417964425313
+
+new clusting  四川甘孜採鋰礦毒水氾濫 近千藏民堵路抗
+compare with clusting  緬甸軍火庫驚爆 嚇壞雲南
+with max similarity 0.424979610448
+
+new clusting  中央氣象局 地震報告
+compare with clusting  教長:9日公開展示新教科書 不願配合考試
+with max similarity 0.317303305
+
+new clusting  有沒有爆料公社
+compare with clusting  台灣獨立，真的準備好要戰爭了嗎？
+with max similarity 0.403485914537
+
+new clusting  出口連15黑成定局 比金融海嘯時期更慘
+compare with clusting  石斑危機！台灣青斑魚 被大陸龍虎斑打趴
+with max similarity 0.377007402045
+
+new clusting  「宇宙大覺者」天價挨批 慈濟今年不
+compare with clusting  大姊，別鬧了（台南拖吊事件）
+with max similarity 0.407143126132
+
+new clusting  日職簽賭風暴》前讀賣巨人投手笠原將生被
+compare with clusting  石斑危機！台灣青斑魚 被大陸龍虎斑打趴
+with max similarity 0.363716140445
+
+new clusting  反制蘭嶼禁漁令　恆春鎮長嗆封後壁湖港
+compare with clusting  郭董占用市區公有地　辯稱認養遭打臉
+with max similarity 0.422222305617
+
+new clusting  中國女子天團爆發詐欺事件
+compare with clusting  緬甸軍火庫驚爆 嚇壞雲南
+with max similarity 0.435200337823
+
+new clusting  為何台南孔廟是全台首學?
+compare with clusting  士林夜市為何不叫劍潭夜市？
+with max similarity 0.424889058164
+
+new clusting  妙禪師父擊退恐怖情人!!
+compare with clusting  花蓮議會金曲歌后祝母親節快樂
+with max similarity 0.342010241849
+
+new clusting  伊斯蘭國前控制區　聯合國發現50多個亂
+compare with clusting  世界衛生組織已寄發邀請
+with max similarity 0.441698480074
+
+new clusting  中職/親子日搭配母親節　吳志揚、朱立倫
+compare with clusting  花蓮議會金曲歌后祝母親節快樂
+with max similarity 0.44279187706
+
+new clusting  石原イシノ vs 超殺女 誰勝?
+compare with clusting  14歲女網聊 1次約4男偷嘗禁果
+with max similarity 0.266269234466
+
+new clusting  演唱會螢光棒
+compare with clusting  少女時代90度鞠躬：台灣是傳奇
+with max similarity 0.422248818726
+
+new clusting  金正恩稱不用核武 還要改善「兩韓關係」
+compare with clusting  教廷讚揚中梵關係進展 520後台梵外交不妙
+with max similarity 0.393321332136
+
+new clusting  製圖筆
+compare with clusting  鋰電池
+with max similarity 0.23708057987
+
+new clusting  隱藏歌手?
+compare with clusting  少女時代90度鞠躬：台灣是傳奇
+with max similarity 0.416850084006
+
+new clusting  棒球比賽因為天降死魚中斷3分鐘
+compare with clusting  還我運動權 陸令禁減體育課
+with max similarity 0.422316109322
+
+new clusting  優青素健康食品(減肥)
+compare with clusting  奶茶控哭哭！茶+牛奶最糟 最佳組合是
+with max similarity 0.303813731411
+
+new clusting  廢文數很少囧摸半QmQ
+compare with clusting  半夜睡不著覺怎麼辦?
+with max similarity 0.437800748966
+
+new clusting  泰女因臉書一字回訊被控誹謗王室
+compare with clusting  疑偷走洪仲丘筆記本 士官長一審無罪
+with max similarity 0.327012281198
+
+===============fuck
+new clusting  空中相會不禮讓　飛行傘教練判賠38萬
+compare with clusting  扁家前車禍 轎車高速失控撞遊覽車
+with max similarity 0.440211229174
+
+new clusting  忘情觀海困沙洲輕熟女險滅頂
+compare with clusting  疑心血管疾病發作 男子按摩店猝死
+with max similarity 0.346194068781
+
+new clusting  總統就職禮賓鞋 本土業者發想設計
+compare with clusting  打造「台灣矽谷」 移民法擬鬆綁
+with max similarity 0.405781510042
+
+new clusting  "急"  偷渡出境的方法 (?)
+compare with clusting  地震多大才要逃跑
+with max similarity 0.399678508973
+
+new clusting  P幣問題
+compare with clusting  柯文哲：房價砍半 很多人資產會縮水
+with max similarity 0.339626898855
+
+new clusting  天候害產期亂！芒果銷日不理想 登記補助
+compare with clusting  柯文哲：房價砍半 很多人資產會縮水
+with max similarity 0.399206733176
+
+new clusting  Dominic Wu 蔡英文姪子回應三千萬募款?
+compare with clusting  「宇宙大覺者」天價挨批 慈濟今年不
+with max similarity 0.380833456954
+
+new clusting  少時美腿嗨翻小巨蛋 潤娥自誇拯救地球
+compare with clusting  演唱會螢光棒
+with max similarity 0.408953858446
+
+new clusting  李富城  國防部&中正紀念堂
+compare with clusting  李富城  國防部被洪家陷害 & 台灣沒有是非
+with max similarity 0.394725125152
+
+new clusting  半人半獸 馬來西亞人獸混血山羊出生(圖)
+compare with clusting  肥宅如果賽季初加入萊切斯特城隊？
+with max similarity 0.34978535507
+
+new clusting  十六個字暱稱
+compare with clusting  本週代表字？
+with max similarity 0.222358520712
+
+new clusting  樂視賈躍亭：蘋果創新不足 已經「過時」
+compare with clusting  鋰電池
+with max similarity 0.335783622674
+
+new clusting  如果真有30CM?
+compare with clusting  台灣獨立，真的準備好要戰爭了嗎？
+with max similarity 0.400752456378
+
+new clusting  零錢
+compare with clusting  台鐵網路訂票也可訂便當
+with max similarity 0.416220308399
+
+new clusting  MP廷廷約砲女星身分被挖 !
+compare with clusting  日職簽賭風暴》前讀賣巨人投手笠原將生被
+with max similarity 0.420359450088
+
+new clusting  捕獲全台唯一黑人超商店員　網友暴動想
+compare with clusting  咖啡廳成了K書中心？ 意外引發網友論戰
+with max similarity 0.427944931682
+
+new clusting  美國隊長打得贏黃飛鴻嗎???
+compare with clusting  英超新冠軍Leicester怎麼念
+with max similarity 0.374131028275
+
+new clusting  詹皇飛超遠
+compare with clusting  赤兔馬有幾匹馬力？
+with max similarity 0.343386582681
+
+new clusting  各大學的書卷獎獎金金額
+compare with clusting  諾貝爾級的學者?
+with max similarity 0.440815842395
+
+new clusting 5/7行車紀錄器畫面晚上9點屏東東港朝隆路
+compare with clusting  台鐵網路訂票也可訂便當
+with max similarity 0.381142015464
+
+new clusting  中職最強殘判
+compare with clusting  美國隊長打得贏黃飛鴻嗎???
+with max similarity 0.370792615208
+
+new clusting  經痛就像照大腸鏡？
+compare with clusting  想找國小同學交往 開頭起手式?
+with max similarity 0.447102465302
+
+new clusting  盼兼顧鄉民與選民 洪慈庸壓力大
+compare with clusting  盼兼顧鄉民與選民 洪慈庸壓力大
+with max similarity 0.429460324301
+
+new clusting  飲食智慧VS有效日期?
+compare with clusting  優青素健康食品(減肥)
+with max similarity 0.393571257805
+
+new clusting  照顧4身障家人 高職生慈孝楷模
+compare with clusting  綠委提修法　未婚媽媽可指定1人請5天陪?1
+with max similarity 0.430454489076
+
+new clusting  下雨天鋪路
+compare with clusting  打雷囉~~~~~
+with max similarity 0.376352381822
+
+new clusting  奶好大，陪一晚多少？  劉雨柔暴怒回嗆
+compare with clusting  半夜睡不著覺怎麼辦?
+with max similarity 0.410694347515
+
+new clusting  冰桶挑戰/水桶挑戰/噴桶挑戰？
+compare with clusting  英超新冠軍Leicester怎麼念
+with max similarity 0.365734321249
+
+new clusting  加拿大亞伯達省森林大火失控 燒到鄰省
+compare with clusting  緬甸軍火庫驚爆 嚇壞雲南
+with max similarity 0.448766147172
+
+new clusting  味全「酪農4.0」啟動，青年酪農共識營
+compare with clusting  盼兼顧鄉民與選民 洪慈庸壓力大
+with max similarity 0.392552722273
+
+new clusting  火車駛過十分老街 遊客湧上鐵道、日網友
+compare with clusting  慈濟全球浴佛 南投逾三千民眾祈福
+with max similarity 0.411578954907
+
+new clusting  講手機提高腦癌風險？澳洲研究：不會
+compare with clusting  求學受教育的期間為何這麼長?
+with max similarity 0.432070137784
+
+new clusting  稻村亞美開球投出104球速!!!!
+compare with clusting  日職簽賭風暴》前讀賣巨人投手笠原將生被
+with max similarity 0.371595882641
+
+new clusting  【傷患傻眼控訴】救護專線失能？ 車禍CAL
+compare with clusting  【慎入】女吸毒暴斃　死前影像曝光
+with max similarity 0.416046100201
+
+new clusting  買不到小英台啤？　第二批2周後供貨
+compare with clusting  第二個吳宗憲和第二個周杰倫哪個難
+with max similarity 0.422269445809
+
+new clusting  關於高鐵
+compare with clusting  台鐵網路訂票也可訂便當
+with max similarity 0.309827451621
+
+new clusting  石斑魚業者憂…520後更慘
+compare with clusting  石斑危機！台灣青斑魚 被大陸龍虎斑打趴
+with max similarity 0.449580859995
+
+new clusting  Nyiragongo火山
+compare with clusting  說好的景觀公園!?舊兒童樂園成廢墟
+with max similarity 0.369011152617
+
+new clusting  基因
+compare with clusting  優青素健康食品(減肥)
+with max similarity 0.333407697558
+
+new clusting  歐陽娜娜生日巡迴大提琴演奏會開賣啦
+compare with clusting  歐陽娜娜曬童年萌照 32字暖心告白傅娟
+with max similarity 0.433618979142
+
+new clusting  殘忍育兒法？　母坐視女嬰水中
+compare with clusting  【慎入】女吸毒暴斃　死前影像曝光
+with max similarity 0.431323497454
+
+new clusting  東風-21部署東北 封鎖日2海峽
+compare with clusting  緬甸軍火庫驚爆 嚇壞雲南
+with max similarity 0.420068063177
+
+new clusting  陸媒：美出現「川普現象」是政治發生問題
+compare with clusting  “羅興亞人”為何在緬甸成為敏感詞？
+with max similarity 0.424090088616
+
+new clusting  高嘉瑜ＦＢ
+compare with clusting  林淑芬
+with max similarity 0.346507400906
+
+new clusting  老阿伯配大正妹。
+compare with clusting  為何吳 周後來會變成陌生人
+with max similarity 0.365220590145
+
+new clusting  7 + 7 ÷7 + 7 x 7 = ?
+compare with clusting  石原イシノ vs 超殺女 誰勝?
+with max similarity 0.255990398329
+
+new clusting  留住衛生紙卻丟掉丁字褲 性侵判無罪
+compare with clusting  經痛就像照大腸鏡？
+with max similarity 0.373314235337
+
+new clusting  羅斯福沿路很多警察
+compare with clusting  柯文哲：房價砍半 很多人資產會縮水
+with max similarity 0.306954706812
+
+new clusting  中國籍漁船越區捕魚?拒繳罰鍰17船員絕食
+compare with clusting  東風-21部署東北 封鎖日2海峽
+with max similarity 0.423341268817
+
+new clusting  陸客自由行少65％ 打趴台觀光業
+compare with clusting  中國籍漁船越區捕魚?拒繳罰鍰17船員絕食
+with max similarity 0.434384398563
+
+new clusting  台女星揭「大陸潛規則」：1次收到3個陪睡
+compare with clusting  棒球比賽因為天降死魚中斷3分鐘
+with max similarity 0.392277056615
+
+new clusting  花蓮議會驅離東華學生原因
+compare with clusting  大台北公車里程計費 朱立倫：絕不接受
+with max similarity 0.390617473343
+
+new clusting  超噁！男子大口嚼爛千條活蚯蚓吞下
+compare with clusting  黏鼠板放魚乾 誘鼠不成捉到貓
+with max similarity 0.431464142471
+
+new clusting  下載互聯網上的視頻合法嗎？
+compare with clusting  文化大學算不算是學店
+with max similarity 0.415780067606
+
+new clusting  教師超額怎麼辦?教處長：屏東不會資遣
+compare with clusting  照顧4身障家人 高職生慈孝楷模
+with max similarity 0.425624505672
+
+new clusting  三姊弟布丁 VS 15歲麥克風ＣＥＯ
+compare with clusting  高嘉瑜ＦＢ
+with max similarity 0.361937128751
+
+new clusting  哇喔1800天 卡本特終於射出第1發...
+compare with clusting  打雷囉~~~~~
+with max similarity 0.409905611474
+
+new clusting  柳林瑋醫師怎麼不出來對勞基法表示意見?
+compare with clusting  天候害產期亂！芒果銷日不理想 登記補助
+with max similarity 0.446115741635
+
+new clusting  目前中國網友正在盛傳
+compare with clusting  火車駛過十分老街 遊客湧上鐵道、日網友
+with max similarity 0.423000639157
+
+new clusting  友達以上戀人未滿 問題出在哪？
+compare with clusting  通話紀錄停在兩週前的卦
+with max similarity 0.449341920676
+
+new clusting  不滿阿里加入 Gucci退出反假聯盟
+compare with clusting  習近平內部講話曝光 政變集團呼之欲出
+with max similarity 0.334229010178
+
+new clusting  在台灣種櫻花，種10顆櫻花，只會活2顆？
+compare with clusting  石斑危機！台灣青斑魚 被大陸龍虎斑打趴
+with max similarity 0.413631882591
+
+new clusting  教授機上解微積分方程式！女客以為恐攻暗
+compare with clusting  台大物理實驗室傳冒煙 疑有毒氣體外洩[影
+with max similarity 0.33507254245
+
+new clusting  林鳳營秒買秒退後續呢
+compare with clusting  棒球比賽因為天降死魚中斷3分鐘
+with max similarity 0.39312638182
+
+new clusting  過火爐?
+compare with clusting  地震多大才要逃跑
+with max similarity 0.368968195667
+
+new clusting  吳敦義自揭　禮運大同篇是從政最高理念
+compare with clusting  教廷讚揚中梵關係進展 520後台梵外交不妙
+with max similarity 0.356838623905
+
+new clusting  賴清德市長（關於八田與一逝世74週年）
+compare with clusting  中職/親子日搭配母親節　吳志揚、朱立倫
+with max similarity 0.433094029806
+
+new clusting  如何不要憂鬱星期一
+compare with clusting  每15秒就有一件工殤 勞工職災誰來顧
+with max similarity 0.411593833961
+
+new clusting  柯景騰
+compare with clusting  歐陽娜娜曬童年萌照 32字暖心告白傅娟
+with max similarity 0.223924330849
+
+new clusting  【有片】半個世紀前飛機餐　奢華程度令人
+compare with clusting  【慎入】女吸毒暴斃　死前影像曝光
+with max similarity 0.365387772474
+
+new clusting  擺脫藍色憂鬱 陳建仁：提升台灣競爭力
+compare with clusting  陸媒：美出現「川普現象」是政治發生問題
+with max similarity 0.433753243196
+
+new clusting  日本直升機母艦加賀號　穩步邁向成軍
+compare with clusting  【有片】半個世紀前飛機餐　奢華程度令人
+with max similarity 0.417284557448
+
+new clusting  剛剛地震被趁機吃豆腐！！
+compare with clusting  黏鼠板放魚乾 誘鼠不成捉到貓
+with max similarity 0.425275920526
+
+new clusting  賽鴿山區遇蛇 警員從蛇口下救回
+compare with clusting  海巡將數十隻軍土犬安樂死埋在..
+with max similarity 0.430063866461
+
+new clusting 周柏臣喝醉打女友 附上新聞影片
+compare with clusting  歐陽娜娜曬童年萌照 32字暖心告白傅娟
+with max similarity 0.342031826331
+
+new clusting  如果生命剩幾天
+compare with clusting  棒球比賽因為天降死魚中斷3分鐘
+with max similarity 0.437206420169
+
+new clusting  陸童被送殯儀館發現未死 目前能吃能動
+compare with clusting  退寬頻上網要帶身份證和「貓」
+with max similarity 0.436512271987
+
+new clusting  道歉文 幫轉女版
+compare with clusting 周柏臣喝醉打女友 附上新聞影片
+with max similarity 0.313899450109
+
+new clusting  韓國女團熱舞不設防 「該邊」鮮肉全都露!
+compare with clusting  歐陽娜娜生日巡迴大提琴演奏會開賣啦
+with max similarity 0.430901490003
+
+new clusting  邀到林青霞出演還不夠 陸實境節目爆對王
+compare with clusting  歐陽娜娜生日巡迴大提琴演奏會開賣啦
+with max similarity 0.436930316916
+
+new clusting  真愛台灣！小白鶴重返金山　公部門：考慮
+compare with clusting  石斑危機！台灣青斑魚 被大陸龍虎斑打趴
+with max similarity 0.435996255328
+
+new clusting  草船借箭的真實性?
+compare with clusting  “羅興亞人”為何在緬甸成為敏感詞？
+with max similarity 0.436851800461
+
+new clusting  想早點拿到退稅？10日前報稅最穩當
+compare with clusting  買不到小英台啤？　第二批2周後供貨
+with max similarity 0.389578521919
+
+new clusting  福建發生山崩 35人失蹤
+compare with clusting  中國籍漁船越區捕魚?拒繳罰鍰17船員絕食
+with max similarity 0.419257748748
+
+new clusting  批評兩句就成黑名單？
+compare with clusting  柳林瑋醫師怎麼不出來對勞基法表示意見?
+with max similarity 0.326622894074
+
+new clusting 諷金溥聰是男妓 馮光遠善意評論獲判無罪
+compare with clusting  道歉文 幫轉女版
+with max similarity 0.34077006453
+
+new clusting 圖／李易「出賣」老婆六月 放送火辣養眼照
+compare with clusting  【慎入】女吸毒暴斃　死前影像曝光
+with max similarity 0.432525645767
+
+new clusting 學妹問我性交易除罪化報告怎麼寫
+compare with clusting  每15秒就有一件工殤 勞工職災誰來顧
+with max similarity 0.438100645384
+
+new clusting  服務處成立逾千人出席　蕭淑麗嗨翻：我
+compare with clusting  北市擴大國小暑期課輔 「顧到晚上7點」
+with max similarity 0.352762029773
+
+new clusting  打破「ADIZ魔咒」張鳳強少將 年中退伍
+compare with clusting  泰國熱浪 44.6度破56年紀錄
+with max similarity 0.415684723689
+
+new clusting  嫖妓竟無套中出 爽完後果很嚴重
+compare with clusting  求學受教育的期間為何這麼長?
+with max similarity 0.396600157237
+
+new clusting  飯店行為調查 這10類房客最惱人
+compare with clusting  講手機提高腦癌風險？澳洲研究：不會
+with max similarity 0.387521572047
+
+new clusting  邵雨薇
+compare with clusting  柯景騰
+with max similarity 0.429478066501
+
+new clusting  珠心算 或 手指算九九乘法
+compare with clusting  教授機上解微積分方程式！女客以為恐攻暗
+with max similarity 0.389789341905
+
+new clusting  「老二」這麼長！立刻成為領先部隊
+compare with clusting  美國隊長打得贏黃飛鴻嗎???
+with max similarity 0.30373464881
+
+new clusting  雷／《美國隊長3》片尾2彩蛋透大量訊息！
+compare with clusting 圖／李易「出賣」老婆六月 放送火辣養眼照
+with max similarity 0.365051938754
+
+new clusting 何時漢賊不兩立變成統一回歸?
+compare with clusting  為何台獨份子總愛幻想美國會來幫？
+with max similarity 0.357903727266
+
+new clusting  8+9+17= ？
+compare with clusting  稻村亞美開球投出104球速!!!!
+with max similarity 0.402342597996
+
+new clusting  台大森林所
+compare with clusting  台大物理實驗室傳冒煙 疑有毒氣體外洩[影
+with max similarity 0.371940899153
+
+new clusting  富商豪宅逼鄰棟 僅留10cm
+compare with clusting  黏鼠板放魚乾 誘鼠不成捉到貓
+with max similarity 0.387158484733
+
+new clusting  周子瑜與蔡依林誰比較耐看?
+compare with clusting  隱藏歌手?
+with max similarity 0.433793578424
+
+new clusting  報稅
+compare with clusting  想早點拿到退稅？10日前報稅最穩當
+with max similarity 0.42773021812
+
+new clusting  新手駕駛 vs Baby in car
+compare with clusting  MIT電動門打開奇蹟  讓香奈兒「開門」
+with max similarity 0.282913341287
+
+new clusting  馬祖
+compare with clusting  反制蘭嶼禁漁令　恆春鎮長嗆封後壁湖港
+with max similarity 0.386707492023
+
+===============fuck
+new clusting  「比教科書還詳細」日建築師熱愛老房子　
+compare with clusting  南科生活品質屌打竹科和中科
+with max similarity 0.361679545529
+
+new clusting  批馬派兵護漁「太幼稚」惹議 葉宜津臉書
+compare with clusting  泰女因臉書一字回訊被控誹謗王室
+with max similarity 0.425637473482
+
+new clusting  世界遺產遭遊客這樣做　導遊沉痛po文
+compare with clusting  陸客不來業者含淚賣車？　他破解背後真相
+with max similarity 0.424731119063
+
+new clusting  小白鶴回來了！ 今晨現身金山棲地
+compare with clusting  大姊，別鬧了（台南拖吊事件）
+with max similarity 0.431811564707
+
+new clusting  北韓八零年代女子舞蹈
+compare with clusting  少女時代90度鞠躬：台灣是傳奇
+with max similarity 0.438040502913
+
+new clusting  「終於迎接幸福結局」同志打贏泰國代理
+compare with clusting  真愛台灣！小白鶴重返金山　公部門：考慮
+with max similarity 0.402797292303
+
+new clusting  網友指Ivy「三陪」撈金 陳國華護妻喊告
+compare with clusting  捕獲全台唯一黑人超商店員　網友暴動想
+with max similarity 0.396287486696
+
+new clusting  醫生除了外科婦產兒科等大科小科上班累嗎
+compare with clusting  柳林瑋醫師怎麼不出來對勞基法表示意見?
+with max similarity 0.440781964713
+
+new clusting  某職工讀生後續
+compare with clusting  林鳳營秒買秒退後續呢
+with max similarity 0.299141407672
+
+new clusting  世衛邀函角力／美中開始共管台灣？
+compare with clusting  打造「台灣矽谷」 移民法擬鬆綁
+with max similarity 0.432324067633
+
+-------------------
+clusting 0
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 有沒有海巡很涼的八卦
+ 有沒有完全沒朋友的卦
+ 有沒有硬要寫英文的卦?
+ 如果肥宅要改變的八卦
+ 為何不承認自己是中國人
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 為什麼小朋友尿尿要用噓的才尿的出來
+ 有沒有整骨可以長高的卦？
+ 有沒有沒發現自己很幸福的八卦
+ 有沒有睡同一張床卻沒事的八卦
+ 這社會是不是瞧不起認真的人?
+ PTT甚麼時候人最少??
+ 有沒有XX賤畜的八卦？
+ 有沒有台北市美僑協會的八卦?
+ 做保險 真的很好賺嗎？
+ 瞬間覺得自己好魯
+ 保家衛國是不是過時了？
+ 有沒有皮老闆到底多有錢的八卦?
+ 有沒有海巡很涼的八卦
+ 有沒有海巡很涼的八卦
+ 如果全台灣的人都信妙禪師父會怎樣?
+ 有沒有楊乃文的八卦
+ 肥宅的後裔是什麼?
+ 注音已經變台灣人的密碼了嗎？
+ 有沒有恐怖漫畫的八卦?
+ 有沒有養老鼠的人一直在哭養哭養迴圈?
+ 有沒有竹筍的八卦?
+ 有沒有參觀女宿  該參觀哪裡的八卦?
+ 做保險 真的很好賺嗎？
+ 瞬間覺得自己好魯
+ 潛艦也一樣有無害通過權嗎??
+ 做保險 真的很好賺嗎？
+ BMW都載辣腿妹的八卦？
+ 尻尻的時候蚊子在旁邊飛該怎麼辦的八卦
+ 有沒有日本女團La PomPon的八卦
+ 填問卷送free hug有沒有搞頭
+ 有沒有BBW的八卦？
+ 童年對一個人影響有多大？
+ 台北人自私？　柯Ｐ：全地球人都很自私
+ 幾歲之後  會覺得時間流逝飛快的八卦？
+ 有沒有馬來西亞華人歌手很強的八卦？
+ 3.5磁片現在能幹嘛用
+ 有沒有打籃球會變黑的八卦
+ 吟遊詩人到底是幹嘛的?
+ 現在還有人尻芭樂嗎？
+ 會在宿舍煮菜的是哪些人?
+ 為什麼危險的工作多半由男人來做?
+ 周杰倫當初真的有被吳幫忙嗎
+ 為什麼很少看到肥宅賣飲料?
+ 有哪些詞彙 故意念成相似字 會更霸氣
+ 肥宅有想過要健身嗎？
+ 讀資管的都在做什麼
+ 在天龍國參加婚禮要注意什麼嗎？
+ 感覺快感冒了要吃甚麼？
+ 有沒有每週一次的黑暗時刻的八卦？
+ 肥宅把不到妹是物競天擇的結果嗎?
+ 為什麼沒有棉花糖男孩或輕熟男的八卦？
+ 做保險 真的很好賺嗎？
+ 讀理工的是不是都不怕單身一輩子？
+ 對女生說你長得好像我媽媽有加分效果嗎?
+ 新加坡的制度很值得學習嗎？
+ 有沒有苗栗頭份的八卦
+ 有沒有出國行李被要求檢查的八卦
+ 打電玩PING只有5八卦？
+ 肥宅努力健身會晉升勝利組嗎?
+ 有沒有香港人很愛看足球的八卦
+ 有沒有國稅局怎麼知道店家月營業額的八卦
+ 肥宅基因為什麼不會被淘汰?
+ 有比爾蓋茲的生活怎麼過的八卦?
+ 請聽題！被箭頭爆是怎樣的感受？
+ 宅宅買一台除濕機有沒有加分
+ 能不能把第一時間發的地震文禁了
+ 有沒有遊戲私服多好賺的八卦?
+ 教主都什麼時間出現的八卦
+ 台北人自私？　柯Ｐ：全地球人都很自私
+ 有沒有幫助殘疾人士還被兇的卦？
+ 有事嗎  到底是從哪裡來的
+ 有沒有福智中小學的卦
+ 動物方程式樹懶怎麼沒被開除
+ 四郎跟四爺誰比較帥
+ 請問有沒有重考學測的八卦呢?
+用手機搶五樓是不是比較快?
+ 有沒有喜宴出餐出超久的八卦
+ 高鐵上遇到沒水準的中國人是正常的嗎
+ 有說自己是Taiwanese結果被瞪的八卦嗎？
+ 有沒有現在的廣告都搞洗腦沒有創意的八卦
+ 動不動就退出群組的是哪些人
+ 有沒有雞腿捲跟帶皮懶叫很像的八卦？
+ 有沒有台灣superlive屌打韓國?
+ 什麼都沒有的小魚缸能養魚？
+ 冰箱冷凍為什麼不在下面的八卦
+ 瞬間覺得自己好魯
+ 請問放假能幹嘛有八卦嗎?
+ 英文文法跟口說那個重要？
+ 工地工人vs健身的人，打架誰會贏?
+  有沒有接駁車司機很狂的八卦
+ 學園偶像計畫是不是演藝工會摳死當的陰謀
+ 為什麼那麼多女生想做空姐
+ 三寶沒極限嗎
+ 有沒有如果統獨公投，而且統派過了的八卦?
+ 肥宅基因為什麼不會被淘汰?
+ 沒練過棒球的人球速投得到104km嗎？
+ 有沒有會館的八卦
+ 瞬間覺得自己好魯
+ 有沒有拿日本來戰中韓的八卦?
+ 有沒有正統佛教的八卦
+ 有沒有台灣公寓價值屌打美國房產的八卦
+ 鄉民都什麼時候開始戰文組?
+ 如何把日本空姐？
+ 有沒有超級英雄大家看法的八卦?
+ 為什麼CCR就回不去了???
+ 有沒有John被翻譯成約翰的八卦啊
+ 有沒有LOL 中國RNG的八卦?
+ 有沒有心頭肉的八卦
+ 女人死光只剩站長小妹的八卦
+ 有沒有舞王、火焰之舞的八卦？
+ 有沒有男生叫男生幫忙修電腦的八卦?
+ 請問有沒有重考學測的八卦呢?
+ 周杰倫當初真的有被吳幫忙嗎
+ 有沒有鋼鐵人在鐵人三項肛鐵人的八卦?
+ 這樣的身材可以說中等嗎?
+ 有沒有動畫電影其實是在賣單曲的八卦?
+ 有沒有某便當店雞排都要等的八卦？
+ 書卷獎該給多少獎學金才合理的八卦?
+ 該怎麼形容男性高潮的感覺?(手動不算)
+ 台灣路邊垃圾桶很少是什麼心態
+ 工地工人vs健身的人，打架誰會贏?
+ 有沒有神秘數字 35 的八卦
+ 有沒有大雄怎麼考都0分的八卦
+ 有沒有領口內的風景的八卦？
+ 請問有沒有重考學測的八卦呢?
+ 讀理工的是不是都不怕單身一輩子？
+ 肥宅基因為什麼不會被淘汰?
+ 跟兩津一樣,會有櫻花妹喜歡嗎
+ 711賺飽飽為什麼便當還能縮水
+ 哪一句中文外國人說的最好?
+ 如果來個921之類的災難 房價會重新洗盤嗎
+ 為什麼洗衣服等於%%%
+ 有學校活動長官致詞的八卦嗎？
+ 有沒有央行推廣2000元面額廣告的八卦?
+ 請問白龍王跟妙禪誰比較強？
+ 周杰倫當初真的有被吳幫忙嗎
+ 有沒有混種的八掛
+ 3.5磁片現在能幹嘛用
+ 有看不見的東西不怕陽光的八卦?
+ 訂製西裝在台灣有未來嗎？
+ MomoClovaZto成員到底有沒有男朋友了？
+ 肥宅基因為什麼不會被淘汰?
+ 有沒有蛆蛆蠕動的八卦
+ 周杰倫當初真的有被吳幫忙嗎
+ 禁尻是什麼感覺？
+ 周杰倫當初真的有被吳幫忙嗎
+ 為什麼台灣沒有哈密瓜汽水?
+ 為什麼動漫設定都是高中生
+ 用小畫家畫圖很醜的卦
+ 做保險 真的很好賺嗎？
+ 有沒有日本pizza hut的英文真的很強
+ 有沒有說好了怎麼放水的八卦
+  有沒有讀理組的正妹普妹比讀文組爽的八卦??
+ 肥宅基因為什麼不會被淘汰?
+ 你們能把讚跟留言數平衡嗎？
+ 有沒有女工程師最高當到什麼位置的八卦？
+ 訂製西裝在台灣有未來嗎？
+ 真的有人在領22K嗎？
+ 畢旅該做什麼的卦？
+ 周杰倫當初真的有被吳幫忙嗎
+ 其他大賣場為什麼不搞特規?
+ 楓之谷是不是很可惜
+ 隔空水桶真的存在嗎？
+ 很會解一元一次方程式會有女生喜歡嗎？
+ 知道光碟機速度對使用電腦有幫助嗎?
+ 慈湖衛兵真的不能眨眼嗎？
+ 肥宅基因為什麼不會被淘汰?
+ 國外有類似月老的神嗎？
+ 做保險 真的很好賺嗎？
+ 哪裡吃的到真鱈魚?
+ 做保險 真的很好賺嗎？
+ 為什麼COSTCO沒Wi-Fi
+ 導遊跟船長哪個比較賺
+ 為什麼日本人很會幫住宅改造?
+ 為什麼洗衣服等於%%%
+ 歐洲射擊遊戲怎麼這麼強
+ 工程師寫出一個PTT全自動發文程式難嗎?
+ 為何當男生這麼衰小
+ 開夜店會賺錢嗎？
+ 可以把整個台灣神盾化嗎?
+ 如果打仗肥宅會打什麼位置呢？
+ 國立大學到底靠什麼賺錢啊
+ 能多益巧克力為什麼這麼貴？
+ 116 為什麼不叫做廢文大學呢？
+ 做保險 真的很好賺嗎？
+ 正正經經做生意真的賺的到大錢嗎
+ nono是不是淡出惹?
+ 熱狗是用懶覺做的嗎
+ 大家真的以為讀書可以賺大錢嗎？
+ 該打死會飛的蟑螂嗎
+ 為什麼會有人認為超人比復仇者聯盟好看?
+clusting 2
+ 每15秒就有一件工殤 勞工職災誰來顧
+ 爛兵會回家過母親節嗎
+ 怎樣才算肥
+ 要怎麼訓練上台才不會緊張
+ 每15秒就有一件工殤 勞工職災誰來顧
+ 鬢角要怎麼留跟整理才好看
+ 辦喪禮前後到底要有哪些花費阿?
+ 要怎麼交女友?
+ 怎麼試探自己麻痺了沒？
+ 李佳薇跟蔡健雅要怎麼分？
+ 不辦喪禮直接送去燒會發生什麼事?
+ 要怎麼交女友?
+ 韓妞向你問路 鄉民會怎麼回呢?
+ 女生要什麼時候才會長大(不再單純)?
+ 中國打過來要做什麼？
+ 校慶被曬乾 家長怒:別人小孩沒關係就對了
+ 第一次噓別人文跟第一次課金 哪個難?
+ 如果當初沒有被打到台灣會怎樣
+ 浪費食物下地獄要吃完的掛
+ 偷綠豆種籽回去種，再還回去，犯法嗎？
+ 樓上踩地板又死不承認,有方法整回去嗎
+ 中國打過來要做什麼？
+ 電腦要被微軟給強姦直上WIN10了 有解嗎
+ 林明禎把她嘴邊上的痣點掉會不會更好???
+ 武田鐵矢會再回歸多啦A夢劇場版嗎？
+ 社會怎麼了？
+ 葉毓蘭 浪費公奴去幹旋 哈哈哈太好笑了!
+ 電腦要被微軟給強姦直上WIN10了 有解嗎
+ 如果當初沒有被打到台灣會怎樣
+ 安倍晴明是不是被神化了?
+ 辦喪禮前後到底要有哪些花費阿?
+ 該怎麼訓練狗?
+ 怎麼試探自己麻痺了沒？
+ 台灣警察可以開槍會比較好嗎
+ 3.5磁片現在能幹嘛用
+ 如果漫威系列給日本畫會怎麼樣
+ 辦喪禮前後到底要有哪些花費阿?
+要怎麼才能當宅王
+ 要如何追回前女友呢
+ 打女友 周柏臣：我做錯了 非常抱歉
+ 幾歲交不到女朋友就可以放棄了？
+ 韓妞向你問路 鄉民會怎麼回呢?
+ 不辦喪禮直接送去燒會發生什麼事?
+ 台灣警察可以開槍會比較好嗎
+ 俄富少殺媽媽　「我媽要上我所以要驅魔」
+ 電腦要被微軟給強姦直上WIN10了 有解嗎
+ 孩子是同志「能不能改回來？」　父母擔憂
+ 為什麼bee talk  沒人密我啊？
+ TESCO怎麼不來台灣?
+ 廢文發多了會忘記怎麼發認真文嗎？
+ 你我的社會成本是否被政府濫用了?
+ 如果漫威系列給日本畫會怎麼樣
+ 鬢角要怎麼留跟整理才好看
+ 要怎麼交女友?
+ 還沒考駕照就不能嗆三寶嗎？
+ 大家會被那個字句給刺激到？
+ 如果漫威系列給日本畫會怎麼樣
+ 要如何追回前女友呢
+ 電腦要被微軟給強姦直上WIN10了 有解嗎
+ 肥宅鹹酥雞一次可以吃多少錢
+ 要怎麼躲教召？
+ 樓上踩地板又死不承認,有方法整回去嗎
+ 林明禎把她嘴邊上的痣點掉會不會更好???
+ 我找不到  我到不了
+一定被當的課會去上完嗎?
+ 去美國讀非名校研究所可以屌打誰?
+ 周杰倫當初真的有被吳幫忙嗎
+ 再選擇一次 你會選擇文組還理組
+clusting 3
+ 14歲女網聊 1次約4男偷嘗禁果
+ 離譜！　國中女生竟自願幫4少年輪流口交
+ 讀書無用？15歲蹺家少年靠網拍年賺千萬
+ 男教授機上算數學　竟被當恐怖分子
+ 專挑熟女拍裙底　賣場色狼被逮
+ 17歲正妹 抱男友燒炭2死
+ 17歲正妹 抱男友燒炭2死
+ 24歲網模最後身影曝光！嗑藥暴斃前揮手
+ 網拍漏稅意外爆紅 15歲蘇小弟其實是宅男
+ 不甘愛車被拖吊　女車主竟趴車跟著滑
+ 網拍漏稅意外爆紅 15歲蘇小弟其實是宅男
+ 男教授機上算數學　竟被當恐怖分子
+ 「蛋蛋」抽筋強忍13小時　大一男痛失睪丸
+ 網拍漏稅意外爆紅 15歲蘇小弟其實是宅男
+ 24歲網模最後身影曝光！嗑藥暴斃前揮手
+ 「蛋蛋」抽筋強忍13小時　大一男痛失睪丸
+ 17歲正妹 抱男友燒炭2死
+ 「蛋蛋」抽筋強忍13小時　大一男痛失睪丸
+ 讀書無用？15歲蹺家少年靠網拍年賺千萬
+ 17歲正妹 抱男友燒炭2死
+ 17歲正妹 抱男友燒炭2死
+clusting 4
+ 教長:9日公開展示新教科書 不願配合考試
+ 北韓稍後將宣布重大特別消息
+ 北韓稍後將宣布重大特別消息
+ 北韓稍後將宣布重大特別消息
+clusting 5
+ 習近平內部講話曝光 政變集團呼之欲出
+ 中共傳擬取消政治局常委制
+ 中國相聲大師于謙加入中國國民黨
+ 本土派崛起 香港民進黨主張：可加入台灣
+ 中國相聲大師于謙加入中國國民黨
+ 侵華日軍對民眾人格分析！ 評：中國人十
+ 本土派崛起 香港民進黨主張：可加入台灣
+ 本土派崛起 香港民進黨主張：可加入台灣
+ 中共脅迫取消神韻演出 韓民眾：全民恥辱
+ 政治矛頭點名 中國企業家也須姓黨
+英國地方選舉》合作陸企遭控貪污、違反人
+主張自決！ 香港民進黨：成為台灣一縣市也
+ 「WHA不是政治組織」宋楚瑜：兩岸應互相
+clusting 6
+ 盼兼顧鄉民與選民 洪慈庸壓力大
+ 工商界對新政府容忍度 許勝雄：講 3次不
+ WHA去不去？ 童振源：新政府不會缺席
+ 童振源：新政府將派衛福部長出席WHA
+ WHA去不去？ 童振源：新政府不會缺席
+ 陳致中:呼籲新政府硬起來
+ 出席WHA？報名明截止 新政府傾向出席
+ 童振源：新政府將派衛福部長出席WHA
+ 童振源：新政府將派衛福部長出席WHA
+ 童振源：新政府將派衛福部長出席WHA
+ 童振源：新政府將派衛福部長出席WHA
+ 童振源：臺灣將出席WHA 由林奏延率團與會
+ 童振源：臺灣將出席WHA 由林奏延率團與會
+clusting 7
+ 教廷讚揚中梵關係進展 520後台梵外交不妙
+ 馬總統：我與教廷關係良好　雙方互動歷年
+ 馬總統：我與教廷關係良好　雙方互動歷年
+ 1992九二會談 馬英九：「功虧一簣」
+ 馬總統：我與教廷關係良好　雙方互動歷年
+ 馬總統夜宴閣員 不忘提沖之鳥礁爭議
+clusting 8
+ 為何台獨份子總愛幻想美國會來幫？
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 中國打過來要做什麼？
+ 為何不承認自己是中國人
+ 客家人為何是深藍國民黨支持者???
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 台灣獨立 經濟？？
+ 客家人為何是深藍國民黨支持者???
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 為何台獨份子總愛幻想美國會來幫？
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 為何不承認自己是中國人
+ 台灣為何不流行檸檬蘇打
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 誰作賤台灣人才 葉丙成：慣老闆
+ 當兵為何不能說真話？
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 客家人為何是深藍國民黨支持者???
+ 對日人說日文，他回你英文
+ 台灣人擅長巨棒外交嗎
+ 為什麼中國一直想要統一台灣 ? 有啥好處
+ 林昶佐：拿中華民國國旗支持台灣 整個亂掉
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 宋朝為什麼不用經濟戰對付蒙古人
+ 台灣男子團體現在怎麼排名?
+ 搞不懂台獨份子在想啥
+主張自決！ 香港民進黨：成為台灣一縣市也
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 臺灣獨立 中國根本不敢動武
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 承認自己是中華民族很難？
+ 為何不承認自己是中國人
+ 想台獨的人是否應該成立一隻軍隊去完成夢想?
+ 承認自己是中華民族很難？
+ 搞不懂台獨份子在想啥
+ 環球:民進黨和大陸誰給誰立規矩
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 我要成立台灣軍政府了!!
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 客家人為何是深藍國民黨支持者???
+ 台灣哪些地方能一解中國人的思鄉之情
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 誰想留學東南亞？前進東協靠新二代
+ 為何不承認自己是中國人
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 想台獨的人是否應該成立一隻軍隊去完成夢想?
+ 臺灣獨立 中國根本不敢動武
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 客家人為何是深藍國民黨支持者???
+ 宋朝為什麼不用經濟戰對付蒙古人
+ 為何不承認自己是中國人
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 現在還不到台灣自決建國的時機?
+ 身為台灣人，哪件事讓你覺得丟臉的事？
+ 有沒有喊台獨又不當兵又幻想美國會來救台灣的八卦？
+ 台灣獨立，真的準備好要戰爭了嗎？
+主張自決！ 香港民進黨：成為台灣一縣市也
+ 臺灣獨立 中國根本不敢動武
+ 宋朝為什麼不用經濟戰對付蒙古人
+ 客家人為何是深藍國民黨支持者???
+ 搞不懂台獨份子在想啥
+ 為何台獨份子總愛幻想美國會來幫？
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 客家人為何是深藍國民黨支持者???
+ 客家人為何是深藍國民黨支持者???
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 臺灣獨立 中國根本不敢動武
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 客家人為何是深藍國民黨支持者???
+ 搞不懂台獨份子在想啥
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 臺灣獨立 中國根本不敢動武
+ 搞不懂台獨份子在想啥
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 宋朝為什麼不用經濟戰對付蒙古人
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 搞不懂台獨份子在想啥
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 覺醒青年不當兵 如何火拼解放軍
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 搞不懂台獨份子在想啥
+ 臺灣獨立 中國根本不敢動武
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 臺灣獨立 中國根本不敢動武
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 你們中華民國臺灣有民兵嗎？
+ 國際縱橫: 特朗普真能當總統嗎？
+ Alpha go跟中國棋王pk該支持誰？
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 如果中華民國在對岸的話?
+ 為何台獨份子總愛幻想美國會來幫？
+ 林昶佐：拿中華民國國旗支持台灣 整個亂掉
+主張自決！ 香港民進黨：成為台灣一縣市也
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 有沒有喊台獨又不當兵又幻想美國會來救台灣的八卦？
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 搞不懂台獨份子在想啥
+ 客家人為何是深藍國民黨支持者???
+ 想台獨的人是否應該成立一隻軍隊去完成夢想?
+ 以後小孩留在台灣很慘?
+ 為何台獨份子總愛幻想美國會來幫？
+ 承認自己是中華民族很難？
+ 覺醒青年不當兵 如何火拼解放軍
+ 宋朝為什麼不用經濟戰對付蒙古人
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 台灣的總統是否早被台大給壟斷?
+ 沃爾瑪怎麼不來台灣？
+主張自決！ 香港民進黨：成為台灣一縣市也
+ 林昶佐：拿中華民國國旗支持台灣 整個亂掉
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 中國人民真的會希望解放軍攻打台獨
+ 臺灣獨立 中國根本不敢動武
+ 臺灣獨立 中國根本不敢動武
+ 客家人為何是深藍國民黨支持者???
+ 臺灣獨立 中國根本不敢動武
+ 為何不承認自己是中國人
+ 為何新加坡不算中華民族?
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 林昶佐：拿中華民國國旗支持台灣 整個亂掉
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 為何不承認自己是中國人
+ 為何不承認自己是中國人
+ 為何人民解放軍不發展自殺攻擊戰術?
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 客家人為何是深藍國民黨支持者???
+ 有沒有不當中華民國兵卻當中華民國替代役的八卦？
+ 台灣要怎麼做才可以重返1990年黃金年代
+ 小英創意…想讓「狗醫生」成為長照協力者
+ 臺灣獨立 中國根本不敢動武
+ 為何不承認自己是中國人
+ 為何我國不主動收容一部分羅興亞難民?
+ 為何不承認自己是中國人
+ 搞不懂台獨份子在想啥
+ 為什麼美國人不承認自己是英國人
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 臺灣獨立 中國根本不敢動武
+ 林昶佐：拿中華民國國旗支持台灣 整個亂掉
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 搞不懂台獨份子在想啥
+ 為何新加坡人不承認自己是中國人
+ 林昶佐：拿中華民國國旗支持台灣 整個亂掉
+ 想台獨的人是否應該成立一隻軍隊去完成夢想?
+ 客家人為何是深藍國民黨支持者???
+ 客家人為何是深藍國民黨支持者???
+ 台灣要怎麼做才可以重返1990年黃金年代
+ 客家人為何是深藍國民黨支持者???
+ 覺醒青年不當兵 如何火拼解放軍
+ 想台獨的人是否應該成立一隻軍隊去完成夢想?
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 為何台獨份子總愛幻想美國會來幫？
+ 林昶佐：拿中華民國國旗支持台灣 整個亂掉
+ 台灣男子團體現在怎麼排名?
+ 台灣獨立，真的準備好要戰爭了嗎？
+ 台灣的總統是否早被台大給壟斷?
+ 台灣獨立，真的準備好要戰爭了嗎？
+clusting 9
+ 少女時代90度鞠躬：台灣是傳奇
+蔡依林的歌聲算是實力派歌手嗎?
+ 少女時代演唱會少女累累
+ 少女時代今晚會如何分佈
+clusting 10
+ 疑偷走洪仲丘筆記本 士官長一審無罪
+ 拍裸照逼口交　法官因這點判無罪
+ 常搞SM性愛　男子性侵前女友無罪
+ 疑偷走洪仲丘筆記本 士官長一審無罪
+clusting 11
+ 石斑危機！台灣青斑魚 被大陸龍虎斑打趴
+ 法國產羽絨？ 日本羽絨被 被爆產地造假
+ 石斑危機！台灣青斑魚 被大陸龍虎斑打趴
+威航半夜驚魂 中國製行動電源惹的禍
+ 石斑危機！台灣青斑魚 被大陸龍虎斑打趴
+ 石斑危機！台灣青斑魚 被大陸龍虎斑打趴
+ 石斑危機！台灣青斑魚 被大陸龍虎斑打趴
+ 石斑危機！台灣青斑魚 被大陸龍虎斑打趴
+ 石斑危機！台灣青斑魚 被大陸龍虎斑打趴
+ 石斑危機！台灣青斑魚 被大陸龍虎斑打趴
+ 有無香港梁家 台灣蔡家 新加坡李家的八卦
+ 石斑危機！台灣青斑魚 被大陸龍虎斑打趴
+ 中國落後南韓多少年
+clusting 12
+ 想找國小同學交往 開頭起手式?
+ 唸海大的同學在想什麼?
+ 唸海大的同學在想什麼?
+ 只能唸學店為何不唸逢甲淡江的八卦
+ 「喵！」智慧型項圈幫你把貓語翻譯成人話
+ 唸海大的同學在想什麼?
+ 正妹夏天的內褲?
+ 在家裡發現這個娃娃，請問單兵該？
+ 只能唸學店為何不唸逢甲淡江的八卦
+ 牙醫系畢業前要花多少錢的卦?
+ 鄰居是住海邊的管事婆 怎處理?
+ 小蘿莉坐在我的機車上怎麼辦？
+ 該如何密暗戀十年的女生?(剛剛已確認好友
+ 正妹夏天的內褲?
+ 正妹夏天的內褲?
+ 要怎樣打破台北手扶梯只能站右邊的習慣？
+ 搭車時碰到隔壁腳毛的掛
+ 讀淡江輔大沒有女友是什麼感覺?
+ 要怎樣打破台北手扶梯只能站右邊的習慣？
+ 穿雨衣坐捷運座位的人在想什麼
+ 回文喜歡回洨、肛、尻的都是些什麼人
+ 下雨天潮朝跟正妹都在幹麻
+ 那些交不到女友的人，後來都怎麼了？
+ 用注音文跟諧音講話的人在想啥？
+ 住在 景美 是什麼感覺~?
+ 用注音文跟諧音講話的人在想啥？
+ 在路上跟正妹對到眼?
+ 學生時代的騷妹同學 後來都怎麼了?
+ 大奶騷妹最後都被誰把走?
+ 正妹夏天的內褲?
+ 正妹夏天的內褲?
+ 唸海大的同學在想什麼?
+ 住在金門是什麼感覺?
+ 在Dcard西斯板PO自己裸照的女生在想什麼?
+ 學姊為啥要一直用line貼圖騷擾我？
+ 要怎樣打破台北手扶梯只能站右邊的
+ 唸海大的同學在想什麼?
+ 肥宅有副乳，為何不戴胸罩矯正？
+ 在天龍國參加婚禮要注意什麼嗎？
+ 住在金門是什麼感覺?
+ 在Dcard西斯板PO自己裸照的女生在想什麼?
+ 唸海大的同學在想什麼?
+ 正妹一定很多人追？　魯蛇交嘸女友是這
+ 國中就有H奶！　天天「玩鳥」的中日混血
+ 搭訕想認識的學妹起手式是什麼？
+ 我的指尖 已經彈出繭
+ 為什麼只有女生的乳頭要上馬賽克
+ 想教旁邊的妹子功課該怎麼做
+ 住在金門是什麼感覺?
+ 該如何搭訕賣玉蘭花的咩
+ 看不見你的笑我怎麼睡得著？
+ 毛毯跟你想的不同　集郵空姐：機上5東西.
+ 住在金門是什麼感覺?
+ 唸海大的同學在想什麼?
+ 第一次約會在哪裡？
+ 昱傑7：30帶籃球 不然把你當球是什麼梗
+ 帳跟債的台語怎麼分別?
+ 搭訕賣金桔檸檬正妹的起手式是什麼？
+ 電視出現女女接吻的畫面要剪掉？
+ 每睡醒就換一張臉的八卦?
+ 住在金門是什麼感覺?
+ 學姊為啥要一直用line貼圖騷擾我？
+ 朋友圈從幾歲開始縮小的
+ 唸海大的同學在想什麼?
+ 室友尻槍翹小指是什麼意思
+ 如果撞到廟會路口擋路的人?
+ 拜拜的時候在想什麼?
+ 拜拜的時候在想什麼?
+ 正妹嫁給肥宅要忍受什麼事
+ 住在景美是什麼感覺?
+ 一直找同樣字眼舊聞推文的在想什麼？
+ Mickey Rourke從年輕到現在發生什麼事了?
+ 唸海大的同學在想什麼?
+ 請問第一次跟女生看電影要準備什麼？
+ 要怎樣打破台北手扶梯只能站右邊的習慣？
+ 有沒有人的母親節禮物是送女朋友的？
+ 要怎樣打破台北手扶梯只能站右邊的習慣？
+ 要怎樣打破台北手扶梯只能站右邊的習慣？
+ 學開車的時後，卡在S型彎道怎麼辦
+ 要怎樣打破台北手扶梯只能站右邊的習慣？
+ 搶到地震首po的感覺是什麼？
+clusting 13
+ 半夜睡不著覺怎麼辦?
+ 晚上騎GOGORO太安靜的八卦?
+ 懷疑被鬼跟蹤怎麼辦?
+ 不小心在眾目睽睽下射出來 該怎麼辦?
+ 冰箱壓縮機吵到睡不著怎麼辦
+ 膝蓋卡住了怎麼辦
+ 被T要Line該怎麼辦
+ 晚上騎GOGORO太安靜的八卦?
+ 室友一直尻我頭怎麼辦
+ 表妹交男朋友了該怎麼辦？
+ 考試念不完了怎麼辦QQ
+ 理工宅剛交女友狂放閃怎麼辦？
+ 弟弟是川寶怎麼辦？
+ 我弟很會打呼怎麼辦
+ 一不小心發現弟弟穿女裝在逛街怎麼辦?
+當兵憂鬱情緒怎麼安撫
+ 隔壁喵叫聲，請問單兵該如何處置？
+ 尻尻的時候蚊子在旁邊飛該怎麼辦的八卦
+ 夏天是不是泡水桶涼快?
+ 路上遇到肥宅會打招呼嗎？
+ 打雷的時候怎麼辦
+ 摩門教傳教士住我家樓下怎麼辦
+ 肥宅手不小心碰到女生的屁股怎麼辦?
+ 開車驚見蛇雨刷 駕駛崩潰喊「救我啊」
+ 看到國小女生路邊尿尿怎麼辦?
+ 自修室伸懶腰打到後面女生的頭怎麼辦
+ 怎麼吃胃會爆炸
+ 學姐一直討親親怎麼辦？
+ 公車上亂按下車鈴會怎樣?
+ 小蘿莉一直對著我笑該怎麼辦
+ 公車上亂按下車鈴會怎樣?
+ 清潔工愛上病人怎麼辦？
+ 妹妹跟一個肥宅在一起怎麼辦？
+ 蚊子去叮另一隻蚊子 被叮那隻蚊子會癢嗎?
+ 貓咪半夜叫
+ 肥宅在外面夾腳拖炸裂怎辦？
+ 搭高鐵無聊怎麼辦
+客運上妹子睡著嘴巴微張該怎麼辦
+clusting 14
+ 大姊，別鬧了（台南拖吊事件）
+ 大姊，別鬧了（台南拖吊事件）
+ 突然下大雨了?????
+ 大姊，別鬧了（台南拖吊事件）
+ 大姊，別鬧了（台南拖吊事件）
+ 突然下大雨了?????
+ 大姊，別鬧了（台南拖吊事件）
+clusting 15
+ 台海兩岸和南北韓哪個能撐久一點？
+ 兩岸降溫 虱目魚游不進大陸
+走向僵局暴風雨就不遠了 陸黨媒:兩岸現狀
+ 台海兩岸和南北韓哪個能撐久一點？
+ 兩岸降溫 虱目魚游不進大陸
+clusting 16
+ 還我運動權 陸令禁減體育課
+ 什麼時候運動彩券才敢賭台灣職棒職籃？
+ 還我運動權 陸令禁減體育課
+ 多宅才會一天到晚看電競實況
+clusting 17
+ 文化大學算不算是學店
+ 唐朝是不是歷朝代最近似西方社會的朝代?
+ 臺灣國呢？？？
+ 誰是seafood界的霸主
+ 傳說中的六六六到底有多毒？
+ 哪國泡菜才是極品？日本？韓國？台灣？
+ 淡江是學店的始祖嗎？
+ 歐美一流人才會讀什麼?
+ 姓柯的 vs 姓羅的
+ 台灣有沒有適合的地方打造沿海國際都市？
+ 有沒有新加坡才是世界上最適合居住的國家
+ 舌尖上的中國屌打所有台灣美食節目的卦?
+ 有沒有競速遊戲中的霸主是哪款的八卦?
+ 超級學校霸王是卡司最強的港片嗎?
+ 有無台灣的激安殿堂，光南大批發的八卦
+ 哪國泡菜才是極品？日本？韓國？台灣？
+ 中國與台灣擬人化會是怎樣
+ 歐美一流人才會讀什麼?
+ 寶可夢是不是最佳宗教電影啊
+ 台灣出 超級英雄 應該具備什麼能力
+ 有台灣醫療水準的八卦?
+ 沒落的最戲劇化的跨國大企業？
+ 哈根大使為什麼是冰淇淋界的第一名?
+ 去日本風俗店分的出是大陸妹嗎
+ 圖書館的研究小間是用來幹嘛的?
+ 靠投資古董賺大錢是真的假的？
+ 台灣的主體民族是什麼啊
+ 歐美一流人才會讀什麼?
+ 台灣的主體民族是什麼啊
+ 歐美一流人才唸完書之後到鬼島能做甚麼？
+ 台灣 也只是沉浸在口號的虛假裡？
+ 日本教授有哪些福利
+ 什麼花最能代表台灣？
+ 石斑是魚肉中最好吃的嗎？
+ 台灣哪個企業總部蓋的最屌?
+ 台灣組一個球隊參加日本職棒有搞頭嗎？
+ 有沒有新加坡才是世界上最適合居住的國家?
+ 世界上最難聽的國歌是哪一國的啊？
+ 曾是外勞代名詞…菲經濟回春 海外百萬人
+ 陽明山的鞍部驛站是合法的店嗎？
+ 林寶春跟王大樹的影響力誰比較高
+ 舌尖上的中國屌打所有台灣美食節目的卦?
+ 東方三峽在當年算是經典嗎？
+ 哈根大使為什麼是冰淇淋界的第一名?
+ 國外大學也會戰IP嗎？
+ 日本賣的歐洲羽絨被半數是山寨　可能是台
+ 女大提琴手 美腳下的謎之物品到底是？
+ 有沒有工學院中最不像工學院的系
+ 歐美一流人才會讀什麼?
+ 靠投資古董賺大錢是真的假的？
+ 台灣哪所大學稱的上經典?
+ 是東山鴨頭還是山東鴨頭
+ 冰界的霸主
+ 日本哪一間大學在台灣最為人所知？
+clusting 18
+ 南韓回應金正恩:提議對話無誠意 予以拒絕
+ 在WHA對臺釋善意 陸黨媒籲蔡英文拿出誠意
+ 宋楚瑜呼籲 兩岸相互諒解有彈性
+ 王家貞：綠營已在為否認九二共識做鋪排
+ WHA邀請函是善意也是壓力 蔡勿迴避九二共
+ WHA邀請函是善意也是壓力 蔡勿迴避九二共
+ 王家貞：綠營已在為否認九二共識做鋪排
+ WHA邀請函是善意也是壓力 蔡勿迴避九二共
+ WHA邀請函是善意也是壓力 蔡勿迴避九二共
+ WHA邀請函是善意也是壓力 蔡勿迴避九二共
+clusting 19
+ 「菲版川普」總統大選支持率領先 杜特蒂
+ 中研院新院長的選舉
+ 洪秀柱布局2018選舉 鋪路明年黨主席
+ 馬總統卸任倒數　酷卡幫您寄出心裡話
+ Foury KA 花蓮國民黨議員質詢時唱心頭肉
+ 馬英九總統
+ 中研院新院長的選舉
+ 破天荒！「公投草案」藍委表態支持民進黨
+ 菲律賓總統大選9日投票 鐵血硬漢、世家子
+ 想想、阿才一起拚外交？ 吳思瑤：總統專
+clusting 21
+ 台日艦沖之鳥互尬 國軍不畏戰
+ 台日艦沖之鳥互尬 國軍不畏戰
+ 沖之鳥相遇…台日克制 相安無事
+ 台日艦沖之鳥互尬 國軍不畏戰
+ 台日艦沖之鳥互尬 國軍不畏戰
+ 台日艦沖之鳥互尬 國軍不畏戰
+clusting 22
+ 無奈！改桃園報到,華航空服控工時遭壓縮
+ 無奈！改桃園報到,華航空服控工時遭壓縮
+ 無奈！改桃園報到,華航空服控工時遭壓縮
+clusting 23
+ 大台北公車里程計費 朱立倫：絕不接受
+ 2018參選台北市長？ 王世堅：我不能選
+ 大台北公車里程計費 朱立倫：絕不接受
+ 大台北公車里程計費 朱立倫：絕不接受
+ 大台北公車里程計費 朱立倫：絕不接受
+ 大台北公車里程計費 朱立倫：絕不接受
+ 大台北公車里程計費 朱立倫：絕不接受
+ 大台北公車里程計費 朱立倫：絕不接受
+ 大台北公車里程計費 朱立倫：絕不接受
+ 大台北公車里程計費 朱立倫：絕不接受
+ 大台北公車里程計費 朱立倫：絕不接受
+ 台灣哪個縣市最能接受公共住宅?
+clusting 24
+ 雌猴6天仍抱著死去小孩是智力親情展現？
+ 母親節給忙碌現代人一個開脫的機會?
+ 小時候被父母打的經驗
+ 你的上一個世代為你留下什麼？
+ 有姪子要結婚了，叔叔卻還是魔法師的卦？
+ 大家近視的原因是什麼？
+ 肥宅是一種嬉皮精神？o'_'o
+是母女,也是最好朋友!侯佩岑與媽媽林月雲
+ 有女朋友是什麼感覺
+ 只有晚上會做的事
+ 這社會是不是瞧不起認真的人?
+ 瞬間覺得自己好魯
+ 英文文法跟口說那個重要？
+ 有女朋友是什麼感覺
+ 丟棄毛小孩的都是怎樣的人的八卦？
+ 各位體態都是幾歲時後開始走鐘的阿??
+ 動不動就退出群組的是哪些人
+ 各位體態都是幾歲時後開始走鐘的阿??
+ 男人的天性是什麼？
+ 母親節還有人執著送康乃馨嗎
+ 身高180cm要有車有房！　台灣社會對男生
+ 你的上一個世代為你留下什麼？
+ 動不動就退出群組的是哪些人
+ 你最想跟媽媽說什麼話?
+ 富二代家庭當正妹千金好還是當肥宅好?
+ 動不動就退出群組的是哪些人
+ 大學四年都沒交過女朋友是不是很可悲
+ 歐美人身材好是健身還是基因的八卦？
+ 九年級生破處的比例有多少?
+ 有女朋友是什麼感覺
+ 每次都在說不揪的是哪種人？
+ 喜歡噓人的人在想什麼
+ 英語學習app這樣的水準正常嗎?
+ 演藝圈下一位周杰倫出現了沒...?
+ 學園偶像計畫是不是演藝工會摳死當的陰謀
+ 當你個版
+ 有什麼可以對戰的問答手機遊戲
+ 台灣路邊垃圾桶很少是什麼心態
+ 學姐的母親節到底是什麼意思?
+ 當你的電子產品"關"時,他們只使 NYTimes
+ 台灣路邊垃圾桶很少是什麼心態
+ 動不動就退出群組的是哪些人
+ 男生失去了一輩子好朋友
+ 我這樣算是被陣頭小孩欺負嗎？
+ 整個家只有一個微波爐當廚具 (?)
+ 動不動就退出群組的是哪些人
+ 動不動就退出群組的是哪些人
+ 台北不會騎車的人是不是很多？
+在外國人面前講中文很不禮貌??
+ 現在的慣老闆是哪個年級養出來的?
+ 來電顯示「媽媽」都設成什麼了？很多人愛
+ 瞬間覺得自己好魯
+ 發明健康操的人在想什麼
+ 今天是慢活的一天嗎
+ 匿名都更士來我家談都更
+ 什麼樣的人會有很多存款簿
+ 有人跟我一樣會用氣味認人嗎?
+ 妹妹說我"技術"不錯...(CP值回沖率很高)
+最近發生的事
+ 哪一句中文外國人說的最好?
+ 有女朋友是什麼感覺
+ 學園偶像計畫是不是演藝工會摳死當的陰謀
+ 該怎麼形容男性高潮的感覺?(手動不算)
+ 動不動就退出群組的是哪些人
+ 該怎麼形容男性高潮的感覺?(手動不算)
+ 怎麼樣判斷是不是最好的朋友
+ 動不動就退出群組的是哪些人
+ 有女朋友是什麼感覺
+ 動不動就退出群組的是哪些人
+ 看電影二刷三刷的人是什麼心態??????????
+ 發文最怕的不是被噓爆 而是沒人看到?
+ 一些沒聽過的學店，學生數居然有5000up?
+ 能讓你聽一整天都不會膩的Music?
+ 為什麼中國歌唱節目觀眾這麼會哭
+ 動不動就退出群組的是哪些人
+ 689的觀念都這樣嗎？
+ 名字叫妮妮的女孩是不是是都很可愛？
+ 這社會是不是瞧不起認真的人?
+ 台灣路邊垃圾桶很少是什麼心態
+ 會在宿舍煮菜的是哪些人?
+ 有男朋友是什麼感覺
+ 身高180cm要有車有房！　台灣社會對男生1
+ 男生幾歲還單身大概就單身一輩子的八卦?
+ 女生常說的第一眼到底是什麼
+ 沒參加WHA會發生什麼事?
+ 鄉民都怎麼打臉直銷?
+ 當兵為何不能說真話？
+ 批評兩句就成黑名單？張富美很想知道當年
+ 一些沒聽過的學店，學生數居然有5000up?
+ 一天到晚問別人心態的是什麼心態？
+ 讀理工的是不是都不怕單身一輩子？
+ 工地工人vs健身的人，打架誰會贏?
+ 動不動就退出群組的是哪些人
+ 為什麼男女生空氣瀏海 評價差這麼多?
+ CCR女生是不是比一般女生更主動開放?
+ 動不動就退出群組的是哪些人
+ 工地工人vs健身的人，打架誰會贏?
+ 沒參加WHA會發生什麼事?
+ 有錢就是任性　富商豪宅逼鄰棟廢氣排向他
+ 樂山雷達站的美國人都在幹嘛?
+ 有女朋友是什麼感覺
+ 這是什麼奇怪的生物？
+ 醜的基因為什麼不會被淘汰
+ 如果老師是鬼塚英吉的話?
+ 說台科太遠不想讀的人都是哪些人？
+ 肥宅的老婆可以有幾個?
+ 說台科太遠不想讀的人都是哪些人？
+ 推薦朋友下載app就能賺錢是真的假的
+ 太逆天！女主播的媽咪辣成這樣
+ 哪些app是專為肥宅設計的
+ 沒參加WHA會發生什麼事?
+ 動不動就退出群組的是哪些人
+ 如果老師是鬼塚英吉的話?
+ 哪一句中文外國人說的最好?
+ 畫了一個女生然後說他是男生的八卦？
+ 演藝圈下一位周杰倫出現了沒...?
+ 為什麼喵喵都不給人溜???
+ 有女朋友是什麼感覺
+ mini158 是他嗎?
+ 請問人畜交往有可能嗎？
+ 幾個不會樂器的肥宅想組band 第一步是啥?
+ 哪些歌聽起來還好卻很難唱
+ 有女朋友是什麼感覺
+ 動不動就退出群組的是哪些人
+ 群組刻意不被邀請的是那些人??
+ 邊緣人活著該做什麼的八卦?
+ 26操台語會被認同嗎
+在外國人面前講中文很不禮貌??
+ 這社會是不是瞧不起認真的人?
+ 富二代家庭當正妹千金好還是當肥宅好?
+ 失去最好的朋友有多難過？
+ 有人追女教授成功的嗎
+ 動不動就退出群組的是哪些人
+ 會說不吃在自己面前被殺的動物的是什麼人
+ 什麼是噓到爆？
+ 如果可以選擇，你想住在哪個國內外城市?
+ 為什麼那麼多女生想做空姐
+ 幾個不會樂器的肥宅想組band 第一步是啥?
+ 經濟系到底是文組還是理組啊?
+ 洗澡好還是很臭的都是怎麼樣的人0.0
+ 搶行駛中的那台重機犯什麼罪
+ 男生幾歲還單身大概就單身一輩子的八卦?
+ 大學四年都沒交過女朋友是不是很可悲
+ 母☆的可愛代表人物是誰?
+ 現在出捷運站的都是什麼人
+ 演藝圈下一位周杰倫出現了沒...?
+ 一些沒聽過的學店，學生數居然有5000up?
+ 大學四年都沒交過女朋友是不是很可悲
+ 台灣路邊垃圾桶很少是什麼心態
+ 版上宅宅們平常都做什麼運動?
+ 中邪？印度出現自殺村　每個家庭都有人
+ 每次都在說不揪的是哪種人？
+ 肥宅的形象
+ 人生追求的到底是甚麼?
+ 會在宿舍煮菜的是哪些人?
+ 美國遊民或是魯蛇 翻身機會是不是高??
+ 幾個不會樂器的肥宅想組band 第一步是啥?
+ 太美太高也有事 最不想娶女星是她(長澤)
+ 承認自己是神經病很難？
+clusting 27
+ 疑心血管疾病發作 男子按摩店猝死
+ 「門徒」劇情真實上演　女用毒過量暴斃男
+ 三重男酒醉鬧事 不爽送報員看一眼爆衝突
+ 男子暗夜扮七爺　背後故事有洋蔥
+ 姓男子按摩店猝死
+clusting 28
+ 國立科大約在普大哪個等級 ?
+ 北車哪家補習班最強?
+ 國立科大約在普大哪個等級 ?
+ 請問大葉大學電機系算「理組」嗎？
+clusting 29
+ 北市擴大國小暑期課輔 「顧到晚上7點」
+ 明日出門注意！配合佛誕浴佛及舒跑杯　北
+clusting 31
+ 打造「台灣矽谷」 移民法擬鬆綁
+ 打造「台灣矽谷」 移民法擬鬆綁
+ 打造「台灣矽谷」 移民法擬鬆綁
+ 打造「台灣矽谷」 移民法擬鬆綁
+ 打造「台灣矽谷」 移民法擬鬆綁
+ 打造「台灣矽谷」 移民法擬鬆綁
+ 打造「台灣矽谷」 移民法擬鬆綁
+ 打造「台灣矽谷」 移民法擬鬆綁
+ 打造「台灣矽谷」 移民法擬鬆綁
+ 打造「台灣矽谷」 移民法擬鬆綁
+ 打造「台灣矽谷」 移民法擬鬆綁
+ 台灣搶先全球上映新電影
+ 2015男同志快樂指數 台灣亞洲第3 全球34
+ 首見全球百大名校 來台設交流中心
+ 打造「台灣矽谷」 移民法擬鬆綁
+ 打造「台灣矽谷」 移民法擬鬆綁
+ 打造「台灣矽谷」 移民法擬鬆綁
+ 打造「台灣矽谷」 移民法擬鬆綁
+clusting 32
+ 扁家前車禍 轎車高速失控撞遊覽車
+ 廣州男爬高鐵車頂奔跑觸電 瞬間成火球
+ 扁家附近離奇車禍　男子駕車衝撞遊覽車
+ 轎車停地下室冒濃煙 婦人嗆傷
+ 過彎失控 大型重機騎士險遭大貨車輾
+ 停車場斜坡熄火　倒退嚕撞柱3人傷
+ 扁家附近離奇車禍　男子駕車衝撞遊覽車
+ 廣州男爬高鐵車頂奔跑觸電 瞬間成火球
+ 梅花鹿誤闖國道 遭休旅車迎撞GG了
+clusting 33
+ 世界衛生組織已寄發邀請
+ 聯合國：欠缺經費 愛滋防治恐前功盡棄
+ 世界衛生組織已寄發邀請
+ 世界衛生組織已寄發邀請
+ 世界衛生組織已寄發邀請
+ 中共使館干擾神韻首爾演出 國際譴責
+clusting 34
+ 士林夜市為何不叫劍潭夜市？
+ 內彎老街的果汁店
+ 今天買手搖飲又差一點地雷了
+ 全台連鎖底飲料店,純蔗糖的飲料是假的?
+ 為什麼台灣很多餐廳沒有飲料無限喝?
+ 師範體系也算學店嗎?
+ 攤販是怎記客人點的菜的?
+ 民生社區五段樹上有什麼
+ 師範體系也算學店嗎?
+ 派克雞排好吃在哪？
+ 夜市的食物是不是衛生要管理一下
+ 今天買手搖飲又差一點地雷了
+ 開停車場很賺錢嗎？
+ 無印良品貴什麼?
+ 台灣不流行加油站商店
+ 為什麼光華商場沒有免費無線網路wifi?
+ 港式飲茶點為何冷氣都開得特別強??
+clusting 35
+ 黏鼠板放魚乾 誘鼠不成捉到貓
+ 人妻偷吃被捉姦在床沒事　人夫破門反判
+ 黏鼠板放魚乾 誘鼠不成捉到貓
+ 女騎士被開罰單 怒譙還槌男警胸
+ 不滿被開紅單 女騎士竟出手襲警胸
+ 賣淫女被嫌長得醜　縱火燒屋還燒錯屋
+ 老鼠從天而降砸餐廳桌上 女子當場嚇暈
+ 人妻偷吃被捉姦在床沒事　人夫破門反判
+ 遭打槍愛她像戀童 林彥君「戳破保險套」逼娶！
+ 不甘愛車被拖吊　女車主竟趴車跟著滑
+ 迫嫩妻賣淫賺錢　賤男遭老婆恩客擊斃
+ 「被搶不敢報案」 惡質兄弟檔專搶應召女
+clusting 36
+ “羅興亞人”為何在緬甸成為敏感詞？
+ 長輩對於憤世嫉俗的定義？
+ 宗教信仰很蠢的八卦？
+ 關於髒話演變的八卦
+ 宗教信仰很蠢的八卦？
+ 鳥山明是無神論者嗎?
+ 三寶成為恐怖分子利用工具的可能性？
+ 其他國家對方言的態度？
+ 宗教信仰很蠢的八卦？
+ 其他國家對方言的態度？
+ 宗教信仰很蠢的八卦？
+ 用寶可夢來犯罪的卦？
+clusting 37
+ 小英啤酒超商狂賣 台酒：72萬瓶已快
+ GUINNESS 啤酒廣告
+clusting 38
+ 八年級知道超魔神英雄傳嗎
+ 八年級知道國立殯儀館嗎
+ 八年級生玩過吞食天地嗎
+ 八年級知道超魔神英雄傳嗎
+ 八年級小時後都在幹嗎
+ 八年級知道  黑齋的野心嗎
+ 八年級知道波波鼠歷險記嗎？
+ 八年級知道洛克人嗎
+ 八年級知道麻辣鮮師嗎?
+ 八年級知道你媽在這裡po廢文嗎
+ 八年級生知道諸葛四郎嗎?o'_'o
+ 八年級什麼都知道 是不是最強的一代?
+ 八年級知道超暴力激鬥嗎?
+ 79年次要算八年級生還七年級生？
+ 八年級要知道這麼多幹嘛啊
+ 讀法律系等於讀學店嗎
+ 八年級有人知道土撥鼠的卡通嗎？
+ 八年級什麼都知道 是不是最強的一代?
+ 八年級知道紫禁之顛嗎
+ 八年級比七年級更廢對吧?
+ 八年級有看過大自然教室嗎?
+ 八年級知道何田光斯嗎
+ 八年級知道山本耀司嗎
+ 八年級的知道停播黑棒還我南方嗎？
+ 八年級知道麻辣鮮師嗎?
+ 年級內戰?
+ 八年級知到大陸尋奇嗎？
+ 十萬伏特對決元氣彈！七年級童年經典卡通
+ 八年級是否屌打七年級?
+ 八年級知道魔獸少年暑修嗎?
+ 八年級知道麻辣鮮師嗎?
+ 現在年輕人知道1990-1996年有多棒嗎?
+ 八年級比七年級更廢對吧?
+ 八年級到底知道什麼？
+ 八年級是否屌打七年級?
+ 八年級有人是第四類組的嗎
+ 八年級生知道羅密歐到你家洗澡嗎?
+ 八年級知道超魔神英雄傳嗎
+ 八年級知道ronnywang、skybear、SkyMirage嗎?
+ 八年級知道麻辣鮮師嗎?
+ 八年級知道鬼神童子嗎？
+ 八年級知道模范棒棒堂嗎?
+ 八年級知道迷宮傳奇嗎
+ 讀台大戲劇錢途有嗎？
+ 八年級有人知道土撥鼠的卡通嗎？
+ 八年級知道七年級嘛？
+ 八年級知道ID會暴露年記嗎
+ 八年級生知道喬琪姑娘嗎？
+ 我這樣算七年級還是八年級？
+ 八年級生知道十萬個為什麼嗎？
+ 八年級知道少年特攻隊嗎？
+ 八年級知道巨蛋小子嗎的八卦?
+ 七年級知道一丈青向恩嗎？
+clusting 39
+ 黑色產業鏈鏽蝕 陸引爆失業潮
+ 黑色產業鏈鏽蝕 陸引爆失業潮
+clusting 40
+ 鋰電池
+ 手機充電
+ 飛安會證實自燃行動電源非正廠 小米：還
+ 車子的感應鑰匙可以用手機傳頻率?
+ iPad能暫時取代筆電嗎？
+ 飛安會證實自燃行動電源非正廠 小米：還
+ 鋰電池
+clusting 41
+ 龜梨和也化身帥警察 閃婚高中生嚇壞粉絲
+ 4.2K的學生妹「乖乖」　真面目讓嫖客驚呆
+ 肥宅裝扮成康乃馨的卦?
+ 女生愛看男生肌肉?
+ 男生大太陽很少在撐傘戴墨鏡？
+ 擁有一身古銅色肌膚能交到女友嗎？
+ 女孩挑戰電鑽吃玉米　頭髮絞入悲劇了
+ 都市正妹VS鄉下正妹
+ 女生愛看男生肌肉?
+ 男生換衣無辜被女生看到覺得被性騷擾?
+ 女生愛看男生肌肉?
+ 正妹夏天的內褲?
+ 正妹夏天的內褲?
+ 肥宅夏天都喜歡穿短褲嗎？
+ 女生愛看男生肌肉?
+  搭訕文青正妹的發語詞
+ 男生該不該刮yee毛
+ 女孩挑戰電鑽吃玉米　頭髮絞入悲劇了
+ 乖女生前神秘禮 母淚崩
+ 正妹看肥宅的感覺？
+ 肥宅夏天都喜歡穿短褲嗎？
+clusting 42
+ 退寬頻上網要帶身份證和「貓」
+ 晚上要去面談外配
+ 韓國朋友來台灣帶去哪裡??
+ 請聽題！等下吃母親節大餐要跟媽說甚麼？
+ 韓國朋友來台灣帶去哪裡??
+ 跟朋友辯論薯條
+ 韓國朋友來台灣帶去哪裡??
+ 「喵！」智慧型項圈幫你把貓語翻譯成人話
+ 幾點去睡最好？
+ 4/30～5/4有去帛琉玩的請進！
+ 跟３５歲台女相親要注意什麼？
+ 母親節去吃越南料理好ㄇ?
+ 晚上要去面談外配
+ 母親節要吃什麼
+ 行車糾紛罵「要不要吃三寶飯」　工程師判
+ 晚上要去面談外配
+ 去新竹輪班需要注意甚麼??
+ 女朋友去夜店整晚沒回家的八卦
+ 韓國朋友來台灣帶去哪裡??
+ 母親節去吃越南料理好ㄇ?
+ 韓國朋友來台灣帶去哪裡??
+ 真的好慘　前女友利用他買保險套給現任
+大家去夜市都買什麼吃?
+clusting 43
+ 【慎入】女吸毒暴斃　死前影像曝光
+ 人臉鯉魚　現身湖南
+ 【更新】小情侶陳屍床上　臉書留言疑殉情
+ 【更新】小情侶陳屍床上　臉書留言疑殉情
+ 【更新】小情侶陳屍床上　臉書留言疑殉情
+ 陳致遠曬恩愛秀「裸體泡澡照」　感性向秀
+clusting 44
+ FB可以表示覺得溫馨！
+ 請推薦好的涼蓆
+ FB那個藍色花朵的溫馨變感激惹
+clusting 45
+ 台彩業績少150億 黃金右手怎麼辦？
+ 15歲CEO：我很多字不會寫！年營收千萬揭「網拍秘訣」
+ 逾50歲財富累積速度 台大教授：是年輕人8
+ 韓國的大學學費  1年就要20多萬台票？
+ 「給日本人欣賞」 柯文哲花300萬改種杜鵑
+ 台彩業績少150億
+ 量販超市剩食1年倒掉40億 34萬童可吃整年
+ 顏回83代孫遭詐2700萬　仍繼續做這件事
+ 50元餛飩麵的差別
+ 15歲CEO：我很多字不會寫！年營收千萬揭「網拍秘訣」
+ 銀行搶客 5年寬限、40年房貸都出來了
+ 「給日本人欣賞」 柯文哲花300萬改種杜鵑
+ 台彩業績少150億
+ 「給日本人欣賞」　柯文哲花300萬改種杜
+ 台灣要怎麼做才可以重返1990年黃金年
+ 26歲月薪8萬很邱嗎
+ 「給日本人欣賞」 柯文哲花300萬改種杜鵑
+ 能一晚刷一千萬元的是些什麼人
+ 台彩業績少150億 黃金右手怎麼辦？
+ 「給日本人欣賞」　柯文哲花300萬改種杜
+ 15歲CEO：我很多字不會寫！年營收千萬揭「網拍秘訣」
+ 「給日本人欣賞」　柯文哲花300萬改種杜
+clusting 46
+ 花蓮議會金曲歌后祝母親節快樂
+ 黃明志母親節歌曲《老母》
+ 喬爸母親節快樂！　于卉喬為父完成「貼才
+ 媽媽
+ 母親節 送小廚師 媽媽會開心嗎??
+ 蔡英文：祝大家母親節快樂！
+ 淚崩！她最後的母親節禮物讓人好心疼
+ 媽媽
+ 母親節聚餐該唱什麼？？
+ 女友的媽媽暗示母親節禮物?
+ 最強母親節長輩圖？
+ 慶祝母親節　宋楚瑜與媽媽開心切蛋糕
+ 小英臉書曬母女照過母親節 五毛翻牆秀下
+clusting 47
+ 李富城  國防部被洪家陷害 & 台灣沒有是非
+ 資安中心被廢　張善政批：民進黨不能玩家
+ 李富城  國防部被洪家陷害 & 台灣沒有是非
+ 李富城  國防部被洪家陷害 & 台灣沒有是非
+ 國防部被抓包  教召不公  老面孔中槍4次
+ 資安中心被廢　張善政批：民進黨不能玩家
+ 國防部被抓包  教召不公  老面孔中槍4次
+ 資安中心被廢　張善政批：民進黨不能玩家
+ 國防部被抓包  教召不公  老面孔中槍4次
+ 國防部被抓包  教召不公  老面孔中槍4次
+ 資安中心被廢　張善政批：民進黨不能玩家
+ 國防部被抓包  教召不公  老面孔中槍4次
+ 資安中心被廢　張善政批：民進黨不能玩家
+ 國防部被抓包  教召不公  老面孔中槍4次
+ 國防部被抓包  教召不公  老面孔中槍4次
+ 國防部被抓包  教召不公  老面孔中槍4次
+ 資安中心被廢　張善政批：民進黨不能玩家
+ 國防部被抓包  教召不公  老面孔中槍4次
+ 國防部被抓包  教召不公  老面孔中槍4次
+clusting 49
+ 勞基法納入高中(職)必修？
+ 大葉大學為何不叫就業大學
+ 議員罵「東華是爛學校」　東華大學發聲
+ 松山高中為何不叫信義高中
+ 東華大學是垃圾回應
+ 文化大學算不算是學店
+ 文化大學算不算是學店
+  台北大學為何不叫新北市大學
+ 文化大學算不算是學店
+clusting 50
+ 新北驚傳菜刀砍人案 男子中10多刀
+ SBL球星周柏臣涉毆女友　警方通報家暴中
+ 桃警務員深夜勤下班　返家後中風身亡
+陸醫生遭病患砍數十刀亡 嫌犯跳樓自殺
+clusting 51
+ 工程師制服癖 家中查獲百餘件女裝
+ 工程師悲歌！　老婆帶2子自殺原因曝光
+ 罵女駕駛馬路三寶 電信工程師被判拘50日
+ 工程師制服癖 家中查獲百餘件女裝
+ 罵女駕駛馬路三寶 電信工程師被判拘50日
+ 偷女學生制服意淫 南科工程師被逮
+clusting 52
+ 赤兔馬有幾匹馬力？
+ 步道上有屎
+clusting 53
+ 南科生活品質屌打竹科和中科
+ 台灣從事科技業RD都幾歲退休的八卦?
+ 高雄的市容是否已屌打台北?
+ 科技新貴為什麼會變成回收業者？
+clusting 54
+ 陸戰隊又出包 66旅連長想退伍 鬧自殺
+ 真的沒停過直升機！海巡台南艦弊案　檢
+ 陸戰隊又出包 66旅連長想退伍 鬧自殺
+ 壓力太大？海軍陸戰隊連長寫遺書、鬧輕
+clusting 56
+ 響應「裸體園藝日」 男女脫光與花草共舞
+ 硬筆和軟筆
+ 硬書與軟書
+ 向北京表忠？聖公會與敢言神職培訓所畫清
+clusting 57
+ 綠委提修法　未婚媽媽可指定1人請5天陪?1
+ 母親節將至馬英九與陸配等新住民媽媽野餐
+clusting 58
+ 癡情玫瑰花被誤為玖壹壹唱的八卦？
+玖壹壹春風想念已逝母親 爸爸傳訊
+ 誰能阻止玖壹壹???????????????
+ 玖壹壹的歌迷粉絲都是那些職業??????????
+ 熱狗跟玖壹壹哪個厲害?
+ 玖壹壹VS周杰倫+五月天
+clusting 59
+ 柯文哲：房價砍半 很多人資產會縮水
+ 桃園地區國道為何這麼會塞車
+ 為什麼公車道設在快慢車道中間
+ 柯文哲：房價砍半 很多人資產會縮水
+ 興建自行車道惹民怨　柯P：時間久了就喜
+ 柯文哲：房價砍半 很多人資產會縮水
+ 柯文哲：房價砍半 很多人資產會縮水
+ 柯文哲：房價砍半 很多人資產會縮水
+ 柯文哲：房價砍半 很多人資產會縮水
+ 柯文哲：房價砍半 很多人資產會縮水
+ 柯文哲：房價砍半 很多人資產會縮水
+ 柯文哲：房價砍半 很多人資產會縮水
+ 柯文哲：房價砍半 很多人資產會縮水
+ 柯文哲：房價砍半 很多人資產會縮水
+ 台北租屋價格怎麼大漲了?
+ 柯文哲：房價砍半 很多人資產會縮水
+ 柯文哲：房價砍半 很多人資產會縮水
+ 柯文哲：房價砍半 很多人資產會縮水
+ 柯文哲：房價砍半 很多人資產會縮水
+ 柯文哲：房價砍半 很多人資產會縮水
+clusting 60
+ 超勵志 賈永婕18.5小時哭著完賽鐵人226
+ 被5萬噸「起司」活埋8小時 他仍奇蹟生還
+ 超勵志 賈永婕18.5小時哭著完賽鐵人226
+ 數萬噸奶酪活埋8小時 英國司機奇蹟生還
+ 超勵志 賈永婕18.5小時哭著完賽鐵人226
+clusting 61
+ 說好的景觀公園!?舊兒童樂園成廢墟
+ 澎湖生態浩劫 海膽全不見了 海底監測發現
+ 澎湖生態浩劫 海膽全不見了 海底監測發現
+ 澎湖生態浩劫 海膽全不見了 海底監
+ 大安森林公園有螢火蟲嗎?
+ 澎湖生態浩劫 海膽全不見了 海底監測發現
+ 澎湖生態浩劫 海膽全不見了 海底監測發現
+clusting 62
+ 意外之財要怎麼花
+ 怎麼才能接近貓咪
+ 鳥類怎麼交配？
+ 達康保險 網站怎麼了？
+clusting 64
+ 臉書新的按讚符號？
+ 臉書又有新的按讚符號
+ 請問臉書的前十大粉絲團的八卦？
+ 話說最近八卦版的文章很常被轉到天涯論壇
+ PTT常常當機
+clusting 66
+ 咖啡廳成了K書中心？ 意外引發網友論戰
+ 咖啡廳成了K書中心？ 意外引發網友論戰
+ 咖啡廳成了K書中心？ 意外引發網友論戰
+ 咖啡廳成了K書中心？ 意外引發網友論戰
+ 咖啡廳成了K書中心？ 意外引發網友論戰
+ 咖啡廳成了K書中心？ 意外引發網友論戰
+ 咖啡廳成了K書中心？ 意外引發網友論戰
+ 咖啡廳成了K書中心？ 意外引發網友論戰
+clusting 67
+ 台鐵網路訂票也可訂便當
+ 火車沙盤租借價格
+ 為何竹南火車站這麼高規格？
+ 高鐵車位贈送
+clusting 69
+ WHA邀請函加註「一中」 陸媒：陸釋放給蔡
+ 我收到WHA邀請函 附加條件"一中原則"
+ WHA邀請函附一中原則 綠委：中國手段
+ 府方放話：參加WHA就是接受一中
+ 黨政人士：林奏延登錄WHA即承認一中原則
+ WHA邀請函加註「一中」 陸媒：陸釋放給蔡
+ 府方放話：參加WHA就是接受一中
+ WHA邀請函加註「一中」 陸媒：陸釋放給蔡
+ 府方放話：參加WHA就是接受一中
+clusting 70
+ 金庸男主角中 誰最專情?
+ 哪一個版的奇文最多？
+ 周子瑜與蔡依林誰比較耐看?
+ 最喜歡的DJ?
+ 自己最有名的祖先是誰？
+ 最好吃的青菜是哪一樣
+ 哪個產品掛命配上哪個節目最霸氣？
+ 滾石愛情故事哪一集最經典
+ 身為肥宅，最驕傲的事
+ 最猛的台毒是?
+ 魔獸爭霸最好玩的地圖?
+ 什麼線上遊戲最賺錢?
+ 早期迪士尼人物的配音
+ 蘋果西打套什麼一起喝最經典？
+ 尤教授最愛哪個飛天小女警
+ 韓國自助行最推薦哪個城市?
+ 金庸男主角中 誰最專情?
+ 野原美和野比玉子誰比較偉大
+ 尤教授最愛哪個飛天小女警
+ 最好玩的桌遊
+ 神奇寶貝聲優現身 松本梨香:最愛台灣空心
+ 心目中最實用的漫畫?
+ 魔獸爭霸最好玩的地圖?
+ 歐美語系除了英文以外哪種最浪漫?
+ 哪一家高中制服最好看??
+clusting 71
+ 第二個吳宗憲和第二個周杰倫哪個難
+ 第二個吳宗憲和第二個周杰倫哪個難
+ 為什麼母親節是五月第二個禮拜天 卦?
+ 第二個吳宗憲和第二個周杰倫哪個難
+ 第二個吳宗憲和第二個周杰倫哪個難
+clusting 72
+ 綠豆嘉義人?
+ 綠豆嘉義人?
+ 綠豆嘉義人?
+clusting 73
+ 大型國有地標售解禁 後患無窮
+ 人類擬建太空採礦平台 競爭波及小行星
+ 大型國有地標售解禁 後患無窮
+clusting 74
+ 歐陽娜娜曬童年萌照 32字暖心告白傅娟
+ 男對女友愛車噴漆LOVE求婚 慘遭巴頭
+ 羞！母親節小鮮肉蛋糕 「肌」情藏不住
+ 歐陽娜娜戀大10歲陸男星2個半月　失戀崩
+ 歐陽娜娜告白傅娟 高顏值基因掛保證
+ 男對女友愛車噴漆LOVE求婚　慘遭巴頭
+ 歐陽娜娜
+clusting 75
+ 人類能進行品種改良嗎？
+ 肥宅能偵測正妹所在 有加分嗎？
+ 肥宅騎重機有加分嗎？
+ 肥宅很會開手排車有加分嗎？
+ 肥宅有安全感會不會加分?
+ 肥宅不出門有加分嗎
+ 肥宅用散沫花有加分嗎？
+ 肥宅可樂一次可以喝幾桶?
+ 肥宅做直銷有加分嗎？
+ 肥宅會用修圖軟體有加分ㄇ
+clusting 76
+ 奶茶控哭哭！茶+牛奶最糟 最佳組合是
+ 滷肉飯+肉鬆是正統吃法嗎?
+ 綠茶VS.紅茶誰比較優？ 專家這樣說…
+ 去早餐店吃鐵板麵盤子套塑膠袋這能吃嗎?
+ 可樂果哪種口味最好吃?
+ 一定要配溫開水 這5種飲料別配藥
+ 懶叫比雞腿 都幾？
+ 大家都買什麼瓶裝水在家喝？
+ 你吃過最好吃的米產地在哪裡?
+ 煎餃要沾什麼醬最好吃?
+ 健達倍多怎樣吃最好吃
+ 煎餃要沾什麼醬最好吃?
+ 日式火鍋收尾(ウバ)的霸主是麵還是粥?
+ 玉米是無限食材嗎
+clusting 77
+ 地震多大才要逃跑
+ 能不能把第一時間發的地震文禁了
+ 地震時抱住旁邊妹子會怎樣？
+ 能不能把第一時間發的地震文禁了
+ 地震的時候要往哪裡跑
+ 會不會有大地震?
+clusting 78
+ 通話紀錄停在兩週前的卦
+ 好美！ 「台灣雲朵」漂浮在空中
+ 朋友阿公在台中走失
+ 九年級的未滿18現歲在在幹嘛?
+ 今天 明天 在城市不停的邂逅
+ 通話紀錄停在兩週前的卦
+clusting 79
+ 諾貝爾級的學者?
+ 諾貝爾級的學者?
+clusting 80
+ 夜店
+ 台北哪間夜店好?
+clusting 81
+ 陸客不來業者含淚賣車？　他破解背後真相
+ 中國施壓讓台經濟衰退？網友戳破難堪真相
+ 陸客不來業者含淚賣車？　他破解背後真相
+ 我犯什麼錯 業者含淚賣遊覽車
+ 我犯什麼錯 業者含淚賣遊覽車
+clusting 82
+ 台灣豪神連3場轟 開季連25場安 甩開日職
+ 台灣今晚 7 點與 32 國同時開跑
+ 澳洲7月大選 競選活動開跑
+clusting 83
+ 海巡將數十隻軍土犬安樂死埋在..
+ 海巡將數十隻軍土犬安樂死埋在..
+clusting 84
+ 泰國熱浪 44.6度破56年紀錄
+ 15億打造台南艦 成軍6年不敢起降直升機
+ 蜷川實花展破12萬人 創展館15年紀錄
+ 川寶4月營收創近8年同期新低 月減16.18％
+ 大陸82央企欠債超4萬億元 4家債券違約84
+ 5月9日出口再衰 連15黑成定局
+ 量販超市剩食1年倒掉40億 34萬童可吃整年
+ 量販超市剩食1年倒掉40億 34萬童可吃整年
+ 量販超市剩食1年倒掉40億 34萬童可吃整年
+clusting 85
+ 軍警公教 哪個門檻最低?
+ 退輔會 算是公務員 ??
+clusting 86
+ 英超新冠軍Leicester怎麼念
+ 冰桶挑戰輪到誰了?
+ 冰桶挑戰輪到誰了?
+ 冰桶挑戰輪到誰了?
+clusting 87
+ 男子戴 HTC Vive 體驗25小時  創金氏紀錄
+ iOS 10全新功能！「iHome」即將現身
+ 微軟Windows 10免費升級到7月底截止，升級
+ 蘋果將推iPad Air 3？陸媒曝光規格　
+clusting 88
+ 驅逐艦在外海大破怎摸辦o'_'o
+ 驅逐艦在外海大破怎摸辦o'_'o
+clusting 89
+ 打雷囉~~~~~
+ 歐尼醬喝醉惹怎摸辦?
+clusting 91
+ 國語實小校慶曬乾學生挨批　林昶佐：我沒有致詞
+ 他來電說了這句話　法官遭詐15萬元
+ 他在信中寫上這3個字　慘遭主管洗臉
+ 《大學生了沒》停播　陶晶瑩怨嘆揹黑鍋
+ 對日人說日文，他回你英文
+ 他在信中寫上這3個字　慘遭主管洗臉
+ 這間公司超大方　面試成功送賓士
+ WHA「一中」風波 吳敦義：他表他的嘛！
+ 他在信中寫上這3個字　慘遭主管洗臉
+ WHA「一中」風波 吳敦義：他表他的嘛！
+ 對日人說日文，他回你英文
+ 《大學生了沒》停播！　Lulu嚇傻淚崩：
+clusting 93
+ 求學受教育的期間為何這麼長?
+ 新加坡的制度很值得學習嗎？
+ 現在國小作文這麼有創意嗎？
+ 訂製西裝在台灣有未來嗎？
+ 新加坡的制度很值得學習嗎？
+ 童年對一個人影響有多大？
+ 軍中學習
+ 身為台灣人，最值得驕傲的事？
+ Hans Zimmer在未來的史冊上會名留青史嗎?
+ 黃創夏槓林洲民有理想沒考慮百姓的心
+ 節日重要嗎
+ 杜拜的制度很值得學習嗎？
+ 潛艦也一樣有無害通過權嗎??
+ 新加坡的制度很值得學習嗎？
+ 人類能進行品種改良嗎？
+ 潛艦也一樣有無害通過權嗎??
+ 會覺得台灣喪禮很繁雜很累人嗎？
+ 身為台灣人，最值得驕傲的事？
+ 現在到底有什麼地震速報方式比較能信賴？
+ 美國人/台灣人哪一個平均開車技術比較好?
+ 因為所以蟑螂螞蟻數學國語生活與倫理
+ 童年對一個人影響有多大？
+ 歷史上有發生肥宅大屠殺嗎
+ 訂製西裝在台灣有未來嗎？
+ 童年對一個人影響有多大？
+ 26會覺得恢復帝制是好事嗎？
+ 訂製西裝在台灣有未來嗎？
+clusting 94
+ 柯文哲「捷運維持8折」 自認越來越少罵人
+ 接受豪宅反公宅 林洲民：台北人蠻自私的
+ 接受豪宅反公宅 林洲民：台北人蠻自私的
+clusting 95
+ 台大物理實驗室傳冒煙 疑有毒氣體外洩[影
+ 台大物理實驗室傳冒煙 疑有毒氣體外洩[影
+clusting 96
+ 郭董占用市區公有地　辯稱認養遭打臉
+ 公園旁大膽描述肛交　台電藝術「肛門主
+clusting 98
+ 中央氣象局 地震報告
+ 地震結果氣象局完全沒資訊？
+地震結果氣象局完全沒資訊？
+ 地震
+clusting 99
+ 有沒有爆料公社
+ 有沒有E-mail信箱越來越冷清的八卦？
+ 有沒有最狂隊名的八卦?
+ 有沒有郭雪芙不紅了的八卦？
+ 有沒有愛心悠遊卡的八卦
+ 有沒有理組很愛裝文組的八掛？
+ 有沒有Brain Plus IQ的卦 真的有人吃過?
+ 床的八卦
+ 美研社消失的卦
+ 有沒有澤野弘之的八卦?
+ 有沒有自然組一堆魯蛇在唸的八卦？
+ 有沒有慈濟人進軍北捷的八卦
+ 有沒有人生所為何來的八卦？
+ 有沒有每天聞臭豆腐油煙的八卦?
+ 有沒有海巡很涼的八卦
+ 有沒有川劇「變臉」不再稀奇的八卦？
+ 乳肥宅的乳是動詞還是形容詞?
+ 有沒有算命的八卦
+ 台彩今年都沒有連槓的八卦
+ 有沒有正統佛教的八卦
+ 有沒有肥宅犯罪不意外的八卦？
+ 有建國中學的八卦嗎？
+ 有木有Ivy的八卦
+ 有沒有博班喜歡抄襲碩班論文的八卦
+ 有沒有哪個偶像團體最會約砲的八卦
+ 有沒有完全沒朋友的卦
+ 有沒有舉牌人的八掛
+ 有沒有三姑六婆的八卦?
+ 有沒有結婚後男人會改變的八卦？
+ 有沒有黃牛票賣不出去的八卦
+ 有沒有網路上都是有錢人的八卦
+ 有沒有新田事件後續的八卦
+ 肚臍髒髒的八卦0.0
+ 有沒有李國毅現在在幹嘛的八卦
+ 有沒有高中耳機很高級的八卦？
+ 有沒有客運座位被壓迫的掛
+ 有沒有熱氣巴薩拉的八卦？
+ 臺灣電視怎沒FOX news的八卦
+ 理工男孩較不善與女孩交際的八卦?
+ 有沒有超級英雄沒有亞裔的八卦
+ 有沒有海巡很涼的八卦
+ 有沒有TWICE的粉絲眼睛長到頭頂上的八卦?
+ 有林志玲的八卦嗎?
+ 有沒有罐頭魚的八卦
+ 有看不見的東西不怕陽光的八卦?
+ 有沒有711什麼最好吃的八卦
+ 絕版遊戲的檔案還有攻略
+ 有沒有辦完畢展的八卦
+ 用小畫家畫圖很醜的卦
+ 有沒有視力會自己變好的八卦?
+ 有沒有"噫"的八卦?
+ 冰球到底哪裡好看阿?
+ 有沒有車停路邊 打閃黃燈的八卦
+ 有沒有臉皮厚的卦
+ 有建國中學的八卦嗎？
+ 有沒有圖論的八卦？
+ 有沒有中華電信沒效率的八卦
+ 有沒有G-1 格鬥會的掛
+ 有沒有天生贏家的八卦?
+ 有沒有愛上室友的八卦
+ 網路掛了嗎？
+ 有沒有少女時代少了潔西卡就滿普的
+ 有沒有Giri Giri eye的八卦?
+ 有沒有女生要的感覺到底是什麼的八卦
+ 有沒有心虛的八卦
+ 有沒有苦瓜的八卦？
+ 有沒有肥宅騎50cc的八卦?
+ 有沒有爆料公社
+ 有沒有甲甲戀人發現彼此是親兄弟的八卦
+ 有沒有熱到睡不著的八卦
+ 有沒有TWICE的粉絲眼睛長到頭頂上的八卦?
+ 有沒有完全沒朋友的卦
+ 有沒有戒菸會變胖的八卦呢
+ 有沒有亂世不彰是魔道生機的八卦
+ 有沒有天才都在想什麼的八卦
+ 有沒有打雷的八卦?
+ 晚上騎GOGORO太安靜的八卦?
+ 有沒有小偷大部分都找女生下手的八卦
+ 噓有哪幾種類型的八卦？
+ 有沒有Google日本軍艦的八卦?
+ 拿AV女優來類比周遭正妹的長相 的八卦?
+ 好萊塢艷照事件的八卦?
+ 有沒有陳意涵沒有林依晨紅的八卦?
+ 有沒有populady的服裝誰設計的?
+ 有沒有mapleroyals的八卦
+ 有古龍對女性看法的八卦嗎？
+ 肥宅有妹妹在八卦版會加分嗎
+ 有沒有美國隊長3很寫實的靠老爸掛
+ 有沒有梁發的八卦？
+到底要講什麼語言的八卦
+ 有沒有女生下巴美人痣的八卦
+ 有沒有今天人特別少的八卦??
+ 有沒有正妹跳熱舞不怕臭的八卦 ??
+ 有沒有●○○右轉的卦?
+ 有沒有wife吃到飽的八卦
+ 有沒有陸小鳳的八卦?
+ 有沒有幫助殘疾人士還被兇的卦？
+ 有沒有肛門流血的八卦
+ 有沒有波多野結衣在電影台的八卦
+ 有沒有新田事件後續的八卦
+ 有沒有小七關東煮湯頭的八卦
+ 母親節在FB要發什麼文比較應景的八卦????
+ 有沒有遊戲一定硬是要改版的八卦?
+ 有沒有連接某些設備 一下要pin 又不用？
+ 有沒有在蘋果工作壓力很大的掛？
+ 有沒有Fuckyou這id的八卦?
+ 邊緣人的定義到底是怎樣呢？
+ 有沒有高雄最強中式早餐的八卦
+ 有沒有不怎玩遊戲的,都特愛買旗艦機八卦?
+ 有沒有西塔琴的八卦
+ 有沒有馬可夫鏈的八卦
+ 有沒有團購一直要你貼文的八卦？
+ 有沒有幾乎都是南部在地震的掛啊？
+ 有沒有店名是「花蓮縣議會」卡拉OK八卦?
+ 有沒有如果統獨公投，而且統派過了的八卦?
+ 有沒有母親節就是生日的卦
+ 有沒有新手被老闆騙的八卦
+ 有沒有過母親節不正晶的八卦?
+ 有木有花豆是假紅豆的掛？
+ 有沒有開幕請一堆黑衣人的八卦？
+ 只能唸學店為何不唸逢甲淡江的八卦
+ 有沒有殭屍帳號的八卦
+ 有沒有演藝圈新一代大哥是誰的八卦?
+ 有沒有雞腿捲跟帶皮懶叫很像的八卦？
+ 不是肥宅來八卦會變肥宅嗎
+ 有沒有鯉魚潭八卦
+ 有沒有正統佛教的八卦
+ 有沒有被老芋幹可比CCR的八卦？
+ 有沒有辦活動都要徵志工的八卦
+ 有沒有這世上最厲害的食材的八卦?
+ 洗完澡一直流汗的八卦
+ 有沒有free hug的八卦
+ 有迷有台中早上酸辣湯的八卦啊？
+ Macbook Pro跟Surface Pro哪個比較潮?
+ 有沒有IU可以單挑台灣九成九女藝人八卦
+ 有沒有AMD跟Nvdia執行長都台裔的八卦?
+ 有沒有母親節還一堆人在ptt的八卦？
+ 有沒有掛在嘴邊的肉可以掛多久的掛？
+ 有沒有進入大澎風時代的八卦?
+ 有沒有小鮮肉牛的卦?
+ 幾百塊的毛筆和幾萬塊的毛筆 差在哪？
+ 有沒有睡到一半爬起來吐的八卦?
+ 有沒有我可以釣一整天的魚的八卦
+ 只能唸學店為何不唸逢甲淡江的八卦
+ 有出殯音樂的八卦嗎?
+ 有沒有雷雨中講電話的八卦
+ 有沒有算命的從來沒說過算不出來的八掛
+ 有沒有電腦自己發出聲音的八卦?
+ 有空中打蚊子的八卦嗎
+ 台灣黃安-肥宅的八卦？
+ 打電玩PING只有5八卦？
+ 有沒有Interstella 5555的八卦
+ 零卡果凍到底怎麼達成的
+ 有沒有中國沒有大胃王節目的八卦?
+ 有沒有數字磁場開運表的八卦
+ 有沒有四處都買不到台啤的八卦
+ 電風扇該怎麼吹的八卦
+ 川普是不是 人形蜈蚣或 人形畜生?
+ 有沒有陳意涵沒有林依晨紅的八卦?
+ 出場音樂的八卦
+ 被「雷」打到會有神蹟出現嗎?
+ 有沒有豆腐乳的八卦？
+ 肥宅效應的八卦?
+ 有沒有宏佳騰機車的八卦?
+ 臉臭到底有沒有錯？
+ 有沒有其實根本沒有陽明山這座山的八卦？
+ 有沒有戰爭中叫人去死的名言的八卦
+ 有沒有出國行李被要求檢查的八卦
+ 有沒有高富帥的霸主是誰的八卦?
+ 有沒有小鳳仙的八卦？
+ 為什麼沒有原味內褲專賣店?
+ 有沒有紅綠燈的八卦？
+ 有沒有母親節很商業化的八卦？
+ 有沒有肥宅根本不肥的八卦 ?
+ 請問有沒有重考學測的八卦呢?
+ 有沒有天才都在想什麼的八卦
+ 出場音樂的八卦
+ 送柳橙汁被推爆 原來是「都市恐怖傳說」
+ 有沒有海巡很涼的八卦
+ 有沒有達美樂披薩的餅皮 又粉又硬
+ 戈巴契夫算是俄獨之父嗎
+ 有沒有即食湯包or濃湯包的八卦
+ 有沒有快嘴做什麼的八卦？
+ 有沒有有人想轉職8+9的八卦?
+ 三個蘿莉妹妹一起吹泡泡的八卦？
+ 有沒有大野跟衫山的本本啊
+ 只能唸學店為何不唸逢甲淡江的八卦
+ 預防地震的八卦？
+ EXO跟BTS 哪團比較紅的八卦?
+ 暢遊詩人到底是幹嘛的?
+ 有沒有大肚山的八卦？
+ Apple MBA vs MBP 有掛嗎
+ 有沒有劉宇最近都不放閃的八卦？
+ 有沒有30度以上才能開冷氣的八卦?
+ 有沒有高中學生會的八掛？
+ 有沒有只要8+9流行=全台灣流行的八卦？
+ 有膠原蛋白吹風機的八卦嗎
+ 有沒有高中畢業就跑去國軍online的八卦？
+ 有沒有Win10輸入法轉換慢半拍的八卦
+ 有沒有系統警察的八卦？
+ 有沒有受傷要呼呼的八卦啊
+ 有沒有動畫電影其實是在賣單曲的八卦?
+ 有沒有痣上面的毛不修剪的八卦?
+ 有沒有黃金傳奇的八卦？
+ 有沒有戰爭中叫人去死的名言的八卦
+ 有沒有男人比女人適合帶小孩的八卦?
+ 有八掌溪事件的八卦嗎
+ 陶中國姑娘的八卦?
+ 有沒有某一天醒來發現自己變肥宅的八卦
+ 用小畫家畫圖很醜的卦
+ 幾百塊的毛筆和幾萬塊的毛筆 差在哪？
+ 有沒有vanoss gaming的八卦
+ 有沒有3C達人Tim的八卦?
+ 有沒有小鳳仙的八卦？
+ 有沒有半夜做噩夢睡不著的八卦
+ 有沒有 nothisman 怎麼唸的八卦
+ 有沒大便大到流汗的八卦
+ 有沒有很多宅宅誤解高中老師的八卦?
+ 有沒有好料的八卦？
+ 有沒有安安你好的八卦
+ 有沒有今天生日沒人理的八卦
+ 有沒有2012年私營監獄的八卦
+到底要講什麼語言的八卦
+ 有沒有總是被奇怪宗教纏上的八卦?_?
+ 有沒有人使用完德國髮線工程的卦
+ 有沒有TWICE的粉絲眼睛長到頭頂上的八卦?
+ 出個肥宅口味的冰淇淋有沒有搞頭
+ 有沒有澤野弘之的八卦?
+ 有沒有台灣蓋一堆假教堂的八卦？
+ 有沒有川劇「變臉」不再稀奇的八卦？
+ 有沒有浩克要的感覺到底是什麼的八卦
+ 有沒有去東京自助哪裡必去的八卦
+ 有沒有如果統獨公投，而且統派過了的八卦?
+ 有沒有大小S又要出來陷害臺灣人的卦
+盆栽土壤長蝸牛的八卦?
+ 找65年前過世的人的照片 八卦?
+ 有沒有馬可夫鏈的八卦
+ 有沒有組員無法溝通的八卦
+ 有沒有女生下巴美人痣的八卦
+ 有沒有這時間叫歡樂送對不對的八卦?
+ 有沒有Jon被翻譯成瓊恩的八卦啊？
+ 有沒有正統佛教的八卦
+ 有沒有睡不著適合聽的歌曲
+ 有刮痧的八卦嗎？
+ 有沒有打棒球會變醜的八卦
+ 有某版發廢文不會水桶的八卦？
+ 有沒有八卦版是限制級網站的八卦啊?
+ 有沒有(ΦωΦ)的八卦？
+ 有沒有臨演時薪超低  求的是機會的八卦？
+ 八卦板是如何演變成現在型態的？
+ 有沒有歪國人不吃蝦子的八卦?
+ 有沒有各種假波可夢app的八卦
+ 古代路上是不是沒有正妹
+ 有沒有相信陰謀論或超古文明的八卦?
+ 有沒有大葉榮譽校友的卦
+ 有沒有無名王者的八卦？
+ 有沒男生到底該不該刮腋毛的八卦?
+ 今天晚餐跟明日晚餐的八卦嗎
+ 有沒有飛太遠的八卦?
+ 有沒有新聞很愛報車禍的掛?
+ 有沒有毛毛蟲從天而降的掛??
+ 有沒有徒手爬高樓的八卦
+ 有沒有養天竺鼠的人一直在哭養哭養迴圈?
+ 勇之助哪裡不對勁選小紅豆不選陽子的八卦
+ 有沒有三餐都喝珍奶的八掛
+ 有沒有去東京自助哪裡必去的八卦
+ 有沒有nikeforever的八卦
+ 有當年跳進木柵獅子區男子陳中和的卦嗎?
+ 有沒有要留下什麼樣的台灣給下一代的掛?
+ 有沒有墨鏡的八卦?
+ 歐美人身材好是健身還是基因的八卦？
+ 有沒有武俠手遊霸主是誰的八卦
+ 只能唸學店為何不唸逢甲淡江的八卦
+ 有沒有排骨酥湯的卦？
+ 有沒有九字護身法臨兵鬥者皆陣列在前的卦
+ 有沒有匿名投稿的八卦
+ 有沒有陀螺儀的八卦？
+ 有沒有直腸能容納多少精液的八卦？
+ 有沒有燒餅的八卦?
+ 有沒有舉牌人的八掛
+ 有沒有汽車兩段式左轉的掛
+ 有沒有新臺中車站的八卦
+ 網路盛行假裝異性的八卦
+ 只能唸學店為何不唸逢甲淡江的八卦
+ PVC模型這摸貴 為什麼一堆人買
+ 有沒有台灣民政府鎮暴部隊的八卦?
+ 只能唸學店為何不唸逢甲淡江的八卦
+ 有沒有台灣人只會罵其他都不會的掛？
+ 有沒有我愛紅娘的八卦?
+ 有沒有當我們銬在一起的八卦？
+ 八卦版的大秘寶是什麼?
+ 有沒有超級星期天的八卦
+ 發妹妹文的人到底有沒有妹妹？
+ 有沒有「嫦娥奔月」的八卦?
+ 有沒有品客變難吃的掛
+ 有沒有現在批踢踢分身很好創的八卦
+ 有沒有全家便利商店的八卦?
+ 有沒有陳德政的八卦？
+ 有沒有化妝前後差距的八卦?
+ 有沒有有文明沒有文化的掛?
+ 有日本NHK直播新聞出現隱身術的八卦嗎?
+ 有沒有匈奴大漢跟羅馬的八卦？
+ 不是肥宅來八卦會變肥宅嗎
+ 有沒有高中耳機很高級的八卦？
+ 有沒有眼鏡行抗ox抗ab一堆抗價格的八卦!?
+ 有沒有住苗栗市的八卦？
+ 有沒有台灣工作大部分很穩定的八卦
+ 各位體態都是幾歲時後開始走鐘的阿??
+ 有沒 三魂七魄 的八卦?
+ 有沒有安安你好的八卦
+ 有沒有小雯的掛
+ 慾火焚身，明知被坑仍硬上的八卦
+clusting 101
+ 「宇宙大覺者」天價挨批 慈濟今年不
+ 大巨蛋解約金遠雄喊370億 柯文哲：呷卡麥
+ 王世堅自訂「三不」　全面迎戰柯文哲
+ 「宇宙大覺者」天價挨批 慈濟今年不賣了
+ 有3個不正義 他籲中正紀念堂改建「大巨蛋
+ 「宇宙大覺者」天價挨批 慈濟今年不
+ 大巨蛋解約金遠雄喊370億 柯文哲：呷卡麥
+clusting 102
+ 日職簽賭風暴》前讀賣巨人投手笠原將生被
+ 桃猿摃上裁判　洪總、劉家豪被趕出場
+ SBL球星變摔角選手　裕隆周柏臣酒後痛毆
+ 晉級四強　「閃電狼」電競隊明將對決美土
+ 玩家大失血　新顯卡卡皇登場
+ 傳涉毆女友　SBL球星周柏臣回應了
+ SBL球星變摔角選手　裕隆周柏臣酒後痛毆
+clusting 103
+ 反制蘭嶼禁漁令　恆春鎮長嗆封後壁湖港
+蘭嶼成台版沖之鳥？恆春漁民不滿台東禁飛
+clusting 104
+ 中國女子天團爆發詐欺事件
+ 世衛密件曝光 我列中國一省
+ 習近平內部講話曝光 政變集團呼之欲出
+clusting 105
+ 為何台南孔廟是全台首學?
+ 從台北走，台東還是台西比較遠
+ 鄉下還是都市比較早破處？
+ 買不起大台北房子到底是哪裡有問題？
+ 桃園是不是不太管龜山?
+ 台北公館最近很多外國人
+ 台中哪裡好玩？
+ 師大 公館 永康街 哪個地方美食最多?
+ 東區是台北市正妹最多的地方嗎??
+ 想要隱居鄉下哪裡離都市最近？
+ 台北+新北有多少人家鄉在外縣市?
+clusting 106
+ 妙禪師父擊退恐怖情人!!
+ 妙禪師父擊退恐怖情人!!
+clusting 107
+ 伊斯蘭國前控制區　聯合國發現50多個亂
+ 文化偏見？埃及官員：美國卡通導致IS崛起
+ BBC:敘利亞衝突 阿勒坡停火延長三天
+clusting 108
+ 中職/親子日搭配母親節　吳志揚、朱立倫
+ NHK辱排灣族案敗訴 日人捐鳥居盼台日友好
+clusting 109
+ 石原イシノ vs 超殺女 誰勝?
+ 石原イシノ vs 超殺女 誰勝?
+clusting 110
+ 演唱會螢光棒
+ 有沒有慶祝總統就職演唱會的卦？
+ 有沒有聽演唱會揮國旗的八卦？
+ 蕭煌奇送金曲獎當禮物　許富凱發願拿台語
+clusting 111
+ 金正恩稱不用核武 還要改善「兩韓關係」
+ 金正恩：北韓為實現世界無核化努力
+clusting 113
+ 隱藏歌手?
+蔡依林的歌聲算是實力派歌手嗎?
+蔡依林的歌聲算是實力派歌手嗎?
+clusting 114
+ 棒球比賽因為天降死魚中斷3分鐘
+ 日本職棒比賽因為天降死魚中斷3分鐘
+ 喀麥隆足球國手 Patrick Ekeng 比賽中猝逝
+ 死魚從天而降 比賽罕見中斷
+clusting 118
+ 空中相會不禮讓　飛行傘教練判賠38萬
+ 福建泰寧水電廠工地滑坡　至少30人被埋
+ 教召總是同批人 2500多人中槍4次
+ 俏女警好神　開罰單還讓人道謝
+clusting 120
+ 總統就職禮賓鞋 本土業者發想設計
+ 喜洋洋！520總統就職大典 人民是主角
+ 520就職舞台設計　曾蘇銘：以紅色為主色
+clusting 125
+ 少時美腿嗨翻小巨蛋 潤娥自誇拯救地球
+Hebe忙著錄音 小師妹篡位S.H.E
+clusting 127
+ 半人半獸 馬來西亞人獸混血山羊出生(圖)
+ 黑人牙高 白人牙膏
+clusting 129
+ 樂視賈躍亭：蘋果創新不足 已經「過時」
+ 樂視賈躍亭：蘋果創新不足 已經「過時」
+ 樂視賈躍亭：蘋果創新不足 已經「過時」
+ 樂視賈躍亭：蘋果創新不足 已經「過時」
+clusting 130
+ 如果真有30CM?
+ 請問各位安安，有被機車電池電到過嗎？
+clusting 131
+ 零錢
+ 超商店員收到200元鈔都怎麼辦？
+ 超商店員收到200元鈔都怎麼辦？
+ 圖／影印機印鈔票 女持假鈔買菸被逮
+clusting 132
+ MP廷廷約砲女星身分被挖 !
+ 江蕙惜情赴約520國宴 家家唱壓軸不怕被大
+clusting 133
+ 捕獲全台唯一黑人超商店員　網友暴動想
+ 網友邀援交妹扮「神鵰」 照片曝光超崩潰
+clusting 134
+ 美國隊長打得贏黃飛鴻嗎???
+ 中華職棒 為何那麼強?
+ NBA裁判跟CPBL裁判哪個比較公正?
+clusting 136
+ 各大學的書卷獎獎金金額
+ 棒球冠軍缺經費，替代役男熱血義賣助偏鄉
+clusting 137
+5/7行車紀錄器畫面晚上9點屏東東港朝隆路
+ 自行車道
+clusting 138
+ 中職最強殘判
+ 史上最強數學王牌  印度~拉馬努金~ ?
+clusting 139
+ 經痛就像照大腸鏡？
+ 為何拍裸照下流，讓人畫裸體就是藝術？
+ 經痛就像照大腸鏡？
+ 為何拍裸照下流，讓人畫裸體就是藝術？
+ 為何拍裸照下流，讓人畫裸體就是藝術？
+clusting 142
+ 照顧4身障家人 高職生慈孝楷模
+ 家庭中有醫學生?
+clusting 144
+ 奶好大，陪一晚多少？  劉雨柔暴怒回嗆
+ 賈靜雯一句話　修杰楷：聽完當場翻臉！
+ 哈孝遠被嗆雞雞小 爆氣:酸民忌妒球員把妹
+ 柯文哲頻挨轟 柯媽幫他說話眼眶泛紅
+ 柯P打電話回老家 柯媽竟然...
+ 奶好大，陪一晚多少？  劉雨柔暴怒回嗆
+ 王菲「舊愛」嘴砲亂轟五月天「確實不好聽
+clusting 148
+ 火車駛過十分老街 遊客湧上鐵道、日網友
+ 火車駛過十分老街 遊客湧上鐵道、日網友
+clusting 149
+ 講手機提高腦癌風險？澳洲研究：不會
+ 國外犯罪
+clusting 153
+ 關於高鐵
+ 關於高鐵
+clusting 154
+ 石斑魚業者憂…520後更慘
+ 石斑魚業者憂…520後更慘
+clusting 156
+ 基因
+ 基因
+clusting 157
+ 歐陽娜娜生日巡迴大提琴演奏會開賣啦
+ 大發!TWICE連兩天奪音樂節目冠軍 志效又
+clusting 159
+ 東風-21部署東北 封鎖日2海峽
+巴拿馬文件10日釋出 恐再掀風暴
+ 東風-21部署東北 封鎖日2海峽
+clusting 160
+ 陸媒：美出現「川普現象」是政治發生問題
+ “羅興亞人”為何在緬甸成為敏感詞？
+clusting 162
+ 老阿伯配大正妹。
+ 老阿伯配大正妹。
+clusting 166
+ 中國籍漁船越區捕魚?拒繳罰鍰17船員絕食
+ 海巡署與屏東漁船取得聯繫 人船均安
+ 屏東漁船遭不明軍艦尾隨失聯　海巡艦馳援
+clusting 167
+ 陸客自由行少65％ 打趴台觀光業
+ 陸客自由行少65％ 打趴台觀光業
+clusting 169
+ 花蓮議會驅離東華學生原因
+ 議員罵「東華爛學校」 校長抗議、挺學生
+ 議員罵「爛學校」 東華大學抗議、挺直播議會學生
+clusting 170
+ 超噁！男子大口嚼爛千條活蚯蚓吞下
+ 臭懶覺
+clusting 171
+ 下載互聯網上的視頻合法嗎？
+ 線上遊戲會被監聽嗎?
+ 廢光碟的用途？
+clusting 172
+ 教師超額怎麼辦?教處長：屏東不會資遣
+ 東華校長和邱永開幹啦
+ 東華校長和邱永開幹啦
+clusting 176
+ 目前中國網友正在盛傳
+ 中國客採摘活珊瑚　泰國民眾無力勸阻
+ 網友呼籲人肉搜索中國防火長城築牆者
+clusting 177
+ 友達以上戀人未滿 問題出在哪？
+ 不到平均身高的肥宅該何去何從?
+ 國小老師的pr值大概是多少？
+ 在台北打工要賺多少才夠用?
+ 書卷獎該給多少獎學金才合理的八卦?
+clusting 179
+ 在台灣種櫻花，種10顆櫻花，只會活2顆？
+ 在台灣種櫻花，種十顆櫻花，只會活2顆？
+clusting 180
+ 教授機上解微積分方程式！女客以為恐攻暗
+ 機上演算微積分　經濟教授被當恐怖份子
+ 浪漫的方程式？
+ 男教授機上算數學　竟被當恐怖分子
+clusting 182
+ 過火爐?
+ 母親節怎麼過?
+ 今天無法陪媽媽過母親節的人會難過嗎？
+ 五年前的今天也是母親節
+clusting 184
+ 賴清德市長（關於八田與一逝世74週年）
+柯汗宣誓就職倫敦市長　承諾建立最透明政
+clusting 188
+ 擺脫藍色憂鬱 陳建仁：提升台灣競爭力
+ 台灣裙帶資本主義指數超越中國
+ 台灣獨立 經濟？？
+clusting 189
+ 日本直升機母艦加賀號　穩步邁向成軍
+ 香港迪士尼引進「星際大戰」設施　6/11
+ 亞洲首展Gear VR 4D體驗椅　
+clusting 196
+ 韓國女團熱舞不設防 「該邊」鮮肉全都露!
+ 晚間新聞狂播AOA廣告  AOA會紅嗎
+clusting 201
+ 福建發生山崩 35人失蹤
+ 台南小情侶套房燒炭 研判死亡超過2天
+ 福建發生大規模山崩 35人失蹤
+clusting 205
+學妹問我性交易除罪化報告怎麼寫
+ 做問卷什麼獎勵吸引你
+ 準經長李世光聽7建言 工總：講不通我們就
+clusting 207
+ 打破「ADIZ魔咒」張鳳強少將 年中退伍
+ 被找到了！　台中青果社員工1年檢舉5
+clusting 211
+ 珠心算 或 手指算九九乘法
+ 珠心算 或 手指算九九乘法
+clusting 218
+ 周子瑜與蔡依林誰比較耐看?
+ 老處男跟老處女哪個比較慘?
+[Finished in 8.1s]

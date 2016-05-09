@@ -59,16 +59,22 @@ def fetch_articles(title, number=20, days=-1, page=1, only_title=False, fl=None,
     desc_arg = 'sort=timestamp+desc&' if desc else ''
     url = server_url + desc_arg + 'wt=json&indent=true' + urlencode(post_args)
 
-    req = request.urlopen(url)
-    encoding = req.headers.get_content_charset()
-    sys_encoding = sys.stdin.encoding
-    json_data = req.read().decode(encoding).encode(
-        sys_encoding, 'replace').decode(sys_encoding)
-    waitting_time = time.time() - start_time
-    print('fetch ' + str(number) + ' articles spend ' + str(waitting_time))
-    if (waitting_time == 0):
-        print(json_data)
-    return parse_to_articles(json_data)
+    articles = []
+    retry_times = 3
+    while len(articles) is 0 and retry_times > 0:
+        req = request.urlopen(url)
+        encoding = req.headers.get_content_charset()
+        sys_encoding = sys.stdin.encoding
+        json_data = req.read().decode(encoding).encode(
+            sys_encoding, 'replace').decode(sys_encoding)
+        waitting_time = time.time() - start_time
+        articles = parse_to_articles(json_data)
+        print('fetch ' + str(len(articles)) + ' articles spend ' + str(waitting_time))
+        if len(articles) is 0:
+            print('error occur... retry fetching articles')
+        retry_times = retry_times - 1
+
+    return articles
 
 
 def parse_to_articles(json_data):

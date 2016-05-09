@@ -3,7 +3,9 @@ import gensim.models
 from gensim import matutils
 from tokenizer import cut
 from numpy import array, dot
-import random
+import re
+from copy import deepcopy
+# import random
 
 
 def get_test_articles():
@@ -15,7 +17,7 @@ def get_test_articles():
     articles = []
     for clusting in all_clusting:
         articles.extend(clusting)
-    random.shuffle(articles)
+    # random.shuffle(articles)
     return articles
 
 
@@ -33,26 +35,26 @@ def load_model():
     return model
 
 
-def compute_vector(model, str):
-    tokens = cut(str, using_stopword=False, simplified_convert=True)
+def compute_vector(model, str, log=False):
+    tokens = cut(str, using_stopword=True, simplified_convert=True, log=log)
+    if len(tokens) > 0 and (tokens[-1] in ['八卦', '卦']):
+        del tokens[-1]
+    if log is True:
+        print(tokens)
     tokens_not_found = [word for word in tokens if word not in model]
     if len(tokens_not_found) is not 0:
         print('token not in model :' + " ".join(tokens_not_found))
     v1 = [model[word] for word in tokens if word in model]
     if len(v1) is 0:
-        raise Exception()
+        print('invalid article: \'' + str + '\'')
+        return None
     vector = matutils.unitvec(array(v1, float).mean(axis=0))
     return vector
 
 
 def compute_article_vector(model, articles):
     for article in articles:
-        try:
-            article.vector = compute_vector(model, article.title)
-        except Exception:
-            print('invalid article:')
-            print(article)
-            article.vector = None
+        article.vector = compute_vector(model, article.title)
 
 
 def test_vector_centroid_similarity():
@@ -102,7 +104,7 @@ def test_clusting(articles=None):
                 print(article.vector)
                 return
 
-        if current_max_similarity < 0.45:
+        if current_max_similarity < threshold:
             log('new clusting ' + article.title)
             if current_fit_clusting is not None:
                 log('compare with clusting ' + current_fit_clusting['articles'][0].title)
@@ -113,15 +115,36 @@ def test_clusting(articles=None):
             size = len(current_fit_clusting['articles'])
             current_fit_clusting['centroid'] = (
                 current_fit_clusting['centroid'] * size + article.vector) / (size + 1)
-            current_fit_clusting['articles'].append(article)
+            current_fit_clusting['articles'].append(deepcopy(article))
 
     print('-------------------')
+    current_max_clusting_size = 0
+    min_clusting_count = 0
+    min_clusting_size = 2
+    # clusting_with_same_title = 0
     for i in range(len(clustings)):
-        if len(clustings[i]['articles']) < 2:
+        size = len(clustings[i]['articles'])
+        if size > current_max_clusting_size:
+            current_max_clusting_size = size
+        if size < min_clusting_size:
+            min_clusting_count += 1
             continue
+        # if len(set([article.title for aritcle in clustings[i]['articles']])) < 2:
+        #     print(set([article.title for aritcle in clustings[i]['articles']]))
+        #     clusting_with_same_title += 1
+        #     continue
+
         print('clusting ' + str(i))
         for aritlce in clustings[i]['articles']:
-            print(aritlce)
+            print(aritlce.title)
+
+    print('total articles : ', len(articles))
+    print('unrepeat titles : ', len(set([article.title for article in articles])))
+    print('total clustings : ', len(clustings))
+    # print('clustings with same title ', clusting_with_same_title)
+    # print('clustings with different title ', len(clustings) - clusting_with_same_title)
+    print('max_clusting_size : ', current_max_clusting_size)
+    print('clustings size under {} : {}'.format(min_clusting_size, min_clusting_count))
 
 
 def log(str):
@@ -129,41 +152,31 @@ def log(str):
         print(str)
 
 
-def validate(title, another_title):
+def validate(data):
     model = load_model()
-    vector1 = compute_vector(model, title)
-    vector2 = compute_vector(model, another_title)
-    similarity = dot(vector1, vector2)
-    print(similarity)
+    for i in range(1, len(data)):
+        print(data[i - 1])
+        vector1 = compute_vector(model, data[i - 1], True)
+        print(data[i])
+        vector2 = compute_vector(model, data[i], True)
+        if vector1 is None or vector2 is None:
+            print('vector error')
+            continue
+        similarity = dot(vector1, vector2)
+        print(similarity)
 
-# test_vector_centroid_similarity()
+
+def simulate(file_name, clusting_number):
+    with open('word2vec_log/clusting_log/' + file_name, 'r', encoding='utf8') as file:
+        content = file.read()
+        pattern = re.compile('clusting ' + str(clusting_number) + '\n([\W\w]*?)\nclusting')
+        titles = re.findall(pattern, content)[0].split('\n')
+        validate(titles)
+
+
 debug_mode = True
-data = [
-    "有沒有成為人生勝利組最簡易的SOP?",
-    "又死了兩個孩童，怎麼不趕快通過唯一死刑",
-    "怎麼樣就算是人生勝利組？",
-    "死刑定讞之後為什麼遲遲不槍決",
-    "娶到周曉菁算不算人生勝利組?",
-    "40多歲才考上公務員算人生勝利組嗎?",
-    "有沒有法官不愛判死刑的八卦 ???",
-    "娶到周曉菁算不算人生勝利組?",
-    "柯震東是人生勝利組嗎?",
-    "現在還不到台灣自決建國的時機?",
-    "有沒有成為人生勝利組最簡易的SOP?",
-    "死刑定讞之後為什麼遲遲不槍決",
-    "死刑定讞之後為什麼遲遲不槍決",
-    "四叉貓算不算肥宅中的人生勝利組",
-    "為啥美國有死刑可以不用鳥兩公約",
-    "有沒有成為人生勝利組最簡易的SOP?",
-    "有沒有成為人生勝利組最簡易的SOP?",
-    "參與死刑判決 日平民裁判官心理障礙",
-    "求學受教育的期間為何這麼長?",
-    "不判決死刑是因為總量管制的原因嗎？",
-    "還有哪些罪應該判死刑",
-    "連殺8雇主不手軟　廣東恐怖保母遭判死刑",
-    "他在信中寫上這3個字　慘遭主管洗臉",
-    "蘋果將推iPad Air 3？陸媒曝光規格"
-]
+threshold = 0.55
+# test_vector_centroid_similarity()
 # test_clusting(get_mock_aritcles(data))
 test_clusting()
-# validate('美研社消失的卦', '有出殯音樂的八卦嗎?')
+# simulate('20160509_2000_remove八卦', clusting_number=119)

@@ -3,6 +3,7 @@ from ptt_article_fetcher import fetch_articles
 import time
 import os
 import lda
+import re
 
 
 def log(file, object):
@@ -65,4 +66,12 @@ def one_article_test(article_title):
     build_lda_by_keywords([article_title], 1)
 
 
-one_article_test('蘋果將推iPad Air 3？陸媒曝光規格')
+def test_from_log(file_name, clusting_number):
+    with open('word2vec_log/clusting_log/' + file_name, 'r', encoding='utf8') as file:
+        content = file.read()
+        pattern = re.compile('clusting ' + str(clusting_number) + '\n([\W\w]*?)\nclusting')
+        titles = re.findall(pattern, content)[0].split('\n')
+        for title in titles:
+            one_article_test(title)
+
+# one_article_test('蘋果將推iPad Air 3？陸媒曝光規格')

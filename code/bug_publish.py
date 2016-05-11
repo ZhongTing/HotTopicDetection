@@ -43,17 +43,24 @@ def test_clusting(articles):
             current_fit_clusting['articles'].append(deepcopy(article))
 
     print('-------------------')
-
-    i = 0
-    for clusting in clustings:
+    for i in range(len(clustings)):
         print('clusting ' + str(i))
-        for aritlce in clusting['articles']:
+        for aritlce in clustings[i]['articles']:
             print('bbb', aritlce.title)
-            print('fff', aritlce.title)
+            print('ddd', aritlce.title)
             t = article.title
-            print('ddd', t)
-            print('fff', aritlce.title)
-        i += 1
+            print('aaa', t)
+            print('-----------')
+
+    print('-------------------')
+    for i in range(len(clustings)):
+        print('clusting ' + str(i))
+        for article in clustings[i]['articles']:
+            print('bbb', article.title)
+            print('ddd', article.title)
+            t = article.title
+            print('aaa', t)
+            print('-----------')
 
 
 debug_mode = False

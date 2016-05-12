@@ -1,13 +1,13 @@
-import ptt_article_fetcher
-import tokenizer
+from code import ptt_article_fetcher
+from code.tokenizer import cut
 
 articles = ptt_article_fetcher.fetch_articles('', number=10, page=6)
-using_stopword = False
+using_stopwords = False
 
 equals_tokens = []
 for article in articles:
-    token1 = tokenizer.cut(article.title, using_stopword, True)
-    token2 = tokenizer.cut(article.title, using_stopword, False)
+    token1 = cut(article.title, using_stopwords, True)
+    token2 = cut(article.title, using_stopwords, False)
     if token1 == token2:
         equals_tokens.append(token1)
     else:

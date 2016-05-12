@@ -1,5 +1,5 @@
 import gensim.models
-from tokenizer import cut
+from code.tokenizer import cut
 import time
 
 model_names = [
@@ -35,12 +35,12 @@ def doesnt_match_test():
 def most_similar_test(data_set=None):
     if data_set is None:
         data_set = [
-            {'positive': ['台灣', '中文'], 'negative':['美國']},
+            {'positive': ['台灣', '中文'], 'negative': ['美國']},
             {'positive': ['桌子', '椅子']},
             {'positive': ['奶茶', '雞排']},
-            {'positive': ['爸爸', '男'], 'negative':['女']},
-            {'positive': ['弟弟', '男'], 'negative':['女']},
-            {'positive': ['爺爺', '男'], 'negative':['奶奶']},
+            {'positive': ['爸爸', '男'], 'negative': ['女']},
+            {'positive': ['弟弟', '男'], 'negative': ['女']},
+            {'positive': ['爺爺', '男'], 'negative': ['奶奶']},
             {'positive': ['柯', '市長']},
             {'positive': ['柯']},
         ]

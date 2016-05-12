@@ -1,14 +1,15 @@
-from tokenizer import cut
-from ptt_article_fetcher import fetch_articles
 import time
 import os
-import lda
 import re
 
+from code import lda
+from code.ptt_article_fetcher import fetch_articles
+from code.tokenizer import cut
 
-def log(file, object):
-    print(object)
-    print(object, end="\n", file=file)
+
+def log(file, obj):
+    print(obj)
+    print(obj, end="\n", file=file)
 
 
 def build_lda_by_keywords(keywords, num_article_for_search, num_topics=0):
@@ -22,15 +23,15 @@ def build_lda_by_keywords(keywords, num_article_for_search, num_topics=0):
 
     with open(filename, 'w', encoding="utf-8") as file:
         articles = []
-        for keyoword in keywords:
-            articles_keyword = fetch_articles(keyoword, number=num_article_for_search, days=-1)
+        for keyword in keywords:
+            articles_keyword = fetch_articles(keyword, number=num_article_for_search, days=-1)
             articles.extend(articles_keyword)
-            log(file, "%s : %d" % (keyoword, len(articles_keyword)))
+            log(file, "%s : %d" % (keyword, len(articles_keyword)))
 
         texts = []
         for article in articles:
             tokens = cut(
-                article.title + article.content, using_stopword=True, simplified_convert=True)
+                article.title + article.content, using_stopwords=True, simplified_convert=True)
             texts.append(tokens)
 
         start = time.time()
@@ -66,10 +67,10 @@ def one_article_test(article_title):
     build_lda_by_keywords([article_title], 1)
 
 
-def test_from_log(file_name, clusting_number):
-    with open('word2vec_log/clusting_log/' + file_name, 'r', encoding='utf8') as file:
+def test_from_log(file_name, clustering_number):
+    with open('word2vec_log/clustering_log/' + file_name, 'r', encoding='utf8') as file:
         content = file.read()
-        pattern = re.compile('clusting ' + str(clusting_number) + '\n([\W\w]*?)\nclusting')
+        pattern = re.compile('clustering ' + str(clustering_number) + '\n([\W\w]*?)\nclustering')
         titles = re.findall(pattern, content)[0].split('\n')
         for title in titles:
             one_article_test(title)

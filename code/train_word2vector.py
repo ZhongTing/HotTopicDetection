@@ -1,5 +1,5 @@
-from ptt_article_fetcher import fetch_articles
-import tokenizer
+from code.ptt_article_fetcher import fetch_articles
+from code.tokenizer import cut
 import os
 import time
 from gensim.models import Word2Vec
@@ -8,17 +8,17 @@ from gensim.models import Word2Vec
 def get_sentence(keyword, number, page=1):
     articles = fetch_articles(keyword, number, page=page, fl='title, content', desc=False)
 
-    sentences = []
+    result_sentences = []
     for article in articles:
-        tokens = tokenizer.cut(article.title, using_stopword=False, simplified_convert=True)
-        sentences.append(tokens)
-        # if hasattr(article, 'content_sentence'):
-            # for sen in article.content_sentence:
-                # sentences.append(tokenizer.cut(sen, using_stopword=False, simplified_convert=True))
+        tokens = cut(article.title, using_stopwords=False, simplified_convert=True)
+        result_sentences.append(tokens)
+        if hasattr(article, 'content_sentence'):
+            for sen in article.content_sentence:
+                result_sentences.append(cut(sen, using_stopwords=False, simplified_convert=True))
         if hasattr(article, 'content'):
-            sentences.append(
-                tokenizer.cut(article.content, using_stopword=False, simplified_convert=True))
-    return sentences
+            result_sentences.append(cut(article.content, using_stopwords=False, simplified_convert=True))
+    return result_sentences
+
 
 title_number = 800000
 model_dir = 'bin'
@@ -32,7 +32,7 @@ try:
     model = Word2Vec.load(model_path)
     model.train(sentences)
 except FileNotFoundError:
-    print('creat new word2vec model')
+    print('create new word2vec model')
     model = Word2Vec(sentences, size=100, window=5, min_count=1, workers=4)
 
 end_time = time.time()

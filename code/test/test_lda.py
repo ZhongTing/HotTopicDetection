@@ -1,10 +1,9 @@
-import time
 import os
 import re
-
-from code import lda
-from code.ptt_article_fetcher import fetch_articles
-from code.tokenizer import cut
+import time
+from code.model import lda
+from code.model.ptt_article_fetcher import fetch_articles
+from code.model.tokenize.tokenizer import cut
 
 
 def log(file, obj):

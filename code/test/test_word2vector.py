@@ -1,6 +1,8 @@
-import gensim.models
-from code.tokenizer import cut
 import time
+
+import gensim.models
+
+from code.model.tokenize.tokenizer import cut
 
 model_names = [
     'model_78w.bin',
@@ -10,7 +12,7 @@ model_names = [
 models = []
 for model_name in model_names:
     t = time.time()
-    models.append(gensim.models.Word2Vec.load('bin/' + model_name))
+    models.append(gensim.models.Word2Vec.load('../bin/' + model_name))
     print('load model : ' + model_name + ' spend ' + str(time.time() - t) + ' seconds')
 
 

@@ -1,8 +1,10 @@
-from code.ptt_article_fetcher import fetch_articles
-from code.tokenizer import cut
 import os
 import time
+
 from gensim.models import Word2Vec
+
+from code.model.ptt_article_fetcher import fetch_articles
+from code.model.tokenize.tokenizer import cut
 
 
 def get_sentence(keyword, number, page=1):

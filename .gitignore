@@ -1,4 +1,4 @@
 .idea
 data/
-code/__pycache__
-bin/
+__pycache__
+bin

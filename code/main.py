@@ -1,11 +1,10 @@
-from code.ptt_article_fetcher import fetch_articles, Article
-import gensim.models
-from gensim import matutils
-from code.tokenizer import cut
-from numpy import array, dot
 import re
 from copy import deepcopy
-# import random
+import gensim.models
+from gensim import matutils
+from numpy import array, dot
+from code.model.ptt_article_fetcher import fetch_articles, Article
+from code.model.tokenize.tokenizer import cut
 
 
 def get_test_articles():
@@ -58,7 +57,6 @@ def compute_article_vector(model, articles):
 
 
 def test_vector_centroid_similarity():
-
     model = load_model()
     articles = get_test_articles()
     compute_article_vector(model, articles)
@@ -113,7 +111,7 @@ def test_clustering(articles=None):
         else:
             size = len(current_fit_cluster['articles'])
             current_fit_cluster['centroid'] = (
-                current_fit_cluster['centroid'] * size + article.vector) / (size + 1)
+                                                  current_fit_cluster['centroid'] * size + article.vector) / (size + 1)
             current_fit_cluster['articles'].append(deepcopy(article))
 
     print('-------------------')

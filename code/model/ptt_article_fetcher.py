@@ -4,6 +4,8 @@ import json
 import re
 import sys
 import time
+import os
+import pickle
 
 
 class Article(object):
@@ -11,6 +13,10 @@ class Article(object):
 
     def __init__(self, arg):
         super(Article, self).__init__()
+        self.push_score = 0
+        self.boo_score = 0
+        self.score = 0
+
         if 'id' in arg:
             self.id = arg['id']
         if 'title' in arg:
@@ -38,18 +44,25 @@ class Article(object):
             self.comments = json.loads(arg['comments'])
             self.comments_content = []
             for comment in self.comments:
-                self.comments_content.append(comment[2])
+                if comment[0] == '推':
+                    self.push_score += 1
+                elif comment[0] == '噓':
+                    self.boo_score += 1
 
-    def __repr__(self):
-        return self.title
+            self.score = self.push_score - self.boo_score
+
+    def __str__(self):
+        return 'article {}\n(推/噓/總):{}/{}/{}'.format(self.title, self.push_score, self.boo_score, self.score)
 
 
-def fetch_articles(title, number=20, days=-1, page=1, only_title=False, fl=None, desc=True):
+def fetch_articles(title, number=20, end_day='NOW/DAY', days=-1, page=1, only_title=False, fl=None, desc=True):
     start_time = time.time()
     server_url = 'http://140.124.183.7:8983/solr/HotTopicData/select?'
     post_args = {'q': 'title:*' + title + '*', 'rows': number, 'start': (page - 1) * number + 1}
     if days >= 0:
-        post_args['fq'] = 'timestamp:[NOW/DAY-' + str(days) + 'DAYS TO NOW/DAY]'
+        if re.compile(r'\d{4}/\d{2}/\d{2}').match(end_day):
+            end_day = "-".join(end_day.split('/')) + 'T00:00:00Z'
+        post_args['fq'] = 'timestamp:[{0}-{1}DAYS TO {0}]'.format(end_day, days)
     if only_title:
         post_args["fl"] = 'title'
     if fl:
@@ -77,10 +90,37 @@ def fetch_articles(title, number=20, days=-1, page=1, only_title=False, fl=None,
     return articles
 
 
+def store_one_day_data(day):
+    base_dir = os.path.dirname(__file__)
+    folder_dir = os.path.join(base_dir, 'article_data')
+    if os.path.exists(folder_dir) is False:
+        os.mkdir(folder_dir)
+    obj = fetch_articles('', 5000, end_day=day, days=1)
+    day = day.replace('/', '', 3)
+    with open(os.path.join(folder_dir, day), mode='wb') as file:
+        pickle.dump(obj, file)
+
+
+def fetch_from_local_data(day):
+    base_dir = os.path.dirname(__file__)
+    folder_dir = os.path.join(base_dir, 'article_data')
+    day = day.replace('/', '', 3)
+    with open(os.path.join(folder_dir, day), mode='rb') as file:
+        return pickle.load(file)
+
+
 def parse_to_articles(json_data):
     articles = []
     for data in json.loads(json_data)['response']['docs']:
         articles.append((Article(data)))
     return articles
 
-# article = fetch_articles('', 1, page=19, desc=True)[0]
+
+# all_articles = fetch_articles('', number=3000, end_day='2016/03/15', days=1)
+# all_articles = fetch_from_local_data('2016/03/15')
+# print(all_articles[0])
+# print(len(all_articles))
+# print(len([a for a in all_articles if a.score > 10]))
+# print(len([a for a in all_articles if a.score > 20]))
+# store_one_day_data('2016/03/15')
+

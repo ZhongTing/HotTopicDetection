@@ -1,5 +1,4 @@
 import os
-
 import jieba
 import json
 from hanziconv import HanziConv

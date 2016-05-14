@@ -3,7 +3,8 @@ from copy import deepcopy
 import gensim.models
 from gensim import matutils
 from numpy import array, dot
-from code.model.ptt_article_fetcher import fetch_articles, Article
+import code.model.ptt_article_fetcher as fetcher
+from code.model.ptt_article_fetcher import Article
 from code.model.my_tokenize.tokenizer import cut
 
 
@@ -11,7 +12,7 @@ def get_test_articles():
     all_clustering = [
         # fetch_articles("人生勝利組", number=5),
         # fetch_articles("死刑", number=5),
-        fetch_articles("*", number=2000)
+        [a for a in fetcher.fetch_from_local_data('2016/05/14') if a.score > 20]
     ]
     articles = []
     for clustering in all_clustering:
@@ -28,7 +29,7 @@ def get_mock_articles(title_list):
 
 
 def load_model():
-    model_path = 'bin/model_5_78w.bin'
+    model_path = 'model/bin/model_82w.bin'
     model = gensim.models.Word2Vec.load(model_path)
     print('load word2vec model from ' + model_path)
     return model
@@ -76,6 +77,75 @@ def test_vector_centroid_similarity():
             print('mean similarity = ' + str(si2))
 
 
+def initail_clusters(articles):
+    clusters = []
+    for article in articles:
+        if article.vector is None:
+            print('invalid article ', article.title)
+            continue
+
+        not_found = True
+        for cluster in clusters:
+            if cluster['articles'][-1].title == article.title:
+                cluster['articles'].append(article)
+                not_found = False
+                break
+
+        if not_found:
+            clusters.append({'centroid': article.vector, 'articles': [article]})
+    return clusters
+
+
+def print_cluster(clusters):
+    for i in range(len(clusters)):
+        print('cluster ', i)
+        for article in clusters[i]['articles']:
+            print(article.title)
+
+
+def merge_clusters(clusters):
+    clusters_after_merge = []
+    while len(clusters) != 0:
+        target_cluster = clusters.pop()
+        highest_similarity = 0
+        candidate_cluster = None
+        for cluster in clusters:
+            similarity = compute_similarily(cluster, target_cluster)
+            if similarity > highest_similarity:
+                highest_similarity = similarity
+                candidate_cluster = cluster
+        if highest_similarity > threshold:
+            print('merged: cluster {} with {}'.format(
+                candidate_cluster['articles'][0].title, target_cluster['articles'][0].title))
+            combined(candidate_cluster, target_cluster)
+        else:
+            clusters_after_merge.append(target_cluster)
+    return clusters_after_merge
+
+
+def combined(cluster, merged_cluster):
+    cluster['articles'].extend(merged_cluster['articles'])
+    cluster['centroid'] = sum([a.vector for a in cluster['articles']]) / len(cluster['articles'])
+
+
+def compute_similarily(cluster_a, cluster_b):
+    return dot(cluster_a['centroid'], cluster_b['centroid'])
+
+
+def test_clustering2():
+    model = load_model()
+    articles = get_test_articles()
+    compute_article_vector(model, articles)
+    clusters = initail_clusters(articles)
+    clusters = merge_clusters(clusters)
+
+    print_cluster(clusters)
+    print('total articles : ', len(articles))
+    print('un-repeat titles : ', len(set([article.title for article in articles])))
+    print('total clusters : ', len(clusters))
+    print('max_cluster_size : ', max([len(c['articles']) for c in clusters]))
+
+
 def test_clustering(articles=None):
     model = load_model()
     if articles is None:
@@ -111,13 +181,13 @@ def test_clustering(articles=None):
         else:
             size = len(current_fit_cluster['articles'])
             current_fit_cluster['centroid'] = (
-                                                  current_fit_cluster['centroid'] * size + article.vector) / (size + 1)
+                current_fit_cluster['centroid'] * size + article.vector) / (size + 1)
             current_fit_cluster['articles'].append(deepcopy(article))
 
     print('-------------------')
     current_max_cluster_size = 0
     min_cluster_count = 0
-    min_cluster_size = 2
+    min_cluster_size = 0
     # cluster_with_same_title = 0
     for i in range(len(clusters)):
         size = len(clusters[i]['articles'])
@@ -171,9 +241,9 @@ def simulate(file_name, cluster_number):
         validate(titles)
 
 
-debug_mode = True
-threshold = 0.55
+debug_mode = False
+threshold = 0.6
 # test_vector_centroid_similarity()
 # test_clustering(get_mock_articles(data))
-test_clustering()
+# test_clustering2()
 # simulate('20160509_2000_remove八卦', cluster_number=119)

@@ -21,6 +21,7 @@ class Article(object):
             self.id = arg['id']
         if 'title' in arg:
             self.title = re.sub('.*?]', '', arg['title'][0])
+            self.title = re.sub('R:', '', self.title).strip()
         if 'author' in arg:
             self.author = arg['author'][0]
         if 'content' in arg:
@@ -51,8 +52,11 @@ class Article(object):
 
             self.score = self.push_score - self.boo_score
 
-    def __str__(self):
-        return 'article {}\n(推/噓/總):{}/{}/{}'.format(self.title, self.push_score, self.boo_score, self.score)
+    def __repr__(self):
+        return 'article {}(推/噓/總):{}/{}/{}'.format(self.title, self.push_score, self.boo_score, self.score)
+
+    def getKey(self):
+        return self.title
 
 
 def fetch_articles(title, number=20, end_day='NOW/DAY', days=-1, page=1, only_title=False, fl=None, desc=True):
@@ -117,10 +121,9 @@ def parse_to_articles(json_data):
 
 
 # all_articles = fetch_articles('', number=3000, end_day='2016/03/15', days=1)
-# all_articles = fetch_from_local_data('2016/03/15')
+store_one_day_data('2016/05/14')
+# all_articles = fetch_from_local_data('2016/05/14')
 # print(all_articles[0])
 # print(len(all_articles))
-# print(len([a for a in all_articles if a.score > 10]))
-# print(len([a for a in all_articles if a.score > 20]))
-# store_one_day_data('2016/03/15')
-
+# print(len([a for a in all_articles if a.score > 50]))
+# print(len([a for a in all_articles if a.score > 30]))

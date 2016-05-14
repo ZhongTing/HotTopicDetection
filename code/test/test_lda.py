@@ -3,7 +3,7 @@ import re
 import time
 from code.model import lda
 from code.model.ptt_article_fetcher import fetch_articles
-from code.model.tokenize.tokenizer import cut
+from code.model.my_tokenize.tokenizer import cut
 
 
 def log(file, obj):

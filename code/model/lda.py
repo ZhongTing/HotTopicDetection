@@ -3,7 +3,7 @@ import re
 from gensim import corpora, models
 
 from code.model.ptt_article_fetcher import fetch_articles
-from code.model.tokenize.tokenizer import cut
+from code.model.my_tokenize.tokenizer import cut
 
 
 def build_lda_model(input_datas, num_topics=0):

@@ -4,7 +4,7 @@ import gensim.models
 from gensim import matutils
 from numpy import array, dot
 from code.model.ptt_article_fetcher import fetch_articles, Article
-from code.model.tokenize.tokenizer import cut
+from code.model.my_tokenize.tokenizer import cut
 
 
 def get_test_articles():

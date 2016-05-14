@@ -2,9 +2,8 @@ import os
 import time
 
 from gensim.models import Word2Vec
-
 from code.model.ptt_article_fetcher import fetch_articles
-from code.model.tokenize.tokenizer import cut
+from code.model.my_tokenize.tokenizer import cut
 
 
 def get_sentence(keyword, number, page=1):
@@ -22,22 +21,28 @@ def get_sentence(keyword, number, page=1):
     return result_sentences
 
 
-title_number = 800000
-model_dir = 'bin'
-model_path = model_dir + '/whole_content_1_100_' + str(title_number) + '.bin'
-if not os.path.exists(model_dir):
-    os.mkdir(model_dir)
+def train(model_name, article_number):
+    model_dir = 'bin'
+    model_path = os.path.join(model_dir, model_name + '.bin')
+    if not os.path.exists(model_dir):
+        os.mkdir(model_dir)
 
-sentences = get_sentence('', title_number)
-start_time = time.time()
-try:
-    model = Word2Vec.load(model_path)
-    model.train(sentences)
-except FileNotFoundError:
-    print('create new word2vec model')
-    model = Word2Vec(sentences, size=100, window=5, min_count=1, workers=4)
+    sentences = get_sentence('', article_number)
+    start_time = time.time()
+    try:
+        model = Word2Vec.load(model_path)
+        model.train(sentences)
+    except FileNotFoundError:
+        print('create new word2vec model')
+        model = Word2Vec(size=100, window=5, min_count=3, workers=8, sg=1)
+        model.build_vocab(sentences)
+        print('build vocab spend ', time.time() - start_time)
+        model.train(sentences)
 
-end_time = time.time()
-model.save(model_path)
-print(model)
-print('model_spend_time ' + str(end_time - start_time))
+    end_time = time.time()
+    model.save(model_path)
+    print(model)
+    print('model_spend_time ' + str(end_time - start_time))
+
+
+train('ngram_100_3_83w', 850000)

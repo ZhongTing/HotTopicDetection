@@ -36,7 +36,7 @@ class Article(object):
             # 把同一句標點符號再斷句
             temp_content = re.sub('([，。？：！!?,]+) *', r'\1\n', temp_content)
             self.content_sentence = [
-                i for i in re.findall(r'([^ \n].+) *', temp_content) if i not in ['']]
+                i.strip() for i in re.findall(r'([^ \n].+) *', temp_content) if i not in ['']]
 
             self.content = '\n'.join(self.content_sentence)
         if 'comments' in arg:

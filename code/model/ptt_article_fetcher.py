@@ -18,8 +18,8 @@ class Article(object):
         if 'id' in arg:
             self.id = arg['id']
         if 'title' in arg:
-            self.title = re.sub('.*?]', '', arg['title'][0])
-            self.title = re.sub('R:', '', self.title).strip()
+            self.title = re.sub('\[..\]', '', arg['title'][0])
+            self.title = re.sub('Re?:', '', self.title).strip()
         if 'author' in arg:
             self.author = arg['author'][0]
         if 'content' in arg:
@@ -53,8 +53,8 @@ class Article(object):
     def __repr__(self):
         return self.title
 
-    def getKey(self):
-        return self.title
+    def get_sort_key_id(self):
+        return self.id
 
     def info(self):
         return 'article {}(推/噓/總):{}/{}/{}'.format(self.title, self.push_score, self.boo_score, self.score)
@@ -68,7 +68,7 @@ def fetch_articles(title, number=20, end_day='NOW/DAY', days=-1, page=1, only_ti
         if re.compile(r'\d{4}/\d{2}/\d{2}').match(end_day):
             start_day = "-".join(end_day.split('/')) + 'T00:00:00Z'
             end_day = "-".join(end_day.split('/')) + 'T23:59:59Z'
-        post_args['fq'] = 'timestamp:[{}-{}DAYS TO {}]'.format(start_day, days, end_day)
+            post_args['fq'] = 'timestamp:[{}-{}DAYS TO {}]'.format(start_day, days, end_day)
     if only_title:
         post_args["fl"] = 'title'
     if fl:

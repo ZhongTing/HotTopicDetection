@@ -6,7 +6,7 @@ from code.model.ptt_article_fetcher import fetch_articles
 from code.model.my_tokenize.tokenizer import cut
 
 
-def build_lda_model(input_datas, num_topics=0):
+def build_lda_model(input_datas, num_topics=1):
     if len(input_datas) == 0:
         print('data is empty')
         return
@@ -25,9 +25,10 @@ def build_lda_model(input_datas, num_topics=0):
 
 
 def get_topic(model, num_topics=1, num_words=15):
-    pattern = re.compile('\*(.*?) ')
+    pattern = re.compile('\*([^ ]*)')
     result = {}
     for topic_tuple in model.show_topics(num_topics, num_words):
+        print(topic_tuple)
         words = pattern.findall(topic_tuple[1])
         result[topic_tuple[0]] = words
     return result
@@ -38,7 +39,7 @@ def term_expansion(keyword, num_article_for_search=5):
     if len(articles) == 0:
         print('articles not found...try another search range?')
         return
-    input_data = [a.title + " " + a.author for a in articles]
+    input_data = [a.title + " " + a.content for a in articles]
     model = build_lda_model(input_data, 1)
     topic_tokens = get_topic(model)[0]
     return topic_tokens

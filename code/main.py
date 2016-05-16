@@ -3,21 +3,20 @@ from copy import deepcopy
 import gensim.models
 from gensim import matutils
 from numpy import array, dot
-import code.model.ptt_article_fetcher as fetcher
 from code.model.ptt_article_fetcher import Article
 from code.model.my_tokenize.tokenizer import cut
+from code.test.make_test_data import get_test_clusters
+import code.model.lda as lda
+import random
+from code.clustering_validation import validate_clustering
+import time
 
 
-def get_test_articles():
-    all_clustering = [
-        # fetch_articles("人生勝利組", number=5),
-        # fetch_articles("死刑", number=5),
-        [a for a in fetcher.fetch_from_local_data('2016/05/14') if a.score > 20]
-    ]
+def get_test_articles(clusters=get_test_clusters()):
     articles = []
-    for clustering in all_clustering:
-        articles.extend(clustering)
-    # random.shuffle(articles)
+    for cluster in clusters:
+        articles.extend(cluster['articles'])
+    random.shuffle(articles)
     return articles
 
 
@@ -29,9 +28,11 @@ def get_mock_articles(title_list):
 
 
 def load_model():
+    t = time.time()
     model_path = 'model/bin/model_82w.bin'
     model = gensim.models.Word2Vec.load(model_path)
-    print('load word2vec model from ' + model_path)
+    t = int(time.time() - t)
+    print('spend {}s to load word2vec model from {}'.format(t, model_path))
     return model
 
 
@@ -43,7 +44,7 @@ def compute_vector(model, string, need_log=False):
         print(tokens)
     tokens_not_found = [word for word in tokens if word not in model]
     if len(tokens_not_found) is not 0:
-        print('token not in model :' + " ".join(tokens_not_found))
+        log('token not in model :' + " ".join(tokens_not_found))
     v1 = [model[word] for word in tokens if word in model]
     if len(v1) is 0:
         print('invalid article: \'' + string + '\'')
@@ -57,31 +58,11 @@ def compute_article_vector(model, articles):
         article.vector = compute_vector(model, article.title)
 
 
-def test_vector_centroid_similarity():
-    model = load_model()
-    articles = get_test_articles()
-    compute_article_vector(model, articles)
-
-    vector_stack = []
-    for i in range(0, len(articles)):
-        article = articles[i]
-        vector = article.vector
-        vector_stack.append(vector)
-        if len(vector_stack) > 1:
-            print(article.title)
-            print(articles[i - 1].title)
-            si = dot(vector_stack[-1], vector_stack[-2])
-            print('previous similarity = ' + str(si))
-            # mean
-            si2 = dot(array(vector_stack[0:-1]).mean(axis=0), vector_stack[-1])
-            print('mean similarity = ' + str(si2))
-
-
-def initail_clusters(articles):
+def initialize_clusters(articles):
     clusters = []
     for article in articles:
         if article.vector is None:
-            print('invalid article ', article.title)
+            print('initial error, invalid article: \'' + article.title + '\'')
             continue
 
         not_found = True
@@ -96,11 +77,10 @@ def initail_clusters(articles):
     return clusters
 
 
-def print_cluster(clusters):
-    for i in range(len(clusters)):
-        print('cluster ', i)
-        for article in clusters[i]['articles']:
-            print(article.title)
+def get_cluster_keyword(cluster):
+    input_datas = [a.title + ' ' + a.content for a in cluster['articles']]
+    model = lda.build_lda_model(input_datas, 1)
+    return lda.get_topic(model, num_topics=1, num_words=5)[0]
 
 
 def merge_clusters(clusters):
@@ -115,7 +95,7 @@ def merge_clusters(clusters):
                 highest_similarity = similarity
                 candidate_cluster = cluster
         if highest_similarity > threshold:
-            print('merged: cluster {} with {}'.format(
+            log('merged: cluster {} with {}'.format(
                 candidate_cluster['articles'][0].title, target_cluster['articles'][0].title))
             combined(candidate_cluster, target_cluster)
         else:
@@ -132,24 +112,40 @@ def compute_similarily(cluster_a, cluster_b):
     return dot(cluster_a['centroid'], cluster_b['centroid'])
 
 
-def test_clustering2():
-    model = load_model()
-    articles = get_test_articles()
-    compute_article_vector(model, articles)
-    clusters = initail_clusters(articles)
-    clusters = merge_clusters(clusters)
+def print_clusters(clusters):
+    for i in range(len(clusters)):
+        print('cluster ', i)
+        print(get_cluster_keyword(clusters[i]))
 
-    print_cluster(clusters)
+
+def print_clustering_result(labeled_clusters, clusters, articles):
+    print("\n===============data set information===============")
     print('total articles : ', len(articles))
     print('un-repeat titles : ', len(set([article.title for article in articles])))
     print('total clusters : ', len(clusters))
     print('max_cluster_size : ', max([len(c['articles']) for c in clusters]))
 
+    print("\n===============clustering validation===============")
+    validate_result = validate_clustering(labeled_clusters, clusters)
+    for key in sorted(validate_result):
+        print(key, "{0:.2f}".format(validate_result[key]))
 
-def test_clustering(articles=None):
+
+def test_clustering2():
     model = load_model()
-    if articles is None:
-        articles = get_test_articles()
+    labeled_clusters = get_test_clusters()
+    articles = get_test_articles(labeled_clusters)
+    compute_article_vector(model, articles)
+    clusters = initialize_clusters(articles)
+    clusters = merge_clusters(clusters)
+    # print_clusters(clusters)
+    print_clustering_result(labeled_clusters, clusters, articles)
+
+
+def test_clustering():
+    model = load_model()
+    labeled_clusters = get_test_clusters()
+    articles = get_test_articles(labeled_clusters)
     compute_article_vector(model, articles)
     clusters = []
     for article in articles:
@@ -184,34 +180,7 @@ def test_clustering(articles=None):
                 current_fit_cluster['centroid'] * size + article.vector) / (size + 1)
             current_fit_cluster['articles'].append(deepcopy(article))
 
-    print('-------------------')
-    current_max_cluster_size = 0
-    min_cluster_count = 0
-    min_cluster_size = 0
-    # cluster_with_same_title = 0
-    for i in range(len(clusters)):
-        size = len(clusters[i]['articles'])
-        if size > current_max_cluster_size:
-            current_max_cluster_size = size
-        if size < min_cluster_size:
-            min_cluster_count += 1
-            continue
-        # if len(set([article.title for article in clusters[i]['articles']])) < 2:
-        #     print(set([article.title for article in clusters[i]['articles']]))
-        #     cluster_with_same_title += 1
-        #     continue
-
-        print('cluster ' + str(i))
-        for article in clusters[i]['articles']:
-            print(article.title)
-
-    print('total articles : ', len(articles))
-    print('un-repeat titles : ', len(set([article.title for article in articles])))
-    print('total clusters : ', len(clusters))
-    # print('clusters with same title ', cluster_with_same_title)
-    # print('clusters with different title ', len(clusters) - cluster_with_same_title)
-    print('max_cluster_size : ', current_max_cluster_size)
-    print('clusters size under {} : {}'.format(min_cluster_size, min_cluster_count))
+    print_clustering_result(labeled_clusters, clusters, articles)
 
 
 def log(string):
@@ -242,8 +211,6 @@ def simulate(file_name, cluster_number):
 
 
 debug_mode = False
-threshold = 0.6
-# test_vector_centroid_similarity()
-# test_clustering(get_mock_articles(data))
-# test_clustering2()
+threshold = 0.5
+test_clustering()
 # simulate('20160509_2000_remove八卦', cluster_number=119)

@@ -1,3 +1,5 @@
 jieba
 gensim
 hanziconv
+jsonpickle
+scikit-learn

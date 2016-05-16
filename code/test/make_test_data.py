@@ -3,7 +3,7 @@ import jsonpickle
 import os
 
 
-def get_cluster_for_test(file_name="topics_list.txt"):
+def _get_cluster_from_topic_list(file_name="topics_list.txt"):
     path = get_path(file_name)
     clusters = []
     with open(path, mode='r', encoding='utf8') as f:
@@ -24,14 +24,14 @@ def get_cluster_for_test(file_name="topics_list.txt"):
                 if negative[0] != '(':
                     negative = negative.split(',')
                     remove_negative_articles = []
-                    for aritcle in articles:
+                    for article in articles:
                         ok = True
                         for n in negative:
-                            if n in aritcle.title:
+                            if n in article.title:
                                 ok = False
                                 break
                         if ok is True:
-                            remove_negative_articles.append(aritcle)
+                            remove_negative_articles.append(article)
                     articles = remove_negative_articles
 
             cluster = {'unique_titles': set([a.title for a in articles]), 'size': len(articles), }
@@ -44,7 +44,7 @@ def get_cluster_for_test(file_name="topics_list.txt"):
 
 
 def make_test_data(file_name="test_clusters.json"):
-    clusters = get_cluster_for_test()
+    clusters = _get_cluster_from_topic_list()
     check_duplicate_article(clusters)
     store_data(file_name, clusters)
     return clusters
@@ -62,7 +62,7 @@ def check_duplicate_article(clusters):
             print(article.id, article.title)
 
 
-def get_test_data(file_name='test_clusters.json'):
+def get_test_clusters(file_name='test_clusters.json'):
     return get_data(file_name)
 
 
@@ -102,9 +102,10 @@ def get_path(file_name, folder_dir=None):
             os.mkdir(folder_dir)
     return os.path.join(folder_dir, file_name)
 
+# make_test_data()
+# clusters = make_test_data()
+# for i in range(len(clusters)):
+#     print('cluster ', i)
+#     for article in clusters[i]['articles']:
+#         print(article.title)
 
-# for a in make_test_data():
-#     print('=========================')
-#     # for title in a['unique_titles']:
-#     #     print(title)
-#     print(a['keyword'], a['size'])

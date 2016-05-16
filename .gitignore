@@ -1,5 +1,5 @@
 .idea
 data/
-article_data
 __pycache__
 bin
+test_data/

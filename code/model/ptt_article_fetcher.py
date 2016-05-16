@@ -4,8 +4,6 @@ import json
 import re
 import sys
 import time
-import os
-import pickle
 
 
 class Article(object):
@@ -21,6 +19,7 @@ class Article(object):
             self.id = arg['id']
         if 'title' in arg:
             self.title = re.sub('.*?]', '', arg['title'][0])
+            self.title = re.sub('R:', '', self.title).strip()
         if 'author' in arg:
             self.author = arg['author'][0]
         if 'content' in arg:
@@ -37,7 +36,7 @@ class Article(object):
             # 把同一句標點符號再斷句
             temp_content = re.sub('([，。？：！!?,]+) *', r'\1\n', temp_content)
             self.content_sentence = [
-                i for i in re.findall(r'([^ \n].+) *', temp_content) if i not in ['']]
+                i.strip() for i in re.findall(r'([^ \n].+) *', temp_content) if i not in ['']]
 
             self.content = '\n'.join(self.content_sentence)
         if 'comments' in arg:
@@ -51,8 +50,14 @@ class Article(object):
 
             self.score = self.push_score - self.boo_score
 
-    def __str__(self):
-        return 'article {}\n(推/噓/總):{}/{}/{}'.format(self.title, self.push_score, self.boo_score, self.score)
+    def __repr__(self):
+        return self.title
+
+    def getKey(self):
+        return self.title
+
+    def info(self):
+        return 'article {}(推/噓/總):{}/{}/{}'.format(self.title, self.push_score, self.boo_score, self.score)
 
 
 def fetch_articles(title, number=20, end_day='NOW/DAY', days=-1, page=1, only_title=False, fl=None, desc=True):
@@ -61,8 +66,9 @@ def fetch_articles(title, number=20, end_day='NOW/DAY', days=-1, page=1, only_ti
     post_args = {'q': 'title:*' + title + '*', 'rows': number, 'start': (page - 1) * number + 1}
     if days >= 0:
         if re.compile(r'\d{4}/\d{2}/\d{2}').match(end_day):
-            end_day = "-".join(end_day.split('/')) + 'T00:00:00Z'
-        post_args['fq'] = 'timestamp:[{0}-{1}DAYS TO {0}]'.format(end_day, days)
+            start_day = "-".join(end_day.split('/')) + 'T00:00:00Z'
+            end_day = "-".join(end_day.split('/')) + 'T23:59:59Z'
+        post_args['fq'] = 'timestamp:[{}-{}DAYS TO {}]'.format(start_day, days, end_day)
     if only_title:
         post_args["fl"] = 'title'
     if fl:
@@ -90,37 +96,8 @@ def fetch_articles(title, number=20, end_day='NOW/DAY', days=-1, page=1, only_ti
     return articles
 
 
-def store_one_day_data(day):
-    base_dir = os.path.dirname(__file__)
-    folder_dir = os.path.join(base_dir, 'article_data')
-    if os.path.exists(folder_dir) is False:
-        os.mkdir(folder_dir)
-    obj = fetch_articles('', 5000, end_day=day, days=1)
-    day = day.replace('/', '', 3)
-    with open(os.path.join(folder_dir, day), mode='wb') as file:
-        pickle.dump(obj, file)
-
-
-def fetch_from_local_data(day):
-    base_dir = os.path.dirname(__file__)
-    folder_dir = os.path.join(base_dir, 'article_data')
-    day = day.replace('/', '', 3)
-    with open(os.path.join(folder_dir, day), mode='rb') as file:
-        return pickle.load(file)
-
-
 def parse_to_articles(json_data):
     articles = []
     for data in json.loads(json_data)['response']['docs']:
         articles.append((Article(data)))
     return articles
-
-
-# all_articles = fetch_articles('', number=3000, end_day='2016/03/15', days=1)
-# all_articles = fetch_from_local_data('2016/03/15')
-# print(all_articles[0])
-# print(len(all_articles))
-# print(len([a for a in all_articles if a.score > 10]))
-# print(len([a for a in all_articles if a.score > 20]))
-# store_one_day_data('2016/03/15')
-

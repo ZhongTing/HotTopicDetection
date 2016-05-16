@@ -1,5 +1,6 @@
 import os
 import time
+from datetime import datetime
 
 from gensim.models import Word2Vec
 from code.model.ptt_article_fetcher import fetch_articles
@@ -34,7 +35,7 @@ def train(model_name, article_number):
         model.train(sentences)
     except FileNotFoundError:
         print('create new word2vec model')
-        model = Word2Vec(size=100, window=5, min_count=3, workers=8, sg=1)
+        model = Word2Vec(size=100, window=5, min_count=1, workers=8, sg=0)
         model.build_vocab(sentences)
         print('build vocab spend ', time.time() - start_time)
         model.train(sentences)
@@ -44,5 +45,6 @@ def train(model_name, article_number):
     print(model)
     print('model_spend_time ' + str(end_time - start_time))
 
-
-train('ngram_100_3_83w', 850000)
+print(datetime.now())
+train('cbow_100_1_83w', 850000)
+print(datetime.now())

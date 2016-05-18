@@ -83,7 +83,7 @@ def get_cluster_keyword(cluster):
     return lda.get_topic(model, num_topics=1, num_words=5)[0]
 
 
-def merge_clusters(clusters):
+def merge_clusters(clusters, threshold):
     clusters_after_merge = []
     while len(clusters) != 0:
         target_cluster = clusters.pop()
@@ -125,62 +125,80 @@ def print_clustering_result(labeled_clusters, clusters, articles):
     print('total clusters : ', len(clusters))
     print('max_cluster_size : ', max([len(c['articles']) for c in clusters]))
 
+    print_validation_result(labeled_clusters, clusters)
+
+
+def print_validation_result(labeled_clusters, clusters):
     print("\n===============clustering validation===============")
     validate_result = validate_clustering(labeled_clusters, clusters)
     for key in sorted(validate_result):
         print(key, "{0:.2f}".format(validate_result[key]))
 
 
-def test_clustering2():
-    model = load_model()
-    labeled_clusters = get_test_clusters()
-    articles = get_test_articles(labeled_clusters)
-    compute_article_vector(model, articles)
+def find_closest_cluster(clusters):
+    max_similarity = 0
+    cluster_pair = None
+    if len(clusters) <= 2:
+        return (clusters[0], clusters[-1])
+
+    for i in range(len(clusters)):
+        for j in range(i + 1, len(clusters)):
+            similarity = compute_similarily(clusters[i], clusters[j])
+            if similarity > max_similarity:
+                max_similarity = similarity
+                cluster_pair = (clusters[i], clusters[j])
+    return cluster_pair
+
+
+def clustering1(model, articles, threshold):
     clusters = initialize_clusters(articles)
-    clusters = merge_clusters(clusters)
-    # print_clusters(clusters)
-    print_clustering_result(labeled_clusters, clusters, articles)
+    cluster_pair = find_closest_cluster(clusters)
+    while cluster_pair[0] is not cluster_pair[1] and compute_similarily(cluster_pair[0], cluster_pair[1]) > threshold:
+        combined(cluster_pair[0], cluster_pair[1])
+        clusters.remove(cluster_pair[1])
+        cluster_pair = find_closest_cluster(clusters)
+
+    return clusters
 
 
-def test_clustering():
+def clustering2(model, articles, threshold):
+    clusters = initialize_clusters(articles)
+    return merge_clusters(clusters, threshold)
+
+
+def clustering(algorithm, threshold, model, articles):
+    if algorithm is 1:
+        clusters = clustering1(model, articles, threshold)
+    elif algorithm is 2:
+        clusters = clustering2(model, articles, threshold)
+    return clusters
+
+
+def test_clustering(algorithm, threshold, model=None, labeled_clusters=None, articles=None):
     model = load_model()
     labeled_clusters = get_test_clusters()
     articles = get_test_articles(labeled_clusters)
     compute_article_vector(model, articles)
-    clusters = []
-    for article in articles:
-        current_fit_cluster = None
-        current_max_similarity = 0
-
-        if article.vector is None:
-            print('===============fuck')
-            continue
-        for cluster in clusters:
-            compute_similarity = dot(article.vector, cluster['centroid'])
-            try:
-                if compute_similarity > current_max_similarity:
-                    current_max_similarity = compute_similarity
-                    current_fit_cluster = cluster
-            except ValueError:
-                print(article)
-                compute_vector(model, article.title, True)
-                print(ValueError)
-                print(article.vector)
-                return
-
-        if current_max_similarity < threshold:
-            log('new cluster ' + article.title)
-            if current_fit_cluster is not None:
-                log('compare with cluster ' + current_fit_cluster['articles'][0].title)
-                log('with max similarity ' + str(current_max_similarity) + "\n")
-            clusters.append({'centroid': article.vector, 'articles': [article]})
-        else:
-            size = len(current_fit_cluster['articles'])
-            current_fit_cluster['centroid'] = (
-                current_fit_cluster['centroid'] * size + article.vector) / (size + 1)
-            current_fit_cluster['articles'].append(deepcopy(article))
-
+    clusters = clustering(algorithm, model, articles, threshold)
     print_clustering_result(labeled_clusters, clusters, articles)
+
+
+def find_best_threshold(algorithm, start_threshold=0.2, increase_times=5, increase_count=0.1):
+    model = load_model()
+    labeled_clusters = get_test_clusters()
+    articles = get_test_articles(labeled_clusters)
+    compute_article_vector(model, articles)
+    threshold = start_threshold
+    result_table = []
+    for i in range(increase_times):
+        clusters = clustering(algorithm, threshold, model, articles)
+        result = validate_clustering(labeled_clusters, clusters)
+        result_table.append({'threshold': '{0:.2f}'.format(threshold), 'result': result})
+        threshold += increase_count
+
+    print('algorithm ', algorithm)
+    for result_item in result_table:
+        print(result_item['threshold'], result_item['result'])
 
 
 def log(string):
@@ -188,29 +206,8 @@ def log(string):
         print(string)
 
 
-def validate(data):
-    model = load_model()
-    for i in range(1, len(data)):
-        print(data[i - 1])
-        vector1 = compute_vector(model, data[i - 1], True)
-        print(data[i])
-        vector2 = compute_vector(model, data[i], True)
-        if vector1 is None or vector2 is None:
-            print('vector error')
-            continue
-        similarity = dot(vector1, vector2)
-        print(similarity)
-
-
-def simulate(file_name, cluster_number):
-    with open('word2vec_log/clustering_log/' + file_name, 'r', encoding='utf8') as file:
-        content = file.read()
-        pattern = re.compile('cluster ' + str(cluster_number) + '\n([\W\w]*?)\ncluster')
-        titles = re.findall(pattern, content)[0].split('\n')
-        validate(titles)
-
-
 debug_mode = False
-threshold = 0.5
-test_clustering()
+# test_clustering(1, 0.5)
 # simulate('20160509_2000_remove八卦', cluster_number=119)
+find_best_threshold(1, 0.15, 8, 0.05)
+find_best_threshold(2, 0.10, 10, 0.05)

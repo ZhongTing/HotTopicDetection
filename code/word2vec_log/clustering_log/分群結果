@@ -1,0 +1,21 @@
+algorithm  1
+0.15 {'adjusted_mutual_info_score': '0.35', 'adjusted_rand_score': '0.34', 'homogeneity_score': '0.36', 'completeness_score': '0.90', 'v_measure_score': '0.51'}
+0.20 {'adjusted_mutual_info_score': '0.72', 'adjusted_rand_score': '0.76', 'homogeneity_score': '0.72', 'completeness_score': '0.87', 'v_measure_score': '0.79'}
+0.25 {'adjusted_mutual_info_score': '0.72', 'adjusted_rand_score': '0.76', 'homogeneity_score': '0.72', 'completeness_score': '0.86', 'v_measure_score': '0.79'}
+0.30 {'adjusted_mutual_info_score': '0.77', 'adjusted_rand_score': '0.80', 'homogeneity_score': '0.82', 'completeness_score': '0.78', 'v_measure_score': '0.80'}
+0.35 {'adjusted_mutual_info_score': '0.72', 'adjusted_rand_score': '0.76', 'homogeneity_score': '0.82', 'completeness_score': '0.73', 'v_measure_score': '0.77'}
+0.40 {'adjusted_mutual_info_score': '0.66', 'adjusted_rand_score': '0.72', 'homogeneity_score': '0.92', 'completeness_score': '0.67', 'v_measure_score': '0.78'}
+0.45 {'adjusted_mutual_info_score': '0.66', 'adjusted_rand_score': '0.73', 'homogeneity_score': '0.98', 'completeness_score': '0.68', 'v_measure_score': '0.80'}
+0.50 {'adjusted_mutual_info_score': '0.54', 'adjusted_rand_score': '0.48', 'homogeneity_score': '0.98', 'completeness_score': '0.57', 'v_measure_score': '0.72'}
+spend 8s to load word2vec model from model/bin/model_82w.bin
+algorithm  2
+0.10 {'adjusted_mutual_info_score': '0.15', 'adjusted_rand_score': '0.10', 'homogeneity_score': '0.15', 'completeness_score': '1.00', 'v_measure_score': '0.27'}
+0.15 {'adjusted_mutual_info_score': '0.31', 'adjusted_rand_score': '0.35', 'homogeneity_score': '0.31', 'completeness_score': '0.83', 'v_measure_score': '0.45'}
+0.20 {'adjusted_mutual_info_score': '0.40', 'adjusted_rand_score': '0.38', 'homogeneity_score': '0.41', 'completeness_score': '0.86', 'v_measure_score': '0.55'}
+0.25 {'adjusted_mutual_info_score': '0.40', 'adjusted_rand_score': '0.37', 'homogeneity_score': '0.41', 'completeness_score': '0.76', 'v_measure_score': '0.53'}
+0.30 {'adjusted_mutual_info_score': '0.78', 'adjusted_rand_score': '0.81', 'homogeneity_score': '0.79', 'completeness_score': '0.80', 'v_measure_score': '0.80'}
+0.35 {'adjusted_mutual_info_score': '0.74', 'adjusted_rand_score': '0.81', 'homogeneity_score': '0.84', 'completeness_score': '0.75', 'v_measure_score': '0.79'}
+0.40 {'adjusted_mutual_info_score': '0.72', 'adjusted_rand_score': '0.78', 'homogeneity_score': '0.84', 'completeness_score': '0.73', 'v_measure_score': '0.78'}
+0.45 {'adjusted_mutual_info_score': '0.67', 'adjusted_rand_score': '0.60', 'homogeneity_score': '0.96', 'completeness_score': '0.68', 'v_measure_score': '0.80'}
+0.50 {'adjusted_mutual_info_score': '0.54', 'adjusted_rand_score': '0.42', 'homogeneity_score': '0.97', 'completeness_score': '0.57', 'v_measure_score': '0.71'}
+0.55 {'adjusted_mutual_info_score': '0.50', 'adjusted_rand_score': '0.40', 'homogeneity_score': '0.98', 'completeness_score': '0.54', 'v_measure_score': '0.69'}

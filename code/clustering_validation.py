@@ -18,10 +18,10 @@ def validate_clustering(cluster_ground_truth, cluster_predict):
     labels_true = _get_article_cluster_doc(cluster_ground_truth)
     labels_pred = _get_article_cluster_doc(cluster_predict)
     result = {
-        'adjusted_rand_score': metrics.adjusted_rand_score(labels_true, labels_pred),
-        'adjusted_mutual_info_score': metrics.adjusted_mutual_info_score(labels_true, labels_pred),
-        'homogeneity_score': metrics.homogeneity_score(labels_true, labels_pred),
-        'completeness_score': metrics.completeness_score(labels_true, labels_pred),
-        'v_measure_score': metrics.v_measure_score(labels_true, labels_pred)
+        'adjusted_rand_score': '{0:.2f}'.format(metrics.adjusted_rand_score(labels_true, labels_pred)),
+        'adjusted_mutual_info_score': '{0:.2f}'.format(metrics.adjusted_mutual_info_score(labels_true, labels_pred)),
+        'homogeneity_score': '{0:.2f}'.format(metrics.homogeneity_score(labels_true, labels_pred)),
+        'completeness_score': '{0:.2f}'.format(metrics.completeness_score(labels_true, labels_pred)),
+        'v_measure_score': '{0:.2f}'.format(metrics.v_measure_score(labels_true, labels_pred))
     }
     return result

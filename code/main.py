@@ -1,15 +1,28 @@
-import re
-from copy import deepcopy
 import gensim.models
 from gensim import matutils
-from numpy import array, dot
+from numpy import array, dot, mean
 from code.model.ptt_article_fetcher import Article
 from code.model.my_tokenize.tokenizer import cut
-from code.test.make_test_data import get_test_clusters
+import code.test.make_test_data as test_data
 import code.model.lda as lda
 import random
 from code.clustering_validation import validate_clustering
 import time
+
+
+def get_test_clusters(sample_pick=False):
+    origin_clusters = test_data.get_test_clusters()
+    if sample_pick is False:
+        return origin_clusters
+    else:
+        clusters = []
+        for cluster in origin_clusters:
+            pick_number = random.randint(1, len(cluster))
+            sample = random.sample(cluster['articles'], pick_number)
+            cluster['articles'] = sample
+            clusters.append(cluster)
+
+    return clusters
 
 
 def get_test_articles(clusters=get_test_clusters()):
@@ -150,27 +163,34 @@ def find_closest_cluster(clusters):
     return cluster_pair
 
 
-def clustering1(model, articles, threshold):
+def clustering1(articles, threshold):
     clusters = initialize_clusters(articles)
     cluster_pair = find_closest_cluster(clusters)
     while cluster_pair[0] is not cluster_pair[1] and compute_similarily(cluster_pair[0], cluster_pair[1]) > threshold:
         combined(cluster_pair[0], cluster_pair[1])
-        clusters.remove(cluster_pair[1])
+        try:
+            clusters.remove(cluster_pair[1])
+        except ValueError:
+            print(cluster_pair[0])
+            print(cluster_pair[1])
+            print(clusters.index(cluster_pair[1]).all())
+            return []
         cluster_pair = find_closest_cluster(clusters)
+        print(len(clusters))
 
     return clusters
 
 
-def clustering2(model, articles, threshold):
+def clustering2(articles, threshold):
     clusters = initialize_clusters(articles)
     return merge_clusters(clusters, threshold)
 
 
-def clustering(algorithm, threshold, model, articles):
+def clustering(algorithm, threshold, articles):
     if algorithm is 1:
-        clusters = clustering1(model, articles, threshold)
+        clusters = clustering1(articles, threshold)
     elif algorithm is 2:
-        clusters = clustering2(model, articles, threshold)
+        clusters = clustering2(articles, threshold)
     return clusters
 
 
@@ -179,26 +199,58 @@ def test_clustering(algorithm, threshold, model=None, labeled_clusters=None, art
     labeled_clusters = get_test_clusters()
     articles = get_test_articles(labeled_clusters)
     compute_article_vector(model, articles)
-    clusters = clustering(algorithm, model, articles, threshold)
+    clusters = clustering(algorithm, threshold, articles)
     print_clustering_result(labeled_clusters, clusters, articles)
 
 
-def find_best_threshold(algorithm, start_threshold=0.2, increase_times=5, increase_count=0.1):
-    model = load_model()
-    labeled_clusters = get_test_clusters()
-    articles = get_test_articles(labeled_clusters)
-    compute_article_vector(model, articles)
-    threshold = start_threshold
-    result_table = []
-    for i in range(increase_times):
-        clusters = clustering(algorithm, threshold, model, articles)
-        result = validate_clustering(labeled_clusters, clusters)
-        result_table.append({'threshold': '{0:.2f}'.format(threshold), 'result': result})
-        threshold += increase_count
+def find_best_threshold(model, algorithm, random, start_th=0.2, increase_times=5, increase_count=0.1, test_times=1):
+
+    test_list = []
+    for i in range(test_times):
+        labeled_clusters = get_test_clusters(random)
+        articles = get_test_articles(labeled_clusters)
+        compute_article_vector(model, articles)
+        threshold = start_th
+        result_list = []
+        for i in range(increase_times):
+            clusters = clustering(algorithm, threshold, articles)
+            result = validate_clustering(labeled_clusters, clusters)
+            result_list.append({'threshold': '{0:.2f}'.format(threshold), 'result': result})
+            threshold += increase_count
+        test_list.append({'result': result_list})
 
     print('algorithm ', algorithm)
-    for result_item in result_table:
-        print(result_item['threshold'], result_item['result'])
+    score_table = {}
+    for test in test_list:
+        result_list = test['result']
+        for result_item in result_list:
+            result = result_item['result']
+            threshold = result_item['threshold']
+            if threshold not in score_table:
+                score_table[threshold] = {'v': [float(result['v_measure_score'])],
+                                          'rand': [float(result['adjusted_rand_score'])],
+                                          'mi': [float(result['adjusted_mutual_info_score'])]}
+            else:
+                score_table[threshold]['v'].append(float(result['v_measure_score']))
+                score_table[threshold]['rand'].append(float(result['adjusted_rand_score']))
+                score_table[threshold]['mi'].append(float(result['adjusted_mutual_info_score']))
+
+            # print(threshold, result)
+
+        test['score'] = {
+            'v': max([(i['result']['v_measure_score'], i['threshold']) for i in result_list]),
+            'rand': max([(i['result']['adjusted_rand_score'], i['threshold']) for i in result_list]),
+            'mi': max([(i['result']['adjusted_mutual_info_score'], i['threshold']) for i in result_list])
+        }
+        print(test['score'])
+
+    average_score = {
+        'v': max([(mean(score_table[threshold]['v']), threshold) for threshold in score_table]),
+        'rand': max([(mean(score_table[threshold]['rand']), threshold) for threshold in score_table]),
+        'mi': max([(mean(score_table[threshold]['mi']), threshold) for threshold in score_table])
+    }
+    for key in average_score:
+        print(key, '({0:.2f}, {1})'.format(average_score[key][0], average_score[key][1]))
 
 
 def log(string):
@@ -207,7 +259,9 @@ def log(string):
 
 
 debug_mode = False
-# test_clustering(1, 0.5)
+model = load_model()
+# test_clustering(algorithm=2, threshold=0.45, model=model):
 # simulate('20160509_2000_remove八卦', cluster_number=119)
-find_best_threshold(1, 0.15, 8, 0.05)
-find_best_threshold(2, 0.10, 10, 0.05)
+# find_best_threshold(model, 1, 0.15, 8, 0.05)
+# find_best_threshold(model, 2, False, 0.35, 3, 0.05, 3)
+find_best_threshold(model, 2, True, 0.35, 3, 0.05, 5)

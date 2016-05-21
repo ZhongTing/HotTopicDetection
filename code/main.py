@@ -8,6 +8,8 @@ import code.model.lda as lda
 import random
 from code.clustering_validation import validate_clustering
 import time
+import os
+import re
 
 
 def get_test_clusters(sample_pick=False):
@@ -37,9 +39,8 @@ def get_ptt_articles():
     return fetcher.fetch_articles('*', number=3000, days=1)
 
 
-def load_model():
+def load_model(model_path='model/bin/model_82w.bin'):
     t = time.time()
-    model_path = 'model/bin/model_82w.bin'
     model = gensim.models.Word2Vec.load(model_path)
     t = int(time.time() - t)
     print('spend {}s to load word2vec model from {}'.format(t, model_path))
@@ -244,15 +245,27 @@ def find_best_threshold(model, algorithm, random, start_th=0.2, increase_times=5
             'rand': max([(i['result']['adjusted_rand_score'], i['threshold']) for i in result_list]),
             'mi': max([(i['result']['adjusted_mutual_info_score'], i['threshold']) for i in result_list])
         }
-        print(test['score'])
+        # print(test['score'])
 
     average_score = {
         'v': max([(mean(score_table[threshold]['v']), threshold) for threshold in score_table]),
         'rand': max([(mean(score_table[threshold]['rand']), threshold) for threshold in score_table]),
         'mi': max([(mean(score_table[threshold]['mi']), threshold) for threshold in score_table])
     }
+    result = {}
     for key in average_score:
-        print(key, '({0:.2f}, {1})'.format(average_score[key][0], average_score[key][1]))
+        result[key] = '({0:.2f}, {1})'.format(average_score[key][0], average_score[key][1])
+    return result
+
+
+def find_best_model():
+    dir_path = 'model/bin'
+    dirs = os.listdir(dir_path)
+    model_path_list = [path for path in dirs if path[-3:] == 'bin']
+    for model_path in model_path_list:
+        model = load_model(os.path.join(dir_path, model_path))
+        result = find_best_threshold(model, 2, False, 0.3, 5, 0.05, 3)
+        print('using model', model_path.ljust(25), result)
 
 
 def main():
@@ -278,4 +291,6 @@ debug_mode = False
 # find_best_threshold(model, 2, False, 0.35, 3, 0.05, 3)
 # find_best_threshold(model, 2, True, 0.35, 3, 0.05, 5)
 
-main()
+# main()
+
+find_best_model()

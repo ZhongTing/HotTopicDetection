@@ -9,7 +9,7 @@ import random
 from code.clustering_validation import validate_clustering
 import time
 import os
-import re
+import jieba.analyse
 
 
 def get_test_clusters(sample_pick=False):
@@ -89,9 +89,12 @@ def initialize_clusters(articles):
 
 
 def get_cluster_keyword(cluster):
-    input_datas = [a.title + ' ' + a.content for a in cluster['articles']]
+    input_datas = " ".join([a.title + ' ' + a.content for a in cluster['articles']])
     model = lda.build_lda_model(input_datas, 1)
-    return lda.get_topic(model, num_topics=1, num_words=5)[0]
+    return [
+        lda.get_topic(model, num_topics=1, num_words=5)[0],
+        jieba.analyse.extract_tags(input_datas, topK=10, withWeight=False, allowPOS=())
+    ]
 
 
 def merge_clusters(clusters, threshold):
@@ -284,13 +287,13 @@ def log(string):
 
 
 debug_mode = False
-# model = load_model()
+model = load_model()
 # test_clustering(algorithm=2, threshold=0.45, model=model):
 # simulate('20160509_2000_remove八卦', cluster_number=119)
 # find_best_threshold(model, 1, 0.15, 8, 0.05)
-# find_best_threshold(model, 2, False, 0.35, 3, 0.05, 3)
+# print(find_best_threshold(model, 2, False, 0.35, 3, 0.05, 3))
 # find_best_threshold(model, 2, True, 0.35, 3, 0.05, 5)
 
-# main()
+main()
 
-find_best_model()
+# find_best_model()

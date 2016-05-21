@@ -11,6 +11,9 @@ def build_lda_model(input_datas, num_topics=1):
         print('data is empty')
         return
 
+    if isinstance(input_datas, str):
+        input_datas = [input_datas]
+
     texts = []
     for data in input_datas:
         tokens = cut(data, using_stopwords=True, simplified_convert=True)
@@ -28,7 +31,7 @@ def get_topic(model, num_topics=1, num_words=15):
     pattern = re.compile('\*([^ ]*)')
     result = {}
     for topic_tuple in model.show_topics(num_topics, num_words):
-        print(topic_tuple)
+        # print(topic_tuple)
         words = pattern.findall(topic_tuple[1])
         result[topic_tuple[0]] = words
     return result

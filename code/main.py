@@ -1,7 +1,7 @@
 import gensim.models
 from gensim import matutils
 from numpy import array, dot, mean
-from code.model.ptt_article_fetcher import Article
+import code.model.ptt_article_fetcher as fetcher
 from code.model.my_tokenize.tokenizer import cut
 import code.test.make_test_data as test_data
 import code.model.lda as lda
@@ -33,11 +33,8 @@ def get_test_articles(clusters=get_test_clusters()):
     return articles
 
 
-def get_mock_articles(title_list):
-    articles = []
-    for title in title_list:
-        articles.append(Article({'title': [title]}))
-    return articles
+def get_ptt_articles():
+    return fetcher.fetch_articles('*', number=3000, days=1)
 
 
 def load_model():
@@ -125,20 +122,24 @@ def compute_similarily(cluster_a, cluster_b):
     return dot(cluster_a['centroid'], cluster_b['centroid'])
 
 
-def print_clusters(clusters):
+def print_clusters(clusters, print_title=False):
     for i in range(len(clusters)):
-        print('cluster ', i)
-        print(get_cluster_keyword(clusters[i]))
+        cluster = clusters[i]
+        score = sum([article.score for article in cluster['articles']])
+        print('cluster', i, 'score', score, 'amount', len(cluster['articles']))
+        print(get_cluster_keyword(cluster))
+        if print_title is True:
+            for article in cluster['articles']:
+                print(article.title)
+            print('\n')
 
 
-def print_clustering_result(labeled_clusters, clusters, articles):
+def print_clustering_info(clusters, articles):
     print("\n===============data set information===============")
     print('total articles : ', len(articles))
     print('un-repeat titles : ', len(set([article.title for article in articles])))
     print('total clusters : ', len(clusters))
     print('max_cluster_size : ', max([len(c['articles']) for c in clusters]))
-
-    print_validation_result(labeled_clusters, clusters)
 
 
 def print_validation_result(labeled_clusters, clusters):
@@ -200,7 +201,8 @@ def test_clustering(algorithm, threshold, model=None, labeled_clusters=None, art
     articles = get_test_articles(labeled_clusters)
     compute_article_vector(model, articles)
     clusters = clustering(algorithm, threshold, articles)
-    print_clustering_result(labeled_clusters, clusters, articles)
+    print_clustering_info(clusters, articles)
+    print_validation_result(labeled_clusters, clusters)
 
 
 def find_best_threshold(model, algorithm, random, start_th=0.2, increase_times=5, increase_count=0.1, test_times=1):
@@ -253,15 +255,27 @@ def find_best_threshold(model, algorithm, random, start_th=0.2, increase_times=5
         print(key, '({0:.2f}, {1})'.format(average_score[key][0], average_score[key][1]))
 
 
+def main():
+    model = load_model()
+    articles = get_ptt_articles()
+    compute_article_vector(model, articles)
+    clusters = clustering(2, 0.45, articles)
+    print_clustering_info(clusters, articles)
+    clusters = sorted(clusters, key=lambda cluster: sum([a.score for a in cluster['articles']]), reverse=True)
+    print_clusters(clusters[0:5], True)
+
+
 def log(string):
     if debug_mode is True:
         print(string)
 
 
 debug_mode = False
-model = load_model()
+# model = load_model()
 # test_clustering(algorithm=2, threshold=0.45, model=model):
 # simulate('20160509_2000_remove八卦', cluster_number=119)
 # find_best_threshold(model, 1, 0.15, 8, 0.05)
 # find_best_threshold(model, 2, False, 0.35, 3, 0.05, 3)
-find_best_threshold(model, 2, True, 0.35, 3, 0.05, 5)
+# find_best_threshold(model, 2, True, 0.35, 3, 0.05, 5)
+
+main()

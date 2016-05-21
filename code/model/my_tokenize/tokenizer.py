@@ -5,6 +5,7 @@ from hanziconv import HanziConv
 
 
 def cut(string, using_stopwords=False, simplified_convert=True, log=False):
+    string = string.lower()
     if simplified_convert:
         string = HanziConv.toSimplified(string)
     with open(os.path.join(BASE_DIR, 'digit_mark.json'), encoding='utf-8') as data_file:

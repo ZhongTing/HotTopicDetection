@@ -65,6 +65,7 @@ def fetch_articles(title, number=20, end_day='NOW/DAY', days=-1, page=1, only_ti
     server_url = 'http://140.124.183.7:8983/solr/HotTopicData/select?'
     post_args = {'q': 'title:*' + title + '*', 'rows': number, 'start': (page - 1) * number + 1}
     if days >= 0:
+        post_args['fq'] = 'timestamp:[NOW/DAY-1DAYS TO NOW/DAY]'
         if re.compile(r'\d{4}/\d{2}/\d{2}').match(end_day):
             start_day = "-".join(end_day.split('/')) + 'T00:00:00Z'
             end_day = "-".join(end_day.split('/')) + 'T23:59:59Z'
@@ -81,6 +82,7 @@ def fetch_articles(title, number=20, end_day='NOW/DAY', days=-1, page=1, only_ti
     articles = []
     retry_times = 3
     while len(articles) is 0 and retry_times > 0:
+        print(url)
         req = request.urlopen(url)
         encoding = req.headers.get_content_charset()
         sys_encoding = sys.stdin.encoding

@@ -5,7 +5,7 @@ import code.model.ptt_article_fetcher as fetcher
 from code.model.my_tokenize.tokenizer import cut
 import code.test.make_test_data as test_data
 import random
-from code.clustering_validation import validate_clustering
+from code.clustering_validation import validate_clustering, silhouette_index
 import time
 import os
 from code.model.keywords_extraction import keywords_extraction
@@ -35,7 +35,7 @@ def get_test_articles(clusters=get_test_clusters()):
 
 
 def get_ptt_articles():
-    return fetcher.fetch_articles('*', number=3000, days=1)
+    return fetcher.fetch_articles('*', number=200, days=1)
 
 
 def load_model(model_path='model/bin/ngram_300_3_83w.bin'):
@@ -227,13 +227,14 @@ def find_best_threshold(model, algorithm, random, start_th=0.2, increase_times=5
             result = result_item['result']
             threshold = result_item['threshold']
             if threshold not in score_table:
-                score_table[threshold] = {'v': [], 'rand': [], 'mi': [], 'h': [], 'c': []}
+                score_table[threshold] = {'v': [], 'rand': [], 'mi': [], 'h': [], 'c': [], 'si': []}
 
             score_table[threshold]['v'].append(float(result['v_measure_score']))
             score_table[threshold]['rand'].append(float(result['adjusted_rand_score']))
             score_table[threshold]['mi'].append(float(result['adjusted_mutual_info_score']))
             score_table[threshold]['h'].append(float(result['homogeneity_score']))
             score_table[threshold]['c'].append(float(result['completeness_score']))
+            score_table[threshold]['si'].append(float(result['silhouette_index']))
 
             print(threshold, result)
 
@@ -242,14 +243,16 @@ def find_best_threshold(model, algorithm, random, start_th=0.2, increase_times=5
             'rand': max([(i['result']['adjusted_rand_score'], i['threshold']) for i in result_list]),
             'mi': max([(i['result']['adjusted_mutual_info_score'], i['threshold']) for i in result_list]),
             'h': max([(i['result']['homogeneity_score'], i['threshold']) for i in result_list]),
-            'c': max([(i['result']['completeness_score'], i['threshold']) for i in result_list])
+            'c': max([(i['result']['completeness_score'], i['threshold']) for i in result_list]),
+            'si': max([(i['result']['silhouette_index'], i['threshold']) for i in result_list])
         }
         print(test['score'])
 
     average_score = {
         'v': max([(mean(score_table[threshold]['v']), threshold) for threshold in score_table]),
         'rand': max([(mean(score_table[threshold]['rand']), threshold) for threshold in score_table]),
-        'mi': max([(mean(score_table[threshold]['mi']), threshold) for threshold in score_table])
+        'mi': max([(mean(score_table[threshold]['mi']), threshold) for threshold in score_table]),
+        'si': max([(mean(score_table[threshold]['si']), threshold) for threshold in score_table])
     }
     result = {}
     for key in average_score:
@@ -268,7 +271,7 @@ def find_best_model():
 
 
 def test_model(model, algorithm, threshold, random, times):
-    result = find_best_threshold(model, algorithm, random, start_th=threshold, increase_times=0, test_times=times)
+    result = find_best_threshold(model, algorithm, random, start_th=threshold, increase_times=1, test_times=times)
     print(result)
 
 
@@ -280,6 +283,7 @@ def main():
     print_clustering_info(clusters, articles)
     clusters = sorted(clusters, key=lambda cluster: sum([a.score for a in cluster['articles']]), reverse=True)
     print_clusters(clusters[0:5], True)
+    # print('silhouette_index', silhouette_index(clusters))
 
 
 def log(string):
@@ -292,9 +296,10 @@ model = load_model()
 # test_clustering(algorithm=2, threshold=0.45, model=model):
 # simulate('20160509_2000_remove八卦', cluster_number=119)
 # find_best_threshold(model, 1, 0.15, 8, 0.05)
-print(find_best_threshold(model, 2, False, 0.35, 5, 0.05, 3))
+# print(find_best_threshold(model, 2, False, 0.35, 5, 0.05, 3))
 # find_best_threshold(model, 2, True, 0.35, 3, 0.05, 5)
 
-# main()
+main()
 
 # find_best_model()
+# test_model(model, 2, 0.55, False, 3)

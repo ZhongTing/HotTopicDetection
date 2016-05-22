@@ -4,12 +4,11 @@ from numpy import array, dot, mean
 import code.model.ptt_article_fetcher as fetcher
 from code.model.my_tokenize.tokenizer import cut
 import code.test.make_test_data as test_data
-import code.model.lda as lda
 import random
 from code.clustering_validation import validate_clustering
 import time
 import os
-import jieba.analyse
+from code.model.keywords_extraction import keywords_extraction
 
 
 def get_test_clusters(sample_pick=False):
@@ -39,7 +38,7 @@ def get_ptt_articles():
     return fetcher.fetch_articles('*', number=3000, days=1)
 
 
-def load_model(model_path='model/bin/model_82w.bin'):
+def load_model(model_path='model/bin/ngram_300_3_83w.bin'):
     t = time.time()
     model = gensim.models.Word2Vec.load(model_path)
     t = int(time.time() - t)
@@ -89,12 +88,7 @@ def initialize_clusters(articles):
 
 
 def get_cluster_keyword(cluster):
-    input_datas = " ".join([a.title + ' ' + a.content for a in cluster['articles']])
-    model = lda.build_lda_model(input_datas, 1)
-    return [
-        lda.get_topic(model, num_topics=1, num_words=5)[0],
-        jieba.analyse.extract_tags(input_datas, topK=10, withWeight=False, allowPOS=())
-    ]
+    return keywords_extraction(cluster['articles'], 0)
 
 
 def merge_clusters(clusters, threshold):
@@ -233,22 +227,24 @@ def find_best_threshold(model, algorithm, random, start_th=0.2, increase_times=5
             result = result_item['result']
             threshold = result_item['threshold']
             if threshold not in score_table:
-                score_table[threshold] = {'v': [float(result['v_measure_score'])],
-                                          'rand': [float(result['adjusted_rand_score'])],
-                                          'mi': [float(result['adjusted_mutual_info_score'])]}
-            else:
-                score_table[threshold]['v'].append(float(result['v_measure_score']))
-                score_table[threshold]['rand'].append(float(result['adjusted_rand_score']))
-                score_table[threshold]['mi'].append(float(result['adjusted_mutual_info_score']))
+                score_table[threshold] = {'v': [], 'rand': [], 'mi': [], 'h': [], 'c': []}
 
-            # print(threshold, result)
+            score_table[threshold]['v'].append(float(result['v_measure_score']))
+            score_table[threshold]['rand'].append(float(result['adjusted_rand_score']))
+            score_table[threshold]['mi'].append(float(result['adjusted_mutual_info_score']))
+            score_table[threshold]['h'].append(float(result['homogeneity_score']))
+            score_table[threshold]['c'].append(float(result['completeness_score']))
+
+            print(threshold, result)
 
         test['score'] = {
             'v': max([(i['result']['v_measure_score'], i['threshold']) for i in result_list]),
             'rand': max([(i['result']['adjusted_rand_score'], i['threshold']) for i in result_list]),
-            'mi': max([(i['result']['adjusted_mutual_info_score'], i['threshold']) for i in result_list])
+            'mi': max([(i['result']['adjusted_mutual_info_score'], i['threshold']) for i in result_list]),
+            'h': max([(i['result']['homogeneity_score'], i['threshold']) for i in result_list]),
+            'c': max([(i['result']['completeness_score'], i['threshold']) for i in result_list])
         }
-        # print(test['score'])
+        print(test['score'])
 
     average_score = {
         'v': max([(mean(score_table[threshold]['v']), threshold) for threshold in score_table]),
@@ -271,6 +267,11 @@ def find_best_model():
         print('using model', model_path.ljust(25), result)
 
 
+def test_model(model, algorithm, threshold, random, times):
+    result = find_best_threshold(model, algorithm, random, start_th=threshold, increase_times=0, test_times=times)
+    print(result)
+
+
 def main():
     model = load_model()
     articles = get_ptt_articles()
@@ -291,9 +292,9 @@ model = load_model()
 # test_clustering(algorithm=2, threshold=0.45, model=model):
 # simulate('20160509_2000_remove八卦', cluster_number=119)
 # find_best_threshold(model, 1, 0.15, 8, 0.05)
-# print(find_best_threshold(model, 2, False, 0.35, 3, 0.05, 3))
+print(find_best_threshold(model, 2, False, 0.35, 5, 0.05, 3))
 # find_best_threshold(model, 2, True, 0.35, 3, 0.05, 5)
 
-main()
+# main()
 
 # find_best_model()

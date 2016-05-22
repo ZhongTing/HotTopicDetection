@@ -35,7 +35,7 @@ def get_test_articles(clusters=get_test_clusters()):
 
 
 def get_ptt_articles():
-    return fetcher.fetch_articles('*', number=200, days=1)
+    return fetcher.fetch_articles('*', number=2000, days=1)
 
 
 def load_model(model_path='model/bin/ngram_300_3_83w.bin'):
@@ -88,7 +88,10 @@ def initialize_clusters(articles):
 
 
 def get_cluster_keyword(cluster):
-    return keywords_extraction(cluster['articles'], 0)
+    return [
+        keywords_extraction(cluster['articles'], 0), 
+        keywords_extraction(cluster['articles'], 1)
+    ]
 
 
 def merge_clusters(clusters, threshold):
@@ -125,7 +128,8 @@ def print_clusters(clusters, print_title=False):
         cluster = clusters[i]
         score = sum([article.score for article in cluster['articles']])
         print('cluster', i, 'score', score, 'amount', len(cluster['articles']))
-        print(get_cluster_keyword(cluster))
+        for keywords in get_cluster_keyword(cluster):
+            print(keywords)
         if print_title is True:
             for article in cluster['articles']:
                 print(article.title)
@@ -279,7 +283,7 @@ def main():
     model = load_model()
     articles = get_ptt_articles()
     compute_article_vector(model, articles)
-    clusters = clustering(2, 0.45, articles)
+    clusters = clustering(2, 0.55, articles)
     print_clustering_info(clusters, articles)
     clusters = sorted(clusters, key=lambda cluster: sum([a.score for a in cluster['articles']]), reverse=True)
     print_clusters(clusters[0:5], True)

@@ -16,8 +16,8 @@ def cut(string, using_stopwords=False, simplified_convert=True, log=False):
         if simplified_convert:
             tokens = [HanziConv.toTraditional(i) for i in tokens]
     if using_stopwords:
-        with open(os.path.join(BASE_DIR, 'stopwords.json'), encoding='utf-8') as data_file:
-            stopwords = json.load(data_file)
+        with open(os.path.join(BASE_DIR, 'stopwords.txt'), encoding='utf-8') as data_file:
+            stopwords = [line.replace('\n', '') for line in data_file.readlines()]
             if log:
                 removed_tokens = [i for i in list(tokens) if i in stopwords]
                 if len(removed_tokens) > 0:

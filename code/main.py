@@ -246,7 +246,7 @@ def find_best_threshold(model, algorithm, random, start_th=0.2, increase_times=5
             threshold = result_item['threshold']
             if threshold not in score_table:
                 score_table[threshold] = {}
-            for key in sorted(result.items()):
+            for key in sorted(result.keys()):
                 if key not in score_table[threshold]:
                     score_table[threshold][key] = []
                 score_table[threshold][key].append(float(result[key]))
@@ -254,17 +254,17 @@ def find_best_threshold(model, algorithm, random, start_th=0.2, increase_times=5
             print(threshold, result)
 
         test['score'] = {}
-        for key in sorted(result_list[0]['result'].items()):
+        for key in sorted(result_list[0]['result'].keys()):
             test['score'][key] = max([(i['result'][key], i['threshold']) for i in result_list])
 
         print(test['score'])
 
     average_score = {}
-    for key in sorted(score_table[threshold].items()):
+    for key in sorted(score_table[threshold].keys()):
         average_score[key] = max([(mean(score_table[threshold][key]), threshold) for threshold in score_table])
 
     result = {}
-    for key in average_score:
+    for key in sorted(average_score.keys()):
         result[key] = '({0:.2f}, {1})'.format(average_score[key][0], average_score[key][1])
     return result
 

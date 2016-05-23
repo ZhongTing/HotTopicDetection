@@ -35,7 +35,7 @@ def train(model_name, article_number):
         model.train(sentences)
     except FileNotFoundError:
         print('create new word2vec model')
-        model = Word2Vec(size=100, window=5, min_count=1, workers=8, sg=0)
+        model = Word2Vec(size=300, window=5, min_count=5, workers=8, sg=1)
         model.build_vocab(sentences)
         print('build vocab spend ', time.time() - start_time)
         model.train(sentences)
@@ -46,5 +46,5 @@ def train(model_name, article_number):
     print('model_spend_time ' + str(end_time - start_time))
 
 print(datetime.now())
-train('cbow_100_1_83w', 850000)
+train('ngram_300_5_83w_cut', 850000)
 print(datetime.now())

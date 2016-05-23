@@ -92,7 +92,7 @@ def initialize_clusters(articles):
 
 def get_cluster_keyword(cluster):
     return [
-        keywords_extraction(cluster['articles'], 0), 
+        keywords_extraction(cluster['articles'], 0),
         keywords_extraction(cluster['articles'], 1)
     ]
 
@@ -134,7 +134,7 @@ def compute_similarily(cluster_a, cluster_b, similarity_method):
     elif similarity_method is 2:
         title_score = dot(cluster_a['centroid'], cluster_b['centroid'])
         keywords_score = dot(cluster_a['keywords'], cluster_b['keywords'])
-        return title_score * 0.8 + keywords_score * 0.2
+        return title_score * 0.7 + keywords_score * 0.3
 
 
 def print_clusters(clusters, print_title=False):
@@ -302,11 +302,9 @@ def log(string):
 
 debug_mode = False
 model = load_model()
-# test_clustering(algorithm=2, threshold=0.45, model=model):
-# simulate('20160509_2000_remove八卦', cluster_number=119)
 # print(find_best_threshold(model, 1, False, 0.5, 5, 0.05, 1))
-# print(find_best_threshold(model, 2, False, 0.5, 9, 0.05, 1))
-print(find_best_threshold(model, 3, False, 0.5, 9, 0.05, 1))
+print(find_best_threshold(model, 2, False, 0.45, 21, 0.01, 5))
+# print(find_best_threshold(model, 3, False, 0.5, 9, 0.05, 1))
 
 # main(1, 0.55)
 

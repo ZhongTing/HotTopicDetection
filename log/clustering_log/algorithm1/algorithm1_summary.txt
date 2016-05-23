@@ -1,0 +1,16 @@
+algorithm  1
+固定smaple看起來標題與內容keyword 7:3 最好
+'v_measure': '(0.94, 0.55)', 'mutual_info': '(0.94, 0.55)', 'rand': '(0.92, 0.55)'
+
+
+
+9-1
+{'v_measure': '(0.93, 0.55)', 'mutual_info': '(0.92, 0.55)', 'rand': '(0.90, 0.60)', 'completeness': '(0.94, 0.50)'}
+8-2
+{'v_measure': '(0.94, 0.55)', 'mutual_info': '(0.93, 0.55)', 'rand': '(0.91, 0.55)', 'completeness': '(0.94, 0.55)'}
+7-3
+{'v_measure': '(0.94, 0.55)', 'mutual_info': '(0.94, 0.55)', 'rand': '(0.92, 0.55)', 'completeness': '(0.94, 0.50)'}
+6-4
+{'v_measure': '(0.93, 0.55)', 'mutual_info': '(0.92, 0.55)',' rand': '(0.90, 0.60)', 'completeness': '(0.95, 0.50)'}
+5-5
+{'v_measure': '(0.92, 0.60)', 'mutual_info': '(0.91, 0.60)', 'rand': '(0.88, 0.60)', 'completeness': '(0.93, 0.50)'}

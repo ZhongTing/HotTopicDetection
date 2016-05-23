@@ -31,8 +31,8 @@ def validate_clustering(cluster_ground_truth, cluster_predict):
         'mutual_info': '{0:.2f}'.format(metrics.adjusted_mutual_info_score(labels_true, labels_pred)),
         'homogeneity': '{0:.2f}'.format(metrics.homogeneity_score(labels_true, labels_pred)),
         'completeness': '{0:.2f}'.format(metrics.completeness_score(labels_true, labels_pred)),
-        'v_measure': '{0:.2f}'.format(metrics.v_measure_score(labels_true, labels_pred)),
-        'silhouette_index': '{0:.2f}'.format(silhouette_index(cluster_predict))
+        'v_measure': '{0:.2f}'.format(metrics.v_measure_score(labels_true, labels_pred))
+        # 'silhouette_index': '{0:.2f}'.format(silhouette_index(cluster_predict))
     }
     return result
 
@@ -65,8 +65,6 @@ def silhouette_index(clusters):
         return score
     except:
         return 0
-    
-
 
 
 # clusters = test.get_test_clusters()

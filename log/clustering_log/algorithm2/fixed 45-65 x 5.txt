@@ -1,0 +1,63 @@
+Building prefix dict from the default dictionary ...
+Loading model from cache C:\Users\ฉvงส\AppData\Local\Temp\jieba.cache
+Loading model cost 1.290 seconds.
+Prefix dict has been built succesfully.
+spend 5s to load word2vec model from model/bin/ngram_300_3_83w.bin
+algorithm  2
+0.52 {'rand': '0.84', 'v_measure': '0.90', 'homogeneity': '0.89', 'mutual_info': '0.89', 'completeness': '0.90'}
+0.53 {'rand': '0.88', 'v_measure': '0.92', 'homogeneity': '0.91', 'mutual_info': '0.91', 'completeness': '0.93'}
+0.54 {'rand': '0.90', 'v_measure': '0.92', 'homogeneity': '0.93', 'mutual_info': '0.90', 'completeness': '0.90'}
+0.55 {'rand': '0.92', 'v_measure': '0.93', 'homogeneity': '0.94', 'mutual_info': '0.91', 'completeness': '0.91'}
+0.56 {'rand': '0.92', 'v_measure': '0.93', 'homogeneity': '0.94', 'mutual_info': '0.91', 'completeness': '0.91'}
+0.57 {'rand': '0.90', 'v_measure': '0.92', 'homogeneity': '0.95', 'mutual_info': '0.89', 'completeness': '0.89'}
+0.58 {'rand': '0.90', 'v_measure': '0.92', 'homogeneity': '0.95', 'mutual_info': '0.88', 'completeness': '0.89'}
+0.59 {'rand': '0.89', 'v_measure': '0.91', 'homogeneity': '0.95', 'mutual_info': '0.87', 'completeness': '0.88'}
+0.60 {'rand': '0.87', 'v_measure': '0.91', 'homogeneity': '0.96', 'mutual_info': '0.85', 'completeness': '0.86'}
+0.61 {'rand': '0.87', 'v_measure': '0.90', 'homogeneity': '0.97', 'mutual_info': '0.84', 'completeness': '0.85'}
+{'rand': ('0.92', '0.56'), 'v_measure': ('0.93', '0.56'), 'homogeneity': ('0.97', '0.61'), 'mutual_info': ('0.91', '0.56'), 'completeness': ('0.93', '0.53')}
+0.52 {'rand': '0.83', 'v_measure': '0.90', 'homogeneity': '0.89', 'mutual_info': '0.89', 'completeness': '0.90'}
+0.53 {'rand': '0.86', 'v_measure': '0.91', 'homogeneity': '0.91', 'mutual_info': '0.91', 'completeness': '0.91'}
+0.54 {'rand': '0.91', 'v_measure': '0.92', 'homogeneity': '0.94', 'mutual_info': '0.90', 'completeness': '0.91'}
+0.55 {'rand': '0.91', 'v_measure': '0.92', 'homogeneity': '0.94', 'mutual_info': '0.90', 'completeness': '0.91'}
+0.56 {'rand': '0.90', 'v_measure': '0.92', 'homogeneity': '0.95', 'mutual_info': '0.89', 'completeness': '0.90'}
+0.57 {'rand': '0.91', 'v_measure': '0.92', 'homogeneity': '0.95', 'mutual_info': '0.89', 'completeness': '0.89'}
+0.58 {'rand': '0.91', 'v_measure': '0.92', 'homogeneity': '0.96', 'mutual_info': '0.89', 'completeness': '0.89'}
+0.59 {'rand': '0.90', 'v_measure': '0.92', 'homogeneity': '0.96', 'mutual_info': '0.88', 'completeness': '0.88'}
+0.60 {'rand': '0.89', 'v_measure': '0.91', 'homogeneity': '0.96', 'mutual_info': '0.86', 'completeness': '0.87'}
+0.61 {'rand': '0.85', 'v_measure': '0.90', 'homogeneity': '0.96', 'mutual_info': '0.83', 'completeness': '0.84'}
+{'rand': ('0.91', '0.58'), 'v_measure': ('0.92', '0.59'), 'homogeneity': ('0.96', '0.61'), 'mutual_info': ('0.91', '0.53'), 'completeness': ('0.91', '0.55')}
+0.52 {'rand': '0.84', 'v_measure': '0.90', 'homogeneity': '0.89', 'mutual_info': '0.89', 'completeness': '0.92'}
+0.53 {'rand': '0.89', 'v_measure': '0.93', 'homogeneity': '0.92', 'mutual_info': '0.92', 'completeness': '0.93'}
+0.54 {'rand': '0.88', 'v_measure': '0.92', 'homogeneity': '0.93', 'mutual_info': '0.92', 'completeness': '0.92'}
+0.55 {'rand': '0.90', 'v_measure': '0.92', 'homogeneity': '0.94', 'mutual_info': '0.90', 'completeness': '0.91'}
+0.56 {'rand': '0.89', 'v_measure': '0.92', 'homogeneity': '0.94', 'mutual_info': '0.89', 'completeness': '0.90'}
+0.57 {'rand': '0.90', 'v_measure': '0.92', 'homogeneity': '0.95', 'mutual_info': '0.89', 'completeness': '0.90'}
+0.58 {'rand': '0.90', 'v_measure': '0.92', 'homogeneity': '0.95', 'mutual_info': '0.88', 'completeness': '0.89'}
+0.59 {'rand': '0.87', 'v_measure': '0.91', 'homogeneity': '0.96', 'mutual_info': '0.86', 'completeness': '0.86'}
+0.60 {'rand': '0.87', 'v_measure': '0.90', 'homogeneity': '0.96', 'mutual_info': '0.84', 'completeness': '0.85'}
+0.61 {'rand': '0.86', 'v_measure': '0.90', 'homogeneity': '0.96', 'mutual_info': '0.83', 'completeness': '0.84'}
+{'rand': ('0.90', '0.58'), 'v_measure': ('0.93', '0.53'), 'homogeneity': ('0.96', '0.61'), 'mutual_info': ('0.92', '0.54'), 'completeness': ('0.93', '0.53')}
+0.52 {'rand': '0.89', 'v_measure': '0.93', 'homogeneity': '0.92', 'mutual_info': '0.92', 'completeness': '0.94'}
+0.53 {'rand': '0.89', 'v_measure': '0.93', 'homogeneity': '0.92', 'mutual_info': '0.92', 'completeness': '0.94'}
+0.54 {'rand': '0.89', 'v_measure': '0.93', 'homogeneity': '0.93', 'mutual_info': '0.93', 'completeness': '0.93'}
+0.55 {'rand': '0.91', 'v_measure': '0.93', 'homogeneity': '0.95', 'mutual_info': '0.90', 'completeness': '0.91'}
+0.56 {'rand': '0.90', 'v_measure': '0.93', 'homogeneity': '0.95', 'mutual_info': '0.90', 'completeness': '0.90'}
+0.57 {'rand': '0.90', 'v_measure': '0.93', 'homogeneity': '0.95', 'mutual_info': '0.89', 'completeness': '0.90'}
+0.58 {'rand': '0.89', 'v_measure': '0.92', 'homogeneity': '0.96', 'mutual_info': '0.88', 'completeness': '0.89'}
+0.59 {'rand': '0.89', 'v_measure': '0.91', 'homogeneity': '0.96', 'mutual_info': '0.87', 'completeness': '0.87'}
+0.60 {'rand': '0.87', 'v_measure': '0.91', 'homogeneity': '0.96', 'mutual_info': '0.85', 'completeness': '0.86'}
+0.61 {'rand': '0.85', 'v_measure': '0.90', 'homogeneity': '0.97', 'mutual_info': '0.83', 'completeness': '0.84'}
+{'rand': ('0.91', '0.55'), 'v_measure': ('0.93', '0.57'), 'homogeneity': ('0.97', '0.61'), 'mutual_info': ('0.93', '0.54'), 'completeness': ('0.94', '0.53')}
+0.52 {'rand': '0.90', 'v_measure': '0.93', 'homogeneity': '0.92', 'mutual_info': '0.92', 'completeness': '0.94'}
+0.53 {'rand': '0.90', 'v_measure': '0.93', 'homogeneity': '0.92', 'mutual_info': '0.92', 'completeness': '0.94'}
+0.54 {'rand': '0.89', 'v_measure': '0.92', 'homogeneity': '0.93', 'mutual_info': '0.91', 'completeness': '0.91'}
+0.55 {'rand': '0.91', 'v_measure': '0.93', 'homogeneity': '0.95', 'mutual_info': '0.90', 'completeness': '0.91'}
+0.56 {'rand': '0.90', 'v_measure': '0.92', 'homogeneity': '0.95', 'mutual_info': '0.89', 'completeness': '0.90'}
+0.57 {'rand': '0.91', 'v_measure': '0.93', 'homogeneity': '0.96', 'mutual_info': '0.89', 'completeness': '0.90'}
+0.58 {'rand': '0.89', 'v_measure': '0.92', 'homogeneity': '0.95', 'mutual_info': '0.88', 'completeness': '0.89'}
+0.59 {'rand': '0.89', 'v_measure': '0.92', 'homogeneity': '0.96', 'mutual_info': '0.87', 'completeness': '0.87'}
+0.60 {'rand': '0.87', 'v_measure': '0.91', 'homogeneity': '0.97', 'mutual_info': '0.85', 'completeness': '0.86'}
+0.61 {'rand': '0.88', 'v_measure': '0.91', 'homogeneity': '0.97', 'mutual_info': '0.85', 'completeness': '0.86'}
+{'rand': ('0.91', '0.57'), 'v_measure': ('0.93', '0.57'), 'homogeneity': ('0.97', '0.61'), 'mutual_info': ('0.92', '0.53'), 'completeness': ('0.94', '0.53')}
+{'rand': '(0.91, 0.55)', 'v_measure': '(0.93, 0.55)', 'homogeneity': '(0.97, 0.61)', 'mutual_info': '(0.92, 0.53)', 'completeness': '(0.93, 0.53)'}
+[Finished in 140.9s]

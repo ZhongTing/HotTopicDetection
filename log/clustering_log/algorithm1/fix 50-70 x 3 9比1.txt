@@ -1,0 +1,21 @@
+algorithm  1
+0.50 {'mutual_info': '0.87', 'v_measure': '0.91', 'rand': '0.84', 'silhouette_index': '0.29', 'homogeneity': '0.88', 'completeness': '0.94'}
+0.55 {'mutual_info': '0.92', 'v_measure': '0.93', 'rand': '0.91', 'silhouette_index': '0.30', 'homogeneity': '0.94', 'completeness': '0.92'}
+0.60 {'mutual_info': '0.86', 'v_measure': '0.91', 'rand': '0.89', 'silhouette_index': '0.31', 'homogeneity': '0.96', 'completeness': '0.87'}
+0.65 {'mutual_info': '0.76', 'v_measure': '0.87', 'rand': '0.80', 'silhouette_index': '0.35', 'homogeneity': '0.98', 'completeness': '0.78'}
+0.70 {'mutual_info': '0.64', 'v_measure': '0.80', 'rand': '0.64', 'silhouette_index': '0.45', 'homogeneity': '0.99', 'completeness': '0.68'}
+{'mutual_info': ('0.92', '0.55'), 'v_measure': ('0.93', '0.55'), 'rand': ('0.91', '0.55'), 'silhouette_index': ('0.45', '0.70'), 'homogeneity': ('0.99', '0.70'), 'completeness': ('0.94', '0.50')}
+0.50 {'mutual_info': '0.86', 'v_measure': '0.90', 'rand': '0.80', 'silhouette_index': '0.28', 'homogeneity': '0.87', 'completeness': '0.93'}
+0.55 {'mutual_info': '0.92', 'v_measure': '0.93', 'rand': '0.89', 'silhouette_index': '0.30', 'homogeneity': '0.93', 'completeness': '0.92'}
+0.60 {'mutual_info': '0.88', 'v_measure': '0.92', 'rand': '0.91', 'silhouette_index': '0.31', 'homogeneity': '0.97', 'completeness': '0.89'}
+0.65 {'mutual_info': '0.76', 'v_measure': '0.87', 'rand': '0.79', 'silhouette_index': '0.34', 'homogeneity': '0.98', 'completeness': '0.78'}
+0.70 {'mutual_info': '0.63', 'v_measure': '0.80', 'rand': '0.64', 'silhouette_index': '0.46', 'homogeneity': '0.99', 'completeness': '0.67'}
+{'mutual_info': ('0.92', '0.55'), 'v_measure': ('0.93', '0.55'), 'rand': ('0.91', '0.60'), 'silhouette_index': ('0.46', '0.70'), 'homogeneity': ('0.99', '0.70'), 'completeness': ('0.93', '0.50')}
+0.50 {'mutual_info': '0.86', 'v_measure': '0.90', 'rand': '0.82', 'silhouette_index': '0.27', 'homogeneity': '0.87', 'completeness': '0.94'}
+0.55 {'mutual_info': '0.92', 'v_measure': '0.92', 'rand': '0.89', 'silhouette_index': '0.29', 'homogeneity': '0.92', 'completeness': '0.92'}
+0.60 {'mutual_info': '0.87', 'v_measure': '0.92', 'rand': '0.90', 'silhouette_index': '0.30', 'homogeneity': '0.96', 'completeness': '0.88'}
+0.65 {'mutual_info': '0.77', 'v_measure': '0.87', 'rand': '0.82', 'silhouette_index': '0.34', 'homogeneity': '0.98', 'completeness': '0.79'}
+0.70 {'mutual_info': '0.65', 'v_measure': '0.81', 'rand': '0.69', 'silhouette_index': '0.46', 'homogeneity': '0.99', 'completeness': '0.69'}
+{'mutual_info': ('0.92', '0.55'), 'v_measure': ('0.92', '0.60'), 'rand': ('0.90', '0.60'), 'silhouette_index': ('0.46', '0.70'), 'homogeneity': ('0.99', '0.70'), 'completeness': ('0.94', '0.50')}
+
+{'mutual_info': '(0.92, 0.55)', 'v_measure': '(0.93, 0.55)', 'rand': '(0.90, 0.60)', 'silhouette_index': '(0.46, 0.70)', 'homogeneity': '(0.99, 0.70)', 'completeness': '(0.94, 0.50)'}

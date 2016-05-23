@@ -4,13 +4,15 @@ import code.model.lda as lda
 import os
 
 
-def keywords_extraction(articles, algorithm):
+def keywords_extraction(articles, algorithm=0, k=10):
+    if not isinstance(articles, list):
+        articles = [articles]
     input_datas = " ".join([article.title + ' ' + article.content for article in articles])
     if algorithm == 0:
         model = lda.build_lda_model(input_datas, 1)
-        return lda.get_topic(model, num_topics=1, num_words=10)[0]
+        return lda.get_topic(model, num_topics=1, num_words=k)[0]
     elif algorithm == 1:
-        return jieba.analyse.extract_tags(input_datas, topK=10, withWeight=False, allowPOS=())
+        return jieba.analyse.extract_tags(input_datas, topK=k, withWeight=False, allowPOS=())
     else:
         return None
 

@@ -169,7 +169,7 @@ def find_closest_cluster(clusters):
     max_similarity = 0
     cluster_pair = None
     if len(clusters) <= 2:
-        return (clusters[0], clusters[-1])
+        return clusters[0], clusters[-1]
 
     for i in range(len(clusters)):
         for j in range(i + 1, len(clusters)):
@@ -202,6 +202,7 @@ def clustering3(model, articles, threshold):
 
 
 def clustering(model, algorithm, threshold, articles):
+    clusters = None
     if algorithm is 1:
         clusters = clustering1(model, articles, threshold)
     elif algorithm is 2:
@@ -222,7 +223,6 @@ def test_clustering(algorithm, threshold, model=None, labeled_clusters=None, art
 
 
 def find_best_threshold(model, algorithm, random, start_th=0.2, increase_times=5, increase_count=0.1, test_times=1):
-
     test_list = []
     for i in range(test_times):
         labeled_clusters = get_test_clusters(random)
@@ -230,7 +230,7 @@ def find_best_threshold(model, algorithm, random, start_th=0.2, increase_times=5
         compute_article_vector(model, articles)
         threshold = start_th
         result_list = []
-        for i in range(increase_times):
+        for j in range(increase_times):
             clusters = clustering(model, algorithm, threshold, articles)
             result = validate_clustering(labeled_clusters, clusters)
             result_list.append({'threshold': '{0:.2f}'.format(threshold), 'result': result})
@@ -260,7 +260,7 @@ def find_best_threshold(model, algorithm, random, start_th=0.2, increase_times=5
         print(test['score'])
 
     average_score = {}
-    for key in sorted(score_table[threshold].keys()):
+    for key in sorted(score_table[-1].keys()):
         average_score[key] = max([(mean(score_table[threshold][key]), threshold) for threshold in score_table])
 
     result = {}

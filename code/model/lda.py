@@ -6,16 +6,16 @@ from code.model.ptt_article_fetcher import fetch_articles
 from code.model.my_tokenize.tokenizer import cut
 
 
-def build_lda_model(input_datas, num_topics=1):
-    if len(input_datas) == 0:
+def build_lda_model(input_data, num_topics=1):
+    if len(input_data) == 0:
         print('data is empty')
         return
 
-    if isinstance(input_datas, str):
-        input_datas = [input_datas]
+    if isinstance(input_data, str):
+        input_data = [input_data]
 
     texts = []
-    for data in input_datas:
+    for data in input_data:
         tokens = cut(data, using_stopwords=True, simplified_convert=True)
         texts.append(tokens)
 

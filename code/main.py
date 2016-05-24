@@ -251,35 +251,29 @@ def find_best_threshold(model, algorithm, random, start_th=0.2, increase_times=5
                     score_table[threshold][key] = []
                 score_table[threshold][key].append(float(result[key]))
 
-            # print(threshold, result)
-
-        # test['score'] = {}
-        # for key in sorted(result_list[0]['result'].keys()):
-        #     test['score'][key] = max([(i['result'][key], i['threshold']) for i in result_list])
-        #
-        # print(test['score'])
-    #
-    # average_score = {}
-    # for key in sorted(score_table[-1].keys()):
-    #     average_score[key] = max([(mean(score_table[threshold][key]), threshold) for threshold in score_table])
-
-    result_list = []
-    for threshold in score_table:
+    result_table = {}
+    for key in sorted(score_table[threshold].keys()):
         result = {'mean': 0, 'max': 0, 'min': 0, 'std': 0}
-        for key in sorted(score_table[0].keys()):
-            result['mean'] = mean(score_table[threshold][key])
+        for threshold in score_table:
+            result['mean'] = float('{0:.2f}'.format(mean(score_table[threshold][key])))
             result['max'] = max(score_table[threshold][key])
             result['min'] = min(score_table[threshold][key])
-            result['std'] = std(score_table[threshold][key])
-        print(threshold, result)
-        result_list.append((result, threshold))
-    final_result = {'mean': max([(result[0]['mean'], result[1], 'mean') for result in result_list]),
-                    'max': max([(result[0]['max'], result[1], 'max') for result in result_list]),
-                    'min': max([(result[0]['min'], result[1], 'min') for result in result_list]),
-                    'std': min([(result[0]['std'], result[1], 'std') for result in result_list])}
+            result['std'] = float('{0:.2f}'.format(std(score_table[threshold][key])))
+            print(key, threshold, result)
+            if key not in result_table:
+                result_table[key] = []
+            result_table[key].append((result, threshold))
+        print('')
 
-    # for key in sorted(average_score.keys()):
-    #     result[key] = '({0:.2f}, {1})'.format(average_score[key][0], average_score[key][1])
+    final_result = {}
+    for key in sorted(result_table.keys()):
+        final_result[key] = {'mean': max([(result[0]['mean'], result[1]) for result in result_table[key]]),
+                             'max': max([(result[0]['max'], result[1]) for result in result_table[key]]),
+                             'min': max([(result[0]['min'], result[1]) for result in result_table[key]]),
+                             'std': min([(result[0]['std'], result[1]) for result in result_table[key]])}
+    for key in sorted(final_result.keys()):
+        print(key, final_result[key])
+
     return final_result
 
 
@@ -317,9 +311,10 @@ def log(string):
 debug_mode = False
 model = load_model()
 # print(find_best_threshold(model, 1, False, 0.5, 5, 0.05, 1))
-print(find_best_threshold(model, 2, False, 0.45, 21, 0.01, 5))
+# print(find_best_threshold(model, 2, False, 0.45, 21, 0.01, 5))
 # print(find_best_threshold(model, 3, False, 0.5, 9, 0.05, 1))
 
+find_best_threshold(model, 2, False, 0.5, 5, 0.01, 3)
 # main(1, 0.55)
 
 # find_best_model()

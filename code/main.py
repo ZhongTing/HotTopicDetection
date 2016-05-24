@@ -1,6 +1,6 @@
 import gensim.models
 from gensim import matutils
-from numpy import array, dot, mean
+from numpy import array, dot, mean, std
 import code.model.ptt_article_fetcher as fetcher
 from code.model.my_tokenize.tokenizer import cut
 import code.test.make_test_data as test_data
@@ -251,22 +251,36 @@ def find_best_threshold(model, algorithm, random, start_th=0.2, increase_times=5
                     score_table[threshold][key] = []
                 score_table[threshold][key].append(float(result[key]))
 
-            print(threshold, result)
+            # print(threshold, result)
 
-        test['score'] = {}
-        for key in sorted(result_list[0]['result'].keys()):
-            test['score'][key] = max([(i['result'][key], i['threshold']) for i in result_list])
+        # test['score'] = {}
+        # for key in sorted(result_list[0]['result'].keys()):
+        #     test['score'][key] = max([(i['result'][key], i['threshold']) for i in result_list])
+        #
+        # print(test['score'])
+    #
+    # average_score = {}
+    # for key in sorted(score_table[-1].keys()):
+    #     average_score[key] = max([(mean(score_table[threshold][key]), threshold) for threshold in score_table])
 
-        print(test['score'])
+    result_list = []
+    for threshold in score_table:
+        result = {'mean': 0, 'max': 0, 'min': 0, 'std': 0}
+        for key in sorted(score_table[0].keys()):
+            result['mean'] = mean(score_table[threshold][key])
+            result['max'] = max(score_table[threshold][key])
+            result['min'] = min(score_table[threshold][key])
+            result['std'] = std(score_table[threshold][key])
+        print(threshold, result)
+        result_list.append((result, threshold))
+    final_result = {'mean': max([(result[0]['mean'], result[1], 'mean') for result in result_list]),
+                    'max': max([(result[0]['max'], result[1], 'max') for result in result_list]),
+                    'min': max([(result[0]['min'], result[1], 'min') for result in result_list]),
+                    'std': min([(result[0]['std'], result[1], 'std') for result in result_list])}
 
-    average_score = {}
-    for key in sorted(score_table[-1].keys()):
-        average_score[key] = max([(mean(score_table[threshold][key]), threshold) for threshold in score_table])
-
-    result = {}
-    for key in sorted(average_score.keys()):
-        result[key] = '({0:.2f}, {1})'.format(average_score[key][0], average_score[key][1])
-    return result
+    # for key in sorted(average_score.keys()):
+    #     result[key] = '({0:.2f}, {1})'.format(average_score[key][0], average_score[key][1])
+    return final_result
 
 
 def find_best_model():

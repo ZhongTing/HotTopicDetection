@@ -279,10 +279,14 @@ def find_best_threshold(model, algorithm, random, start_th=0.2, increase_times=5
 
     final_result = {}
     for key in sorted(result_table.keys()):
-        final_result[key] = {'mean': max([(result[0]['mean'], result[1]) for result in result_table[key]]),
-                             'max': max([(result[0]['max'], result[1]) for result in result_table[key]]),
-                             'min': max([(result[0]['min'], result[1]) for result in result_table[key]]),
-                             'std': min([(result[0]['std'], result[1]) for result in result_table[key]])}
+        final_result[key] = {}
+        temp_data = {'mean': max([(result[0]['mean'], result[1]) for result in result_table[key]]),
+                     'max': max([(result[0]['max'], result[1]) for result in result_table[key]]),
+                     'min': max([(result[0]['min'], result[1]) for result in result_table[key]]),
+                     'std': min([(result[0]['std'], result[1]) for result in result_table[key]])}
+        for s in sorted(temp_data.keys()):
+            final_result[key][s] = temp_data[s]
+
     for key in sorted(final_result.keys()):
         print(key.ljust(25), final_result[key])
 
@@ -322,9 +326,9 @@ def log(string):
 
 debug_mode = False
 model = load_model()
-find_best_threshold(model, 1, True, 0.5, 5, 0.05, 50)
+# find_best_threshold(model, 1, True, 0.5, 5, 0.05, 50)
 # find_best_threshold(model, 2, False, 0.45, 21, 0.01, 5)
-# find_best_threshold(model, 2, False, 0.54, 8, 0.01, 10)
+find_best_threshold(model, 2, False, 0.54, 8, 0.01, 1)
 # find_best_threshold(model, 3, True, 0.3, 12, 0.05, 100)
 
 # find_best_threshold(model, 2, False, 0.5, 5, 0.01, 3)

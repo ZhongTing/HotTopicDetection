@@ -97,7 +97,7 @@ def get_cluster_keyword(cluster):
     ]
 
 
-def merge_clusters(model, clusters, threshold, combined_method=0, similarity_method=0):
+def merge_clusters(model, clusters, threshold, combined_method=[0], similarity_method=[0]):
     clusters_after_merge = []
     while len(clusters) != 0:
         target_cluster = clusters.pop()
@@ -119,22 +119,31 @@ def merge_clusters(model, clusters, threshold, combined_method=0, similarity_met
 
 def combined(model, cluster, merged_cluster, combined_method):
     cluster['articles'].extend(merged_cluster['articles'])
-    if combined_method is 0:
+    compute_cluster_vector(model, cluster, combined_method)
+
+
+def compute_cluster_vector(model, cluster, combined_method):
+    if combined_method[0] is 0:
         cluster['centroid'] = sum([a.vector for a in cluster['articles']]) / len(cluster['articles'])
-    elif combined_method is 1:
+    elif combined_method[0] is 1:
         cluster['centroid'] = sum([a.vector for a in cluster['articles']]) / len(cluster['articles'])
         cluster['keywords'] = compute_vector(model, keywords_extraction(cluster['articles']))
+    elif combined_method[0] is 2:
+        cluster['centroid'] = sum([a.vector for a in cluster['articles']]) * combined_method[1] + \
+            sum([a.content_vector for a in cluster['articles']]) * combined_method[2]
+        cluster['centroid'] /= len(cluster['articles'])
 
 
-def compute_similarily(cluster_a, cluster_b, similarity_method):
-    if similarity_method is 0:
+def compute_similarily(cluster_a, cluster_b, args):
+
+    if args[0] is 0:
         return dot(cluster_a['centroid'], cluster_b['centroid'])
-    elif similarity_method is 1:
+    elif args[0] is 1:
         return min([dot(a.vector, b.vector) for a in cluster_a['articles'] for b in cluster_b['articles']])
-    elif similarity_method is 2:
+    elif args[0] is 2:
         title_score = dot(cluster_a['centroid'], cluster_b['centroid'])
         keywords_score = dot(cluster_a['keywords'], cluster_b['keywords'])
-        return title_score * 0.7 + keywords_score * 0.3
+        return title_score * args[1] + keywords_score * args[2]
 
 
 def print_clusters(clusters, print_title=False):
@@ -180,11 +189,11 @@ def find_closest_cluster(clusters):
     return cluster_pair
 
 
-def clustering1(model, articles, threshold):
+def clustering1(model, articles, threshold, t=0.7, c=0.3):
     clusters = initialize_clusters(articles)
     for cluster in clusters:
         cluster['keywords'] = compute_vector(model, keywords_extraction(cluster['articles']))
-    return merge_clusters(model, clusters, threshold, combined_method=1, similarity_method=2)
+    return merge_clusters(model, clusters, threshold, combined_method=[1], similarity_method=[2, t, c])
 
 
 def clustering2(model, articles, threshold):
@@ -192,12 +201,15 @@ def clustering2(model, articles, threshold):
     return merge_clusters(model, clusters, threshold)
 
 
-def clustering3(model, articles, threshold):
+def clustering3(model, articles, threshold, t=0.8, c=0.2):
     clusters = initialize_clusters(articles)
     clusters = merge_clusters(model, clusters, 0.55)
     for cluster in clusters:
+        for article in cluster['articles']:
+            article.content_vector = compute_vector(model, keywords_extraction(article))
         cluster['centroid'] = compute_vector(model, keywords_extraction(cluster['articles']))
-    clusters = merge_clusters(model, clusters, threshold, combined_method=0)
+        compute_cluster_vector(model, cluster, [2, t, c])
+    clusters = merge_clusters(model, clusters, threshold, combined_method=[2, t, c])
     return clusters
 
 
@@ -254,7 +266,7 @@ def find_best_threshold(model, algorithm, random, start_th=0.2, increase_times=5
     result_table = {}
     for key in sorted(score_table[threshold].keys()):
         result = {'mean': 0, 'max': 0, 'min': 0, 'std': 0}
-        for threshold in score_table:
+        for threshold in sorted(score_table.keys()):
             result['mean'] = float('{0:.2f}'.format(mean(score_table[threshold][key])))
             result['max'] = max(score_table[threshold][key])
             result['min'] = min(score_table[threshold][key])
@@ -272,7 +284,7 @@ def find_best_threshold(model, algorithm, random, start_th=0.2, increase_times=5
                              'min': max([(result[0]['min'], result[1]) for result in result_table[key]]),
                              'std': min([(result[0]['std'], result[1]) for result in result_table[key]])}
     for key in sorted(final_result.keys()):
-        print(key, final_result[key])
+        print(key.ljust(25), final_result[key])
 
     return final_result
 
@@ -311,11 +323,12 @@ def log(string):
 debug_mode = False
 model = load_model()
 # print(find_best_threshold(model, 1, False, 0.5, 5, 0.05, 1))
-# print(find_best_threshold(model, 2, False, 0.45, 21, 0.01, 5))
-# print(find_best_threshold(model, 3, False, 0.5, 9, 0.05, 1))
+# find_best_threshold(model, 2, False, 0.45, 21, 0.01, 5)
+# find_best_threshold(model, 2, False, 0.54, 8, 0.01, 10)
+find_best_threshold(model, 3, True, 0.3, 12, 0.05, 100)
 
-find_best_threshold(model, 2, False, 0.5, 5, 0.01, 3)
-# main(1, 0.55)
+# find_best_threshold(model, 2, False, 0.5, 5, 0.01, 3)
+# main(3, 0.55)
 
 # find_best_model()
 # test_model(model, 2, 0.55, False, 3)

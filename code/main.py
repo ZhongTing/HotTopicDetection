@@ -308,6 +308,34 @@ def test_model(model, algorithm, threshold, random, times):
     print(result)
 
 
+def test_title_and_content_ratio(model, algorithm, random=False, times=1):
+    result_table = {}
+    for time_counter in range(times):
+        labeled_clusters = get_test_clusters(random)
+        articles = get_test_articles(labeled_clusters)
+        compute_article_vector(model, articles)
+        for t in range(5, 7):
+            t_ratio = t / 10
+            c_ratio = (10 - 5) / 10
+            if algorithm is 1:
+                clusters = clustering1(model, articles, 0.6, t_ratio, c_ratio)
+            elif algorithm is 3:
+                clusters = clustering3(model, articles, 0.6, t_ratio, c_ratio)
+            result = validate_clustering(labeled_clusters, clusters)
+            if t_ratio not in result_table:
+                result_table[t_ratio] = []
+            result_table[t_ratio].append(result)
+
+    for key in sorted(result.keys()):
+        for t_ratio in sorted(result_table.keys()):
+            result = [float(r[key]) for r in result_table[t_ratio]]
+            score = {'mean': float('{0:.2f}'.format(mean(result))),
+                     'std': float('{0:.2f}'.format(std(result))),
+                     'max': max(result), 'min': min(result)}
+            print(key.ljust(25), t_ratio, score)
+        print('')
+
+
 def main(algorithm, threshold=0.55):
     model = load_model()
     articles = get_ptt_articles()
@@ -329,7 +357,10 @@ model = load_model()
 # find_best_threshold(model, 1, True, 0.5, 5, 0.05, 1000)
 # find_best_threshold(model, 2, False, 0.45, 21, 0.01, 5)
 # find_best_threshold(model, 2, False, 0.54, 8, 0.01, 1)
-find_best_threshold(model, 3, True, 0.4, 6, 0.05, 1000)
+# find_best_threshold(model, 3, True, 0.4, 6, 0.05, 1000)
+
+test_title_and_content_ratio(model, 1, True, 100)
+# test_title_and_content_ratio(model, 3, True, 100)
 
 # find_best_threshold(model, 2, False, 0.5, 5, 0.01, 3)
 # main(3, 0.55)

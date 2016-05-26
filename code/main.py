@@ -189,7 +189,7 @@ def find_closest_cluster(clusters):
     return cluster_pair
 
 
-def clustering1(model, articles, threshold, t=0.5, c=0.5):
+def clustering1(model, articles, threshold, t=0.9, c=0.1):
     clusters = initialize_clusters(articles)
     for cluster in clusters:
         cluster['keywords'] = compute_vector(model, keywords_extraction(cluster['articles']))
@@ -201,7 +201,7 @@ def clustering2(model, articles, threshold):
     return merge_clusters(model, clusters, threshold)
 
 
-def clustering3(model, articles, threshold, t=0.8, c=0.2):
+def clustering3(model, articles, threshold, t=0.6, c=0.4):
     clusters = initialize_clusters(articles)
     clusters = merge_clusters(model, clusters, 0.55)
     for cluster in clusters:
@@ -326,10 +326,10 @@ def log(string):
 
 debug_mode = False
 model = load_model()
-# find_best_threshold(model, 1, True, 0.5, 5, 0.05, 50)
+# find_best_threshold(model, 1, True, 0.5, 5, 0.05, 1000)
 # find_best_threshold(model, 2, False, 0.45, 21, 0.01, 5)
-find_best_threshold(model, 2, False, 0.54, 8, 0.01, 1)
-# find_best_threshold(model, 3, True, 0.3, 12, 0.05, 100)
+# find_best_threshold(model, 2, False, 0.54, 8, 0.01, 1)
+find_best_threshold(model, 3, True, 0.4, 6, 0.05, 1000)
 
 # find_best_threshold(model, 2, False, 0.5, 5, 0.01, 3)
 # main(3, 0.55)

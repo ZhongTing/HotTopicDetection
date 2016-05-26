@@ -14,9 +14,9 @@ def get_sentence(keyword, number, page=1):
     for article in articles:
         tokens = cut(article.title, using_stopwords=False, simplified_convert=True)
         result_sentences.append(tokens)
-        if hasattr(article, 'content_sentence'):
-            for sen in article.content_sentence:
-                result_sentences.append(cut(sen, using_stopwords=False, simplified_convert=True))
+        # if hasattr(article, 'content_sentence'):
+            # for sen in article.content_sentence:
+                # result_sentences.append(cut(sen, using_stopwords=False, simplified_convert=True))
         if hasattr(article, 'content'):
             result_sentences.append(cut(article.content, using_stopwords=False, simplified_convert=True))
     return result_sentences
@@ -46,5 +46,5 @@ def train(model_name, article_number):
     print('model_spend_time ' + str(end_time - start_time))
 
 print(datetime.now())
-train('ngram_300_5_83w_cut', 850000)
+train('ngram_300_5_85w_sentence', 850000)
 print(datetime.now())

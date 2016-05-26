@@ -1,0 +1,44 @@
+algorithm1 sampling 1000 50-70 6比4
+
+Building prefix dict from the default dictionary ...
+Loading model from cache C:\Users\user\AppData\Local\Temp\jieba.cache
+Loading model cost 1.689 seconds.
+Prefix dict has been built succesfully.
+spend 9s to load word2vec model from model/bin/ngram_300_3_83w.bin
+algorithm  1
+completeness 0.50 {'min': 0.81, 'max': 1.0, 'std': 0.03, 'mean': 0.95}
+completeness 0.55 {'min': 0.84, 'max': 1.0, 'std': 0.03, 'mean': 0.94}
+completeness 0.60 {'min': 0.83, 'max': 1.0, 'std': 0.03, 'mean': 0.92}
+completeness 0.65 {'min': 0.79, 'max': 0.97, 'std': 0.03, 'mean': 0.87}
+completeness 0.70 {'min': 0.74, 'max': 0.92, 'std': 0.03, 'mean': 0.81}
+
+homogeneity 0.50 {'min': 0.33, 'max': 0.9, 'std': 0.08, 'mean': 0.69}
+homogeneity 0.55 {'min': 0.67, 'max': 0.99, 'std': 0.05, 'mean': 0.87}
+homogeneity 0.60 {'min': 0.86, 'max': 1.0, 'std': 0.02, 'mean': 0.96}
+homogeneity 0.65 {'min': 0.93, 'max': 1.0, 'std': 0.01, 'mean': 0.99}
+homogeneity 0.70 {'min': 0.97, 'max': 1.0, 'std': 0.0, 'mean': 1.0}
+
+mutual_info 0.50 {'min': 0.15, 'max': 0.78, 'std': 0.09, 'mean': 0.53}
+mutual_info 0.55 {'min': 0.45, 'max': 0.93, 'std': 0.07, 'mean': 0.75}
+mutual_info 0.60 {'min': 0.55, 'max': 0.97, 'std': 0.06, 'mean': 0.81}
+mutual_info 0.65 {'min': 0.45, 'max': 0.92, 'std': 0.08, 'mean': 0.68}
+mutual_info 0.70 {'min': 0.18, 'max': 0.76, 'std': 0.08, 'mean': 0.5}
+
+rand 0.50 {'min': 0.07, 'max': 0.8, 'std': 0.12, 'mean': 0.43}
+rand 0.55 {'min': 0.31, 'max': 0.97, 'std': 0.1, 'mean': 0.7}
+rand 0.60 {'min': 0.55, 'max': 0.99, 'std': 0.07, 'mean': 0.81}
+rand 0.65 {'min': 0.5, 'max': 0.96, 'std': 0.07, 'mean': 0.76}
+rand 0.70 {'min': 0.22, 'max': 0.87, 'std': 0.09, 'mean': 0.61}
+
+v_measure 0.50 {'min': 0.48, 'max': 0.93, 'std': 0.06, 'mean': 0.8}
+v_measure 0.55 {'min': 0.77, 'max': 0.99, 'std': 0.03, 'mean': 0.91}
+v_measure 0.60 {'min': 0.85, 'max': 0.99, 'std': 0.02, 'mean': 0.94}
+v_measure 0.65 {'min': 0.88, 'max': 0.98, 'std': 0.02, 'mean': 0.93}
+v_measure 0.70 {'min': 0.85, 'max': 0.96, 'std': 0.02, 'mean': 0.89}
+
+completeness              {'min': (0.74, '0.70'), 'max': (0.92, '0.70'), 'std': (0.03, '0.50'), 'mean': (0.81, '0.70')}
+homogeneity               {'min': (0.97, '0.70'), 'max': (1.0, '0.70'), 'std': (0.0, '0.50'), 'mean': (1.0, '0.70')}
+mutual_info               {'min': (0.18, '0.70'), 'max': (0.76, '0.70'), 'std': (0.08, '0.50'), 'mean': (0.5, '0.70')}
+rand                      {'min': (0.22, '0.70'), 'max': (0.87, '0.70'), 'std': (0.09, '0.50'), 'mean': (0.61, '0.70')}
+v_measure                 {'min': (0.85, '0.70'), 'max': (0.96, '0.70'), 'std': (0.02, '0.50'), 'mean': (0.89, '0.70')}
+[Finished in 26254.7s]

@@ -314,9 +314,9 @@ def test_title_and_content_ratio(model, algorithm, random=False, times=1):
         labeled_clusters = get_test_clusters(random)
         articles = get_test_articles(labeled_clusters)
         compute_article_vector(model, articles)
-        for t in range(5, 7):
+        for t in range(5, 10):
             t_ratio = t / 10
-            c_ratio = (10 - 5) / 10
+            c_ratio = (10 - t) / 10
             if algorithm is 1:
                 clusters = clustering1(model, articles, 0.6, t_ratio, c_ratio)
             elif algorithm is 3:

@@ -102,10 +102,7 @@ def get_path(file_name, folder_dir=None):
             os.mkdir(folder_dir)
     return os.path.join(folder_dir, file_name)
 
-# make_test_data()
-# clusters = make_test_data()
-# for i in range(len(clusters)):
-#     print('cluster ', i)
-#     for article in clusters[i]['articles']:
-#         print(article.title)
-
+if __name__ == '__main__':
+    clusters = make_test_data()
+    number_articles = len([a for cluster in clusters for a in cluster['articles']])
+    print('\ncached {} clusters, {} articles'.format(len(clusters), number_articles))

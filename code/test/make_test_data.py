@@ -10,7 +10,7 @@ def _get_cluster_from_topic_list(file_name="topics_list.txt"):
         lines = f.readlines()
         for line in lines:
             data = line.split()
-            if len(data) < 4:
+            if len(data) < 3:
                 continue
             keyword = data[0]
             end_day = data[2]

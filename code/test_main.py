@@ -7,6 +7,8 @@ import code.main as main
 
 from numpy import mean, std
 import time
+import os
+import csv
 
 
 class MainTester:
@@ -31,7 +33,9 @@ class MainTester:
 
     # algorithm 2 cost 6 seconds per times on 183.28
     def find_best_threshold(self, algorithm, start_th=0.4, end_th=0.65, increase_count=0.5, sampling=False, times=1):
-        print('find_best_threshold', algorithm, sampling, times)
+        algorithm_name = str(algorithm).split(' ')[1]
+        file_name = 'threshold sampling={} times={}'.format(sampling, times)
+        print(file_name)
         result_table = {}
         for time_counter in range(times):
             articles = self._get_test_articles(sampling)
@@ -45,13 +49,38 @@ class MainTester:
                 result_table[key].append(result)
                 threshold += increase_count
         self._print_test_result(result_table)
+        self._save_as_csv(result_table, algorithm_name, file_name)
 
-    # algorithm 3 cost 482 seconds per times on 183.28
-    def find_best_ratio_between_title_and_content(self, algorithm, sampling=True, times=1):
-        print('find_best_ratio_between_title_and_content', algorithm, sampling, times)
+    def find_best_threshold_with_ratio(self, algorithm, t=0.6, c=0.4, start_th=0.4, end_th=0.65, increase_count=0.5,
+                                       sampling=False, times=1):
+        algorithm_name = str(algorithm).split(' ')[1]
+        file_name = 'threshold t={} c={} sampling={} times={}'.format(t * 10, c * 10, sampling, times)
+        print(file_name)
         result_table = {}
         for time_counter in range(times):
             articles = self._get_test_articles(sampling)
+            threshold = start_th
+            print('time counter', time_counter)
+            while threshold <= end_th:
+                clusters = algorithm(self._model, articles, threshold, t=t, c=c)
+                result = main.validate_clustering(self._labeled_clusters, clusters)
+                key = '{0:.2f}'.format(threshold)
+                if key not in result_table:
+                    result_table[key] = []
+                result_table[key].append(result)
+                threshold += increase_count
+        self._print_test_result(result_table)
+        self._save_as_csv(result_table, algorithm_name, file_name)
+
+    # algorithm 3 cost 482 seconds per times on 183.28
+    def find_best_ratio_between_title_and_content(self, algorithm, sampling=True, times=1):
+        algorithm_name = str(algorithm).split(' ')[1]
+        file_name = 'ratio sampling={} times={}'.format(sampling, times)
+        print(file_name)
+        result_table = {}
+        for time_counter in range(times):
+            articles = self._get_test_articles(sampling)
+            print('time counter', time_counter)
             for t in range(5, 10):
                 t_ratio = t / 10
                 c_ratio = (10 - t) / 10
@@ -61,11 +90,13 @@ class MainTester:
                     result_table[t_ratio] = []
                 result_table[t_ratio].append(result)
         self._print_test_result(result_table)
+        self._save_as_csv(result_table, algorithm_name, file_name)
 
     # cost 787 seconds per times on 183.3
     # cost 474 seconds per times on 183.28
     def compare_clustering(self, sampling=True, times=1):
-        print('compare_clustering', sampling, times)
+        file_name = 'compare sampling={} times={}'.format(sampling, times)
+        print(file_name)
         result_table = {}
         for time_counter in range(times):
             articles = self._get_test_articles(sampling)
@@ -77,19 +108,41 @@ class MainTester:
                     result_table[algorithm_name] = []
                 result_table[algorithm_name].append(result)
         self._print_test_result(result_table)
+        self._save_as_csv(result_table, '', file_name)
 
     @staticmethod
     def _print_test_result(result_table):
         first_key = list(result_table.keys())[0]
         for key in sorted(result_table[first_key][0].keys()):
-            for algorithm in sorted(result_table.keys()):
-                result = [float(r[key]) for r in result_table[algorithm]]
+            for test_variable in sorted(result_table.keys()):
+                result = [float(r[key]) for r in result_table[test_variable]]
                 score = OrderedDict({'mean': float('{0:.2f}'.format(mean(result))),
                                      'std': float('{0:.2f}'.format(std(result))),
                                      'max': float('{0:.2f}'.format(max(result))),
                                      'min': float('{0:.2f}'.format(min(result)))})
-                print(key.ljust(25), algorithm, re.compile('\((.*)\)').findall(str(score))[0])
+                print(key.ljust(25), test_variable, re.compile('\((.*)\)').findall(str(score))[0])
             print('')
+
+    @staticmethod
+    def _save_as_csv(result_table, algorithm_name, file_name):
+        base_dir = os.path.dirname(__file__)
+        dir_path = os.path.join(base_dir, '../log/clustering_log/' + algorithm_name)
+        if not os.path.exists(dir_path):
+            os.makedirs(dir_path)
+        with open(os.path.join(dir_path, file_name + '.csv'), 'w', encoding='utf8', newline='') as file:
+            first_key = list(result_table.keys())[0]
+            writer = csv.writer(file, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            writer.writerow([''] + sorted(result_table[first_key][0].keys()))
+            for compute in [mean, max, min, std]:
+                writer.writerow(re.compile('function (\w*)').findall(str(compute)))
+                for test_variable in sorted(result_table.keys()):
+                    row_data = [test_variable]
+                    for key in sorted(result_table[first_key][0].keys()):
+                        result = [float(r[key]) for r in result_table[test_variable]]
+                        row_data += [float('{0:.2f}'.format(compute(result)))]
+                    writer.writerow(row_data)
+
+            writer.writerow(['test finished in {0:.2f} seconds'.format(time.time() - start_time)])
 
 
 if __name__ == '__main__':
@@ -98,8 +151,9 @@ if __name__ == '__main__':
 
     # tester.compare_clustering(times=100)
     # tester.find_best_ratio_between_title_and_content(main.clustering4, sampling=True, times=100)
-    # tester.find_best_threshold(main.clustering3, 0.4, 0.8, 0.05, True, 100)
-    tester.find_best_threshold(main.clustering4, 0.4, 0.8, 0.05, True, 100)
-    # tester.find_best_threshold(main.clustering2, 0.45, 0.65, 0.01, True, 100)
+    tester.find_best_threshold(main.clustering2, 0.3, 0.8, 0.05, True, 100)
+    # tester.find_best_threshold_with_ratio(main.clustering1, 0.6, 0.4, 0.4, 0.8, 0.05, True, 100)
+    # tester.find_best_threshold_with_ratio(main.clustering2, 0.6, 0.4, 0.4, 0.8, 0.05, True, 100)
+    # tester.find_best_threshold_with_ratio(main.clustering3, 0.6, 0.4, 0.4, 0.8, 0.05, True, 100)
 
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

@@ -193,25 +193,33 @@ def find_closest_cluster(clusters):
     return cluster_pair
 
 
-def clustering1(model, articles, threshold, t=0.9, c=0.1):
+def clustering1(model, articles, threshold=0.6, t=0.8, c=0.2):
     clusters = initialize_clusters(articles)
     for cluster in clusters:
         cluster['keywords'] = compute_vector(model, keywords_extraction(cluster['articles']))
     return merge_clusters(model, clusters, threshold, combined_method=[1], similarity_method=[2, t, c])
 
 
-def clustering2(model, articles, threshold):
+def clustering2(model, articles, threshold=0.55):
     clusters = initialize_clusters(articles)
     return merge_clusters(model, clusters, threshold)
 
 
-def clustering3(model, articles, threshold, t=0.6, c=0.4):
+def clustering3(model, articles, threshold=0.6, t=0.6, c=0.4):
     clusters = initialize_clusters(articles)
     clusters = merge_clusters(model, clusters, 0.55)
     for cluster in clusters:
         for article in cluster['articles']:
             article.content_vector = compute_vector(model, keywords_extraction(article))
-        cluster['centroid'] = compute_vector(model, keywords_extraction(cluster['articles']))
+        compute_cluster_vector(model, cluster, [2, t, c])
+    clusters = merge_clusters(model, clusters, threshold, combined_method=[2, t, c])
+    return clusters
+
+def clustering4(model, articles, threshold=0.55, t=0.9, c=0.1):
+    clusters = initialize_clusters(articles)
+    for cluster in clusters:
+        for article in cluster['articles']:
+            article.content_vector = compute_vector(model, keywords_extraction(article))
         compute_cluster_vector(model, cluster, [2, t, c])
     clusters = merge_clusters(model, clusters, threshold, combined_method=[2, t, c])
     return clusters
@@ -225,10 +233,13 @@ def clustering(model, algorithm, threshold, articles):
         clusters = clustering2(model, articles, threshold)
     elif algorithm is 3:
         clusters = clustering3(model, articles, threshold)
+    elif algorithm is 4:
+        clusters = clustering3(model, articles, threshold)
     return clusters
 
 
 def main(algorithm, threshold=0.6):
+    print('main', algorithm, threshold)
     model = load_model()
     articles = get_ptt_articles()
     compute_article_vector(model, articles)

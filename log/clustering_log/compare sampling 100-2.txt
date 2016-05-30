@@ -1,0 +1,33 @@
+compare_clustering(times=100) algorithm threshold = 0.55
+
+Building prefix dict from the default dictionary ...
+Loading model from cache C:\Users\user\AppData\Local\Temp\jieba.cache
+Loading model cost 1.172 seconds.
+Prefix dict has been built succesfully.
+spend 7s to load word2vec model from model/bin/ngram_300_3_83w.bin
+invalid article: 'AlphaGo v.s yoyodiy　？'
+invalid article: '有沒有AlphaGolf的八卦?'
+invalid article: 'AlphaGo versus Baymax'
+compare_clustering True 100
+completeness              clustering1 [('max', 0.93), ('std', 0.02), ('mean', 0.88), ('min', 0.85)]
+completeness              clustering2 [('max', 0.93), ('std', 0.02), ('mean', 0.9), ('min', 0.86)]
+completeness              clustering3 [('max', 0.93), ('std', 0.02), ('mean', 0.9), ('min', 0.86)]
+
+homogeneity               clustering1 [('max', 0.97), ('std', 0.01), ('mean', 0.96), ('min', 0.94)]
+homogeneity               clustering2 [('max', 0.95), ('std', 0.01), ('mean', 0.93), ('min', 0.91)]
+homogeneity               clustering3 [('max', 0.95), ('std', 0.01), ('mean', 0.93), ('min', 0.91)]
+
+mutual_info               clustering1 [('max', 0.92), ('std', 0.02), ('mean', 0.87), ('min', 0.83)]
+mutual_info               clustering2 [('max', 0.93), ('std', 0.02), ('mean', 0.89), ('min', 0.84)]
+mutual_info               clustering3 [('max', 0.93), ('std', 0.02), ('mean', 0.89), ('min', 0.84)]
+
+rand                      clustering1 [('max', 0.95), ('std', 0.03), ('mean', 0.88), ('min', 0.82)]
+rand                      clustering2 [('max', 0.95), ('std', 0.03), ('mean', 0.88), ('min', 0.81)]
+rand                      clustering3 [('max', 0.95), ('std', 0.03), ('mean', 0.88), ('min', 0.81)]
+
+v_measure                 clustering1 [('max', 0.95), ('std', 0.01), ('mean', 0.92), ('min', 0.9)]
+v_measure                 clustering2 [('max', 0.94), ('std', 0.01), ('mean', 0.91), ('min', 0.89)]
+v_measure                 clustering3 [('max', 0.94), ('std', 0.01), ('mean', 0.91), ('min', 0.89)]
+
+test finished in 24849.36 seconds
+[Finished in 24869.7s]

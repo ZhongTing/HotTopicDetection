@@ -1,0 +1,58 @@
+tester.find_best_threshold(main.clustering3, 0.4, 0.8, 0.05, True, 100)
+
+Building prefix dict from the default dictionary ...
+Loading model from cache C:\Users\user\AppData\Local\Temp\jieba.cache
+Loading model cost 1.818 seconds.
+Prefix dict has been built succesfully.
+spend 8s to load word2vec model from model/bin/ngram_300_3_83w.bin
+invalid article: 'AlphaGo v.s yoyodiy　？'
+invalid article: '有沒有AlphaGolf的八卦?'
+invalid article: 'AlphaGo versus Baymax'
+find_best_threshold <function clustering3 at 0x00000275F4856AE8> True 100
+completeness              0.40 [('max', 1.0), ('mean', 0.54), ('min', 0.3), ('std', 0.2)]
+completeness              0.45 [('max', 0.95), ('mean', 0.92), ('min', 0.88), ('std', 0.01)]
+completeness              0.50 [('max', 0.96), ('mean', 0.92), ('min', 0.89), ('std', 0.01)]
+completeness              0.55 [('max', 0.94), ('mean', 0.9), ('min', 0.86), ('std', 0.01)]
+completeness              0.60 [('max', 0.94), ('mean', 0.9), ('min', 0.85), ('std', 0.01)]
+completeness              0.65 [('max', 0.94), ('mean', 0.9), ('min', 0.85), ('std', 0.01)]
+completeness              0.70 [('max', 0.94), ('mean', 0.9), ('min', 0.85), ('std', 0.01)]
+completeness              0.75 [('max', 0.94), ('mean', 0.9), ('min', 0.85), ('std', 0.01)]
+
+homogeneity               0.40 [('max', 0.13), ('mean', 0.01), ('min', 0.0), ('std', 0.03)]
+homogeneity               0.45 [('max', 0.66), ('mean', 0.54), ('min', 0.41), ('std', 0.05)]
+homogeneity               0.50 [('max', 0.9), ('mean', 0.85), ('min', 0.79), ('std', 0.02)]
+homogeneity               0.55 [('max', 0.95), ('mean', 0.93), ('min', 0.9), ('std', 0.01)]
+homogeneity               0.60 [('max', 0.95), ('mean', 0.93), ('min', 0.9), ('std', 0.01)]
+homogeneity               0.65 [('max', 0.95), ('mean', 0.93), ('min', 0.9), ('std', 0.01)]
+homogeneity               0.70 [('max', 0.95), ('mean', 0.93), ('min', 0.9), ('std', 0.01)]
+homogeneity               0.75 [('max', 0.95), ('mean', 0.93), ('min', 0.9), ('std', 0.01)]
+
+mutual_info               0.40 [('max', 0.12), ('mean', 0.01), ('min', 0.0), ('std', 0.02)]
+mutual_info               0.45 [('max', 0.65), ('mean', 0.53), ('min', 0.39), ('std', 0.05)]
+mutual_info               0.50 [('max', 0.89), ('mean', 0.84), ('min', 0.78), ('std', 0.02)]
+mutual_info               0.55 [('max', 0.94), ('mean', 0.89), ('min', 0.84), ('std', 0.01)]
+mutual_info               0.60 [('max', 0.94), ('mean', 0.89), ('min', 0.84), ('std', 0.02)]
+mutual_info               0.65 [('max', 0.94), ('mean', 0.89), ('min', 0.84), ('std', 0.02)]
+mutual_info               0.70 [('max', 0.94), ('mean', 0.89), ('min', 0.84), ('std', 0.02)]
+mutual_info               0.75 [('max', 0.94), ('mean', 0.89), ('min', 0.84), ('std', 0.02)]
+
+rand                      0.40 [('max', 0.04), ('mean', 0.0), ('min', 0.0), ('std', 0.01)]
+rand                      0.45 [('max', 0.56), ('mean', 0.32), ('min', 0.18), ('std', 0.08)]
+rand                      0.50 [('max', 0.87), ('mean', 0.77), ('min', 0.64), ('std', 0.05)]
+rand                      0.55 [('max', 0.94), ('mean', 0.88), ('min', 0.81), ('std', 0.02)]
+rand                      0.60 [('max', 0.94), ('mean', 0.88), ('min', 0.81), ('std', 0.02)]
+rand                      0.65 [('max', 0.94), ('mean', 0.88), ('min', 0.81), ('std', 0.02)]
+rand                      0.70 [('max', 0.94), ('mean', 0.88), ('min', 0.81), ('std', 0.02)]
+rand                      0.75 [('max', 0.94), ('mean', 0.88), ('min', 0.81), ('std', 0.02)]
+
+v_measure                 0.40 [('max', 0.23), ('mean', 0.03), ('min', 0.0), ('std', 0.05)]
+v_measure                 0.45 [('max', 0.78), ('mean', 0.68), ('min', 0.56), ('std', 0.04)]
+v_measure                 0.50 [('max', 0.93), ('mean', 0.88), ('min', 0.85), ('std', 0.01)]
+v_measure                 0.55 [('max', 0.95), ('mean', 0.91), ('min', 0.88), ('std', 0.01)]
+v_measure                 0.60 [('max', 0.95), ('mean', 0.91), ('min', 0.88), ('std', 0.01)]
+v_measure                 0.65 [('max', 0.95), ('mean', 0.91), ('min', 0.88), ('std', 0.01)]
+v_measure                 0.70 [('max', 0.95), ('mean', 0.91), ('min', 0.88), ('std', 0.01)]
+v_measure                 0.75 [('max', 0.95), ('mean', 0.91), ('min', 0.88), ('std', 0.01)]
+
+test finished in 45611.93 seconds
+[Finished in 45634.9s]

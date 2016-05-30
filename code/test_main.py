@@ -55,7 +55,7 @@ class MainTester:
             for t in range(5, 10):
                 t_ratio = t / 10
                 c_ratio = (10 - t) / 10
-                clusters = algorithm(self._model, articles, 0.6, t_ratio, c_ratio)
+                clusters = algorithm(self._model, articles, t=t_ratio, c=c_ratio)
                 result = main.validate_clustering(self._labeled_clusters, clusters)
                 if t_ratio not in result_table:
                     result_table[t_ratio] = []
@@ -67,14 +67,10 @@ class MainTester:
     def compare_clustering(self, sampling=True, times=1):
         print('compare_clustering', sampling, times)
         result_table = {}
-        threshold = 0.6
         for time_counter in range(times):
             articles = self._get_test_articles(sampling)
-            for algorithm in [main.clustering1, main.clustering2, main.clustering3]:
-                if algorithm is main.clustering2:
-                    clusters = main.clustering2(self._model, articles, threshold)
-                else:
-                    clusters = algorithm(self._model, articles, threshold, t=0.8, c=0.2)
+            for algorithm in [main.clustering1, main.clustering2, main.clustering3, main.clustering4]:
+                clusters = algorithm(self._model, articles)
                 result = main.validate_clustering(self._labeled_clusters, clusters)
                 algorithm_name = str(algorithm).split(' ')[1]
                 if algorithm_name not in result_table:
@@ -100,9 +96,10 @@ if __name__ == '__main__':
     start_time = time.time()
     tester = MainTester()
 
-    tester.compare_clustering(times=100)
-    # tester.find_best_ratio_between_title_and_content(main.clustering1, sampling=True, times=100)
+    # tester.compare_clustering(times=100)
+    # tester.find_best_ratio_between_title_and_content(main.clustering4, sampling=True, times=100)
     # tester.find_best_threshold(main.clustering3, 0.4, 0.8, 0.05, True, 100)
-    # tester.find_best_threshold(main.clustering2, 0.45, 0.65, 0.01, False, 100)
+    tester.find_best_threshold(main.clustering4, 0.4, 0.8, 0.05, True, 100)
+    # tester.find_best_threshold(main.clustering2, 0.45, 0.65, 0.01, True, 100)
 
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

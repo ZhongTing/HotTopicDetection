@@ -151,9 +151,9 @@ if __name__ == '__main__':
 
     # tester.compare_clustering(times=100)
     # tester.find_best_ratio_between_title_and_content(main.clustering4, sampling=True, times=100)
-    tester.find_best_threshold(main.clustering2, 0.3, 0.8, 0.05, True, 100)
-    # tester.find_best_threshold_with_ratio(main.clustering1, 0.6, 0.4, 0.4, 0.8, 0.05, True, 100)
-    # tester.find_best_threshold_with_ratio(main.clustering2, 0.6, 0.4, 0.4, 0.8, 0.05, True, 100)
-    # tester.find_best_threshold_with_ratio(main.clustering3, 0.6, 0.4, 0.4, 0.8, 0.05, True, 100)
+    # tester.find_best_threshold(main.clustering2, 0.3, 0.8, 0.05, True, 100)
+    # tester.find_best_threshold_with_ratio(main.clustering1, 0.9, 0.1, 0.4, 0.8, 0.05, True, 25)
+    tester.find_best_threshold_with_ratio(main.clustering3, 0.9, 0.1, 0.4, 0.8, 0.05, True, 100)
+    # tester.find_best_threshold_with_ratio(main.clustering4, 0.6, 0.4, 0.4, 0.8, 0.05, True, 100)
 
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

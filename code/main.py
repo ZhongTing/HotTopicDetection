@@ -207,7 +207,7 @@ def clustering2(model, articles, threshold=0.55):
 
 def clustering3(model, articles, threshold=0.6, t=0.6, c=0.4):
     clusters = initialize_clusters(articles)
-    clusters = merge_clusters(model, clusters, 0.55)
+    clusters = merge_clusters(model, clusters, 0.65)
     for cluster in clusters:
         for article in cluster['articles']:
             article.content_vector = compute_vector(model, keywords_extraction(article))

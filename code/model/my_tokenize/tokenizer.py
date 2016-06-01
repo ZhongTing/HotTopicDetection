@@ -5,6 +5,7 @@ from hanziconv import HanziConv
 
 
 def cut(string, using_stopwords=False, simplified_convert=True, log=False):
+    # return [i.strip().lower() for i in string.strip() if i != ' ']
     string = string.lower()
     if simplified_convert:
         string = HanziConv.toSimplified(string)

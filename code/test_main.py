@@ -83,7 +83,7 @@ class MainTester:
             print('time counter', time_counter)
             for (t_ratio, threshold) in args_set:
                 c_ratio = float('{0:.2f}'.format(1 - t_ratio))
-                key = '{}:{}-{}'.format(int(t_ratio*10), int(c_ratio*10), threshold)
+                key = '{}:{}-{}'.format(int(t_ratio * 10), int(c_ratio * 10), threshold)
                 clusters = algorithm(self._model, articles, threshold, t=t_ratio, c=c_ratio)
                 result = main.validate_clustering(self._labeled_clusters, clusters)
                 if t_ratio not in result_table:
@@ -149,12 +149,21 @@ if __name__ == '__main__':
     start_time = time.time()
     tester = MainTester()
 
-    # tester.compare_clustering(times=100)
-    tester.find_best_ratio(main.clustering3, [(0.6, 0.6), (0.7, 0.6), (0.8, 0.55), (0.8, 0.6), (0.9, 0.55)],
-                           sampling=True, times=1)
+    # part1
     # tester.find_best_threshold(main.clustering2, 0.3, 0.8, 0.05, True, 100)
-    # tester.find_best_threshold_with_ratio(main.clustering1, 0.6, 0.4, 0.4, 0.8, 0.05, True, 100)
-    # tester.find_best_threshold_with_ratio(main.clustering2, 0.6, 0.4, 0.4, 0.8, 0.05, True, 100)
-    # tester.find_best_threshold_with_ratio(main.clustering3, 0.6, 0.4, 0.4, 0.8, 0.05, True, 100)
+    # tester.find_best_threshold_with_ratio(main.clustering1, 0.9, 0.1, 0.4, 0.8, 0.05, True, 25)
+    # tester.find_best_threshold_with_ratio(main.clustering3, 0.9, 0.1, 0.4, 0.8, 0.05, True, 100)
+    # tester.find_best_threshold_with_ratio(main.clustering4, 0.6, 0.4, 0.4, 0.8, 0.05, True, 100)
 
+    # part2
+    tester.find_best_ratio(main.clustering1, [(0.6, 0.6), (0.7, 0.6), (0.8, 0.55), (0.8, 0.6), (0.9, 0.55)],
+                           sampling=True, times=25)
+    # first_threshold = 0.5
+    # tester.find_best_ratio(main.clustering3, [(0.6, first_threshold), (0.7, first_threshold), (0.8, first_threshold),
+    #                                           (0.9, first_threshold)], sampling=True, times=100)
+    # tester.find_best_ratio(main.clustering4, [(0.6, 0.55), (0.7, 0.55), (0.8, 0.55), (0.9, 0.55)], sampling=True,
+    #                        times=100)
+
+    # part3
+    # tester.compare_clustering(times=100)
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

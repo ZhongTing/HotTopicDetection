@@ -73,7 +73,7 @@ class MainTester:
         self._save_as_csv(result_table, algorithm_name, file_name)
 
     # algorithm 3 cost 482 seconds per times on 183.28
-    def find_best_ratio_between_title_and_content(self, algorithm, sampling=True, times=1):
+    def find_best_ratio(self, algorithm, args_set, sampling=True, times=1):
         algorithm_name = str(algorithm).split(' ')[1]
         file_name = 'ratio sampling={} times={}'.format(sampling, times)
         print(file_name)
@@ -81,14 +81,14 @@ class MainTester:
         for time_counter in range(times):
             articles = self._get_test_articles(sampling)
             print('time counter', time_counter)
-            for t in range(5, 10):
-                t_ratio = t / 10
-                c_ratio = (10 - t) / 10
-                clusters = algorithm(self._model, articles, t=t_ratio, c=c_ratio)
+            for (t_ratio, threshold) in args_set:
+                c_ratio = float('{0:.2f}'.format(1 - t_ratio))
+                key = '{}:{}-{}'.format(int(t_ratio*10), int(c_ratio*10), threshold)
+                clusters = algorithm(self._model, articles, threshold, t=t_ratio, c=c_ratio)
                 result = main.validate_clustering(self._labeled_clusters, clusters)
                 if t_ratio not in result_table:
-                    result_table[t_ratio] = []
-                result_table[t_ratio].append(result)
+                    result_table[key] = []
+                result_table[key].append(result)
         self._print_test_result(result_table)
         self._save_as_csv(result_table, algorithm_name, file_name)
 
@@ -150,8 +150,9 @@ if __name__ == '__main__':
     tester = MainTester()
 
     # tester.compare_clustering(times=100)
-    # tester.find_best_ratio_between_title_and_content(main.clustering4, sampling=True, times=100)
-    tester.find_best_threshold(main.clustering2, 0.3, 0.8, 0.05, True, 100)
+    tester.find_best_ratio(main.clustering3, [(0.6, 0.6), (0.7, 0.6), (0.8, 0.55), (0.8, 0.6), (0.9, 0.55)],
+                           sampling=True, times=1)
+    # tester.find_best_threshold(main.clustering2, 0.3, 0.8, 0.05, True, 100)
     # tester.find_best_threshold_with_ratio(main.clustering1, 0.6, 0.4, 0.4, 0.8, 0.05, True, 100)
     # tester.find_best_threshold_with_ratio(main.clustering2, 0.6, 0.4, 0.4, 0.8, 0.05, True, 100)
     # tester.find_best_threshold_with_ratio(main.clustering3, 0.6, 0.4, 0.4, 0.8, 0.05, True, 100)

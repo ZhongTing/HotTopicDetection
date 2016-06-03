@@ -91,7 +91,7 @@ class MainTester:
                         result_table[key] = []
                     result_table[key].append(result)
         self._print_test_result(result_table)
-        self._save_as_csv(result_table, os.path.join('clustering3', first_threshold))
+        self._save_as_csv(result_table, os.path.join('clustering3', str(first_threshold)), file_name)
 
     # algorithm 3 cost 482 seconds per times on 183.28
     def find_best_ratio(self, algorithm, args_set, sampling=True, times=1):

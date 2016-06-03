@@ -86,7 +86,7 @@ class MainTester:
                 key = '{}:{}-{}'.format(int(t_ratio * 10), int(c_ratio * 10), threshold)
                 clusters = algorithm(self._model, articles, threshold, t=t_ratio, c=c_ratio)
                 result = main.validate_clustering(self._labeled_clusters, clusters)
-                if t_ratio not in result_table:
+                if key not in result_table:
                     result_table[key] = []
                 result_table[key].append(result)
         self._print_test_result(result_table)

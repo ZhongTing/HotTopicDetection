@@ -51,11 +51,12 @@ class MainTester:
         self._print_test_result(result_table)
         self._save_as_csv(result_table, algorithm_name, file_name)
 
+    # for algorithm 1, 4
     def find_best_threshold_with_ratio(self, algorithm, t=0.6, c=0.4, start_th=0.4, end_th=0.65, increase_count=0.5,
                                        sampling=False, times=1):
         algorithm_name = str(algorithm).split(' ')[1]
         file_name = 'threshold t={} c={} sampling={} times={}'.format(t * 10, c * 10, sampling, times)
-        print(file_name)
+        print(algorithm, file_name)
         result_table = {}
         for time_counter in range(times):
             articles = self._get_test_articles(sampling)
@@ -72,11 +73,31 @@ class MainTester:
         self._print_test_result(result_table)
         self._save_as_csv(result_table, algorithm_name, file_name)
 
+    def find_better_args_in_algorithm3(self, first_threshold, sampling=True, times=5):
+        file_name = 'better_arg sampling={} times={}'.format(sampling, times)
+        print('algorithm3', file_name)
+        result_table = {}
+        for time_counter in range(times):
+            articles = self._get_test_articles(sampling)
+            print('time counter', time_counter)
+            for t in range(6, 10):
+                t_ratio = float('{0:.2f}'.format(t / 10))
+                c_ratio = float('{0:.2f}'.format(1 - t_ratio))
+                for threshold in [0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7]:
+                    clusters = main.clustering3(self._model, articles, first_threshold, threshold, t=t_ratio, c=c_ratio)
+                    result = main.validate_clustering(self._labeled_clusters, clusters)
+                    key = '{}:{}-{}'.format(int(t_ratio * 10), int(c_ratio * 10), threshold)
+                    if key not in result_table:
+                        result_table[key] = []
+                    result_table[key].append(result)
+        self._print_test_result(result_table)
+        self._save_as_csv(result_table, os.path.join('clustering3', first_threshold))
+
     # algorithm 3 cost 482 seconds per times on 183.28
     def find_best_ratio(self, algorithm, args_set, sampling=True, times=1):
         algorithm_name = str(algorithm).split(' ')[1]
         file_name = 'ratio sampling={} times={}'.format(sampling, times)
-        print(file_name)
+        print(algorithm, file_name)
         result_table = {}
         for time_counter in range(times):
             articles = self._get_test_articles(sampling)
@@ -156,8 +177,9 @@ if __name__ == '__main__':
     # tester.find_best_threshold_with_ratio(main.clustering4, 0.6, 0.4, 0.4, 0.8, 0.05, True, 100)
 
     # part2
-    tester.find_best_ratio(main.clustering1, [(0.6, 0.6), (0.7, 0.6), (0.8, 0.55), (0.8, 0.6), (0.9, 0.55)],
-                           sampling=True, times=25)
+    # tester.find_best_ratio(main.clustering1, [(0.6, 0.6), (0.7, 0.6), (0.8, 0.55), (0.8, 0.6), (0.9, 0.55)],
+    #                        sampling=True, times=25)
+    tester.find_better_args_in_algorithm3(0.55, True, 2)
     # first_threshold = 0.5
     # tester.find_best_ratio(main.clustering3, [(0.6, first_threshold), (0.7, first_threshold), (0.8, first_threshold),
     #                                           (0.9, first_threshold)], sampling=True, times=100)

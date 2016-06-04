@@ -2,6 +2,7 @@ import random
 import re
 from collections import OrderedDict
 
+from code.clustering_validation import silhouette_index
 import code.test.make_test_data as test_data
 import code.main as main
 
@@ -80,10 +81,10 @@ class MainTester:
         for time_counter in range(times):
             articles = self._get_test_articles(sampling)
             print('time counter', time_counter)
-            for t in range(6, 10):
+            for t in range(3, 10):
                 t_ratio = float('{0:.2f}'.format(t / 10))
                 c_ratio = float('{0:.2f}'.format(1 - t_ratio))
-                for threshold in [0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7]:
+                for threshold in [0.45, 0.5, 0.55, 0.6, 0.65]:
                     clusters = main.clustering3(self._model, articles, first_threshold, threshold, t=t_ratio, c=c_ratio)
                     result = main.validate_clustering(self._labeled_clusters, clusters)
                     key = '{}:{}-{}'.format(int(t_ratio * 10), int(c_ratio * 10), threshold)
@@ -179,13 +180,13 @@ if __name__ == '__main__':
     # part2
     # tester.find_best_ratio(main.clustering1, [(0.6, 0.6), (0.7, 0.6), (0.8, 0.55), (0.8, 0.6), (0.9, 0.55)],
     #                        sampling=True, times=25)
-    tester.find_better_args_in_algorithm3(0.55, True, 2)
-    # first_threshold = 0.5
-    # tester.find_best_ratio(main.clustering3, [(0.6, first_threshold), (0.7, first_threshold), (0.8, first_threshold),
-    #                                           (0.9, first_threshold)], sampling=True, times=100)
+    # tester.find_better_args_in_algorithm3(0.55, True, 20)
     # tester.find_best_ratio(main.clustering4, [(0.6, 0.55), (0.7, 0.55), (0.8, 0.55), (0.9, 0.55)], sampling=True,
     #                        times=100)
-
     # part3
+    # tester.find_best_ratio(main.clustering3, [(0.3, 0.6), (0.4, 0.6),
+    #                                           (0.5, 0.6), (0.6, 0.6), (0.9, 0.6)], sampling=True, times=2)
+    # part4
     # tester.compare_clustering(times=100)
+    print('silhouette_index', silhouette_index(tester._all_test_clusters))
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

@@ -5,6 +5,7 @@ from code.model.my_tokenize.tokenizer import cut
 from code.model.keywords_extraction import keywords_extraction
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import HashingVectorizer
+from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.decomposition import TruncatedSVD
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import Normalizer
@@ -39,27 +40,22 @@ def validate_clustering(cluster_ground_truth, cluster_predict):
 
 def __split_string(article):
     tokens = cut(article.title)
-    # tokens.extend(keywords_extraction([article], 1))
+    tokens.extend(keywords_extraction([article], 1))
     return ' '.join(tokens)
 
 
 def silhouette_index(clusters):
-    # data = array([__split_string(a) for cluster in clusters for a in cluster['articles']])
-    # vectorizer = TfidfVectorizer(max_df=0.5, max_features=200,
-    #                              min_df=2, stop_words='english',
-    #                              use_idf=True)
-    # # vectorizer = HashingVectorizer(n_features=500,
-    # #                                stop_words='english',
-    # #                                non_negative=False, norm='l2',
-    # #                                binary=False)
+    data = array([__split_string(a) for cluster in clusters for a in cluster['articles']])
+    vectorizer = TfidfVectorizer(max_df=0.5, max_features=200, min_df=2, stop_words='english')
+    vectorizer = HashingVectorizer(stop_words='english', binary=False)
 
-    # X = vectorizer.fit_transform(data)
-    # svd = TruncatedSVD(15)
-    # normalizer = Normalizer(copy=False)
-    # lsa = make_pipeline(svd, normalizer)
-    # X = lsa.fit_transform(X)
+    X = vectorizer.fit_transform(data)
+    svd = TruncatedSVD(15)
+    normalizer = Normalizer(copy=False)
+    lsa = make_pipeline(svd, normalizer)
+    X = lsa.fit_transform(X)
     try:
-        X = array([a.vector for cluster in clusters for a in cluster['articles']])
+        # X = array([a.vector for cluster in clusters for a in cluster['articles']])
         labels = array([i for i in range(len(clusters)) for a in clusters[i]['articles']])
         score = metrics.silhouette_score(X, labels, metric='euclidean')
         return score
@@ -67,6 +63,7 @@ def silhouette_index(clusters):
         return 0
 
 
-# clusters = test.get_test_clusters()
-# score = silhouette_index(clusters)
-# print(score)
+if __name__ == '__main__':
+    clusters = test.get_test_clusters()
+    score = silhouette_index(clusters)
+    print(score)

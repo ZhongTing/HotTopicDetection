@@ -135,7 +135,7 @@ def compute_cluster_vector(model, cluster, combined_method):
         cluster['keywords'] = compute_vector(model, keywords_extraction(cluster['articles']))
     elif combined_method[0] is 2:
         cluster['centroid'] = sum([a.vector for a in cluster['articles']]) * combined_method[1] + \
-                              sum([a.content_vector for a in cluster['articles']]) * combined_method[2]
+            sum([a.content_vector for a in cluster['articles']]) * combined_method[2]
         cluster['centroid'] /= len(cluster['articles'])
 
 
@@ -193,7 +193,7 @@ def find_closest_cluster(clusters):
     return cluster_pair
 
 
-def clustering1(model, articles, threshold=0.6, t=0.8, c=0.2):
+def clustering1(model, articles, threshold=0.55, t=0.9, c=0.1):
     clusters = initialize_clusters(articles)
     for cluster in clusters:
         cluster['keywords'] = compute_vector(model, keywords_extraction(cluster['articles']))
@@ -216,7 +216,7 @@ def clustering3(model, articles, first_threshold, second_threshold=0.55, t=0.6, 
     return clusters
 
 
-def clustering4(model, articles, threshold=0.55, t=0.9, c=0.1):
+def clustering4(model, articles, threshold=0.55, t=0.7, c=0.3):
     clusters = initialize_clusters(articles)
     for cluster in clusters:
         for article in cluster['articles']:
@@ -235,11 +235,11 @@ def clustering(model, algorithm, threshold, articles):
     elif algorithm is 3:
         clusters = clustering3(model, articles, threshold)
     elif algorithm is 4:
-        clusters = clustering3(model, articles, threshold)
+        clusters = clustering4(model, articles, threshold)
     return clusters
 
 
-def main(algorithm, threshold=0.6):
+def main(algorithm, threshold=0.55):
     print('main', algorithm, threshold)
     model = load_model()
     articles = get_ptt_articles()
@@ -258,4 +258,4 @@ def log(string):
 
 debug_mode = False
 if __name__ == '__main__':
-    main(3, 0.6)
+    main(4)

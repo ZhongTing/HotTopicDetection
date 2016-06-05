@@ -178,14 +178,16 @@ if __name__ == '__main__':
     # tester.find_best_threshold_with_ratio(main.clustering4, 0.6, 0.4, 0.4, 0.8, 0.05, True, 100)
 
     # part2
-    # tester.find_best_ratio(main.clustering1, [(0.6, 0.6), (0.7, 0.6), (0.8, 0.55), (0.8, 0.6), (0.9, 0.55)],
-    #                        sampling=True, times=25)
+    # tester.find_best_ratio(main.clustering1, [(0.5, 0.6), (0.6, 0.6), (0.7, 0.6), (0.8, 0.55),
+    #                                          (0.8, 0.6), (0.9, 0.55)], sampling=True, times=25)
     # tester.find_better_args_in_algorithm3(0.55, True, 20)
-    # tester.find_best_ratio(main.clustering4, [(0.6, 0.55), (0.7, 0.55), (0.8, 0.55), (0.9, 0.55)], sampling=True,
-    #                        times=100)
+    # tester.find_best_ratio(main.clustering4, [(0.1, 0.55), (0.2, 0.55), (0.3, 0.55), (0.4, 0.55),
+    #                                           (0.5, 0.55), (0.6, 0.55), (0.7, 0.55), (0.8, 0.55),
+    #                                           (0.9, 0.55)], sampling=True, times=100)
     # part3
-    # tester.find_best_ratio(main.clustering3, [(0.3, 0.6), (0.4, 0.6),
-    #                                           (0.5, 0.6), (0.6, 0.6), (0.9, 0.6)], sampling=True, times=2)
+    # tester.find_best_ratio(main.clustering3, [(0.4, 0.45), (0.4, 0.5), (0.4, 0.55), (0.5, 0.6),
+    #                                          (0.4, 0.65), (0.5, 0.65), (0.6, 0.7), (0.7, 0.75),
+    #                                          (0.8, 0.8)], sampling=True, times=2)
     # part4
     # tester.compare_clustering(times=100)
     print('silhouette_index', silhouette_index(tester._all_test_clusters))

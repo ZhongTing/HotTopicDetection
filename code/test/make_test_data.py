@@ -18,7 +18,10 @@ def _get_cluster_from_topic_list(file_name="topics_list.txt"):
                 end_day = data[1]
             days = int(end_day) - int(data[1])
             end_day = '201{}/{}/{}'.format(end_day[0], end_day[1:3], end_day[3:5])
-            articles = fetcher.fetch_articles(keyword, number=200, end_day=end_day, days=days)
+            # articles = fetcher.fetch_articles(keyword, number=200, end_day=end_day, days=days)
+            start_day = data[1]
+            start_day = '201{}/{}/{}'.format(start_day[0], start_day[1:3], start_day[3:5])
+            articles = fetcher.fetch_articles_by_day_interval(keyword, number=200, start_day=start_day, end_day=end_day)
             if len(data) >= 4:
                 negative = data[3]
                 if negative[0] != '(':

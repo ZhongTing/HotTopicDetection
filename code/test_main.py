@@ -3,6 +3,7 @@ import re
 from collections import OrderedDict
 
 import code.test.make_test_data as test_data
+import code.model.ptt_article_fetcher as fetcher
 import code.main as main
 
 from numpy import mean, std
@@ -124,11 +125,35 @@ class MainTester:
             print('time counter', time_counter)
             for algorithm in [main.clustering1, main.clustering2, main.clustering3, main.clustering4]:
                 clusters = algorithm(self._model, articles)
-                result = main.validate_clustering(self._labeled_clusters, clusters)
+                result = main.validate_clustering(self._labeled_clusters, clusters, internal_validation=True)
                 algorithm_name = str(algorithm).split(' ')[1]
                 if algorithm_name not in result_table:
                     result_table[algorithm_name] = []
                 result_table[algorithm_name].append(result)
+        self._print_test_result(result_table)
+        self._save_as_csv(result_table, '', file_name)
+
+    def compare_clustering_using_real_data(self, start_month='2016/06', days=30):
+        file_name = 'compare_using_real_data {} days={}'.format(''.join(start_month.split('/')), days)
+        print(file_name)
+        result_table = {}
+        days = days + 1
+        for day_counter in range(1, days):
+            target_day = '{}/{}'.format(start_month, str(day_counter).zfill(2))
+            print(target_day)
+            articles = fetcher.fetch_articles('*', 4000, end_day=target_day, days=0)
+            if len(articles) is 0:
+                continue
+            main.compute_article_vector(self._model, articles)
+            for algorithm in [main.clustering1, main.clustering2, main.clustering3, main.clustering4]:
+                clusters = algorithm(self._model, articles)
+                result = main.interal_validate(clusters)
+                algorithm_name = str(algorithm).split(' ')[1]
+                print(algorithm_name, result)
+                if algorithm_name not in result_table:
+                    result_table[algorithm_name] = []
+                result_table[algorithm_name].append(result)
+
         self._print_test_result(result_table)
         self._save_as_csv(result_table, '', file_name)
 
@@ -189,5 +214,7 @@ if __name__ == '__main__':
     #                                          (0.5, 0.65), (0.6, 0.65), (0.6, 0.7), (0.7, 0.75),
     #                                          (0.8, 0.8)], sampling=True, times=100)
     # part4
-    # tester.compare_clustering(times=100)
+    # tester.compare_clustering(times=1)
+
+    tester.compare_clustering_using_real_data(start_month='2016/06', days=30)
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

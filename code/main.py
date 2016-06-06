@@ -5,7 +5,7 @@ import code.model.ptt_article_fetcher as fetcher
 from code.model.my_tokenize.tokenizer import cut
 import code.test.make_test_data as test_data
 import random
-from code.clustering_validation import validate_clustering, silhouette_index
+from code.clustering_validation import validate_clustering, interal_validate
 import time
 from code.model.keywords_extraction import keywords_extraction
 
@@ -248,7 +248,7 @@ def main(algorithm, threshold=0.55):
     print_clustering_info(clusters, articles)
     clusters = sorted(clusters, key=lambda cluster: sum([a.score for a in cluster['articles']]), reverse=True)
     print_clusters(clusters[0:5], True)
-    print('silhouette_index', silhouette_index(clusters))
+    print('silhouette_index', interal_validate(clusters))
 
 
 def log(string):

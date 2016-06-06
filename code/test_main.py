@@ -2,7 +2,6 @@ import random
 import re
 from collections import OrderedDict
 
-from code.clustering_validation import silhouette_index
 import code.test.make_test_data as test_data
 import code.main as main
 
@@ -122,6 +121,7 @@ class MainTester:
         result_table = {}
         for time_counter in range(times):
             articles = self._get_test_articles(sampling)
+            print('time counter', time_counter)
             for algorithm in [main.clustering1, main.clustering2, main.clustering3, main.clustering4]:
                 clusters = algorithm(self._model, articles)
                 result = main.validate_clustering(self._labeled_clusters, clusters)
@@ -181,14 +181,13 @@ if __name__ == '__main__':
     # tester.find_best_ratio(main.clustering1, [(0.5, 0.6), (0.6, 0.6), (0.7, 0.6), (0.8, 0.55),
     #                                          (0.8, 0.6), (0.9, 0.55)], sampling=True, times=25)
     # tester.find_better_args_in_algorithm3(0.55, True, 20)
-    # tester.find_best_ratio(main.clustering4, [(0.1, 0.55), (0.2, 0.55), (0.3, 0.55), (0.4, 0.55),
+    # tester.find_best_ratio(main.clustering4, [(0.1, 0.6), (0.2, 0.6), (0.3, 0.55), (0.4, 0.55),
     #                                           (0.5, 0.55), (0.6, 0.55), (0.7, 0.55), (0.8, 0.55),
     #                                           (0.9, 0.55)], sampling=True, times=100)
     # part3
     # tester.find_best_ratio(main.clustering3, [(0.4, 0.45), (0.4, 0.5), (0.4, 0.55), (0.5, 0.6),
-    #                                          (0.4, 0.65), (0.5, 0.65), (0.6, 0.7), (0.7, 0.75),
-    #                                          (0.8, 0.8)], sampling=True, times=2)
+    #                                          (0.5, 0.65), (0.6, 0.65), (0.6, 0.7), (0.7, 0.75),
+    #                                          (0.8, 0.8)], sampling=True, times=100)
     # part4
     # tester.compare_clustering(times=100)
-    print('silhouette_index', silhouette_index(tester._all_test_clusters))
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

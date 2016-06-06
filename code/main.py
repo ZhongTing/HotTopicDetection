@@ -205,7 +205,7 @@ def clustering2(model, articles, threshold=0.55):
     return merge_clusters(model, clusters, threshold)
 
 
-def clustering3(model, articles, first_threshold, second_threshold=0.55, t=0.6, c=0.4):
+def clustering3(model, articles, first_threshold=0.55, second_threshold=0.55, t=0.6, c=0.4):
     clusters = initialize_clusters(articles)
     clusters = merge_clusters(model, clusters, first_threshold)
     for cluster in clusters:

@@ -59,11 +59,13 @@ class Article(object):
     def info(self):
         return 'article {}(推/噓/總):{}/{}/{}'.format(self.title, self.push_score, self.boo_score, self.score)
 
+
 def fetch_articles_by_day_interval(title, number, start_day, end_day):
     start_day = "-".join(start_day.split('/')) + 'T00:00:00Z'
     end_day = "-".join(end_day.split('/')) + 'T23:59:59Z'
     fq = 'timestamp:[{} TO {}]'.format(start_day, end_day)
     return fetch_articles(title, number, fq=fq)
+
 
 def fetch_articles(title, number=20, end_day='NOW/DAY', days=-1, page=1, only_title=False, fl=None, desc=True, fq=None):
     start_time = time.time()

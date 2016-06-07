@@ -157,6 +157,29 @@ class MainTester:
         self._print_test_result(result_table)
         self._save_as_csv(result_table, '', file_name)
 
+    def test_time_complexity(self, start_size=20, stop_size=400, step=20):
+        file_name = 'test_time_complexity {} {} {}'.format(start_size, stop_size, step)
+        print(file_name)
+        result_table = {}
+        whole_articles = self._get_test_articles(sampling=False)
+        for size in range(start_size, stop_size, step):
+            articles = random.sample(whole_articles, k=size)
+            print(size)
+            result = {}
+            for algorithm in [main.clustering1, main.clustering2, main.clustering3, main.clustering4]:
+                algorithm_start_time = time.time()
+                algorithm(self._model, articles)
+                spend_time = time.time() - algorithm_start_time
+                algorithm_name = str(algorithm).split(' ')[1]
+                result[algorithm_name] = spend_time
+
+            if size not in result_table:
+                result_table[size] = []
+            result_table[size].append(result)
+        print(result_table)
+        self._print_test_result(result_table)
+        self._save_as_csv(result_table, '', file_name)
+
     @staticmethod
     def _print_test_result(result_table):
         first_key = list(result_table.keys())[0]
@@ -217,4 +240,5 @@ if __name__ == '__main__':
     # tester.compare_clustering(times=100)
 
     # tester.compare_clustering_using_real_data(start_month='2016/06', days=30)
+    tester.test_time_complexity()
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

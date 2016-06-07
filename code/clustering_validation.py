@@ -28,13 +28,13 @@ def validate_clustering(cluster_ground_truth, cluster_predict, internal_validati
     labels_true = _get_article_cluster_doc(cluster_ground_truth)
     labels_pred = _get_article_cluster_doc(cluster_predict)
     result = {
-        'rand': '{0:.2f}'.format(metrics.adjusted_rand_score(labels_true, labels_pred)),
-        'mutual_info': '{0:.2f}'.format(metrics.adjusted_mutual_info_score(labels_true, labels_pred)),
-        'homogeneity': '{0:.2f}'.format(metrics.homogeneity_score(labels_true, labels_pred)),
-        'completeness': '{0:.2f}'.format(metrics.completeness_score(labels_true, labels_pred)),
-        'v_measure': '{0:.2f}'.format(metrics.v_measure_score(labels_true, labels_pred))
+        'ARI': '{0:.2f}'.format(metrics.adjusted_rand_score(labels_true, labels_pred)),
+        'AMI': '{0:.2f}'.format(metrics.adjusted_mutual_info_score(labels_true, labels_pred)),
+        'Homogeneity': '{0:.2f}'.format(metrics.homogeneity_score(labels_true, labels_pred)),
+        'Completeness': '{0:.2f}'.format(metrics.completeness_score(labels_true, labels_pred)),
+        'V-measure': '{0:.2f}'.format(metrics.v_measure_score(labels_true, labels_pred))
     }
-  
+
     result = {}
     if internal_validation is True:
         result['silhouette_index0'] = '{0:.2f}'.format(silhouette_index(cluster_predict, 0))
@@ -45,6 +45,7 @@ def validate_clustering(cluster_ground_truth, cluster_predict, internal_validati
 
     return result
 
+
 def interal_validate(clusters):
     result = {}
     result['silhouette_index0'] = '{0:.2f}'.format(silhouette_index(clusters, 0))
@@ -53,6 +54,7 @@ def interal_validate(clusters):
     result['silhouette_index3'] = '{0:.2f}'.format(silhouette_index(clusters, 3))
     result['silhouette_index4'] = '{0:.2f}'.format(silhouette_index(clusters, 4))
     return result
+
 
 def _split_string(article, split_content=True):
     tokens = cut(article.title)

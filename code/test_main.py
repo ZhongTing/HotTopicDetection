@@ -214,7 +214,7 @@ if __name__ == '__main__':
     #                                          (0.5, 0.65), (0.6, 0.65), (0.6, 0.7), (0.7, 0.75),
     #                                          (0.8, 0.8)], sampling=True, times=100)
     # part4
-    # tester.compare_clustering(times=1)
+    # tester.compare_clustering(times=100)
 
-    tester.compare_clustering_using_real_data(start_month='2016/06', days=30)
+    # tester.compare_clustering_using_real_data(start_month='2016/06', days=30)
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

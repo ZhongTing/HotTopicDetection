@@ -1,0 +1,22 @@
+,silhouette_index0,silhouette_index1,silhouette_index2,silhouette_index3,silhouette_index4
+mean
+clustering1,0.24,nan,nan,0.0,-0.42
+clustering2,0.26,nan,nan,0.0,-0.41
+clustering3,0.23,nan,nan,0.0,-0.42
+clustering4,0.24,nan,nan,0.0,-0.42
+max
+clustering1,0.29,nan,nan,0.0,-0.36
+clustering2,0.32,nan,nan,0.0,-0.35
+clustering3,0.28,nan,nan,0.0,-0.36
+clustering4,0.28,nan,nan,0.0,-0.37
+min
+clustering1,0.17,nan,nan,0.0,-0.47
+clustering2,0.19,nan,nan,0.0,-0.47
+clustering3,0.17,nan,nan,0.0,-0.49
+clustering4,0.18,nan,nan,0.0,-0.46
+std
+clustering1,0.03,nan,nan,0.0,0.03
+clustering2,0.03,nan,nan,0.0,0.03
+clustering3,0.02,nan,nan,0.0,0.03
+clustering4,0.02,nan,nan,0.0,0.02
+test finished in 14733.64 seconds

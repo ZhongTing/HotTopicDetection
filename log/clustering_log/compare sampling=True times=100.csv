@@ -1,0 +1,22 @@
+,completeness,homogeneity,mutual_info,rand,v_measure
+mean
+clustering1,0.91,0.93,0.9,0.89,0.92
+clustering2,0.9,0.93,0.89,0.88,0.91
+clustering3,0.9,0.93,0.89,0.88,0.92
+clustering4,0.91,0.94,0.9,0.9,0.93
+max
+clustering1,0.94,0.95,0.94,0.94,0.94
+clustering2,0.93,0.95,0.93,0.93,0.94
+clustering3,0.93,0.95,0.93,0.93,0.93
+clustering4,0.95,0.96,0.94,0.94,0.95
+min
+clustering1,0.88,0.89,0.87,0.82,0.89
+clustering2,0.86,0.9,0.84,0.82,0.88
+clustering3,0.86,0.9,0.84,0.83,0.88
+clustering4,0.89,0.92,0.87,0.84,0.9
+std
+clustering1,0.01,0.01,0.01,0.02,0.01
+clustering2,0.01,0.01,0.02,0.02,0.01
+clustering3,0.01,0.01,0.02,0.02,0.01
+clustering4,0.01,0.01,0.01,0.02,0.01
+test finished in 25868.77 seconds

@@ -1,16 +1,15 @@
+import csv
+import os
 import random
 import re
+import time
 from collections import OrderedDict
 
-import python_code.test.make_test_data as test_data
-import python_code.model.ptt_article_fetcher as fetcher
-import python_code.main as main
-from AgglomerativeClustering import AgglomerativeClustering
-
 from numpy import mean, std
-import time
-import os
-import csv
+
+import python_code.clustering_old.main as main
+import python_code.model.ptt_article_fetcher as fetcher
+import python_code.test.make_test_data as test_data
 
 
 class MainTester:
@@ -34,7 +33,7 @@ class MainTester:
         return articles
 
     # algorithm 2 cost 6 seconds per times on 183.28
-    def find_best_threshold(self, algorithm, start_th=0.4, end_th=0.65, increase_count=0.5, sampling=False, times=1):
+    def find_best_threshold(self, algorithm, start_th=0.4, end_th=0.65, step=0.05, sampling=False, times=1):
         algorithm_name = str(algorithm).split(' ')[1]
         file_name = 'threshold sampling={} times={}'.format(sampling, times)
         print(file_name)
@@ -49,7 +48,7 @@ class MainTester:
                 if key not in result_table:
                     result_table[key] = []
                 result_table[key].append(result)
-                threshold += increase_count
+                threshold += step
         self._print_test_result(result_table)
         self._save_as_csv(result_table, algorithm_name, file_name)
 
@@ -138,7 +137,7 @@ class MainTester:
         file_name = 'compare_using_real_data {} days={}'.format(''.join(start_month.split('/')), days)
         print(file_name)
         result_table = {}
-        days = days + 1
+        days += 1
         for day_counter in range(1, days):
             target_day = '{}/{}'.format(start_month, str(day_counter).zfill(2))
             print(target_day)
@@ -180,24 +179,6 @@ class MainTester:
         print(result_table)
         self._print_test_result(result_table)
         self._save_as_csv(result_table, '', file_name)
-
-    def stable_test(self, times=3):
-        file_name = 'stable_test times={}'.format(times)
-        result_table = {}
-        articles = self._get_test_articles(True)
-        for time_counter in range(times):
-            random.shuffle(articles)
-            print('time counter', time_counter)
-            for key in [AgglomerativeClustering(0.55).fit, AgglomerativeClustering(0.55).quick_fit]:
-                clusters = key(articles)
-                result = main.validate_clustering(self._labeled_clusters, clusters)
-                algorithm_name = str(key).split(' ')[2]
-                if algorithm_name not in result_table:
-                    result_table[algorithm_name] = []
-                print(result)
-                result_table[algorithm_name].append(result)
-        self._print_test_result(result_table)
-        self._save_as_csv(result_table, 'AgglomerativeClustering', file_name)
 
     @staticmethod
     def _print_test_result(result_table):
@@ -260,5 +241,4 @@ if __name__ == '__main__':
 
     # tester.compare_clustering_using_real_data(start_month='2016/06', days=30)
     # tester.test_time_complexity()
-    tester.stable_test()
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

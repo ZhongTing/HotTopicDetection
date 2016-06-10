@@ -1,12 +1,21 @@
-from numpy import dot
+from gensim import matutils
+from numpy import dot, array, array_equal
 
 
 class AgglomerativeClustering:
     """docstring for AgglomerativeClustering"""
 
-    def __init__(self, threshold):
+    LINKAGE_CENTROID = 'centroid'
+    LINKAGE_SINGLE = 'single'
+    LINKAGE_COMPLETE = 'complete'
+    LINKAGE_AVERAGE = 'average'
+    SIMILARITY_COSINE = 'cosine'
+    SIMILARITY_PROJECT_PRODUCT = 'dot without normalize'
+
+    def __init__(self, threshold, linkage=LINKAGE_CENTROID, similarity=SIMILARITY_COSINE):
         self.threshold = threshold
-        pass
+        self.linkage = linkage
+        self.similarity_mode = similarity
 
     def fit(self, articles):
         clusters = self._init_clusters(articles)
@@ -41,17 +50,18 @@ class AgglomerativeClustering:
                 clusters_after_merge.append(target_cluster)
         return clusters_after_merge
 
-    @staticmethod
-    def _init_clusters(articles):
+    def _init_clusters(self, articles):
         clusters = []
         counter = 0
         for article in articles:
+            if self.similarity_mode == self.SIMILARITY_PROJECT_PRODUCT:
+                article.vector = matutils.unitvec(article.vector)
             if article.vector is None:
                 raise ValueError("no articles vector")
 
             not_found = True
             for cluster in clusters:
-                if dot(article.vector, cluster['vector'] == 1.0):
+                if array_equal(article.vector, cluster['vector']):
                     cluster['articles'].append(article)
                     not_found = False
                     break
@@ -64,7 +74,8 @@ class AgglomerativeClustering:
     def _merge_clusters(self, cluster_a, cluster_b, cluster_pair_list=None, clusters=None):
 
         cluster_a['articles'].extend(cluster_b['articles'])
-        cluster_a['vector'] = self._cluster_vector(cluster_a)
+        if self.linkage == 'centroid':
+            cluster_a['vector'] = self._cluster_vector(cluster_a)
 
         if clusters is not None:
             for cluster_counter in range(len(clusters)):
@@ -95,7 +106,7 @@ class AgglomerativeClustering:
         return sorted(similarity_table, key=lambda cluster_pair: cluster_pair['similarity'], reverse=True)
 
     def _find_closest_pair(self, clusters, cluster):
-        pair = {'key': (cluster, None), 'similarity': 0}
+        pair = {'key': (cluster, None), 'similarity': -99}
         for j in range(len(clusters)):
             if cluster['id'] == clusters[j]['id']:
                 continue
@@ -106,10 +117,25 @@ class AgglomerativeClustering:
                 pair['target'] = clusters[j]
         return pair
 
-    @staticmethod
-    def _similarity(cluster_a, cluster_b):
-        return dot(cluster_a['vector'], cluster_b['vector'])
+    def _similarity(self, cluster_a, cluster_b):
+        if self.linkage == self.LINKAGE_CENTROID:
+            return self._cos_similarity(cluster_a['vector'], cluster_b['vector'])
+        else:
+            distance_arr = [self._cos_similarity(a.vector, b.vector)
+                            for a in cluster_a['articles'] for b in cluster_b['articles']]
+            if self.linkage == self.LINKAGE_SINGLE:
+                return min(distance_arr)
+            elif self.linkage == self.LINKAGE_COMPLETE:
+                return max(distance_arr)
+            elif self.linkage == self.LINKAGE_AVERAGE:
+                return array(distance_arr).mean()
+
+    def _cos_similarity(self, vector_a, vector_b):
+        if self.similarity_mode == self.SIMILARITY_COSINE:
+            return dot(matutils.unitvec(vector_a), matutils.unitvec(vector_b))
+        elif self.similarity_mode == self.SIMILARITY_PROJECT_PRODUCT:
+            return dot(vector_a, vector_b)
 
     @staticmethod
     def _cluster_vector(cluster):
-        return sum([a.vector for a in cluster['articles']]) / len(cluster['articles'])
+        return array([a.vector for a in cluster['articles']]).mean(axis=0)

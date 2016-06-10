@@ -2,9 +2,10 @@ import random
 import re
 from collections import OrderedDict
 
-import code.test.make_test_data as test_data
-import code.model.ptt_article_fetcher as fetcher
-import code.main as main
+import python_code.test.make_test_data as test_data
+import python_code.model.ptt_article_fetcher as fetcher
+import python_code.main as main
+from AgglomerativeClustering import AgglomerativeClustering
 
 from numpy import mean, std
 import time
@@ -147,7 +148,7 @@ class MainTester:
             main.compute_article_vector(self._model, articles)
             for algorithm in [main.clustering1, main.clustering2, main.clustering3, main.clustering4]:
                 clusters = algorithm(self._model, articles)
-                result = main.interal_validate(clusters)
+                result = main.internal_validate(clusters)
                 algorithm_name = str(algorithm).split(' ')[1]
                 print(algorithm_name, result)
                 if algorithm_name not in result_table:
@@ -179,6 +180,24 @@ class MainTester:
         print(result_table)
         self._print_test_result(result_table)
         self._save_as_csv(result_table, '', file_name)
+
+    def stable_test(self, times=3):
+        file_name = 'stable_test times={}'.format(times)
+        result_table = {}
+        articles = self._get_test_articles(True)
+        for time_counter in range(times):
+            random.shuffle(articles)
+            print('time counter', time_counter)
+            for key in [AgglomerativeClustering(0.55).fit, AgglomerativeClustering(0.55).quick_fit]:
+                clusters = key(articles)
+                result = main.validate_clustering(self._labeled_clusters, clusters)
+                algorithm_name = str(key).split(' ')[2]
+                if algorithm_name not in result_table:
+                    result_table[algorithm_name] = []
+                print(result)
+                result_table[algorithm_name].append(result)
+        self._print_test_result(result_table)
+        self._save_as_csv(result_table, 'AgglomerativeClustering', file_name)
 
     @staticmethod
     def _print_test_result(result_table):
@@ -220,7 +239,7 @@ if __name__ == '__main__':
     tester = MainTester()
 
     # part1
-    # tester.find_best_threshold(main.clustering2, 0.3, 0.8, 0.05, True, 100)
+    # tester.find_best_threshold(main.clustering2, 0.3, 0.8, 0.05, True, 1)
     # tester.find_best_threshold_with_ratio(main.clustering1, 0.9, 0.1, 0.4, 0.8, 0.05, True, 25)
     # tester.find_best_threshold_with_ratio(main.clustering3, 0.9, 0.1, 0.4, 0.8, 0.05, True, 100)
     # tester.find_best_threshold_with_ratio(main.clustering4, 0.6, 0.4, 0.4, 0.8, 0.05, True, 100)
@@ -240,5 +259,6 @@ if __name__ == '__main__':
     # tester.compare_clustering(times=100)
 
     # tester.compare_clustering_using_real_data(start_month='2016/06', days=30)
-    tester.test_time_complexity()
+    # tester.test_time_complexity()
+    tester.stable_test()
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

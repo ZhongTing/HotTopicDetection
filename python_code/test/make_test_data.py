@@ -1,4 +1,4 @@
-import code.model.ptt_article_fetcher as fetcher
+import python_code.model.ptt_article_fetcher as fetcher
 import jsonpickle
 import os
 

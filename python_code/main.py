@@ -1,13 +1,14 @@
 import gensim.models
 from gensim import matutils
 from numpy import array, dot
-import code.model.ptt_article_fetcher as fetcher
-from code.model.my_tokenize.tokenizer import cut
-import code.test.make_test_data as test_data
+from python_code.model import ptt_article_fetcher as fetcher
+from python_code.model.my_tokenize.tokenizer import cut
+from python_code.test import make_test_data as test_data
+from python_code.clustering_validation import validate_clustering, internal_validate
+from python_code.model.keywords_extraction import keywords_extraction
+from python_code.AgglomerativeClustering import AgglomerativeClustering
 import random
-from code.clustering_validation import validate_clustering, interal_validate
 import time
-from code.model.keywords_extraction import keywords_extraction
 
 
 def get_test_clusters(sample_pick=False):
@@ -34,8 +35,8 @@ def get_test_articles(clusters=get_test_clusters()):
     return articles
 
 
-def get_ptt_articles():
-    return fetcher.fetch_articles('*', number=2000, days=1)
+def get_ptt_articles(number=2000):
+    return fetcher.fetch_articles('*', number=number, days=1)
 
 
 def load_model(model_path='model/bin/ngram_300_3_83w.bin'):
@@ -242,13 +243,17 @@ def clustering(model, algorithm, threshold, articles):
 def main(algorithm, threshold=0.55):
     print('main', algorithm, threshold)
     model = load_model()
-    articles = get_ptt_articles()
+    articles = get_ptt_articles(number=200)
     compute_article_vector(model, articles)
-    clusters = clustering(model, algorithm, threshold, articles)
+    t = time.time()
+    # clusters = clustering(model, algorithm, threshold, articles)
+    clusters = AgglomerativeClustering(0.55).fit(articles)
+    tt = time.time()
     print_clustering_info(clusters, articles)
     clusters = sorted(clusters, key=lambda cluster: sum([a.score for a in cluster['articles']]), reverse=True)
     print_clusters(clusters[0:5], True)
-    print('silhouette_index', interal_validate(clusters))
+    print('spend', t - tt)
+    print('silhouette_index', internal_validate(clusters))
 
 
 def log(string):

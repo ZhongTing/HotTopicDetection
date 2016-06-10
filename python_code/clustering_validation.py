@@ -1,11 +1,10 @@
 from sklearn import metrics
 from numpy import array as array
-import code.test.make_test_data as test
-from code.model.my_tokenize.tokenizer import cut
-from code.model.keywords_extraction import keywords_extraction
+import python_code.test.make_test_data as test
+from python_code.model.my_tokenize.tokenizer import cut
+from python_code.model.keywords_extraction import keywords_extraction
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import HashingVectorizer
-from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.decomposition import TruncatedSVD
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import Normalizer
@@ -13,9 +12,9 @@ from sklearn.preprocessing import Normalizer
 
 def _get_article_cluster_doc(clusters):
     _mark_cluster_number(clusters)
-    labeded_articles = [article for cluster in clusters for article in cluster['articles']]
-    labeded_articles.sort(key=lambda a: a.id)
-    return [article.cluster_number for article in labeded_articles]
+    labeled_articles = [article for cluster in clusters for article in cluster['articles']]
+    labeled_articles.sort(key=lambda a: a.id)
+    return [article.cluster_number for article in labeled_articles]
 
 
 def _mark_cluster_number(clusters):
@@ -35,7 +34,6 @@ def validate_clustering(cluster_ground_truth, cluster_predict, internal_validati
         'V-measure': '{0:.2f}'.format(metrics.v_measure_score(labels_true, labels_pred))
     }
 
-    result = {}
     if internal_validation is True:
         result['silhouette_index0'] = '{0:.2f}'.format(silhouette_index(cluster_predict, 0))
         result['silhouette_index1'] = '{0:.2f}'.format(silhouette_index(cluster_predict, 1))
@@ -46,13 +44,12 @@ def validate_clustering(cluster_ground_truth, cluster_predict, internal_validati
     return result
 
 
-def interal_validate(clusters):
-    result = {}
-    result['silhouette_index0'] = '{0:.2f}'.format(silhouette_index(clusters, 0))
-    result['silhouette_index1'] = '{0:.2f}'.format(silhouette_index(clusters, 1))
-    result['silhouette_index2'] = '{0:.2f}'.format(silhouette_index(clusters, 2))
-    result['silhouette_index3'] = '{0:.2f}'.format(silhouette_index(clusters, 3))
-    result['silhouette_index4'] = '{0:.2f}'.format(silhouette_index(clusters, 4))
+def internal_validate(clusters):
+    result = {'silhouette_index0': '{0:.2f}'.format(silhouette_index(clusters, 0)),
+              'silhouette_index1': '{0:.2f}'.format(silhouette_index(clusters, 1)),
+              'silhouette_index2': '{0:.2f}'.format(silhouette_index(clusters, 2)),
+              'silhouette_index3': '{0:.2f}'.format(silhouette_index(clusters, 3)),
+              'silhouette_index4': '{0:.2f}'.format(silhouette_index(clusters, 4))}
     return result
 
 
@@ -66,7 +63,7 @@ def _split_string(article, split_content=True):
 def silhouette_index(clusters, score_type=0):
     try:
         if score_type is 0:
-            X = array([a.vector for cluster in clusters for a in cluster['articles']])
+            x = array([a.vector for cluster in clusters for a in cluster['articles']])
         else:
             split_content = score_type > 2
             data = array([_split_string(a, split_content) for cluster in clusters for a in cluster['articles']])
@@ -76,14 +73,14 @@ def silhouette_index(clusters, score_type=0):
                 vectorizer = HashingVectorizer(stop_words='english', binary=False)
 
             if score_type is not 3:
-                X = vectorizer.fit_transform(data)
+                x = vectorizer.fit_transform(data)
                 svd = TruncatedSVD(15)
                 normalizer = Normalizer(copy=False)
                 lsa = make_pipeline(svd, normalizer)
-                X = lsa.fit_transform(X)
+                x = lsa.fit_transform(x)
         labels = array([i for i in range(len(clusters)) for a in clusters[i]['articles']])
-        score = metrics.silhouette_score(X, labels, metric='euclidean')
-        return score
+        return metrics.silhouette_score(x, labels, metric='euclidean')
+
     except:
         return 0
 

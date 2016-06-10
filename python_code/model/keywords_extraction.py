@@ -1,6 +1,6 @@
 import jieba.analyse
-import code.model.ptt_article_fetcher as fetcher
-import code.model.lda as lda
+import python_code.model.ptt_article_fetcher as fetcher
+import python_code.model.lda as lda
 import os
 
 

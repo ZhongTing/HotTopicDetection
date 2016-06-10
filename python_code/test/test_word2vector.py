@@ -2,7 +2,7 @@ import time
 
 import gensim.models
 
-from code.model.my_tokenize.tokenizer import cut
+from python_code.model.my_tokenize.tokenizer import cut
 
 model_names = [
     'model_78w.bin',

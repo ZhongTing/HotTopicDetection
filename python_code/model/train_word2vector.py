@@ -3,8 +3,8 @@ import time
 from datetime import datetime
 
 from gensim.models import Word2Vec
-from code.model.ptt_article_fetcher import fetch_articles
-from code.model.my_tokenize.tokenizer import cut
+from python_code.model.ptt_article_fetcher import fetch_articles
+from python_code.model.my_tokenize.tokenizer import cut
 
 
 def get_sentence(keyword, number, page=1):

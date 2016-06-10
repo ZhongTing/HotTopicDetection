@@ -1,5 +1,5 @@
-from code.model import ptt_article_fetcher
-from code.model.my_tokenize.tokenizer import cut
+from python_code.model import ptt_article_fetcher
+from python_code.model.my_tokenize.tokenizer import cut
 
 articles = ptt_article_fetcher.fetch_articles('', number=10, page=6)
 using_stopwords = False

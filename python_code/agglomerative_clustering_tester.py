@@ -21,7 +21,6 @@ FEATURE_ARTICLE_KEY_WORD_EXTRACTION = 'article with keyword extraction'
 
 
 class AgglomerativeClusteringTester:
-
     def __init__(self, feature, model_path='model/bin/ngram_300_3_83w.bin'):
         self._feature_extractor = FeatureExtractor(model_path=model_path)
         self._all_test_clusters = test_data.get_test_clusters()
@@ -31,10 +30,12 @@ class AgglomerativeClusteringTester:
             if self._feature_mode == FEATURE_TITLE:
                 self._feature_extractor.fit_with_extraction_ratio(articles=cluster['articles'], t=1, c=0)
             elif self._feature_mode == FEATURE_ARTICLE:
-                self._feature_extractor.fit(cluster['articles'])
+                self._feature_extractor.fit(articles=cluster['articles'])
+            elif self._feature_mode == FEATURE_ARTICLE_KEY_WORD_EXTRACTION:
+                self._feature_extractor.fit_with_extraction(articles=cluster['articles'])
             else:
                 raise ValueError('Feature not assign yet')
-        print('tester init ready')
+        print('tester init with feature', self._feature_mode)
 
     def _get_test_articles(self, sampling=True):
         articles = []
@@ -67,11 +68,12 @@ class AgglomerativeClusteringTester:
         self._print_test_result(result_table)
         self._save_as_csv(result_table, self._feature_mode, file_name)
 
-    def find_best_threshold(self, linkage, sim, quick, start_th=0.3, end_th=0.9, step=0.05, sampling=False, times=1):
+    def find_best_threshold(self, linkage, sim, quick, start_th=0.3, end_th=0.8, step=0.1, sampling=True, times=1):
         file_name = 'threshold {} {} quick={} sampling={} times={}'.format(linkage, sim, quick, sampling, times)
         print(file_name)
         result_table = {}
         for time_counter in range(times):
+            print(time_counter)
             articles = self._get_test_articles(sampling)
             threshold = start_th
             while threshold < end_th + step:
@@ -95,6 +97,7 @@ class AgglomerativeClusteringTester:
         args = {HAC.LINKAGE_CENTROID: 0.55, HAC.LINKAGE_COMPLETE: 0.55, HAC.LINKAGE_AVERAGE: 0.55,
                 HAC.LINKAGE_SINGLE: 0.55}
         for time_counter in range(times):
+            print(time_counter)
             articles = self._get_test_articles(sampling)
             for linkage, threshold in args.items():
                 clusters = HAC(threshold, linkage=linkage).quick_fit(articles)
@@ -147,8 +150,8 @@ if __name__ == '__main__':
     tester = AgglomerativeClusteringTester(FEATURE_ARTICLE)
 
     # tester.stable_test()
-    # tester.find_best_threshold(HAC.LINKAGE_CENTROID, HAC.SIMILARITY_COSINE, quick=False, sampling=True, times=10)
-    # tester.find_best_threshold(HAC.LINKAGE_SINGLE, HAC.SIMILARITY_COSINE, quick=False, sampling=True, times=10)
-    # tester.find_best_threshold(HAC.LINKAGE_COMPLETE, HAC.SIMILARITY_COSINE, quick=False, sampling=True, times=10)
-    # tester.find_best_threshold(HAC.LINKAGE_AVERAGE, HAC.SIMILARITY_COSINE, quick=False, sampling=True, times=10)
+    # tester.find_best_threshold(HAC.LINKAGE_CENTROID, HAC.SIMILARITY_COSINE, quick=True, times=25, step=0.05)
+    # tester.find_best_threshold(HAC.LINKAGE_SINGLE, HAC.SIMILARITY_COSINE, quick=True, times=5, step=0.05)
+    # tester.find_best_threshold(HAC.LINKAGE_COMPLETE, HAC.SIMILARITY_COSINE, quick=True, times=25, step=0.05)
+    # tester.find_best_threshold(HAC.LINKAGE_AVERAGE, HAC.SIMILARITY_COSINE, quick=True, times=25, step=0.05)
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

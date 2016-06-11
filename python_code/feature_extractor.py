@@ -21,8 +21,7 @@ class FeatureExtractor:
 
     def fit(self, articles):
         for article in articles:
-            # article.vector = self._compute_vector(article.title + article.content)
-            article.vector = self._compute_vector(article.title)
+            article.vector = self._compute_vector(article.title + " " + article.content)
         self.remove_invalid_articles(articles)
 
     def fit_with_extraction(self, articles):

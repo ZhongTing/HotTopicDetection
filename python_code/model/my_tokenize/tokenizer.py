@@ -5,17 +5,17 @@ from hanziconv import HanziConv
 
 
 def cut(string, using_stopwords=False, simplified_convert=True, log=False):
-    # return [i.strip().lower() for i in string.strip() if i != ' ']
     string = string.lower()
     if simplified_convert:
         string = HanziConv.toSimplified(string)
     with open(os.path.join(BASE_DIR, 'digit_mark.json'), encoding='utf-8') as data_file:
         digit_mark = json.load(data_file)
         for digit in digit_mark:
-            string = string.replace(digit, '')
+            string = string.replace(digit, ' ')
         tokens = list(jieba.cut_for_search(string))
         if simplified_convert:
             tokens = [HanziConv.toTraditional(i) for i in tokens]
+        tokens = [i for i in tokens if i.strip() != '']
     if using_stopwords:
         with open(os.path.join(BASE_DIR, 'stopwords.txt'), encoding='utf-8') as data_file:
             stopwords = [line.replace('\n', '') for line in data_file.readlines()]

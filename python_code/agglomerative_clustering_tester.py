@@ -14,27 +14,35 @@ import csv
 
 from python_code.clustering_validation import validate_clustering
 from python_code.feature_extractor import FeatureExtractor
+from python_code.tf_idf_feature_extractor import TFIDFFeatureExtractor
 
-FEATURE_TITLE = 'title'
+FEATURE_TF_IDF = 'tfidf whole article'
 FEATURE_ARTICLE = 'whole article'
 FEATURE_ARTICLE_KEY_WORD_EXTRACTION = 'article with keyword extraction'
+FEATURE_TITLE = 'title'
 
 
 class AgglomerativeClusteringTester:
 
     def __init__(self, feature, model_path='model/bin/ngram_300_3_83w.bin'):
-        self._feature_extractor = FeatureExtractor(model_path=model_path)
+        if feature == FEATURE_TF_IDF:
+            self._feature_extractor = TFIDFFeatureExtractor()
+        else:
+            self._feature_extractor = FeatureExtractor(model_path=model_path)
         self._all_test_clusters = test_data.get_test_clusters()
         self._feature_mode = feature
 
-        for cluster in self._all_test_clusters:
-            if self._feature_mode == FEATURE_TITLE:
-                self._feature_extractor.fit_with_extraction_ratio(articles=cluster['articles'], t=1, c=0)
-            elif self._feature_mode == FEATURE_ARTICLE:
-                self._feature_extractor.fit(cluster['articles'])
-            else:
-                raise ValueError('Feature not assign yet')
-        print('tester init ready')
+        if self._feature_mode == FEATURE_TF_IDF:
+            self._feature_extractor.fit([a for cluster in self._all_test_clusters for a in cluster['articles']])
+        else:
+            for cluster in self._all_test_clusters:
+                if self._feature_mode == FEATURE_TITLE:
+                    self._feature_extractor.fit_with_extraction_ratio(articles=cluster['articles'], t=1, c=0)
+                elif self._feature_mode == FEATURE_ARTICLE:
+                    self._feature_extractor.fit(cluster['articles'])
+                else:
+                    raise ValueError('Feature not assign yet')
+        print('tester init with', self._feature_mode)
 
     def _get_test_articles(self, sampling=True):
         articles = []
@@ -144,10 +152,10 @@ class AgglomerativeClusteringTester:
 
 if __name__ == '__main__':
     start_time = time.time()
-    tester = AgglomerativeClusteringTester(FEATURE_ARTICLE)
+    tester = AgglomerativeClusteringTester(FEATURE_TF_IDF)
 
     # tester.stable_test()
-    # tester.find_best_threshold(HAC.LINKAGE_CENTROID, HAC.SIMILARITY_COSINE, quick=False, sampling=True, times=10)
+    tester.find_best_threshold(HAC.LINKAGE_CENTROID, HAC.SIMILARITY_COSINE, start_th=0.3, end_th=0.9, step=0.1, quick=True, sampling=True, times=1)
     # tester.find_best_threshold(HAC.LINKAGE_SINGLE, HAC.SIMILARITY_COSINE, quick=False, sampling=True, times=10)
     # tester.find_best_threshold(HAC.LINKAGE_COMPLETE, HAC.SIMILARITY_COSINE, quick=False, sampling=True, times=10)
     # tester.find_best_threshold(HAC.LINKAGE_AVERAGE, HAC.SIMILARITY_COSINE, quick=False, sampling=True, times=10)

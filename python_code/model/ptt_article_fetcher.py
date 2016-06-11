@@ -39,6 +39,10 @@ class Article(object):
                 i.strip() for i in re.findall(r'([^ \n].+) *', temp_content) if i not in ['']]
 
             self.content = '\n'.join(self.content_sentence)
+
+        if 'timestamp' in arg:
+            self.timestamp = arg['timestamp']
+
         if 'comments' in arg:
             self.comments = json.loads(arg['comments'])
             self.comments_content = []

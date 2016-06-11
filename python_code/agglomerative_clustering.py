@@ -22,7 +22,7 @@ class AgglomerativeClustering:
         print('building similarity table...')
         cluster_pair_list = self._build_cluster_pair_list(clusters)
         most_closest_pair = cluster_pair_list[0]
-        while len(cluster_pair_list) > 0 and most_closest_pair['similarity'] > self.threshold:
+        while len(cluster_pair_list) > 1 and most_closest_pair['similarity'] > self.threshold:
             cluster_a = most_closest_pair['key']
             cluster_b = most_closest_pair['target']
             if len(cluster_pair_list) % 200 == 0:
@@ -33,6 +33,7 @@ class AgglomerativeClustering:
         return clusters
 
     def quick_fit(self, articles):
+        articles = sorted(articles, key=lambda a: a.timestamp)
         clusters_after_merge = []
         clusters = self._init_clusters(articles)
         while len(clusters) != 0:
@@ -74,7 +75,7 @@ class AgglomerativeClustering:
     def _merge_clusters(self, cluster_a, cluster_b, cluster_pair_list=None, clusters=None):
 
         cluster_a['articles'].extend(cluster_b['articles'])
-        if self.linkage == 'centroid':
+        if self.linkage == self.LINKAGE_CENTROID:
             cluster_a['vector'] = self._cluster_vector(cluster_a)
 
         if clusters is not None:
@@ -93,8 +94,9 @@ class AgglomerativeClustering:
             for pair in cluster_pair_list:
                 if cluster_b['id'] is pair['target']['id']:
                     newer_pair = self._find_closest_pair(clusters, pair['key'])
-                    pair['target'] = newer_pair['target']
-                    pair['similarity'] = newer_pair['similarity']
+                    if newer_pair is not None:
+                        pair['target'] = newer_pair['target']
+                        pair['similarity'] = newer_pair['similarity']
 
             cluster_pair_list.sort(key=lambda cluster_pair: cluster_pair['similarity'], reverse=True)
 
@@ -106,15 +108,15 @@ class AgglomerativeClustering:
         return sorted(similarity_table, key=lambda cluster_pair: cluster_pair['similarity'], reverse=True)
 
     def _find_closest_pair(self, clusters, cluster):
-        pair = {'key': (cluster, None), 'similarity': -99}
+        pair = None
         for j in range(len(clusters)):
             if cluster['id'] == clusters[j]['id']:
                 continue
             similarity = self._similarity(cluster, clusters[j])
-            if similarity > pair['similarity']:
-                pair['similarity'] = similarity
-                pair['key'] = cluster
-                pair['target'] = clusters[j]
+            if pair is None or similarity > pair['similarity']:
+                pair = {'similarity': similarity, 'key': cluster, 'target': clusters[j]}
+        if pair is None:
+            print(len(clusters))
         return pair
 
     def _similarity(self, cluster_a, cluster_b):
@@ -129,6 +131,7 @@ class AgglomerativeClustering:
                 return max(distance_arr)
             elif self.linkage == self.LINKAGE_AVERAGE:
                 return array(distance_arr).mean()
+            return -1
 
     def _cos_similarity(self, vector_a, vector_b):
         if self.similarity_mode == self.SIMILARITY_COSINE:

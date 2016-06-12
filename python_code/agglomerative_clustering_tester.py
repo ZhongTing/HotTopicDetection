@@ -23,16 +23,17 @@ FEATURE_TITLE = 'title'
 
 
 class AgglomerativeClusteringTester:
-    def __init__(self, feature, model_path='model/bin/ngram_300_3_83w.bin'):
+    def __init__(self, feature, model_path='model/bin/ngram_300_3_83w.bin', number_article_per_test_cluster=None):
         if feature == FEATURE_TF_IDF:
             self._feature_extractor = TFIDFFeatureExtractor()
         else:
             self._feature_extractor = FeatureExtractor(model_path=model_path)
         self._all_test_clusters = test_data.get_test_clusters()
         self._feature_mode = feature
+        self._number_article_per_test_cluster = number_article_per_test_cluster
 
         if self._feature_mode == FEATURE_TF_IDF:
-            self._feature_extractor.fit([a for cluster in self._all_test_clusters for a in cluster['articles']])
+            pass
         else:
             for cluster in self._all_test_clusters:
                 if self._feature_mode == FEATURE_TITLE:
@@ -51,10 +52,16 @@ class AgglomerativeClusteringTester:
         for cluster in self._all_test_clusters:
             cluster_articles = cluster['articles']
             if sampling:
-                cluster_articles = random.sample(cluster_articles, k=random.randint(1, len(cluster_articles)))
+                l = len(cluster_articles)
+                if self._number_article_per_test_cluster is not None:
+                    if l > self._number_article_per_test_cluster:
+                        l = self._number_article_per_test_cluster
+                cluster_articles = random.sample(cluster_articles, k=random.randint(1, l))
             self._labeled_clusters.append({'articles': cluster_articles})
             articles.extend(cluster_articles)
         random.shuffle(articles)
+        if self._feature_mode == FEATURE_TF_IDF:
+            self._feature_extractor.fit(articles)
         return articles
 
     def stable_test(self, times=3):
@@ -76,7 +83,7 @@ class AgglomerativeClusteringTester:
         self._print_test_result(result_table)
         self._save_as_csv(result_table, self._feature_mode, file_name)
 
-    def find_best_threshold(self, linkage, sim, quick, start_th=0.3, end_th=0.8, step=0.1, sampling=True, times=1):
+    def find_best_threshold(self, linkage, sim, quick, start_th=0.3, end_th=0.8, step=0.05, sampling=True, times=1):
         file_name = 'threshold {} {} quick={} sampling={} times={}'.format(linkage, sim, quick, sampling, times)
         print(file_name)
         result_table = {}
@@ -98,19 +105,20 @@ class AgglomerativeClusteringTester:
         self._print_test_result(result_table)
         self._save_as_csv(result_table, self._feature_mode, file_name)
 
-    def compare(self, sampling=False, times=1):
+    def compare(self, sim, quick, args, sampling=False, times=1):
         file_name = 'compare sampling={} times={}'.format(sampling, times)
         print(file_name)
         result_table = {}
-        args = {HAC.LINKAGE_CENTROID: 0.55, HAC.LINKAGE_COMPLETE: 0.55, HAC.LINKAGE_AVERAGE: 0.55,
-                HAC.LINKAGE_SINGLE: 0.55}
         for time_counter in range(times):
             print(time_counter)
             articles = self._get_test_articles(sampling)
             for linkage, threshold in args.items():
-                clusters = HAC(threshold, linkage=linkage).quick_fit(articles)
+                if quick is True:
+                    clusters = HAC(threshold, linkage=linkage, similarity=sim).quick_fit(articles)
+                else:
+                    clusters = HAC(threshold, linkage=linkage, similarity=sim).fit(articles)
                 result = validate_clustering(self._labeled_clusters, clusters)
-                key = '{}, {0:.2f}'.format(linkage, threshold)
+                key = '{}-{}'.format(linkage, threshold)
                 if key not in result_table:
                     result_table[key] = []
                 result_table[key].append(result)
@@ -153,13 +161,38 @@ class AgglomerativeClusteringTester:
             writer.writerow(['test finished in {0:.2f} seconds'.format(time.time() - start_time)])
 
 
+def test_tf_idf():
+    t = AgglomerativeClusteringTester(FEATURE_TF_IDF, number_article_per_test_cluster=10)
+    # t.find_best_threshold(HAC.LINKAGE_CENTROID, HAC.SIMILARITY_COSINE, quick=False, start_th=0.05, end_th=0.4, times=3)
+    # t.find_best_threshold(HAC.LINKAGE_SINGLE, HAC.SIMILARITY_COSINE, quick=False, start_th=0.05, end_th=0.4, times=3)
+    # t.find_best_threshold(HAC.LINKAGE_COMPLETE, HAC.SIMILARITY_COSINE, quick=False, start_th=0.05, end_th=0.4, times=3)
+    # t.find_best_threshold(HAC.LINKAGE_AVERAGE, HAC.SIMILARITY_COSINE, quick=False, start_th=0.05, end_th=0.4, times=3)
+
+    args = {HAC.LINKAGE_CENTROID: 0.25, HAC.LINKAGE_COMPLETE: 0.2, HAC.LINKAGE_AVERAGE: 0.1, HAC.LINKAGE_SINGLE: 0.05}
+    t.compare(HAC.SIMILARITY_COSINE, quick=False, args=args, sampling=True, times=5)
+
+
+def test_article():
+    t = AgglomerativeClusteringTester(FEATURE_ARTICLE, number_article_per_test_cluster=50)
+    # t.find_best_threshold(HAC.LINKAGE_CENTROID, HAC.SIMILARITY_COSINE, quick=False, start_th=0.75, end_th=1, times=3)
+    # t.find_best_threshold(HAC.LINKAGE_SINGLE, HAC.SIMILARITY_COSINE, quick=False, start_th=0.65, end_th=0.9, times=5)
+    # t.find_best_threshold(HAC.LINKAGE_COMPLETE, HAC.SIMILARITY_COSINE, quick=False, start_th=0.75, end_th=1, times=3)
+    # t.find_best_threshold(HAC.LINKAGE_AVERAGE, HAC.SIMILARITY_COSINE, quick=False, start_th=0.75, end_th=0.95, times=5)
+
+    args = {HAC.LINKAGE_CENTROID: 0.9, HAC.LINKAGE_COMPLETE: 0.9, HAC.LINKAGE_AVERAGE: 0.85, HAC.LINKAGE_SINGLE: 0.75}
+    t.compare(HAC.SIMILARITY_COSINE, quick=False, args=args, sampling=True, times=5)
+
+
+def test_extraction():
+    t = AgglomerativeClusteringTester(FEATURE_ARTICLE_KEY_WORD_EXTRACTION, number_article_per_test_cluster=50)
+    # t.find_best_threshold(HAC.LINKAGE_CENTROID, HAC.SIMILARITY_COSINE, quick=False, start_th=0.75, end_th=1, times=3)
+    t.find_best_threshold(HAC.LINKAGE_SINGLE, HAC.SIMILARITY_COSINE, quick=False, start_th=0.4, end_th=0.6, times=5)
+    t.find_best_threshold(HAC.LINKAGE_COMPLETE, HAC.SIMILARITY_COSINE, quick=False, start_th=0.7, end_th=0.95, times=3)
+    t.find_best_threshold(HAC.LINKAGE_AVERAGE, HAC.SIMILARITY_COSINE, quick=False, start_th=0.5, end_th=0.8, times=5)
+
 if __name__ == '__main__':
     start_time = time.time()
-    tester = AgglomerativeClusteringTester(FEATURE_TF_IDF)
-
-    # tester.stable_test()
-    # tester.find_best_threshold(HAC.LINKAGE_CENTROID, HAC.SIMILARITY_COSINE, quick=True, times=25, step=0.05)
-    # tester.find_best_threshold(HAC.LINKAGE_SINGLE, HAC.SIMILARITY_COSINE, quick=True, times=5, step=0.05)
-    # tester.find_best_threshold(HAC.LINKAGE_COMPLETE, HAC.SIMILARITY_COSINE, quick=True, times=25, step=0.05)
-    # tester.find_best_threshold(HAC.LINKAGE_AVERAGE, HAC.SIMILARITY_COSINE, quick=True, times=25, step=0.05)
+    # test_tf_idf()
+    # test_article()
+    # test_extraction()
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

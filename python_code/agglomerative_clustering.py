@@ -123,14 +123,14 @@ class AgglomerativeClustering:
         if self.linkage == self.LINKAGE_CENTROID:
             return self._cos_similarity(cluster_a['vector'], cluster_b['vector'])
         else:
-            distance_arr = [self._cos_similarity(a.vector, b.vector)
+            similarity_arr = [self._cos_similarity(a.vector, b.vector)
                             for a in cluster_a['articles'] for b in cluster_b['articles']]
             if self.linkage == self.LINKAGE_SINGLE:
-                return min(distance_arr)
+                return min(similarity_arr)
             elif self.linkage == self.LINKAGE_COMPLETE:
-                return max(distance_arr)
+                return max(similarity_arr)
             elif self.linkage == self.LINKAGE_AVERAGE:
-                return array(distance_arr).mean()
+                return array(similarity_arr).mean()
             return -1
 
     def _cos_similarity(self, vector_a, vector_b):

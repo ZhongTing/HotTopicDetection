@@ -5,8 +5,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 
 class TFIDFFeatureExtractor:
-    def __init__(self):
-        self.vectorizer = TfidfVectorizer(use_idf=True, tokenizer=cut)
+    def __init__(self, use_idf):
+        self.vectorizer = TfidfVectorizer(use_idf=use_idf, tokenizer=cut)
 
     def fit(self, articles):
         documents = [article.title + " " + article.content for article in articles]

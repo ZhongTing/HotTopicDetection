@@ -1,0 +1,22 @@
+,AMI,ARI,Completeness,Homogeneity,V-measure
+mean
+article with keyword extraction average 0.85 cosine False,0.05,0.02,0.51,0.99,0.67
+article with keyword extraction average 0.85 cosine True,0.04,0.02,0.51,0.99,0.67
+article with keyword extraction centroid 0.85 cosine False,0.1,0.1,0.53,0.98,0.69
+article with keyword extraction centroid 0.85 cosine True,0.09,0.08,0.52,0.99,0.68
+max
+article with keyword extraction average 0.85 cosine False,0.05,0.03,0.51,0.99,0.68
+article with keyword extraction average 0.85 cosine True,0.05,0.02,0.51,0.99,0.67
+article with keyword extraction centroid 0.85 cosine False,0.12,0.12,0.53,0.99,0.69
+article with keyword extraction centroid 0.85 cosine True,0.1,0.1,0.52,0.99,0.69
+min
+article with keyword extraction average 0.85 cosine False,0.04,0.02,0.51,0.99,0.67
+article with keyword extraction average 0.85 cosine True,0.04,0.02,0.51,0.99,0.67
+article with keyword extraction centroid 0.85 cosine False,0.09,0.07,0.52,0.98,0.68
+article with keyword extraction centroid 0.85 cosine True,0.08,0.05,0.52,0.98,0.68
+std
+article with keyword extraction average 0.85 cosine False,0.0,0.0,0.0,0.0,0.0
+article with keyword extraction average 0.85 cosine True,0.0,0.0,0.0,0.0,0.0
+article with keyword extraction centroid 0.85 cosine False,0.01,0.02,0.0,0.0,0.0
+article with keyword extraction centroid 0.85 cosine True,0.01,0.02,0.0,0.0,0.0
+test finished in 435.37 seconds

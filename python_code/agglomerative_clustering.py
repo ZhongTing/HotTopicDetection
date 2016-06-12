@@ -10,7 +10,7 @@ class AgglomerativeClustering:
     LINKAGE_COMPLETE = 'complete'
     LINKAGE_AVERAGE = 'average'
     SIMILARITY_COSINE = 'cosine'
-    SIMILARITY_PROJECT_PRODUCT = 'dot without normalize'
+    SIMILARITY_DOT = 'dot'
 
     def __init__(self, threshold, linkage=LINKAGE_CENTROID, similarity=SIMILARITY_COSINE):
         self.threshold = threshold
@@ -55,7 +55,7 @@ class AgglomerativeClustering:
         clusters = []
         counter = 0
         for article in articles:
-            if self.similarity_mode == self.SIMILARITY_PROJECT_PRODUCT:
+            if self.similarity_mode == self.SIMILARITY_DOT:
                 article.vector = matutils.unitvec(article.vector)
             if article.vector is None:
                 raise ValueError("no articles vector")
@@ -136,7 +136,7 @@ class AgglomerativeClustering:
     def _cos_similarity(self, vector_a, vector_b):
         if self.similarity_mode == self.SIMILARITY_COSINE:
             return dot(matutils.unitvec(vector_a), matutils.unitvec(vector_b))
-        elif self.similarity_mode == self.SIMILARITY_PROJECT_PRODUCT:
+        elif self.similarity_mode == self.SIMILARITY_DOT:
             return dot(vector_a, vector_b)
 
     @staticmethod

@@ -256,12 +256,12 @@ def test_extraction():
 def compare_all():
     args = [(FEATURE_TF, HAC.LINKAGE_SINGLE, 0.2, HAC.SIMILARITY_COSINE, False),
             (FEATURE_TF_IDF, HAC.LINKAGE_AVERAGE, 0.1, HAC.SIMILARITY_COSINE, False),
-            (FEATURE_ARTICLE, HAC.LINKAGE_AVERAGE, 0.85, HAC.SIMILARITY_COSINE, False),
+            (FEATURE_ARTICLE, HAC.LINKAGE_SINGLE, 0.75, HAC.SIMILARITY_COSINE, False),
             (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_AVERAGE, 0.45, HAC.SIMILARITY_COSINE, False),
             (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_AVERAGE, 0.65, HAC.SIMILARITY_COSINE, True),
             (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_AVERAGE, 0.65, HAC.SIMILARITY_DOT, True)]
     t = AgglomerativeClusteringTester(FEATURE_TITLE, number_article_per_test_cluster=50)
-    t.compare_different_method(args, sampling=True, times=25)
+    t.compare_different_method(args, sampling=True, times=3)
 
 
 def compare_speed():
@@ -272,7 +272,7 @@ def compare_speed():
             (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_AVERAGE, 0.65, HAC.SIMILARITY_DOT, True),
             (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_CENTROID, 0.65, HAC.SIMILARITY_DOT, True)]
     t = AgglomerativeClusteringTester(FEATURE_TITLE, number_article_per_test_cluster=50)
-    t.compare_different_method(args, sampling=True, times=10)
+    t.compare_different_method(args, sampling=True, times=3)
 
 
 if __name__ == '__main__':
@@ -282,5 +282,5 @@ if __name__ == '__main__':
     # test_article()
     # test_extraction()
     # compare_all()
-    compare_speed()
+    # compare_speed()
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

@@ -46,7 +46,7 @@ class AgglomerativeClusteringTester:
         elif feature == FEATURE_ARTICLE:
             self._feature_extractor.fit(articles)
         elif feature == FEATURE_ARTICLE_EXTRACTION:
-            self._feature_extractor.fit_with_extraction(articles)
+            self._feature_extractor.fit_with_extraction(articles, 0, 15)
         elif self._feature_mode == FEATURE_TITLE:
             self._feature_extractor.fit_with_extraction_ratio(articles, t=1, c=0)
         else:
@@ -155,6 +155,37 @@ class AgglomerativeClusteringTester:
         self._print_test_result(result_table)
         self._save_as_csv(result_table, 'compare all', file_name)
 
+    def compare_extraction(self, args, sampling=False, times=1):
+        file_name = 'extraction {} sampling={} times={}'.format(self._number_article_per_test_cluster, sampling, times)
+        print(file_name)
+        result_table = {}
+        for time_counter in range(times):
+            print(time_counter)
+            articles = self._get_test_articles(sampling)
+            for (method, k, linkage, threshold) in args:
+                t = time.time()
+                invalid_id_list = self._feature_extractor.fit_with_extraction(articles, method, k)
+                for invalid_id in invalid_id_list:
+                    removed = False
+                    for cluster in self._labeled_clusters:
+                        if removed:
+                            break
+                        for article in cluster['articles']:
+                            if article.id == invalid_id:
+                                cluster['articles'].remove(article)
+                                removed = True
+                                break
+
+                clusters = HAC(threshold, linkage=linkage, similarity=HAC.SIMILARITY_DOT).quick_fit(articles)
+                result = validate_clustering(self._labeled_clusters, clusters)
+                result['time'] = time.time() - t
+                key = 'method{} k={} {} {}'.format(method, k, linkage, threshold)
+                if key not in result_table:
+                    result_table[key] = []
+                result_table[key].append(result)
+        self._print_test_result(result_table)
+        self._save_as_csv(result_table, 'compare all', file_name)
+
     @staticmethod
     def _print_test_result(result_table):
         first_key = list(result_table.keys())[0]
@@ -234,7 +265,7 @@ def test_extraction():
     # t.find_best_threshold(HAC.LINKAGE_AVERAGE, HAC.SIMILARITY_COSINE, quick=False, start_th=0.5, end_th=0.8, times=5)
     args = [(HAC.LINKAGE_CENTROID, 0.8), (HAC.LINKAGE_COMPLETE, 0.8),
             (HAC.LINKAGE_AVERAGE, 0.65), (HAC.LINKAGE_SINGLE, 0.5)]
-    t.compare(HAC.SIMILARITY_COSINE, quick=False, args=args, sampling=True, times=5)
+    # t.compare(HAC.SIMILARITY_COSINE, quick=False, args=args, sampling=True, times=5)
 
     # t.find_best_threshold(HAC.LINKAGE_CENTROID, HAC.SIMILARITY_COSINE, quick=True, start_th=0.7, end_th=0.95, times=3)
     # t.find_best_threshold(HAC.LINKAGE_SINGLE, HAC.SIMILARITY_COSINE, quick=True, start_th=0.4, end_th=0.6, times=5)
@@ -244,13 +275,54 @@ def test_extraction():
             (HAC.LINKAGE_AVERAGE, 0.65), (HAC.LINKAGE_SINGLE, 0.45)]
     # t.compare(HAC.SIMILARITY_COSINE, quick=True, args=args, sampling=True, times=5)
 
-    # t.find_best_threshold(HAC.LINKAGE_CENTROID, HAC.SIMILARITY_DOT, quick=True, start_th=0.5, end_th=0.8, times=3)
+    # k = 5
+    # t.find_best_threshold(HAC.LINKAGE_CENTROID, HAC.SIMILARITY_DOT, quick=True, start_th=0.3, end_th=0.7, times=5)
+    # t.find_best_threshold(HAC.LINKAGE_SINGLE, HAC.SIMILARITY_DOT, quick=True, start_th=0.1, end_th=0.5, times=5)
+    # t.find_best_threshold(HAC.LINKAGE_COMPLETE, HAC.SIMILARITY_DOT, quick=True, start_th=0.5, end_th=0.8, times=5)
+    # t.find_best_threshold(HAC.LINKAGE_AVERAGE, HAC.SIMILARITY_DOT, quick=True, start_th=0.3, end_th=0.7, times=5)
+    # k = 10
+    # t.find_best_threshold(HAC.LINKAGE_CENTROID, HAC.SIMILARITY_DOT, quick=True, start_th=0.5, end_th=0.8, times=5)
     # t.find_best_threshold(HAC.LINKAGE_SINGLE, HAC.SIMILARITY_DOT, quick=True, start_th=0.4, end_th=0.6, times=5)
-    # t.find_best_threshold(HAC.LINKAGE_COMPLETE, HAC.SIMILARITY_DOT, quick=True, start_th=0.7, end_th=0.95, times=3)
+    # t.find_best_threshold(HAC.LINKAGE_COMPLETE, HAC.SIMILARITY_DOT, quick=True, start_th=0.7, end_th=0.95, times=5)
     # t.find_best_threshold(HAC.LINKAGE_AVERAGE, HAC.SIMILARITY_DOT, quick=True, start_th=0.5, end_th=0.8, times=5)
-    args = [(HAC.LINKAGE_CENTROID, 0.65), (HAC.LINKAGE_COMPLETE, 0.8),
-            (HAC.LINKAGE_AVERAGE, 0.65), (HAC.LINKAGE_SINGLE, 0.5)]
+    # k =15
+    # t.find_best_threshold(HAC.LINKAGE_CENTROID, HAC.SIMILARITY_DOT, quick=True, start_th=0.55, end_th=0.95, times=6)
+    # t.find_best_threshold(HAC.LINKAGE_SINGLE, HAC.SIMILARITY_DOT, quick=True, start_th=0.3, end_th=0.7, times=6)
+    # t.find_best_threshold(HAC.LINKAGE_COMPLETE, HAC.SIMILARITY_DOT, quick=True, start_th=0.6, end_th=0.9, times=6)
+    # t.find_best_threshold(HAC.LINKAGE_AVERAGE, HAC.SIMILARITY_DOT, quick=True, start_th=0.55, end_th=0.85, times=6)
+
+    # lda k=5
+    args = [(HAC.LINKAGE_CENTROID, 0.55), (HAC.LINKAGE_COMPLETE, 0.7),
+            (HAC.LINKAGE_AVERAGE, 0.55), (HAC.LINKAGE_SINGLE, 0.35)]
     # t.compare(HAC.SIMILARITY_DOT, quick=True, args=args, sampling=True, times=5)
+    # tfidf k=5
+    args = [(HAC.LINKAGE_CENTROID, 0.55), (HAC.LINKAGE_CENTROID, 0.6), (HAC.LINKAGE_COMPLETE, 0.75),
+            (HAC.LINKAGE_AVERAGE, 0.55), (HAC.LINKAGE_AVERAGE, 0.6), (HAC.LINKAGE_SINGLE, 0.35)]
+    # t.compare(HAC.SIMILARITY_DOT, quick=True, args=args, sampling=True, times=5)
+    # k=10
+    args = [(HAC.LINKAGE_CENTROID, 0.60), (HAC.LINKAGE_CENTROID, 0.65), (HAC.LINKAGE_COMPLETE, 0.8),
+            (HAC.LINKAGE_AVERAGE, 0.60), (HAC.LINKAGE_AVERAGE, 0.65), (HAC.LINKAGE_SINGLE, 0.5)]
+    # t.compare(HAC.SIMILARITY_DOT, quick=True, args=args, sampling=True, times=5)
+    # lda k=15
+    args = [(HAC.LINKAGE_CENTROID, 0.7), (HAC.LINKAGE_COMPLETE, 0.8),
+            (HAC.LINKAGE_AVERAGE, 0.7), (HAC.LINKAGE_SINGLE, 0.6)]
+    # t.compare(HAC.SIMILARITY_DOT, quick=True, args=args, sampling=True, times=5)
+    # tfidf k=15
+    args = [(HAC.LINKAGE_CENTROID, 0.7), (HAC.LINKAGE_COMPLETE, 0.8),
+            (HAC.LINKAGE_AVERAGE, 0.7), (HAC.LINKAGE_SINGLE, 0.55)]
+    # t.compare(HAC.SIMILARITY_DOT, quick=True, args=args, sampling=True, times=6)
+
+
+def test_title():
+    t = AgglomerativeClusteringTester(FEATURE_TITLE, number_article_per_test_cluster=50)
+    # t.find_best_threshold(HAC.LINKAGE_CENTROID, HAC.SIMILARITY_DOT, quick=True, start_th=0.5, end_th=0.9, times=5)
+    # t.find_best_threshold(HAC.LINKAGE_SINGLE, HAC.SIMILARITY_DOT, quick=True, start_th=0.1, end_th=0.6, times=5)
+    # t.find_best_threshold(HAC.LINKAGE_COMPLETE, HAC.SIMILARITY_DOT, quick=True, start_th=0.5, end_th=0.95, times=5)
+    # t.find_best_threshold(HAC.LINKAGE_AVERAGE, HAC.SIMILARITY_DOT, quick=True, start_th=0.35, end_th=0.85, times=5)
+
+    args = [(HAC.LINKAGE_CENTROID, 0.55), (HAC.LINKAGE_CENTROID, 0.6), (HAC.LINKAGE_COMPLETE, 0.75),
+            (HAC.LINKAGE_AVERAGE, 0.6), (HAC.LINKAGE_SINGLE, 0.5)]
+    t.compare(HAC.SIMILARITY_DOT, quick=True, args=args, sampling=True, times=5)
 
 
 def compare_all():
@@ -259,7 +331,9 @@ def compare_all():
             (FEATURE_ARTICLE, HAC.LINKAGE_SINGLE, 0.75, HAC.SIMILARITY_COSINE, False),
             (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_AVERAGE, 0.65, HAC.SIMILARITY_COSINE, False),
             (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_AVERAGE, 0.65, HAC.SIMILARITY_COSINE, True),
-            (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_AVERAGE, 0.65, HAC.SIMILARITY_DOT, True)]
+            (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_AVERAGE, 0.65, HAC.SIMILARITY_DOT, True),
+            (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_CENTROID, 0.65, HAC.SIMILARITY_DOT, True),
+            (FEATURE_TITLE, HAC.LINKAGE_CENTROID, 0.55, HAC.SIMILARITY_DOT, True)]
     t = AgglomerativeClusteringTester(FEATURE_TITLE, number_article_per_test_cluster=50)
     t.compare_different_method('compare_all', args, sampling=True, times=3)
 
@@ -275,12 +349,26 @@ def compare_speed():
     t.compare_different_method('compare_speed', args, sampling=True, times=3)
 
 
+def compare_extraction():
+    args = [(0, 5, HAC.LINKAGE_CENTROID, 0.55),
+            (0, 10, HAC.LINKAGE_CENTROID, 0.6),
+            (0, 10, HAC.LINKAGE_CENTROID, 0.65),
+            (0, 15, HAC.LINKAGE_CENTROID, 0.7),
+            (1, 5, HAC.LINKAGE_CENTROID, 0.55),
+            (1, 10, HAC.LINKAGE_CENTROID, 0.6),
+            (1, 15, HAC.LINKAGE_CENTROID, 0.7)]
+    t = AgglomerativeClusteringTester(FEATURE_ARTICLE_EXTRACTION, number_article_per_test_cluster=50)
+    t.compare_extraction(args, sampling=True, times=3)
+
+
 if __name__ == '__main__':
     start_time = time.time()
+    # test_title()
     # test_tf()
     # test_tf_idf()
     # test_article()
     # test_extraction()
-    compare_all()
+    # compare_all()
     # compare_speed()
+    # compare_extraction()
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

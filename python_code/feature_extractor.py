@@ -2,6 +2,7 @@ import time
 
 import gensim
 from numpy import array
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 from python_code.model.keywords_extraction import keywords_extraction
 from python_code.model.my_tokenize.tokenizer import cut
@@ -10,6 +11,7 @@ from python_code.model.my_tokenize.tokenizer import cut
 class FeatureExtractor:
     def __init__(self, model_path):
         self.model = self.load_model(model_path)
+        self.idf_vectorizer = TfidfVectorizer(use_idf=True, tokenizer=cut)
 
     @staticmethod
     def load_model(model_path):
@@ -24,11 +26,11 @@ class FeatureExtractor:
             article.vector = self._compute_vector(article.title + " " + article.content)
         self.remove_invalid_articles(articles)
 
-    def fit_with_extraction(self, articles):
+    def fit_with_extraction(self, articles, method, topic=10):
         for article in articles:
-            keyword_list = keywords_extraction(article, 0)
+            keyword_list = keywords_extraction(article, method, topic)
             article.vector = self._compute_vector(keyword_list)
-        self.remove_invalid_articles(articles)
+        return self.remove_invalid_articles(articles)
 
     def fit_with_extraction_ratio(self, articles, t=0.5, c=0.5):
         for article in articles:
@@ -50,8 +52,9 @@ class FeatureExtractor:
                 to_be_removed_array.append(article)
         for remove_target in to_be_removed_array:
             articles.remove(remove_target)
+        return [a.id for a in to_be_removed_array]
 
-    def _compute_vector(self, input_data, need_log=False):
+    def _compute_vector(self, input_data, use_idf=False, need_log=False):
         if isinstance(input_data, list):
             tokens = input_data
         else:
@@ -61,6 +64,6 @@ class FeatureExtractor:
             del tokens[-1]
         v1 = [self.model[word] for word in tokens if word in self.model]
         if len(v1) is 0:
-            print('invalid article: \'' + input_data + '\'')
+            print('invalid article:', input_data)
             return None
         return array(v1, float).mean(axis=0)

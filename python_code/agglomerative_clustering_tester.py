@@ -46,7 +46,7 @@ class AgglomerativeClusteringTester:
         elif feature == FEATURE_ARTICLE:
             self._feature_extractor.fit(articles)
         elif feature == FEATURE_ARTICLE_EXTRACTION:
-            self._feature_extractor.fit_with_extraction(articles, 0, 15)
+            self._feature_extractor.fit_with_extraction(articles, 1, 15)
         elif self._feature_mode == FEATURE_TITLE:
             self._feature_extractor.fit_with_extraction_ratio(articles, t=1, c=0)
         else:
@@ -329,10 +329,10 @@ def compare_all():
     args = [(FEATURE_TF, HAC.LINKAGE_SINGLE, 0.2, HAC.SIMILARITY_COSINE, False),
             (FEATURE_TF_IDF, HAC.LINKAGE_AVERAGE, 0.1, HAC.SIMILARITY_COSINE, False),
             (FEATURE_ARTICLE, HAC.LINKAGE_SINGLE, 0.75, HAC.SIMILARITY_COSINE, False),
-            (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_AVERAGE, 0.65, HAC.SIMILARITY_COSINE, False),
-            (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_AVERAGE, 0.65, HAC.SIMILARITY_COSINE, True),
-            (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_AVERAGE, 0.65, HAC.SIMILARITY_DOT, True),
-            (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_CENTROID, 0.65, HAC.SIMILARITY_DOT, True),
+            (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_AVERAGE, 0.7, HAC.SIMILARITY_COSINE, False),
+            (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_AVERAGE, 0.7, HAC.SIMILARITY_COSINE, True),
+            (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_AVERAGE, 0.7, HAC.SIMILARITY_DOT, True),
+            (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_CENTROID, 0.7, HAC.SIMILARITY_DOT, True),
             (FEATURE_TITLE, HAC.LINKAGE_CENTROID, 0.55, HAC.SIMILARITY_DOT, True)]
     t = AgglomerativeClusteringTester(FEATURE_TITLE, number_article_per_test_cluster=50)
     t.compare_different_method('compare_all', args, sampling=True, times=3)

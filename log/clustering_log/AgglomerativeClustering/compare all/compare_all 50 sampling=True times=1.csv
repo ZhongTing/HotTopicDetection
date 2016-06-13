@@ -1,0 +1,38 @@
+,AMI,ARI,Completeness,Homogeneity,V-measure,time
+mean
+article with keyword extraction average 0.7 cosine False,0.47,0.36,0.63,0.79,0.7,84.76
+article with keyword extraction average 0.7 cosine True,0.45,0.39,0.62,0.78,0.69,27.27
+article with keyword extraction average 0.7 dot True,0.45,0.39,0.62,0.78,0.69,13.9
+article with keyword extraction centroid 0.7 dot True,0.45,0.39,0.62,0.78,0.69,7.07
+tf whole article single 0.2 cosine False,0.24,0.12,0.5,0.69,0.58,403.2
+tfidf whole article average 0.1 cosine False,0.52,0.47,0.67,0.89,0.76,374.43
+title centroid 0.55 dot True,0.85,0.83,0.88,0.92,0.9,2.45
+whole article single 0.75 cosine False,0.43,0.28,0.59,0.73,0.65,71.0
+max
+article with keyword extraction average 0.7 cosine False,0.47,0.36,0.63,0.79,0.7,84.76
+article with keyword extraction average 0.7 cosine True,0.45,0.39,0.62,0.78,0.69,27.27
+article with keyword extraction average 0.7 dot True,0.45,0.39,0.62,0.78,0.69,13.9
+article with keyword extraction centroid 0.7 dot True,0.45,0.39,0.62,0.78,0.69,7.07
+tf whole article single 0.2 cosine False,0.24,0.12,0.5,0.69,0.58,403.2
+tfidf whole article average 0.1 cosine False,0.52,0.47,0.67,0.89,0.76,374.43
+title centroid 0.55 dot True,0.85,0.83,0.88,0.92,0.9,2.45
+whole article single 0.75 cosine False,0.43,0.28,0.59,0.73,0.65,71.0
+min
+article with keyword extraction average 0.7 cosine False,0.47,0.36,0.63,0.79,0.7,84.76
+article with keyword extraction average 0.7 cosine True,0.45,0.39,0.62,0.78,0.69,27.27
+article with keyword extraction average 0.7 dot True,0.45,0.39,0.62,0.78,0.69,13.9
+article with keyword extraction centroid 0.7 dot True,0.45,0.39,0.62,0.78,0.69,7.07
+tf whole article single 0.2 cosine False,0.24,0.12,0.5,0.69,0.58,403.2
+tfidf whole article average 0.1 cosine False,0.52,0.47,0.67,0.89,0.76,374.43
+title centroid 0.55 dot True,0.85,0.83,0.88,0.92,0.9,2.45
+whole article single 0.75 cosine False,0.43,0.28,0.59,0.73,0.65,71.0
+std
+article with keyword extraction average 0.7 cosine False,0.0,0.0,0.0,0.0,0.0,0.0
+article with keyword extraction average 0.7 cosine True,0.0,0.0,0.0,0.0,0.0,0.0
+article with keyword extraction average 0.7 dot True,0.0,0.0,0.0,0.0,0.0,0.0
+article with keyword extraction centroid 0.7 dot True,0.0,0.0,0.0,0.0,0.0,0.0
+tf whole article single 0.2 cosine False,0.0,0.0,0.0,0.0,0.0,0.0
+tfidf whole article average 0.1 cosine False,0.0,0.0,0.0,0.0,0.0,0.0
+title centroid 0.55 dot True,0.0,0.0,0.0,0.0,0.0,0.0
+whole article single 0.75 cosine False,0.0,0.0,0.0,0.0,0.0,0.0
+test finished in 1006.29 seconds

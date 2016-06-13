@@ -1,26 +1,34 @@
 ,AMI,ARI,Completeness,Homogeneity,V-measure,time
 mean
-method0 k=10 centroid 0.6,0.49,0.27,0.61,0.6,0.61,21.95
-method0 k=10 centroid 0.65,0.44,0.38,0.61,0.76,0.68,24.42
-method1 k=10 centroid 0.6,0.55,0.35,0.65,0.66,0.66,13.35
-method1 k=15 centroid 0.7,0.49,0.43,0.64,0.79,0.71,10.85
-method1 k=5 centroid 0.55,0.45,0.42,0.62,0.79,0.69,12.0
+method0 k=10 centroid 0.6,0.5,0.28,0.62,0.61,0.62,14.13
+method0 k=10 centroid 0.65,0.44,0.38,0.61,0.77,0.68,15.49
+method0 k=15 centroid 0.7,0.45,0.33,0.6,0.73,0.66,14.98
+method0 k=5 centroid 0.55,0.4,0.33,0.58,0.76,0.66,14.74
+method1 k=10 centroid 0.6,0.54,0.41,0.64,0.66,0.65,10.71
+method1 k=15 centroid 0.7,0.49,0.46,0.64,0.8,0.71,9.7
+method1 k=5 centroid 0.55,0.46,0.42,0.62,0.8,0.7,9.17
 max
-method0 k=10 centroid 0.6,0.5,0.28,0.63,0.61,0.61,23.54
-method0 k=10 centroid 0.65,0.45,0.42,0.62,0.79,0.69,28.76
-method1 k=10 centroid 0.6,0.58,0.41,0.67,0.69,0.68,16.77
-method1 k=15 centroid 0.7,0.5,0.46,0.65,0.8,0.72,13.84
-method1 k=5 centroid 0.55,0.46,0.44,0.63,0.79,0.7,15.37
+method0 k=10 centroid 0.6,0.53,0.36,0.64,0.65,0.64,16.08
+method0 k=10 centroid 0.65,0.46,0.41,0.63,0.79,0.7,16.48
+method0 k=15 centroid 0.7,0.47,0.37,0.62,0.74,0.68,16.32
+method0 k=5 centroid 0.55,0.42,0.35,0.61,0.77,0.68,18.36
+method1 k=10 centroid 0.6,0.57,0.47,0.67,0.7,0.68,14.3
+method1 k=15 centroid 0.7,0.53,0.53,0.67,0.82,0.74,12.53
+method1 k=5 centroid 0.55,0.49,0.47,0.65,0.82,0.72,10.17
 min
-method0 k=10 centroid 0.6,0.47,0.25,0.59,0.6,0.6,19.0
-method0 k=10 centroid 0.65,0.44,0.35,0.6,0.75,0.67,18.9
-method1 k=10 centroid 0.6,0.54,0.31,0.64,0.63,0.64,10.26
-method1 k=15 centroid 0.7,0.47,0.4,0.63,0.78,0.7,9.3
-method1 k=5 centroid 0.55,0.44,0.4,0.61,0.78,0.69,9.48
+method0 k=10 centroid 0.6,0.48,0.21,0.61,0.59,0.6,12.14
+method0 k=10 centroid 0.65,0.43,0.36,0.59,0.75,0.66,14.06
+method0 k=15 centroid 0.7,0.44,0.27,0.59,0.72,0.65,13.35
+method0 k=5 centroid 0.55,0.37,0.31,0.56,0.76,0.65,12.27
+method1 k=10 centroid 0.6,0.51,0.35,0.61,0.63,0.63,7.86
+method1 k=15 centroid 0.7,0.46,0.42,0.61,0.77,0.68,6.45
+method1 k=5 centroid 0.55,0.44,0.39,0.6,0.79,0.68,7.61
 std
-method0 k=10 centroid 0.6,0.01,0.01,0.02,0.0,0.0,2.08
-method0 k=10 centroid 0.65,0.0,0.03,0.01,0.02,0.01,4.11
-method1 k=10 centroid 0.6,0.02,0.04,0.01,0.02,0.02,2.67
-method1 k=15 centroid 0.7,0.01,0.02,0.01,0.01,0.01,2.12
-method1 k=5 centroid 0.55,0.01,0.02,0.01,0.0,0.0,2.48
-test finished in 355.90 seconds
+method0 k=10 centroid 0.6,0.02,0.06,0.01,0.03,0.02,1.61
+method0 k=10 centroid 0.65,0.01,0.02,0.02,0.02,0.02,1.03
+method0 k=15 centroid 0.7,0.01,0.04,0.01,0.01,0.01,1.23
+method0 k=5 centroid 0.55,0.02,0.02,0.02,0.0,0.01,2.61
+method1 k=10 centroid 0.6,0.02,0.05,0.02,0.03,0.02,2.68
+method1 k=15 centroid 0.7,0.03,0.05,0.02,0.02,0.02,2.5
+method1 k=5 centroid 0.55,0.02,0.04,0.02,0.01,0.02,1.12
+test finished in 336.89 seconds

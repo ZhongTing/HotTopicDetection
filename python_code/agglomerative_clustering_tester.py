@@ -132,8 +132,8 @@ class AgglomerativeClusteringTester:
         self._print_test_result(result_table)
         self._save_as_csv(result_table, self._feature_mode, file_name)
 
-    def compare_different_method(self, args, sampling=False, times=1):
-        file_name = 'compare all {} sampling={} times={}'.format(self._number_article_per_test_cluster, sampling, times)
+    def compare_different_method(self, name, args, sampling=False, times=1):
+        file_name = '{} {} sampling={} times={}'.format(name, self._number_article_per_test_cluster, sampling, times)
         print(file_name)
         result_table = {}
         for time_counter in range(times):
@@ -257,22 +257,22 @@ def compare_all():
     args = [(FEATURE_TF, HAC.LINKAGE_SINGLE, 0.2, HAC.SIMILARITY_COSINE, False),
             (FEATURE_TF_IDF, HAC.LINKAGE_AVERAGE, 0.1, HAC.SIMILARITY_COSINE, False),
             (FEATURE_ARTICLE, HAC.LINKAGE_SINGLE, 0.75, HAC.SIMILARITY_COSINE, False),
-            (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_AVERAGE, 0.45, HAC.SIMILARITY_COSINE, False),
+            (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_AVERAGE, 0.65, HAC.SIMILARITY_COSINE, False),
             (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_AVERAGE, 0.65, HAC.SIMILARITY_COSINE, True),
             (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_AVERAGE, 0.65, HAC.SIMILARITY_DOT, True)]
     t = AgglomerativeClusteringTester(FEATURE_TITLE, number_article_per_test_cluster=50)
-    t.compare_different_method(args, sampling=True, times=3)
+    t.compare_different_method('compare_all', args, sampling=True, times=3)
 
 
 def compare_speed():
-    args = [(FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_AVERAGE, 0.45, HAC.SIMILARITY_COSINE, False),
+    args = [(FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_AVERAGE, 0.65, HAC.SIMILARITY_COSINE, False),
             (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_CENTROID, 0.8, HAC.SIMILARITY_COSINE, False),
             (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_AVERAGE, 0.65, HAC.SIMILARITY_COSINE, True),
             (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_CENTROID, 0.8, HAC.SIMILARITY_COSINE, True),
             (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_AVERAGE, 0.65, HAC.SIMILARITY_DOT, True),
             (FEATURE_ARTICLE_EXTRACTION, HAC.LINKAGE_CENTROID, 0.65, HAC.SIMILARITY_DOT, True)]
     t = AgglomerativeClusteringTester(FEATURE_TITLE, number_article_per_test_cluster=50)
-    t.compare_different_method(args, sampling=True, times=3)
+    t.compare_different_method('compare_speed', args, sampling=True, times=3)
 
 
 if __name__ == '__main__':
@@ -281,6 +281,6 @@ if __name__ == '__main__':
     # test_tf_idf()
     # test_article()
     # test_extraction()
-    # compare_all()
+    compare_all()
     # compare_speed()
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

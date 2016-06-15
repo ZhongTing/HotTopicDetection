@@ -4,7 +4,7 @@ import json
 from hanziconv import HanziConv
 
 
-def cut(string, using_stopwords=False, simplified_convert=True, log=False):
+def cut(string, using_stopwords=True, simplified_convert=True, log=False):
     string = string.lower()
     if simplified_convert:
         string = HanziConv.toSimplified(string)

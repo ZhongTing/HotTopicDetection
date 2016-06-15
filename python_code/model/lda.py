@@ -27,13 +27,16 @@ def build_lda_model(input_data, num_topics=1):
     return lda_model
 
 
-def get_topic(model, num_topics=1, num_words=15):
-    pattern = re.compile('\*([^ ]*)')
+def get_topic(model, num_topics=1, num_words=15, with_weight=False):
+    pattern = re.compile('([^ \*]*)\*([^ ]*)')
     result = {}
     for topic_tuple in model.show_topics(num_topics, num_words):
         # print(topic_tuple)
         words = pattern.findall(topic_tuple[1])
-        result[topic_tuple[0]] = words
+        if with_weight:
+            result[topic_tuple[0]] = [(term_tuple[1], float(term_tuple[0])) for term_tuple in words]
+        else:
+            result[topic_tuple[0]] = [term_tuple[1] for term_tuple in words]
     return result
 
 

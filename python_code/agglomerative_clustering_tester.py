@@ -144,6 +144,25 @@ class AgglomerativeClusteringTester:
         self._print_test_result(result_table)
         self._save_as_csv(result_table, self._feature_mode, file_name)
 
+    def compare_ratio(self, method, k, args, sampling=True, times=1):
+        file_name = 'compare ratio method{} k={} sampling={} times={}'.format(method, k, sampling, times)
+        print(file_name)
+        result_table = {}
+        for time_counter in range(times):
+            print(time_counter)
+            articles = self._get_test_articles(sampling)
+            for t, c, threshold in args:
+                print('t ratio', t)
+                self._feature_extractor.fit_with_extraction_ratio(articles, method, k, t, c)
+                clusters = HAC(threshold, linkage=HAC.LINKAGE_CENTROID, similarity=HAC.SIMILARITY_DOT).fit(articles)
+                result = validate_clustering(self._labeled_clusters, clusters)
+                key = 't{} c{} th{} method{} k{} '.format(t, c, threshold, method, k)
+                if key not in result_table:
+                    result_table[key] = []
+                result_table[key].append(result)
+        self._print_test_result(result_table)
+        self._save_as_csv(result_table, self._feature_mode, file_name)
+
     def compare(self, sim, quick, args, sampling=False, times=1):
         file_name = 'compare {} quick={} sampling={} times={}'.format(sim, quick, sampling, times)
         print(file_name)
@@ -442,6 +461,9 @@ def test_title():
 
 def test_title_extraction():
     t = AgglomerativeClusteringTester(FEATURE_TITLE_EXTRACTION, number_article_per_test_cluster=50)
+    # t.find_ratio_threshold(1, 15, 0.1, 0.9, times=5)
+    # t.find_ratio_threshold(1, 15, 0.2, 0.8, times=5)
+    # t.find_ratio_threshold(1, 15, 0.3, 0.7, times=5)
     # t.find_ratio_threshold(1, 15, 0.4, 0.6, times=5)
     # t.find_ratio_threshold(1, 15, 0.5, 0.5, times=5)
     # t.find_ratio_threshold(1, 15, 0.6, 0.4, times=5)
@@ -527,6 +549,19 @@ def compare_extraction():
     t.compare_extraction(weight_args, sampling=True, times=3)
 
 
+def compare_ratio():
+    t = AgglomerativeClusteringTester(FEATURE_TITLE_EXTRACTION, number_article_per_test_cluster=50)
+    # t, c, threshold
+    args = [
+        (0.9, 0.1, 0.6),
+        (0.8, 0.2, 0.6),
+        (0.7, 0.3, 0.6),
+        (0.6, 0.4, 0.65),
+        (0.5, 0.5, 0.65),
+        (0.4, 0.6, 0.65)
+    ]
+    t.compare_ratio(1, 15, args, sampling=True, times=3)
+
 if __name__ == '__main__':
     start_time = time.time()
     # test_title()
@@ -535,8 +570,9 @@ if __name__ == '__main__':
     # test_article()
     # test_extraction()
     # test_title_extraction()
-    compare_all()
+    # compare_all()
     # compare_speed()
     # compare_time_feature()
     # compare_extraction()
+    compare_ratio()
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

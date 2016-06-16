@@ -26,7 +26,7 @@ def print_clusters(clusters, print_title=False):
             print(keywords)
         if print_title is True:
             for article in cluster['articles']:
-                print(article.title)
+                print(article.id, article.title)
             print('\n')
 
 
@@ -47,7 +47,7 @@ def print_validation_result(labeled_clusters, clusters):
 
 def main(threshold=0.55):
     print('main', threshold)
-    articles = get_ptt_articles(number=200)
+    articles = get_ptt_articles(number=2000)
 
     FeatureExtractor('model/bin/ngram_300_3_83w.bin').fit(articles)
     t = time.time()
@@ -57,7 +57,7 @@ def main(threshold=0.55):
     clusters = sorted(clusters, key=lambda cluster: sum([a.score for a in cluster['articles']]), reverse=True)
     print_clusters(clusters[0:5], True)
     print('spend', t - tt)
-    print('silhouette_index', internal_validate(clusters))
+    # print('silhouette_index', internal_validate(clusters))
 
 
 debug_mode = False

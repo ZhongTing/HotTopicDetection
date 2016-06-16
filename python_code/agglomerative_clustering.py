@@ -12,7 +12,7 @@ class AgglomerativeClustering:
     SIMILARITY_COSINE = 'cosine'
     SIMILARITY_DOT = 'dot'
 
-    def __init__(self, threshold, linkage=LINKAGE_CENTROID, similarity=SIMILARITY_COSINE):
+    def __init__(self, threshold, linkage=LINKAGE_CENTROID, similarity=SIMILARITY_DOT):
         self.threshold = threshold
         self.linkage = linkage
         self.similarity_mode = similarity

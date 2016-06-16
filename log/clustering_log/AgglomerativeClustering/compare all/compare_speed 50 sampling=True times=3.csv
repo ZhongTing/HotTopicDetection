@@ -1,0 +1,22 @@
+,AMI,ARI,Completeness,Homogeneity,V-measure,time
+mean
+title average 0.55 cosine False False,0.89,0.83,0.91,0.93,0.92,112.11
+title average 0.6 cosine True False,0.82,0.82,0.86,0.95,0.91,22.39
+title centroid 0.55 dot False False,0.89,0.86,0.92,0.94,0.93,5.76
+title centroid 0.55 dot True False,0.86,0.82,0.89,0.91,0.9,3.84
+max
+title average 0.55 cosine False False,0.9,0.85,0.92,0.94,0.93,131.31
+title average 0.6 cosine True False,0.84,0.83,0.88,0.96,0.92,26.0
+title centroid 0.55 dot False False,0.9,0.88,0.92,0.95,0.94,6.29
+title centroid 0.55 dot True False,0.87,0.83,0.9,0.92,0.9,4.5
+min
+title average 0.55 cosine False False,0.89,0.81,0.91,0.92,0.92,90.55
+title average 0.6 cosine True False,0.81,0.81,0.85,0.95,0.9,18.52
+title centroid 0.55 dot False False,0.89,0.82,0.91,0.92,0.91,5.22
+title centroid 0.55 dot True False,0.85,0.81,0.88,0.9,0.9,3.13
+std
+title average 0.55 cosine False False,0.0,0.02,0.0,0.01,0.0,16.72
+title average 0.6 cosine True False,0.01,0.01,0.01,0.0,0.01,3.06
+title centroid 0.55 dot False False,0.0,0.03,0.0,0.01,0.01,0.44
+title centroid 0.55 dot True False,0.01,0.01,0.01,0.01,0.0,0.56
+test finished in 461.53 seconds

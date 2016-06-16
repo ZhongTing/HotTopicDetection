@@ -1,0 +1,14 @@
+,AMI,ARI,Completeness,Homogeneity,V-measure,time
+mean
+tfidf whole article average 0.05 cosine False False,0.79,0.73,0.94,0.88,0.91,6.19
+title average 0.55 cosine False False,0.81,0.73,0.93,0.9,0.92,5.33
+max
+tfidf whole article average 0.05 cosine False False,0.82,0.75,0.97,0.9,0.93,7.88
+title average 0.55 cosine False False,0.85,0.76,0.94,0.92,0.93,7.08
+min
+tfidf whole article average 0.05 cosine False False,0.76,0.7,0.91,0.86,0.89,5.24
+title average 0.55 cosine False False,0.78,0.7,0.93,0.88,0.91,3.88
+std
+tfidf whole article average 0.05 cosine False False,0.02,0.02,0.02,0.02,0.02,1.2
+title average 0.55 cosine False False,0.03,0.02,0.0,0.02,0.01,1.32
+test finished in 61.25 seconds

@@ -1,0 +1,18 @@
+,AMI,ARI,Completeness,Homogeneity,V-measure,time
+mean
+normal average 0.55 cosine,0.9,0.84,0.92,0.93,0.93,120.6
+random average 0.55 cosine,0.9,0.85,0.92,0.93,0.93,24.3
+time_order average 0.55 cosine,0.88,0.8,0.9,0.9,0.9,30.46
+max
+normal average 0.55 cosine,0.9,0.86,0.92,0.94,0.93,157.57
+random average 0.55 cosine,0.91,0.88,0.93,0.94,0.93,29.18
+time_order average 0.55 cosine,0.89,0.81,0.91,0.91,0.91,37.12
+min
+normal average 0.55 cosine,0.9,0.81,0.92,0.92,0.92,78.24
+random average 0.55 cosine,0.89,0.82,0.91,0.92,0.92,19.9
+time_order average 0.55 cosine,0.86,0.79,0.89,0.9,0.89,19.0
+std
+normal average 0.55 cosine,0.0,0.02,0.0,0.01,0.0,32.61
+random average 0.55 cosine,0.01,0.02,0.01,0.01,0.0,3.8
+time_order average 0.55 cosine,0.01,0.01,0.01,0.0,0.01,8.14
+test finished in 555.29 seconds

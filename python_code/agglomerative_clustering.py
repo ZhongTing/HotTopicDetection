@@ -32,8 +32,9 @@ class AgglomerativeClustering:
 
         return clusters
 
-    def quick_fit(self, articles):
-        articles = sorted(articles, key=lambda a: a.timestamp)
+    def quick_fit(self, articles, time_order=True):
+        if time_order:
+            articles = sorted(articles, key=lambda a: a.timestamp)
         clusters_after_merge = []
         clusters = self._init_clusters(articles)
         while len(clusters) != 0:
@@ -58,7 +59,10 @@ class AgglomerativeClustering:
             if self.similarity_mode == self.SIMILARITY_DOT:
                 article.vector = matutils.unitvec(article.vector)
             if article.vector is None:
-                raise ValueError("no articles vector")
+                # raise ValueError("no articles vector")
+                print('no articles vector', article.title)
+                articles.remove(article)
+                continue
 
             not_found = True
             for cluster in clusters:
@@ -70,6 +74,7 @@ class AgglomerativeClustering:
             if not_found:
                 clusters.append({'id': counter, 'vector': article.vector, 'articles': [article]})
                 counter += 1
+
         return clusters
 
     def _merge_clusters(self, cluster_a, cluster_b, cluster_pair_list=None, clusters=None):
@@ -124,7 +129,7 @@ class AgglomerativeClustering:
             return self._cos_similarity(cluster_a['vector'], cluster_b['vector'])
         else:
             similarity_arr = [self._cos_similarity(a.vector, b.vector)
-                            for a in cluster_a['articles'] for b in cluster_b['articles']]
+                              for a in cluster_a['articles'] for b in cluster_b['articles']]
             if self.linkage == self.LINKAGE_SINGLE:
                 return min(similarity_arr)
             elif self.linkage == self.LINKAGE_COMPLETE:

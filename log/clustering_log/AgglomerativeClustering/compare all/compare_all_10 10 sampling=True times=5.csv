@@ -1,0 +1,22 @@
+,AMI,ARI,Completeness,Homogeneity,V-measure,time
+mean
+article with keyword extraction centroid 0.65 dot False False,0.53,0.38,0.78,0.76,0.77,1.66
+article with keyword extraction centroid 0.65 dot True False,0.49,0.37,0.75,0.76,0.75,1.38
+tfidf whole article average 0.1 cosine False False,0.76,0.77,0.88,0.96,0.92,3.82
+whole article single 0.75 cosine False False,0.42,0.28,0.73,0.68,0.71,5.34
+max
+article with keyword extraction centroid 0.65 dot False False,0.61,0.46,0.8,0.8,0.8,2.11
+article with keyword extraction centroid 0.65 dot True False,0.54,0.42,0.78,0.79,0.78,1.75
+tfidf whole article average 0.1 cosine False False,0.78,0.82,0.9,0.97,0.93,4.52
+whole article single 0.75 cosine False False,0.48,0.32,0.75,0.71,0.73,6.28
+min
+article with keyword extraction centroid 0.65 dot False False,0.41,0.26,0.76,0.68,0.72,1.44
+article with keyword extraction centroid 0.65 dot True False,0.39,0.27,0.73,0.7,0.72,1.1
+tfidf whole article average 0.1 cosine False False,0.72,0.72,0.86,0.94,0.9,2.8
+whole article single 0.75 cosine False False,0.34,0.25,0.72,0.64,0.68,4.07
+std
+article with keyword extraction centroid 0.65 dot False False,0.07,0.07,0.01,0.04,0.03,0.25
+article with keyword extraction centroid 0.65 dot True False,0.06,0.06,0.02,0.03,0.02,0.24
+tfidf whole article average 0.1 cosine False False,0.02,0.04,0.01,0.01,0.01,0.67
+whole article single 0.75 cosine False False,0.05,0.03,0.01,0.03,0.02,0.81
+test finished in 90.67 seconds

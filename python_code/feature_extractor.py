@@ -55,16 +55,19 @@ class FeatureExtractor:
             article.vector = self._compute_vector(keyword_list, tfidf_vectorizer)
         return self.remove_invalid_articles(articles)
 
-    def fit_with_extraction_ratio(self, articles, t=0.5, c=0.5):
+    def fit_with_extraction_ratio(self, articles, method=1, k=25, t=0.5, c=0.5):
         for article in articles:
+            if c != 0 and t != 0:
+                title_vector = self._compute_vector(article.title)
+                if title_vector is None:
+                    t = 0
+                else:
+                    keyword_vector = self._compute_vector(keywords_extraction(article, method, k, with_weight=True))
+                    article.vector = title_vector * t + keyword_vector * c
             if c == 0:
                 article.vector = self._compute_vector(article.title)
             elif t == 0:
-                article.vector = self._compute_vector(keywords_extraction(article, 0))
-            else:
-                title_vector = self._compute_vector(article.title)
-                keyword_vector = self._compute_vector(keywords_extraction(article, 0))
-                article.vector = title_vector * t + keyword_vector * c
+                article.vector = self._compute_vector(keywords_extraction(article, method, k, with_weight=True))
         self.remove_invalid_articles(articles)
 
     @staticmethod

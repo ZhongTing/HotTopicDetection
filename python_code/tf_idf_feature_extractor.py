@@ -8,8 +8,15 @@ class TFIDFFeatureExtractor:
     def __init__(self, use_idf):
         self.vectorizer = TfidfVectorizer(use_idf=use_idf, tokenizer=cut)
 
-    def fit(self, articles):
-        documents = [article.title + " " + article.content for article in articles]
+    def fit(self, articles, use_content=False, title_ratio=1, content_ratio=1):
+        if use_content is False:
+            documents = [article.title for article in articles]
+        else:
+            documents = []
+            for article in articles:
+                t = (article.title + ' ') * title_ratio
+                c = (article.content + ' ') * content_ratio
+                documents.append(t + c)
         x = self.vectorizer.fit_transform(documents)
         a_counter = 0
         for i in x:

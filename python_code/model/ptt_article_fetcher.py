@@ -72,8 +72,6 @@ def fetch_articles_by_day_interval(title, number, start_day, end_day):
 
 
 def fetch_articles(title, number=20, end_day='NOW/DAY', days=-1, page=1, only_title=False, fl=None, desc=True, fq=None):
-    start_time = time.time()
-    server_url = 'http://140.124.183.7:8983/solr/HotTopicData/select?'
     post_args = {'q': 'title:*' + title + '*', 'rows': number, 'start': (page - 1) * number + 1}
     if days >= 0:
         post_args['fq'] = 'timestamp:[NOW/DAY-1DAYS TO NOW/DAY]'
@@ -90,8 +88,32 @@ def fetch_articles(title, number=20, end_day='NOW/DAY', days=-1, page=1, only_ti
     print(post_args)
 
     desc_arg = 'sort=timestamp+desc&' if desc else ''
-    url = server_url + desc_arg + 'wt=json&indent=true&' + urlencode(post_args)
+    arg_url = desc_arg + urlencode(post_args)
+    articles = _fetch(arg_url)
+    return articles
 
+
+def _chunks(l, n):
+    n = max(1, n)
+    return [l[i:i + n] for i in range(0, len(l), n)]
+
+
+def fetch_articles_with_id(id_list):
+    articles = []
+    for chuck in _chunks(id_list, 50):
+        args = {
+            'q': 'id:({})'.format(' or '.join(chuck)),
+            'rows': len(chuck)
+        }
+        args_url = urlencode(args)
+        articles.extend(_fetch(args_url))
+    return articles
+
+
+def _fetch(args_url):
+    server_url = 'http://140.124.183.7:8983/solr/HotTopicData/select?'
+    url = server_url + 'wt=json&indent=true&' + args_url
+    start_time = time.time()
     articles = []
     retry_times = 3
     while len(articles) is 0 and retry_times > 0:
@@ -107,7 +129,6 @@ def fetch_articles(title, number=20, end_day='NOW/DAY', days=-1, page=1, only_ti
         if len(articles) is 0:
             print('error occur... retry fetching articles')
         retry_times -= 1
-
     return articles
 
 

@@ -1,9 +1,10 @@
 import python_code.model.ptt_article_fetcher as fetcher
 import jsonpickle
 import os
+import re
 
 
-def _get_cluster_from_topic_list(file_name="topics_list.txt"):
+def _get_cluster_from_topic_list(file_name="source/topics_list.txt"):
     path = get_path(file_name)
     clusters = []
     with open(path, mode='r', encoding='utf8') as f:
@@ -37,19 +38,59 @@ def _get_cluster_from_topic_list(file_name="topics_list.txt"):
                             remove_negative_articles.append(article)
                     articles = remove_negative_articles
 
-            cluster = {'unique_titles': set([a.title for a in articles]), 'size': len(articles)}
-            cluster['unique_size'] = len(cluster['unique_titles'])
-            cluster['articles'] = articles
-            cluster['keyword'] = keyword
-            cluster['unique_ratio'] = round(int(cluster['unique_size']) / int(cluster['size']), 2)
+            cluster = _create_cluster(articles, keyword)
             clusters.append(cluster)
     return clusters
 
 
-def make_test_data(file_name="test_clusters.json"):
+def _create_cluster(articles, keyword):
+    if articles is None:
+        return None
+    cluster = {}
+    cluster['unique_titles'] = set([a.title for a in articles])
+    cluster['size'] = len(articles)
+    cluster['unique_size'] = len(cluster['unique_titles'])
+    cluster['articles'] = articles
+    cluster['keyword'] = keyword
+    cluster['unique_ratio'] = round(int(cluster['unique_size']) / int(cluster['size']), 2)
+    return cluster
+
+
+def _parse_cluster(path, one_article_per_cluster=False):
+    result = []
+    with open(path, mode='r', encoding='utf8') as f:
+        lines = f.readlines()
+        content = ''.join(lines)
+        for cluster_string in re.split('\n\n', content):
+            pattern = '\w{56}'
+            id_list = re.findall(pattern, cluster_string)
+            print(id_list)
+            articles = fetcher.fetch_articles_with_id(id_list)
+            if len(articles) != 0:
+                if one_article_per_cluster is True:
+                    for article in articles:
+                        result.append((_create_cluster([article], None)))
+                else:
+                    result.append(_create_cluster(articles, None))
+    return result
+
+
+def make_test_data_from_label_data(input_folder):
+    store_file_name = input_folder + '.json'
+    clusters = []
+    for file_name in ['clusters.txt', 'new_clusters.txt', 'noise.txt']:
+        path = os.path.join('source', input_folder, file_name)
+        clusters.extend(_parse_cluster(path, one_article_per_cluster=True if file_name is 'noise.txt' else False))
+    check_duplicate_article(clusters)
+    store_data(store_file_name, clusters)
+    print(len(clusters))
+    print(len([a for cluster in clusters for a in cluster['articles']]))
+
+
+def make_test_data_from_topic_list(output_name="test_clusters.json"):
     clusters = _get_cluster_from_topic_list()
     check_duplicate_article(clusters)
-    store_data(file_name, clusters)
+    store_data(output_name, clusters)
     return clusters
 
 
@@ -105,7 +146,9 @@ def get_path(file_name, folder_dir=None):
             os.mkdir(folder_dir)
     return os.path.join(folder_dir, file_name)
 
+
 if __name__ == '__main__':
-    clusters = make_test_data()
-    number_articles = len([a for cluster in clusters for a in cluster['articles']])
-    print('\ncached {} clusters, {} articles'.format(len(clusters), number_articles))
+    # clusters = make_test_data_from_topic_list()
+    # number_articles = len([a for cluster in clusters for a in cluster['articles']])
+    # print('\ncached {} clusters, {} articles'.format(len(clusters), number_articles))
+    make_test_data_from_label_data('20160615')

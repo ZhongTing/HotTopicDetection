@@ -124,7 +124,7 @@ def _fetch(args_url):
         json_data = req.read().decode(encoding).encode(
             sys_encoding, 'replace').decode(sys_encoding)
         waiting_time = time.time() - start_time
-        articles = parse_to_articles(json_data)
+        articles = _parse_to_articles(json_data)
         print('fetch ' + str(len(articles)) + ' articles spend ' + str(waiting_time))
         if len(articles) is 0:
             print('error occur... retry fetching articles')
@@ -132,7 +132,7 @@ def _fetch(args_url):
     return articles
 
 
-def parse_to_articles(json_data):
+def _parse_to_articles(json_data):
     articles = []
     for data in json.loads(json_data)['response']['docs']:
         articles.append((Article(data)))

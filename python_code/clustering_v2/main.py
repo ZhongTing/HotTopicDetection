@@ -1,9 +1,11 @@
-from python_code.feature_extractor import FeatureExtractor
-from python_code.model import ptt_article_fetcher as fetcher
-from python_code.clustering_validation import validate_clustering, internal_validate
-from python_code.model.keywords_extraction import keywords_extraction
-from python_code.agglomerative_clustering import AgglomerativeClustering
 import time
+
+from python_code.clustering_v2.feature_extractor import FeatureExtractor
+
+from python_code.clustering_v2.agglomerative_clustering import AgglomerativeClustering
+from python_code.clustering_validation import validate_clustering
+from python_code.model import ptt_article_fetcher as fetcher
+from python_code.model.keywords_extraction import keywords_extraction
 
 
 def get_ptt_articles(number=2000):
@@ -49,9 +51,9 @@ def main(threshold=0.55):
     print('main', threshold)
     articles = get_ptt_articles(number=2000)
 
-    FeatureExtractor('model/bin/ngram_300_3_83w.bin').fit(articles)
+    FeatureExtractor('model/bin/ngram_300_3_83w.bin').fit_with_extraction_ratio(articles, 1, 15, 0.4, 0.6)
     t = time.time()
-    clusters = AgglomerativeClustering(0.55).fit(articles)
+    clusters = AgglomerativeClustering(0.65).fit(articles)
     tt = time.time()
     print_clustering_info(clusters, articles)
     clusters = sorted(clusters, key=lambda cluster: sum([a.score for a in cluster['articles']]), reverse=True)

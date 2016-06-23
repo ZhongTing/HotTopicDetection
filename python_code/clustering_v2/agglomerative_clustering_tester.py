@@ -3,9 +3,8 @@ import re
 from collections import OrderedDict
 
 import python_code.test.make_test_data as test_data
-
 # noinspection PyPep8Naming
-from python_code.agglomerative_clustering import AgglomerativeClustering as HAC
+from python_code.clustering_v2.agglomerative_clustering import AgglomerativeClustering as HAC
 
 from numpy import mean, std
 import time
@@ -13,8 +12,8 @@ import os
 import csv
 
 from python_code.clustering_validation import validate_clustering
-from python_code.feature_extractor import FeatureExtractor
-from python_code.tf_idf_feature_extractor import TFIDFFeatureExtractor
+from python_code.clustering_v2.feature_extractor import FeatureExtractor
+from python_code.clustering_v2.tf_idf_feature_extractor import TFIDFFeatureExtractor
 
 FEATURE_TF = 'tf whole article'
 FEATURE_TF_IDF = 'tfidf whole article'
@@ -558,7 +557,10 @@ def compare_ratio():
         (0.7, 0.3, 0.6),
         (0.6, 0.4, 0.65),
         (0.5, 0.5, 0.65),
-        (0.4, 0.6, 0.65)
+        (0.4, 0.6, 0.65),
+        (0.3, 0.7, 0.65),
+        (0.2, 0.8, 0.7),
+        (0.1, 0.9, 0.7)
     ]
     t.compare_ratio(1, 15, args, sampling=True, times=3)
 

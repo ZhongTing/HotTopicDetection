@@ -7,7 +7,7 @@ from collections import OrderedDict
 
 from numpy import mean, std
 
-import python_code.clustering_old.main as main
+import python_code.clustering_v1.main as main
 import python_code.model.ptt_article_fetcher as fetcher
 import python_code.test.make_test_data as test_data
 

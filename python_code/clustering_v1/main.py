@@ -1,14 +1,16 @@
+import random
+import time
+
 import gensim.models
 from gensim import matutils
 from numpy import array, dot
+
+from python_code.clustering_v2.agglomerative_clustering import AgglomerativeClustering
+from python_code.clustering_validation import validate_clustering, internal_validate
 from python_code.model import ptt_article_fetcher as fetcher
+from python_code.model.keywords_extraction import keywords_extraction
 from python_code.model.my_tokenize.tokenizer import cut
 from python_code.test import make_test_data as test_data
-from python_code.clustering_validation import validate_clustering, internal_validate
-from python_code.model.keywords_extraction import keywords_extraction
-from python_code.agglomerative_clustering import AgglomerativeClustering
-import random
-import time
 
 
 def get_test_clusters(sample_pick=False):
@@ -35,11 +37,11 @@ def get_test_articles(clusters=get_test_clusters()):
     return articles
 
 
-def get_ptt_articles(number=2000):
-    return fetcher.fetch_articles('*', number=number, days=1)
+def get_ptt_articles(day='NOW/DAY', number=2000):
+    return fetcher.fetch_articles('*', number=number, end_day=day, days=1)
 
 
-def load_model(model_path='model/bin/ngram_300_3_83w.bin'):
+def load_model(model_path='../model/bin/ngram_300_3_83w.bin'):
     t = time.time()
     model = gensim.models.Word2Vec.load(model_path)
     t = int(time.time() - t)
@@ -136,7 +138,7 @@ def compute_cluster_vector(model, cluster, combined_method):
         cluster['keywords'] = compute_vector(model, keywords_extraction(cluster['articles']))
     elif combined_method[0] is 2:
         cluster['centroid'] = sum([a.vector for a in cluster['articles']]) * combined_method[1] + \
-            sum([a.content_vector for a in cluster['articles']]) * combined_method[2]
+                              sum([a.content_vector for a in cluster['articles']]) * combined_method[2]
         cluster['centroid'] /= len(cluster['articles'])
 
 
@@ -158,9 +160,11 @@ def print_clusters(clusters, print_title=False):
         print('cluster', i, 'score', score, 'amount', len(cluster['articles']))
         for keywords in get_cluster_keyword(cluster):
             print(keywords)
+        print('')
+        print('')
         if print_title is True:
             for article in cluster['articles']:
-                print(article.title)
+                print(article.id.ljust(70), article.title)
             print('\n')
 
 
@@ -240,20 +244,21 @@ def clustering(model, algorithm, threshold, articles):
     return clusters
 
 
-def main(algorithm, threshold=0.55):
+def main(algorithm, day, threshold=0.55):
     print('main', algorithm, threshold)
     model = load_model()
-    articles = get_ptt_articles(number=200)
+    articles = get_ptt_articles(number=1000, day=day)
     compute_article_vector(model, articles)
     t = time.time()
-    # clusters = clustering(model, algorithm, threshold, articles)
-    clusters = AgglomerativeClustering(0.55).fit(articles)
+    clusters = clustering(model, algorithm, threshold, articles)
+    # clusters = AgglomerativeClustering(0.55).fit(articles)
     tt = time.time()
     print_clustering_info(clusters, articles)
     clusters = sorted(clusters, key=lambda cluster: sum([a.score for a in cluster['articles']]), reverse=True)
-    print_clusters(clusters[0:5], True)
+    # print_clusters(clusters[0:5], True)
+    print_clusters(clusters, True)
     print('spend', t - tt)
-    print('silhouette_index', internal_validate(clusters))
+    # print('silhouette_index', internal_validate(clusters))
 
 
 def log(string):
@@ -263,4 +268,4 @@ def log(string):
 
 debug_mode = False
 if __name__ == '__main__':
-    main(4)
+    main(4, day='2016/06/15')

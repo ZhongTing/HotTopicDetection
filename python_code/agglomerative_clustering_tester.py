@@ -33,23 +33,32 @@ class AgglomerativeClusteringTester:
 
     def best_threshold(self, feature_extractor, linkage, similarity, start_th, end_th, step):
         file_name = 'best_threshold {} {} {}'.format(feature_extractor.args(), linkage, similarity)
-        articles = self._get_test_articles()
-        feature_extractor.fit(articles)
+        if isinstance(feature_extractor, extractor.TFIDF):
+            articles = self._get_test_articles()
+            feature_extractor.fit(articles)
+        else:
+            for cluster in self._labeled_clusters:
+                feature_extractor.fit(cluster['articles'])
+            articles = self._get_test_articles()
         result_table = {}
         threshold = start_th
         try:
             while threshold < end_th + step:
+                print(threshold)
                 clusters = HAC(threshold=threshold, linkage=linkage, similarity=similarity).fit(articles)
                 result = validate_clustering(self._labeled_clusters, clusters)
                 key = '{0:.2f}'.format(threshold)
                 if key not in result_table:
                     result_table[key] = []
                 result_table[key].append(result)
+                if float(result['AMI']) < 0.2:
+                    threshold += step
                 threshold += step
 
             self._print_test_result(result_table)
             self._save_as_csv(result_table, feature_extractor.name(), file_name)
-        except ValueError:
+        except ValueError as e:
+            print(e)
             return
         else:
             return
@@ -90,27 +99,32 @@ class AgglomerativeClusteringTester:
 
 
 def idf():
+    print('idf')
     tester = AgglomerativeClusteringTester()
     for only_title in [True, False]:
-        feature_extractor = extractor.TFIDF(use_idf=True, only_title=only_title)
+        feature_extractor = extractor.TFIDF(use_idf=False, only_title=only_title)
         for linkage in [HAC.LINKAGE_CENTROID, HAC.LINKAGE_COMPLETE, HAC.LINKAGE_SINGLE, HAC.LINKAGE_AVERAGE]:
+            print(linkage, only_title)
             tester.best_threshold(feature_extractor, linkage, HAC.SIMILARITY_COSINE, 0.05, 0.4, step=0.05)
 
 
 def title():
+    print('title')
     tester = AgglomerativeClusteringTester()
-    model = extractor.load_model('model/bin/ngram_300_3_83w.bin')
+    model = extractor.load_model('model/bin/ngram_300_5_90w.bin')
     feature_extractor = extractor.Title(model)
     for linkage in [HAC.LINKAGE_CENTROID, HAC.LINKAGE_COMPLETE, HAC.LINKAGE_SINGLE, HAC.LINKAGE_AVERAGE]:
-        tester.best_threshold(feature_extractor, linkage, HAC.SIMILARITY_COSINE, 0.3, 0.9, step=0.05)
+        print(linkage)
+        tester.best_threshold(feature_extractor, linkage, HAC.SIMILARITY_DOT, 0.6, 0.9, step=0.05)
 
 
 def extraction():
+    print('extraction')
     tester = AgglomerativeClusteringTester()
-    model = extractor.load_model('model/bin/ngram_300_3_83w.bin')
-    feature_extractor = extractor.ContentExtraction(model, 0, 5, with_weight=True)
+    model = extractor.load_model('model/bin/ngram_300_5_90w.bin')
+    feature_extractor = extractor.ContentExtraction(model, 1, 20, with_weight=True)
     for linkage in [HAC.LINKAGE_CENTROID, HAC.LINKAGE_COMPLETE, HAC.LINKAGE_SINGLE, HAC.LINKAGE_AVERAGE]:
-        tester.best_threshold(feature_extractor, linkage, HAC.SIMILARITY_COSINE, 0.3, 0.9, step=0.05)
+        tester.best_threshold(feature_extractor, linkage, HAC.SIMILARITY_DOT, 0.3, 0.9, step=0.05)
 
 if __name__ == '__main__':
     start_time = time.time()

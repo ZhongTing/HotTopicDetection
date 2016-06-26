@@ -135,4 +135,34 @@ class ContentExtraction(FeatureExtractor):
         return "Content Extraction"
 
     def args(self):
-        return 'method={} k={} with_weight'.format(self.method, self.k, self.with_weight)
+        return 'method={} k={} with_weight={}'.format(self.method, self.k, self.with_weight)
+
+
+class ContentRatioExtraction(FeatureExtractor):
+    def __init__(self, model, method, k, with_weight, t_ratio, c_ratio):
+        FeatureExtractor.__init__(self, model)
+        self.method = method
+        self.k = k
+        self.with_weight = with_weight
+        self.t_ratio = t_ratio
+        self.c_ratio = c_ratio
+
+    def fit(self, articles):
+        for article in articles:
+            keyword_list = keywords_extraction(article, self.method, self.k, with_weight=self.with_weight)
+            title_vector = self._compute_vector(article.title)
+            content_vector = self._compute_vector(keyword_list)
+            if title_vector is None:
+                article.vector = content_vector if self.c_ratio != 0 else None
+            elif content_vector is None:
+                article.vector = title_vector if self.t_ratio != 0 else None
+            else:
+                article.vector = title_vector * self.t_ratio + content_vector * self.c_ratio
+        self.remove_invalid_articles(articles)
+
+    def name(self):
+        return "Content Extraction Ratio"
+
+    def args(self):
+        return 'method={} k={} with_weight={} t={} c={}'.format(self.method, self.k, self.with_weight, self.t_ratio,
+                                                                self.c_ratio)

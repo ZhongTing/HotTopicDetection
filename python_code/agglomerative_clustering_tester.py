@@ -24,8 +24,9 @@ FEATURE_TITLE_EXTRACTION = 'title with keyword extraction'
 
 class AgglomerativeClusteringTester:
     def __init__(self):
-        self._labeled_clusters = test_data.get_test_clusters('20160615.json')
-        # self._labeled_clusters = test_data.get_test_clusters('test_clusters.json')
+        self._file_name = '20160615.json'
+        # self._file_name = 'test_clusters.json'
+        self._labeled_clusters = test_data.get_test_clusters(self._file_name)
 
     def _get_test_articles(self):
         articles = [article for cluster in self._labeled_clusters for article in cluster['articles']]
@@ -82,6 +83,15 @@ class AgglomerativeClusteringTester:
             result_table[key].append(result)
         self._print_test_result(result_table)
         self._save_as_csv(result_table, 'stable_test', file_name)
+
+    def print_data_set(self):
+        result_table = {}
+        file_name = self._file_name
+        counter = 1
+        for cluster in sorted(self._labeled_clusters, key=lambda a: len(a['articles']), reverse=True):
+            result_table[counter] = [{'count': len(cluster['articles'])}]
+            counter += 1
+        self._save_as_csv(result_table, 'data_set', file_name)
 
     @staticmethod
     def _print_test_result(result_table):
@@ -173,6 +183,7 @@ if __name__ == '__main__':
     # idf()
     # title()
     # extraction()
-    ratio()
+    # ratio()
     # stable_test()
+    AgglomerativeClusteringTester().print_data_set()
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

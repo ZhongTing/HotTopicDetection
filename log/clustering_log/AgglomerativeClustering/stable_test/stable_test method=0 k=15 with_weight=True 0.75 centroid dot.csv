@@ -1,0 +1,10 @@
+,AMI,ARI,Completeness,Homogeneity,V-measure
+mean
+0.75,0.3,0.24,0.91,0.87,0.89
+max
+0.75,0.3,0.24,0.91,0.87,0.89
+min
+0.75,0.3,0.24,0.91,0.87,0.89
+std
+0.75,0.0,0.0,0.0,0.0,0.0
+test finished in 232.49 seconds

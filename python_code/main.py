@@ -1,6 +1,6 @@
 import time
 
-import python_code.feature_extractor as featre_extractor
+import python_code.feature_extractor as feature_extractor
 from python_code.agglomerative_clustering import AgglomerativeClustering
 from python_code.clustering_validation import validate_clustering, internal_validate
 from python_code.model import ptt_article_fetcher as fetcher
@@ -49,14 +49,14 @@ def print_validation_result(labeled_clusters, clusters):
 def main(day='NOW/DAY'):
     print('main')
     articles = get_ptt_articles(day, number=1000)
-    model = featre_extractor.load_model('model/bin/ngram_300_5_90w.bin')
+    model = feature_extractor.load_model('model/bin/ngram_300_5_90w.bin')
     t = time.time()
-    featre_extractor.ContentRatioExtraction(model, 1, 15, True, 0.6, 0.4).fit(articles)
+    feature_extractor.ContentRatioExtraction(model, 1, 15, True, 0.6, 0.4).fit(articles)
     clusters = AgglomerativeClustering(0.75).fit(articles)
     tt = time.time()
     print_clustering_info(clusters, articles)
     clusters = sorted(clusters, key=lambda cluster: sum([a.score for a in cluster['articles']]), reverse=True)
-    print_clusters(clusters[0:5], True)
+    print_clusters(clusters[0:-1], True)
     print('spend', t - tt)
     print('silhouette_index', internal_validate(clusters))
 

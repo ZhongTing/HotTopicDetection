@@ -24,8 +24,10 @@ FEATURE_TITLE_EXTRACTION = 'title with keyword extraction'
 
 class AgglomerativeClusteringTester:
     def __init__(self):
-        self._file_name = '20160615.json'
+        # self._file_name = '20160615.json'
+        self._file_name = '20160624.json'
         # self._file_name = 'test_clusters.json'
+        print(self._file_name)
         self._labeled_clusters = test_data.get_test_clusters(self._file_name)
 
     def _get_test_articles(self):
@@ -62,7 +64,7 @@ class AgglomerativeClusteringTester:
                 threshold += step
 
             self._print_test_result(result_table)
-            self._save_as_csv(result_table, feature_extractor.name(), file_name)
+            self._save_as_csv(result_table, os.path.join(feature_extractor.name(), self._file_name), file_name)
         except ValueError as e:
             print(e)
             return
@@ -87,10 +89,11 @@ class AgglomerativeClusteringTester:
     def print_data_set(self):
         result_table = {}
         file_name = self._file_name
-        counter = 1
         for cluster in sorted(self._labeled_clusters, key=lambda a: len(a['articles']), reverse=True):
-            result_table[counter] = [{'count': len(cluster['articles'])}]
-            counter += 1
+            key = len(cluster['articles'])
+            if key not in result_table:
+                result_table[key] = [{'count': 0}]
+            result_table[key][0]['count'] +=1
         self._save_as_csv(result_table, 'data_set', file_name)
 
     @staticmethod
@@ -133,7 +136,8 @@ def idf():
     tester = AgglomerativeClusteringTester()
     for only_title in [True, False]:
         feature_extractor = extractor.TFIDF(use_idf=True, only_title=only_title)
-        for linkage in [HAC.LINKAGE_CENTROID, HAC.LINKAGE_COMPLETE, HAC.LINKAGE_SINGLE, HAC.LINKAGE_AVERAGE]:
+        # for linkage in [HAC.LINKAGE_CENTROID, HAC.LINKAGE_COMPLETE, HAC.LINKAGE_SINGLE, HAC.LINKAGE_AVERAGE]:
+        for linkage in [HAC.LINKAGE_CENTROID, HAC.LINKAGE_COMPLETE]:
             print(linkage, 'only title', only_title)
             tester.best_threshold(feature_extractor, linkage, HAC.SIMILARITY_COSINE, 0.05, 0.4, step=0.05)
 
@@ -180,10 +184,10 @@ def ratio():
 
 if __name__ == '__main__':
     start_time = time.time()
-    # idf()
+    idf()
     # title()
     # extraction()
     # ratio()
     # stable_test()
-    AgglomerativeClusteringTester().print_data_set()
+    # AgglomerativeClusteringTester().print_data_set()
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

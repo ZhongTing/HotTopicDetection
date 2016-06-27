@@ -151,4 +151,4 @@ if __name__ == '__main__':
     # clusters = make_test_data_from_topic_list()
     # number_articles = len([a for cluster in clusters for a in cluster['articles']])
     # print('\ncached {} clusters, {} articles'.format(len(clusters), number_articles))
-    make_test_data_from_label_data('20160615')
+    make_test_data_from_label_data('20160624')

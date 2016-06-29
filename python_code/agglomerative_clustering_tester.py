@@ -26,7 +26,6 @@ class AgglomerativeClusteringTester:
     def __init__(self):
         # self._file_name = '20160615.json'
         self._file_name = '20160624.json'
-        # self._file_name = 'test_clusters.json'
         print(self._file_name)
         self._labeled_clusters = test_data.get_test_clusters(self._file_name)
 
@@ -53,8 +52,11 @@ class AgglomerativeClusteringTester:
         try:
             while threshold < end_th + step:
                 print(threshold)
+                t = time.time()
                 clusters = HAC(threshold=threshold, linkage=linkage, similarity=similarity).fit(articles)
+                t = time.time() - t
                 result = validate_clustering(self._labeled_clusters, clusters)
+                result['time'] = t
                 key = '{0:.2f}'.format(threshold)
                 if key not in result_table:
                     result_table[key] = []
@@ -93,7 +95,7 @@ class AgglomerativeClusteringTester:
             key = len(cluster['articles'])
             if key not in result_table:
                 result_table[key] = [{'count': 0}]
-            result_table[key][0]['count'] +=1
+            result_table[key][0]['count'] += 1
         self._save_as_csv(result_table, 'data_set', file_name)
 
     @staticmethod
@@ -136,8 +138,8 @@ def idf():
     tester = AgglomerativeClusteringTester()
     for only_title in [True, False]:
         feature_extractor = extractor.TFIDF(use_idf=True, only_title=only_title)
-        # for linkage in [HAC.LINKAGE_CENTROID, HAC.LINKAGE_COMPLETE, HAC.LINKAGE_SINGLE, HAC.LINKAGE_AVERAGE]:
-        for linkage in [HAC.LINKAGE_CENTROID, HAC.LINKAGE_COMPLETE]:
+        for linkage in [HAC.LINKAGE_CENTROID, HAC.LINKAGE_COMPLETE, HAC.LINKAGE_SINGLE, HAC.LINKAGE_AVERAGE]:
+            # for linkage in [HAC.LINKAGE_CENTROID, HAC.LINKAGE_COMPLETE]:
             print(linkage, 'only title', only_title)
             tester.best_threshold(feature_extractor, linkage, HAC.SIMILARITY_COSINE, 0.05, 0.4, step=0.05)
 
@@ -156,17 +158,19 @@ def extraction():
     print('extraction')
     tester = AgglomerativeClusteringTester()
     model = extractor.load_model('model/bin/ngram_300_5_90w.bin')
-    feature_extractor = extractor.ContentExtraction(model, 1, 15, with_weight=False)
-    for linkage in [HAC.LINKAGE_COMPLETE]:
-        for sim in [HAC.SIMILARITY_DOT]:
-            tester.best_threshold(feature_extractor, linkage, sim, 0.6, 0.9, step=0.05)
+    for with_weight in [True, False]:
+        for method in [0, 1]:
+            feature_extractor = extractor.ContentExtraction(model, method, 5, with_weight=with_weight)
+            for linkage in [HAC.LINKAGE_CENTROID, HAC.LINKAGE_AVERAGE, HAC.LINKAGE_SINGLE]:
+                for sim in [HAC.SIMILARITY_DOT, HAC.SIMILARITY_COSINE]:
+                    tester.best_threshold(feature_extractor, linkage, sim, 0.6, 0.9, step=0.05)
 
 
 def stable_test():
     print('extraction')
     tester = AgglomerativeClusteringTester()
     model = extractor.load_model('model/bin/ngram_300_5_90w.bin')
-    feature_extractor = extractor.ContentExtraction(model, 0, 15, with_weight=True)
+    feature_extractor = extractor.ContentExtraction(model, 0, 5, with_weight=True)
     tester.stable_test(feature_extractor, 0.75, HAC.LINKAGE_CENTROID, HAC.SIMILARITY_DOT, 5)
 
 
@@ -184,9 +188,9 @@ def ratio():
 
 if __name__ == '__main__':
     start_time = time.time()
-    idf()
+    # idf()
     # title()
-    # extraction()
+    extraction()
     # ratio()
     # stable_test()
     # AgglomerativeClusteringTester().print_data_set()

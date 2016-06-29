@@ -66,8 +66,9 @@ class AgglomerativeClustering:
 
             not_found = True
             for cluster in clusters:
-                if array_equal(article.vector, cluster['vector']):
+                if array_equal(article.vector, cluster['vector']) or article.title == cluster['articles'][0].title:
                     cluster['articles'].append(article)
+                    # cluster['vector'] = self._cluster_vector(cluster)
                     not_found = False
                     break
 

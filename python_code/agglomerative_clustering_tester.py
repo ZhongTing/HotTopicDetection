@@ -158,13 +158,13 @@ def extraction():
     print('extraction')
     tester = AgglomerativeClusteringTester()
     model = extractor.load_model('model/bin/ngram_300_5_90w.bin')
-    for with_weight in [True, False]:
-        for k in [5, 10, 15, 20]:
+    for with_weight in [False]:
+        for k in [5]:
             for method in [1]:
                 feature_extractor = extractor.ContentExtraction(model, method, k, with_weight=with_weight)
-                for linkage in [HAC.LINKAGE_AVERAGE, HAC.LINKAGE_SINGLE]:
-                    for sim in [HAC.SIMILARITY_COSINE]:
-                        tester.best_threshold(feature_extractor, linkage, sim, 0.35, 0.7, step=0.05)
+                for linkage in [HAC.LINKAGE_SINGLE]:
+                    for sim in [HAC.SIMILARITY_DOT]:
+                        tester.best_threshold(feature_extractor, linkage, sim, 0.05, 0.45, step=0.05)
 
 
 def stable_test():

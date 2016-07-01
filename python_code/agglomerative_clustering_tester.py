@@ -24,8 +24,8 @@ FEATURE_TITLE_EXTRACTION = 'title with keyword extraction'
 
 class AgglomerativeClusteringTester:
     def __init__(self):
-        # self._file_name = '20160615.json'
-        self._file_name = '20160624.json'
+        self._file_name = '20160615.json'
+        # self._file_name = '20160624.json'
         print(self._file_name)
         self._labeled_clusters = test_data.get_test_clusters(self._file_name)
 
@@ -158,12 +158,13 @@ def extraction():
     print('extraction')
     tester = AgglomerativeClusteringTester()
     model = extractor.load_model('model/bin/ngram_300_5_90w.bin')
-    for with_weight in [True, False]:
-        for method in [0, 1]:
-            feature_extractor = extractor.ContentExtraction(model, method, 5, with_weight=with_weight)
-            for linkage in [HAC.LINKAGE_CENTROID, HAC.LINKAGE_AVERAGE, HAC.LINKAGE_SINGLE]:
-                for sim in [HAC.SIMILARITY_DOT, HAC.SIMILARITY_COSINE]:
-                    tester.best_threshold(feature_extractor, linkage, sim, 0.6, 0.9, step=0.05)
+    for with_weight in [True]:
+        for method in [1]:
+            feature_extractor = extractor.ContentExtraction(model, method, 20, with_weight=with_weight)
+            for linkage in [HAC.LINKAGE_CENTROID]:
+                for sim in [HAC.SIMILARITY_DOT]:
+                    print(with_weight, method, linkage, sim)
+                    tester.best_threshold(feature_extractor, linkage, sim, 0.5, 0.9, step=0.05)
 
 
 def stable_test():

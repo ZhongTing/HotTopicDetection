@@ -88,6 +88,24 @@ class AgglomerativeClusteringTester:
         self._print_test_result(result_table)
         self._save_as_csv(result_table, 'stable_test', file_name)
 
+    def time_test(self, args):
+        result_table = {}
+        for k in range(100, 1001, 50):
+            print('k', k)
+            result = {}
+            for (e, linkage, similarity, threshold) in args:
+                articles = random.sample(self._get_test_articles(), k)
+                t = time.time()
+                e.fit(articles)
+                HAC(threshold=threshold, linkage=linkage, similarity=similarity).fit(articles)
+                result[e.name() + e.args()] = time.time() - t
+                key = str(k)
+                if key not in result_table:
+                    result_table[key] = []
+                result_table[key].append(result)
+        self._print_test_result(result_table)
+        self._save_as_csv(result_table, 'time_test', self._file_name)
+
     def print_data_set(self):
         result_table = {}
         file_name = self._file_name
@@ -187,12 +205,26 @@ def ratio():
         tester.best_threshold(feature_extractor, HAC.LINKAGE_CENTROID, HAC.SIMILARITY_DOT, 0.4, 0.9, step=0.05)
 
 
+def time_test():
+    print('time test')
+    tester = AgglomerativeClusteringTester()
+    model = extractor.load_model('model/bin/ngram_300_5_90w.bin')
+    args = [
+        (extractor.TFIDF(use_idf=True, only_title=False), HAC.LINKAGE_CENTROID, HAC.SIMILARITY_COSINE, 0.15),
+        (extractor.TFIDF(use_idf=True, only_title=True), HAC.LINKAGE_CENTROID, HAC.SIMILARITY_COSINE, 0.1),
+        (extractor.ContentRatioExtraction(model, 1, 15, True, t_ratio=0.5, c_ratio=0.5), HAC.LINKAGE_CENTROID,
+         HAC.SIMILARITY_DOT, 0.65)
+    ]
+    tester.time_test(args)
+
+
 if __name__ == '__main__':
     start_time = time.time()
     # idf()
     # title()
-    extraction()
+    # extraction()
     # ratio()
     # stable_test()
     # AgglomerativeClusteringTester().print_data_set()
+    time_test()
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

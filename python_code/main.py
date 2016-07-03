@@ -9,7 +9,7 @@ from python_code.model.keywords_extraction import keywords_extraction
 
 
 def get_ptt_articles(day='NOW/DAY', number=2000):
-    return fetcher.fetch_articles('*', number=number, end_day=day, days=1)
+    return fetcher.fetch_articles('*', number=number, end_day=day, days=0)
 
 
 def get_cluster_keyword(cluster):
@@ -49,7 +49,7 @@ def print_validation_result(labeled_clusters, clusters):
 
 
 def main(day='NOW/DAY', log=False):
-    print('main')
+    print('main', day)
     file = None
     if log is True:
         path = '../log/TopFiveTopic'
@@ -69,8 +69,12 @@ def main(day='NOW/DAY', log=False):
 
 
 def log_hot_topic(month):
-    for day in range(1, 31):
-        main(month+'/'+str(day))
+    for day_counter in range(1, 31):
+        day = month + '/' + str(day_counter).zfill(2)
+        try:
+            main(day, True)
+        finally:
+            pass
 
 
 def check_dir(path):

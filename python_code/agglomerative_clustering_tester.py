@@ -90,11 +90,13 @@ class AgglomerativeClusteringTester:
 
     def time_test(self, args):
         result_table = {}
-        for k in range(100, 1001, 50):
+        for k in range(100, 1001, 100):
             print('k', k)
             result = {}
             for (e, linkage, similarity, threshold) in args:
-                articles = random.sample(self._get_test_articles(), k)
+                articles = self._get_test_articles()
+                if k < len(articles):
+                    articles = random.sample(articles, k)
                 t = time.time()
                 e.fit(articles)
                 HAC(threshold=threshold, linkage=linkage, similarity=similarity).fit(articles)

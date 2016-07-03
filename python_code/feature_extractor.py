@@ -37,7 +37,9 @@ class FeatureExtractor:
     def _compute_vector(self, input_data):
         weights = None
         if isinstance(input_data, list):
-            if isinstance(input_data[0], tuple):
+            if len(input_data) == 0:
+                tokens = []
+            elif isinstance(input_data[0], tuple):
                 tokens = [data_tuple[0] for data_tuple in input_data]
                 weights = [data_tuple[1] for data_tuple in input_data]
             else:

@@ -25,7 +25,7 @@ FEATURE_TITLE_EXTRACTION = 'title with keyword extraction'
 class AgglomerativeClusteringTester:
     def __init__(self):
         # self._file_name = '20160615.json'
-        self._file_name = '20160624.json'
+        self._file_name = '20160629.json'
         print(self._file_name)
         self._labeled_clusters = test_data.get_test_clusters(self._file_name)
 
@@ -111,11 +111,12 @@ class AgglomerativeClusteringTester:
     def print_data_set(self):
         result_table = {}
         file_name = self._file_name
+        i = 1
         for cluster in sorted(self._labeled_clusters, key=lambda a: len(a['articles']), reverse=True):
-            key = len(cluster['articles'])
+            key = i
             if key not in result_table:
-                result_table[key] = [{'count': 0}]
-            result_table[key][0]['count'] += 1
+                result_table[key] = [{'count': len(cluster['articles'])}]
+            i += 1
         self._save_as_csv(result_table, 'data_set', file_name)
 
     @staticmethod
@@ -227,6 +228,6 @@ if __name__ == '__main__':
     # extraction()
     # ratio()
     # stable_test()
-    # AgglomerativeClusteringTester().print_data_set()
-    time_test()
+    AgglomerativeClusteringTester().print_data_set()
+    # time_test()
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

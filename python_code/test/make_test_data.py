@@ -2,7 +2,6 @@ import python_code.model.ptt_article_fetcher as fetcher
 import jsonpickle
 import os
 import re
-import python_code.main as main
 import random
 
 
@@ -129,7 +128,8 @@ def sampling_test_data_into_source(data_file_name, sample_num=1000):
             clusters.remove(cluster)
 
     print(len(clusters))
-    main.print_clusters(clusters, print_title=True, file=file_clusters)
+    from python_code.main import print_clusters
+    print_clusters(clusters, print_title=True, file=file_clusters)
 
 
 def make_test_data_from_topic_list(output_name="test_clusters.json"):

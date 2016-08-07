@@ -4,7 +4,7 @@ from collections import OrderedDict
 
 import python_code.test.make_test_data as test_data
 # noinspection PyPep8Naming
-from python_code.clustering_v2.agglomerative_clustering import AgglomerativeClustering as HAC
+from python_code.agglomerative_clustering import AgglomerativeClustering as HAC
 import python_code.feature_extractor as extractor
 
 from numpy import mean, std

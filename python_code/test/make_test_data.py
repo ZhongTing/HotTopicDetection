@@ -2,6 +2,8 @@ import python_code.model.ptt_article_fetcher as fetcher
 import jsonpickle
 import os
 import re
+import python_code.main as main
+import random
 
 
 def _get_cluster_from_topic_list(file_name="source/topics_list.txt"):
@@ -17,7 +19,7 @@ def _get_cluster_from_topic_list(file_name="source/topics_list.txt"):
             end_day = data[2]
             if not end_day.isdigit():
                 end_day = data[1]
-            days = int(end_day) - int(data[1])
+            # days = int(end_day) - int(data[1])
             end_day = '201{}/{}/{}'.format(end_day[0], end_day[1:3], end_day[3:5])
             # articles = fetcher.fetch_articles(keyword, number=200, end_day=end_day, days=days)
             start_day = data[1]
@@ -85,6 +87,49 @@ def make_test_data_from_label_data(input_folder):
     store_data(store_file_name, clusters)
     print(len(clusters))
     print(len([a for cluster in clusters for a in cluster['articles']]))
+
+
+def sampling_test_data_into_source(data_file_name, sample_num=1000):
+    clusters = get_test_clusters(data_file_name)
+    target_id_list = [article.id for cluster in clusters for article in cluster['articles']]
+    target_id_list = random.sample(target_id_list, sample_num)
+    print('id list', len(target_id_list))
+    print('origin cluster', len(clusters))
+    print('origin articles', len([a for cluster in clusters for a in cluster['articles']]))
+
+    remove_counter = 0
+    for cluster in clusters:
+        for article in cluster['articles']:
+            for aid in target_id_list:
+                if article.id is not aid:
+                    cluster['articles'].remove(article)
+                    remove_counter += 1
+                    break
+        if len(cluster['articles']) == 0:
+            clusters.remove(cluster)
+    print(len(clusters))
+    print(len([a for cluster in clusters for a in cluster['articles']]))
+    print('remove', remove_counter)
+    file_clusters = open('clusters.txt', 'w', encoding='utf8')
+    file_noise = open('noise.txt', 'w', encoding='utf8')
+    file_new_clusters = open('new_clusters.txt', 'w', encoding='utf8')
+
+    for cluster in clusters:
+        title_set = set([article.title for article in cluster['articles']])
+        if len(title_set) > 1:
+            continue
+        else:
+            for article in cluster['articles']:
+                if len(cluster['articles']) > 1:
+                    print(article.id, article.title, file=file_new_clusters)
+                else:
+                    print(article.id, article.title, file=file_noise)
+            if len(cluster['articles']) > 1:
+                print('\n', file=file_new_clusters)
+            clusters.remove(cluster)
+
+    print(len(clusters))
+    main.print_clusters(clusters, print_title=True, file=file_clusters)
 
 
 def make_test_data_from_topic_list(output_name="test_clusters.json"):

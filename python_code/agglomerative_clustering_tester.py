@@ -157,11 +157,12 @@ class AgglomerativeClusteringTester:
 def idf():
     print('idf')
     tester = AgglomerativeClusteringTester()
-    for only_title in [True, False]:
-        feature_extractor = extractor.TFIDF(use_idf=False, only_title=only_title)
-        for linkage in [HAC.LINKAGE_CENTROID, HAC.LINKAGE_COMPLETE, HAC.LINKAGE_SINGLE, HAC.LINKAGE_AVERAGE]:
-            print(linkage, 'only title', only_title)
-            tester.best_threshold(feature_extractor, linkage, HAC.SIMILARITY_COSINE, 0.05, 0.4, step=0.05)
+    for only_title in [False, True]:
+        for use_idf in [False, True]:
+            feature_extractor = extractor.TFIDF(use_idf=use_idf, only_title=only_title)
+            for linkage in [HAC.LINKAGE_CENTROID, HAC.LINKAGE_COMPLETE, HAC.LINKAGE_SINGLE, HAC.LINKAGE_AVERAGE]:
+                print(linkage, 'only title', only_title, 'use_idf', use_idf)
+                tester.best_threshold(feature_extractor, linkage, HAC.SIMILARITY_COSINE, 0.05, 0.4, step=0.05)
 
 
 def title():
@@ -223,11 +224,11 @@ def time_test():
 
 if __name__ == '__main__':
     start_time = time.time()
-    # idf()
+    idf()
     # title()
     # extraction()
     # ratio()
     # stable_test()
-    AgglomerativeClusteringTester().print_data_set()
+    # AgglomerativeClusteringTester().print_data_set()
     # time_test()
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

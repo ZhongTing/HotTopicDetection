@@ -25,7 +25,8 @@ FEATURE_TITLE_EXTRACTION = 'title with keyword extraction'
 class AgglomerativeClusteringTester:
     def __init__(self):
         # self._file_name = '20160615.json'
-        self._file_name = '20160629.json'
+        self._file_name = '20160624.json'
+        # self._file_name = '20160629.json'
         print(self._file_name)
         self._labeled_clusters = test_data.get_test_clusters(self._file_name)
 
@@ -90,7 +91,7 @@ class AgglomerativeClusteringTester:
 
     def time_test(self, args):
         result_table = {}
-        for k in range(100, 1001, 100):
+        for k in range(150, 1001, 100):
             print('k', k)
             result = {}
             for (e, linkage, similarity, threshold) in args:
@@ -100,7 +101,7 @@ class AgglomerativeClusteringTester:
                 t = time.time()
                 e.fit(articles)
                 HAC(threshold=threshold, linkage=linkage, similarity=similarity).fit(articles)
-                result[e.name() + e.args()] = time.time() - t
+                result[' '.join([e.name(), linkage, similarity])] = time.time() - t
                 key = str(k)
                 if key not in result_table:
                     result_table[key] = []
@@ -203,10 +204,12 @@ def ratio():
     model = extractor.load_model('model/bin/ngram_300_5_90w.bin')
     r = [(0, 1), (0.1, 0.9), (0.2, 0.8), (0.3, 0.7), (0.4, 0.6), (0.5, 0.5),
          (0.6, 0.4), (0.7, 0.3), (0.8, 0.2), (0.9, 0.1), (1, 0)]
+    # r = [(0.5, 0.5)]
     for i in range(len(r)):
         print(r[i])
         feature_extractor = extractor.ContentRatioExtraction(model, 1, 15, True, t_ratio=r[i][0], c_ratio=r[i][1])
         tester.best_threshold(feature_extractor, HAC.LINKAGE_CENTROID, HAC.SIMILARITY_DOT, 0.4, 0.9, step=0.05)
+        # tester.best_threshold(feature_extractor, HAC.LINKAGE_AVERAGE, HAC.SIMILARITY_COSINE, 0.4, 0.9, step=0.05)
 
 
 def time_test():
@@ -214,21 +217,23 @@ def time_test():
     tester = AgglomerativeClusteringTester()
     model = extractor.load_model('model/bin/ngram_300_5_90w.bin')
     args = [
-        (extractor.TFIDF(use_idf=True, only_title=False), HAC.LINKAGE_CENTROID, HAC.SIMILARITY_COSINE, 0.15),
-        (extractor.TFIDF(use_idf=True, only_title=True), HAC.LINKAGE_CENTROID, HAC.SIMILARITY_COSINE, 0.1),
-        (extractor.ContentRatioExtraction(model, 1, 15, True, t_ratio=0.5, c_ratio=0.5), HAC.LINKAGE_CENTROID,
-         HAC.SIMILARITY_DOT, 0.65)
+        # (extractor.TFIDF(use_idf=True, only_title=False), HAC.LINKAGE_CENTROID, HAC.SIMILARITY_COSINE, 0.15),
+        # (extractor.TFIDF(use_idf=True, only_title=True), HAC.LINKAGE_CENTROID, HAC.SIMILARITY_COSINE, 0.1),
+        (extractor.ContentRatioExtraction(model, 1, 15, True, t_ratio=0.5, c_ratio=0.5), HAC.LINKAGE_AVERAGE,
+         HAC.SIMILARITY_COSINE, 0.65),
+        # (extractor.ContentRatioExtraction(model, 1, 15, True, t_ratio=0.5, c_ratio=0.5), HAC.LINKAGE_CENTROID,
+        #  HAC.LINKAGE_CENTROID, 0.65)
     ]
     tester.time_test(args)
 
 
 if __name__ == '__main__':
     start_time = time.time()
-    idf()
+    # idf()
     # title()
     # extraction()
     # ratio()
     # stable_test()
     # AgglomerativeClusteringTester().print_data_set()
-    # time_test()
+    time_test()
     print('test finished in {0:.2f} seconds'.format(time.time() - start_time))

@@ -1,9 +1,10 @@
+import sys
 import os
 import time
 
 import python_code.feature_extractor as feature_extractor
 from python_code.agglomerative_clustering import AgglomerativeClustering
-from python_code.clustering_validation import validate_clustering, internal_validate
+from python_code.clustering_validation import validate_clustering
 from python_code.model import ptt_article_fetcher as fetcher
 from python_code.model.keywords_extraction import keywords_extraction
 
@@ -86,5 +87,8 @@ def check_dir(path):
 
 debug_mode = False
 if __name__ == '__main__':
-    # main('2016/06/24')
-    log_hot_topic('2016/06')
+    if len(sys.argv) > 1:
+        main(sys.argv[1])
+    else:
+        main('2016/6/26')
+        # log_hot_topic('2016/06')

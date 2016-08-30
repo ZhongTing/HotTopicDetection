@@ -31,7 +31,7 @@ python python_code/main.py yyyy/mm/dd
 ```
 
 # System Architecture
-![系統架構](/document/System Architecture.png)
+![系統架構](/document/圖片/System Architecture.png)
 btw 系統架構圖利用[draw.io](https://www.draw.io/)畫的，檔案存在[document/System Architecture.xml](/document/System Architecture.xml)  
 
 目前提供好幾種不同的Feature Extraction方法以及不同的Clustering方法
@@ -112,7 +112,7 @@ python_code/clustering_validation提供一個validate_clustering function來評�
 result = validate_clustering(labeled_clusters, clusters)
 ```
 
-### Note
+# Note
 這個專案研究方向一波三折，因此保留了一些歷史痕跡留作紀念  
 起初只想要用lda作為主題偵測的方法，但寫了一些測試發現不大可行（python_code/test/test_lda)。  
 但意外發現lda拿來做keyword expansion效果相當不錯(python_code/model/lda term_expansion)  

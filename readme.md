@@ -18,8 +18,8 @@ windows可能會遇到一點麻煩，大部分的麻煩可以[conda](http://cond
 ### 下載預先訓練好的Model
 [Wirl NAS](140.124.183.12)上有預先訓練好的Model，目前專案預設使用的是“ngram_300_5_90w"   
 NAS登入後請到謝宗廷/Word2Vec Models資料夾下載"ngram_300_5_90w.bin", "ngram_300_5_90w.bin.syn0.npy", "ngram_300_5_90w.bin.syn1neg.npy"這三個檔案，並且放到專案的python_code/model/bin資料夾底下  
-一個完整的model會有一個bin檔，如果檔案過大，底層的儲存方式會把他分成好幾個檔案
-model的命名方式為[algorithm名稱_向量長度_mincount_訓練文章數量]，目前資料夾好幾種model可以選擇，學弟們可以比較看看哪一種參數設定效果會比較好
+一個完整的model會有一個bin檔，如果檔案過大，底層的儲存方式會把他分成好幾個檔案  
+model的命名方式為[algorithm名稱_向量長度_mincount_訓練文章數量]  目前資料夾好幾種model可以選擇，學弟們可以比較看看哪一種參數設定效果會比較好
 
 ### 訓練自己的Model
 開啟python_code/model/train_word2vector.py修改訓練的參數([文件](https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.Word2Vec)) and Run it!
@@ -32,13 +32,15 @@ python python_code/main.py yyyy/mm/dd
 
 # System Architecture
 ![系統架構](/document/圖片/System Architecture.png)
+
 btw 系統架構圖利用[draw.io](https://www.draw.io/)畫的，檔案存在[document/System Architecture.xml](/document/System Architecture.xml)  
 
-目前提供好幾種不同的Feature Extraction方法以及不同的Clustering方法
+目前提供好幾種不同的Feature Extraction方法以及不同的Clustering方法  
 python_code/agglomerative_clustering_test.py有比較不同的組合的效果，數據整理在log/clustering_log/compare.xml
 
 ### FeatureExtractor
-FeatureExtractor是一個標準介面(python_code/feature_extractor.py)，提供 fit(articles) function，articles參數是一個list of article object(這個object該有的欄位定義在model/ptt_article_fetcher), 此function能夠擷取參數article的特徵擷取出來並轉成向量存在article裡面  
+FeatureExtractor是一個標準介面(python_code/feature_extractor.py)，提供 fit(articles) function  
+articles參數是一個list of article object(這個object該有的欄位定義在model/ptt_article_fetcher), 此function能夠擷取參數article的特徵擷取出來並轉成向量存在article裡面  
 
 FeatureExtractor提供四個Concrete Class實現方法：分別為TFIDF, Title, ContentExtraction, ContentRatioExtraction
 
@@ -106,7 +108,8 @@ python python_code/test/make_test_data.py
 ```
 很抱歉沒有寫好cls的arg，你需要修改make_test_data.py，並利用make_test_data_from_label_data輸入對應的source來轉json
 
-python_code/clustering_validation提供一個validate_clustering function來評估分群效果，目前只支援ARI, ARI, Homogeneity, Completeness, V-measure等五個external指標, internal指標的部分還沒有實作完畢（事實上實作上遇到很多問題
+python_code/clustering_validation提供一個validate_clustering function來評估分群效果  
+目前只支援ARI, ARI, Homogeneity, Completeness, V-measure等五個external指標, internal指標的部分還沒有實作完畢（事實上實作上遇到很多問題
 
 ```
 result = validate_clustering(labeled_clusters, clusters)

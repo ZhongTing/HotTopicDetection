@@ -31,9 +31,9 @@ python python_code/main.py yyyy/mm/dd
 ```
 
 # System Architecture
-![系統架構](./document/圖片/System Architecture.png)
+![系統架構](./document/圖片/System%20Architecture.png)
 
-btw 系統架構圖利用[draw.io](https://www.draw.io/)畫的，檔案存在[./document/System Architecture.xml](/document/System Architecture.xml)  
+btw 系統架構圖利用[draw.io](https://www.draw.io/)畫的，檔案存在[document/System Architecture.xml](/document/System%20Architecture.xml)  
 
 目前提供好幾種不同的Feature Extraction方法以及不同的Clustering方法  
 python_code/agglomerative_clustering_test.py有比較不同的組合的效果，數據整理在log/clustering_log/compare.xml
